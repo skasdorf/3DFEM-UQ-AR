@@ -1,0 +1,946 @@
+!Elements.txt
+element: 1 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 1 2 5 6 17 18 21 57
+nodes: 1 1 2 6 17 18 57
+all: 1 2 5 6 17 18 21 57
+facets: 1 2 3 4 5 6
+element: 2 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 2 3 6 7 18 19 57 58
+nodes: 2 1 3 7 18 19 58
+all: 2 3 6 7 18 19 57 58
+facets: 2 7 8 9 10 11
+element: 3 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 3 4 7 8 19 20 58 22
+nodes: 3 1 4 8 19 20 22
+all: 3 4 7 8 19 20 58 22
+facets: 7 12 13 14 15 16
+element: 4 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 5 6 9 10 21 57 23 59
+nodes: 4 1 6 10 21 57 59
+all: 5 6 9 10 21 57 23 59
+facets: 17 18 4 19 20 21
+element: 5 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 6 7 10 11 57 58 59 60
+nodes: 5 1 7 11 57 58 60
+all: 6 7 10 11 57 58 59 60
+facets: 18 22 9 23 24 25
+element: 6 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 7 8 11 12 58 22 60 24
+nodes: 6 1 8 12 58 22 24
+all: 7 8 11 12 58 22 60 24
+facets: 22 26 14 27 28 29
+element: 7 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 9 10 13 14 23 59 25 26
+nodes: 7 1 10 14 23 59 26
+all: 9 10 13 14 23 59 25 26
+facets: 30 31 19 32 33 34
+element: 8 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 10 11 14 15 59 60 26 27
+nodes: 8 1 11 15 59 60 27
+all: 10 11 14 15 59 60 26 27
+facets: 31 35 23 36 37 38
+element: 9 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 11 12 15 16 60 24 27 28
+nodes: 9 1 12 16 60 24 28
+all: 11 12 15 16 60 24 27 28
+facets: 35 39 27 40 41 42
+element: 10 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 17 18 21 57 29 30 33 61
+nodes: 10 1 18 57 29 30 61
+all: 17 18 21 57 29 30 33 61
+facets: 43 44 45 46 6 47
+element: 11 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 18 19 57 58 30 31 61 62
+nodes: 11 1 19 58 30 31 62
+all: 18 19 57 58 30 31 61 62
+facets: 44 48 49 50 11 51
+element: 12 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 19 20 58 22 31 32 62 34
+nodes: 12 1 20 22 31 32 34
+all: 19 20 58 22 31 32 62 34
+facets: 48 52 53 54 16 55
+element: 13 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 21 57 23 59 33 61 35 63
+nodes: 13 1 57 59 33 61 63
+all: 21 57 23 59 33 61 35 63
+facets: 56 57 46 58 21 59
+element: 14 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 57 58 59 60 61 62 63 64
+nodes: 14 1 58 60 61 62 64
+all: 57 58 59 60 61 62 63 64
+facets: 57 60 50 61 25 62
+element: 15 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 58 22 60 24 62 34 64 36
+nodes: 15 1 22 24 62 34 36
+all: 58 22 60 24 62 34 64 36
+facets: 60 63 54 64 29 65
+element: 16 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 23 59 25 26 35 63 37 38
+nodes: 16 1 59 26 35 63 38
+all: 23 59 25 26 35 63 37 38
+facets: 66 67 58 68 34 69
+element: 17 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 59 60 26 27 63 64 38 39
+nodes: 17 1 60 27 63 64 39
+all: 59 60 26 27 63 64 38 39
+facets: 67 70 61 71 38 72
+element: 18 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 60 24 27 28 64 36 39 40
+nodes: 18 1 24 28 64 36 40
+all: 60 24 27 28 64 36 39 40
+facets: 70 73 64 74 42 75
+element: 19 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 29 30 33 61 41 42 45 46
+nodes: 19 1 30 61 41 42 46
+all: 29 30 33 61 41 42 45 46
+facets: 76 77 78 79 47 80
+element: 20 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 30 31 61 62 42 43 46 47
+nodes: 20 1 31 62 42 43 47
+all: 30 31 61 62 42 43 46 47
+facets: 77 81 82 83 51 84
+element: 21 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 31 32 62 34 43 44 47 48
+nodes: 21 1 32 34 43 44 48
+all: 31 32 62 34 43 44 47 48
+facets: 81 85 86 87 55 88
+element: 22 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 33 61 35 63 45 46 49 50
+nodes: 22 1 61 63 45 46 50
+all: 33 61 35 63 45 46 49 50
+facets: 89 90 79 91 59 92
+element: 23 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 61 62 63 64 46 47 50 51
+nodes: 23 1 62 64 46 47 51
+all: 61 62 63 64 46 47 50 51
+facets: 90 93 83 94 62 95
+element: 24 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 62 34 64 36 47 48 51 52
+nodes: 24 1 34 36 47 48 52
+all: 62 34 64 36 47 48 51 52
+facets: 93 96 87 97 65 98
+element: 25 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 35 63 37 38 49 50 53 54
+nodes: 25 1 63 38 49 50 54
+all: 35 63 37 38 49 50 53 54
+facets: 99 100 91 101 69 102
+element: 26 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 63 64 38 39 50 51 54 55
+nodes: 26 1 64 39 50 51 55
+all: 63 64 38 39 50 51 54 55
+facets: 100 103 94 104 72 105
+element: 27 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 64 36 39 40 51 52 55 56
+nodes: 27 1 36 40 51 52 56
+all: 64 36 39 40 51 52 55 56
+facets: 103 106 97 107 75 108
+element: 28 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 1 17 5 21 65 66 69 70
+nodes: 28 1 17 21 65 66 70
+all: 1 17 5 21 65 66 69 70
+facets: 109 110 111 112 1 113
+element: 29 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 17 29 21 33 66 67 70 71
+nodes: 29 1 29 33 66 67 71
+all: 17 29 21 33 66 67 70 71
+facets: 110 114 115 116 43 117
+element: 30 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 29 41 33 45 67 68 71 72
+nodes: 30 1 41 45 67 68 72
+all: 29 41 33 45 67 68 71 72
+facets: 114 118 119 120 76 121
+element: 31 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 5 21 9 23 69 70 73 74
+nodes: 31 1 21 23 69 70 74
+all: 5 21 9 23 69 70 73 74
+facets: 122 123 112 124 17 125
+element: 32 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 21 33 23 35 70 71 74 75
+nodes: 32 1 33 35 70 71 75
+all: 21 33 23 35 70 71 74 75
+facets: 123 126 116 127 56 128
+element: 33 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 33 45 35 49 71 72 75 76
+nodes: 33 1 45 49 71 72 76
+all: 33 45 35 49 71 72 75 76
+facets: 126 129 120 130 89 131
+element: 34 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 9 23 13 25 73 74 77 78
+nodes: 34 1 23 25 73 74 78
+all: 9 23 13 25 73 74 77 78
+facets: 132 133 124 134 30 135
+element: 35 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 23 35 25 37 74 75 78 79
+nodes: 35 1 35 37 74 75 79
+all: 23 35 25 37 74 75 78 79
+facets: 133 136 127 137 66 138
+element: 36 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 35 49 37 53 75 76 79 80
+nodes: 36 1 49 53 75 76 80
+all: 35 49 37 53 75 76 79 80
+facets: 136 139 130 140 99 141
+element: 37 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 4 8 20 22 81 82 85 86
+nodes: 37 1 8 22 81 82 86
+all: 4 8 20 22 81 82 85 86
+facets: 142 143 144 145 12 146
+element: 38 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 8 12 22 24 82 83 86 87
+nodes: 38 1 12 24 82 83 87
+all: 8 12 22 24 82 83 86 87
+facets: 143 147 148 149 26 150
+element: 39 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 12 16 24 28 83 84 87 88
+nodes: 39 1 16 28 83 84 88
+all: 12 16 24 28 83 84 87 88
+facets: 147 151 152 153 39 154
+element: 40 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 20 22 32 34 85 86 89 90
+nodes: 40 1 22 34 85 86 90
+all: 20 22 32 34 85 86 89 90
+facets: 155 156 145 157 52 158
+element: 41 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 22 24 34 36 86 87 90 91
+nodes: 41 1 24 36 86 87 91
+all: 22 24 34 36 86 87 90 91
+facets: 156 159 149 160 63 161
+element: 42 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 24 28 36 40 87 88 91 92
+nodes: 42 1 28 40 87 88 92
+all: 24 28 36 40 87 88 91 92
+facets: 159 162 153 163 73 164
+element: 43 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 32 34 44 48 89 90 93 94
+nodes: 43 1 34 48 89 90 94
+all: 32 34 44 48 89 90 93 94
+facets: 165 166 157 167 85 168
+element: 44 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 34 36 48 52 90 91 94 95
+nodes: 44 1 36 52 90 91 95
+all: 34 36 48 52 90 91 94 95
+facets: 166 169 160 170 96 171
+element: 45 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 36 40 52 56 91 92 95 96
+nodes: 45 1 40 56 91 92 96
+all: 36 40 52 56 91 92 95 96
+facets: 169 172 163 173 106 174
+element: 46 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 1 2 17 18 65 97 66 99
+nodes: 46 1 2 18 65 97 99
+all: 1 2 17 18 65 97 66 99
+facets: 111 175 176 177 3 178
+element: 47 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 2 3 18 19 97 98 99 100
+nodes: 47 1 3 19 97 98 100
+all: 2 3 18 19 97 98 99 100
+facets: 175 179 180 181 8 182
+element: 48 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 3 4 19 20 98 81 100 85
+nodes: 48 1 4 20 98 81 85
+all: 3 4 19 20 98 81 100 85
+facets: 179 142 183 184 13 185
+element: 49 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 17 18 29 30 66 99 67 101
+nodes: 49 1 18 30 66 99 101
+all: 17 18 29 30 66 99 67 101
+facets: 115 186 177 187 45 188
+element: 50 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 18 19 30 31 99 100 101 102
+nodes: 50 1 19 31 99 100 102
+all: 18 19 30 31 99 100 101 102
+facets: 186 189 181 190 49 191
+element: 51 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 19 20 31 32 100 85 102 89
+nodes: 51 1 20 32 100 85 89
+all: 19 20 31 32 100 85 102 89
+facets: 189 155 184 192 53 193
+element: 52 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 29 30 41 42 67 101 68 103
+nodes: 52 1 30 42 67 101 103
+all: 29 30 41 42 67 101 68 103
+facets: 119 194 187 195 78 196
+element: 53 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 30 31 42 43 101 102 103 104
+nodes: 53 1 31 43 101 102 104
+all: 30 31 42 43 101 102 103 104
+facets: 194 197 190 198 82 199
+element: 54 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 31 32 43 44 102 89 104 93
+nodes: 54 1 32 44 102 89 93
+all: 31 32 43 44 102 89 104 93
+facets: 197 165 192 200 86 201
+element: 55 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 13 25 14 26 77 78 105 106
+nodes: 55 1 25 26 77 78 106
+all: 13 25 14 26 77 78 105 106
+facets: 202 203 134 204 32 205
+element: 56 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 25 37 26 38 78 79 106 107
+nodes: 56 1 37 38 78 79 107
+all: 25 37 26 38 78 79 106 107
+facets: 203 206 137 207 68 208
+element: 57 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 37 53 38 54 79 80 107 108
+nodes: 57 1 53 54 79 80 108
+all: 37 53 38 54 79 80 107 108
+facets: 206 209 140 210 101 211
+element: 58 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 14 26 15 27 105 106 109 110
+nodes: 58 1 26 27 105 106 110
+all: 14 26 15 27 105 106 109 110
+facets: 212 213 204 214 36 215
+element: 59 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 26 38 27 39 106 107 110 111
+nodes: 59 1 38 39 106 107 111
+all: 26 38 27 39 106 107 110 111
+facets: 213 216 207 217 71 218
+element: 60 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 38 54 39 55 107 108 111 112
+nodes: 60 1 54 55 107 108 112
+all: 38 54 39 55 107 108 111 112
+facets: 216 219 210 220 104 221
+element: 61 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 15 27 16 28 109 110 84 88
+nodes: 61 1 27 28 109 110 88
+all: 15 27 16 28 109 110 84 88
+facets: 222 223 214 151 40 224
+element: 62 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 27 39 28 40 110 111 88 92
+nodes: 62 1 39 40 110 111 92
+all: 27 39 28 40 110 111 88 92
+facets: 223 225 217 162 74 226
+element: 63 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 39 55 40 56 111 112 92 96
+nodes: 63 1 55 56 111 112 96
+all: 39 55 40 56 111 112 92 96
+facets: 225 227 220 172 107 228
+element: 64 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 1 5 2 6 65 69 97 113
+nodes: 64 1 5 6 65 69 113
+all: 1 5 2 6 65 69 97 113
+facets: 176 229 109 230 5 231
+element: 65 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 5 9 6 10 69 73 113 114
+nodes: 65 1 9 10 69 73 114
+all: 5 9 6 10 69 73 113 114
+facets: 229 232 122 233 20 234
+element: 66 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 9 13 10 14 73 77 114 105
+nodes: 66 1 13 14 73 77 105
+all: 9 13 10 14 73 77 114 105
+facets: 232 202 132 235 33 236
+element: 67 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 2 6 3 7 97 113 98 115
+nodes: 67 1 6 7 97 113 115
+all: 2 6 3 7 97 113 98 115
+facets: 180 237 230 238 10 239
+element: 68 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 6 10 7 11 113 114 115 116
+nodes: 68 1 10 11 113 114 116
+all: 6 10 7 11 113 114 115 116
+facets: 237 240 233 241 24 242
+element: 69 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 10 14 11 15 114 105 116 109
+nodes: 69 1 14 15 114 105 109
+all: 10 14 11 15 114 105 116 109
+facets: 240 212 235 243 37 244
+element: 70 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 3 7 4 8 98 115 81 82
+nodes: 70 1 7 8 98 115 82
+all: 3 7 4 8 98 115 81 82
+facets: 183 245 238 144 15 246
+element: 71 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 7 11 8 12 115 116 82 83
+nodes: 71 1 11 12 115 116 83
+all: 7 11 8 12 115 116 82 83
+facets: 245 247 241 148 28 248
+element: 72 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 11 15 12 16 116 109 83 84
+nodes: 72 1 15 16 116 109 84
+all: 11 15 12 16 116 109 83 84
+facets: 247 222 243 152 41 249
+element: 73 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 41 42 45 46 68 103 72 117
+nodes: 73 1 42 46 68 103 117
+all: 41 42 45 46 68 103 72 117
+facets: 118 250 195 251 80 252
+element: 74 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 42 43 46 47 103 104 117 118
+nodes: 74 1 43 47 103 104 118
+all: 42 43 46 47 103 104 117 118
+facets: 250 253 198 254 84 255
+element: 75 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 43 44 47 48 104 93 118 94
+nodes: 75 1 44 48 104 93 94
+all: 43 44 47 48 104 93 118 94
+facets: 253 167 200 256 88 257
+element: 76 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 45 46 49 50 72 117 76 119
+nodes: 76 1 46 50 72 117 119
+all: 45 46 49 50 72 117 76 119
+facets: 129 258 251 259 92 260
+element: 77 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 46 47 50 51 117 118 119 120
+nodes: 77 1 47 51 117 118 120
+all: 46 47 50 51 117 118 119 120
+facets: 258 261 254 262 95 263
+element: 78 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 47 48 51 52 118 94 120 95
+nodes: 78 1 48 52 118 94 95
+all: 47 48 51 52 118 94 120 95
+facets: 261 170 256 264 98 265
+element: 79 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 49 50 53 54 76 119 80 108
+nodes: 79 1 50 54 76 119 108
+all: 49 50 53 54 76 119 80 108
+facets: 139 266 259 209 102 267
+element: 80 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 50 51 54 55 119 120 108 112
+nodes: 80 1 51 55 119 120 112
+all: 50 51 54 55 119 120 108 112
+facets: 266 268 262 219 105 269
+element: 81 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 51 52 55 56 120 95 112 96
+nodes: 81 1 52 56 120 95 96
+all: 51 52 55 56 120 95 112 96
+facets: 268 173 264 227 108 270
+element: 82 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 65 66 69 70 121 122 125 126
+nodes: 82 1 66 70 121 122 126
+all: 65 66 69 70 121 122 125 126
+facets: 271 272 273 274 113 275
+element: 83 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 66 67 70 71 122 123 126 127
+nodes: 83 1 67 71 122 123 127
+all: 66 67 70 71 122 123 126 127
+facets: 272 276 277 278 117 279
+element: 84 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 67 68 71 72 123 124 127 128
+nodes: 84 1 68 72 123 124 128
+all: 67 68 71 72 123 124 127 128
+facets: 276 280 281 282 121 283
+element: 85 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 69 70 73 74 125 126 129 130
+nodes: 85 1 70 74 125 126 130
+all: 69 70 73 74 125 126 129 130
+facets: 284 285 274 286 125 287
+element: 86 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 70 71 74 75 126 127 130 131
+nodes: 86 1 71 75 126 127 131
+all: 70 71 74 75 126 127 130 131
+facets: 285 288 278 289 128 290
+element: 87 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 71 72 75 76 127 128 131 132
+nodes: 87 1 72 76 127 128 132
+all: 71 72 75 76 127 128 131 132
+facets: 288 291 282 292 131 293
+element: 88 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 73 74 77 78 129 130 133 134
+nodes: 88 1 74 78 129 130 134
+all: 73 74 77 78 129 130 133 134
+facets: 294 295 286 296 135 297
+element: 89 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 74 75 78 79 130 131 134 135
+nodes: 89 1 75 79 130 131 135
+all: 74 75 78 79 130 131 134 135
+facets: 295 298 289 299 138 300
+element: 90 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 75 76 79 80 131 132 135 136
+nodes: 90 1 76 80 131 132 136
+all: 75 76 79 80 131 132 135 136
+facets: 298 301 292 302 141 303
+element: 91 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 81 82 85 86 137 138 141 142
+nodes: 91 1 82 86 137 138 142
+all: 81 82 85 86 137 138 141 142
+facets: 304 305 306 307 146 308
+element: 92 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 82 83 86 87 138 139 142 143
+nodes: 92 1 83 87 138 139 143
+all: 82 83 86 87 138 139 142 143
+facets: 305 309 310 311 150 312
+element: 93 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 83 84 87 88 139 140 143 144
+nodes: 93 1 84 88 139 140 144
+all: 83 84 87 88 139 140 143 144
+facets: 309 313 314 315 154 316
+element: 94 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 85 86 89 90 141 142 145 146
+nodes: 94 1 86 90 141 142 146
+all: 85 86 89 90 141 142 145 146
+facets: 317 318 307 319 158 320
+element: 95 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 86 87 90 91 142 143 146 147
+nodes: 95 1 87 91 142 143 147
+all: 86 87 90 91 142 143 146 147
+facets: 318 321 311 322 161 323
+element: 96 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 87 88 91 92 143 144 147 148
+nodes: 96 1 88 92 143 144 148
+all: 87 88 91 92 143 144 147 148
+facets: 321 324 315 325 164 326
+element: 97 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 89 90 93 94 145 146 149 150
+nodes: 97 1 90 94 145 146 150
+all: 89 90 93 94 145 146 149 150
+facets: 327 328 319 329 168 330
+element: 98 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 90 91 94 95 146 147 150 151
+nodes: 98 1 91 95 146 147 151
+all: 90 91 94 95 146 147 150 151
+facets: 328 331 322 332 171 333
+element: 99 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 91 92 95 96 147 148 151 152
+nodes: 99 1 92 96 147 148 152
+all: 91 92 95 96 147 148 151 152
+facets: 331 334 325 335 174 336
+element: 100 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 65 97 66 99 121 153 122 155
+nodes: 100 1 97 99 121 153 155
+all: 65 97 66 99 121 153 122 155
+facets: 273 337 338 339 178 340
+element: 101 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 97 98 99 100 153 154 155 156
+nodes: 101 1 98 100 153 154 156
+all: 97 98 99 100 153 154 155 156
+facets: 337 341 342 343 182 344
+element: 102 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 98 81 100 85 154 137 156 141
+nodes: 102 1 81 85 154 137 141
+all: 98 81 100 85 154 137 156 141
+facets: 341 304 345 346 185 347
+element: 103 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 66 99 67 101 122 155 123 157
+nodes: 103 1 99 101 122 155 157
+all: 66 99 67 101 122 155 123 157
+facets: 277 348 339 349 188 350
+element: 104 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 99 100 101 102 155 156 157 158
+nodes: 104 1 100 102 155 156 158
+all: 99 100 101 102 155 156 157 158
+facets: 348 351 343 352 191 353
+element: 105 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 100 85 102 89 156 141 158 145
+nodes: 105 1 85 89 156 141 145
+all: 100 85 102 89 156 141 158 145
+facets: 351 317 346 354 193 355
+element: 106 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 67 101 68 103 123 157 124 159
+nodes: 106 1 101 103 123 157 159
+all: 67 101 68 103 123 157 124 159
+facets: 281 356 349 357 196 358
+element: 107 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 101 102 103 104 157 158 159 160
+nodes: 107 1 102 104 157 158 160
+all: 101 102 103 104 157 158 159 160
+facets: 356 359 352 360 199 361
+element: 108 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 102 89 104 93 158 145 160 149
+nodes: 108 1 89 93 158 145 149
+all: 102 89 104 93 158 145 160 149
+facets: 359 327 354 362 201 363
+element: 109 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 77 78 105 106 133 134 161 162
+nodes: 109 1 78 106 133 134 162
+all: 77 78 105 106 133 134 161 162
+facets: 364 365 296 366 205 367
+element: 110 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 78 79 106 107 134 135 162 163
+nodes: 110 1 79 107 134 135 163
+all: 78 79 106 107 134 135 162 163
+facets: 365 368 299 369 208 370
+element: 111 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 79 80 107 108 135 136 163 164
+nodes: 111 1 80 108 135 136 164
+all: 79 80 107 108 135 136 163 164
+facets: 368 371 302 372 211 373
+element: 112 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 105 106 109 110 161 162 165 166
+nodes: 112 1 106 110 161 162 166
+all: 105 106 109 110 161 162 165 166
+facets: 374 375 366 376 215 377
+element: 113 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 106 107 110 111 162 163 166 167
+nodes: 113 1 107 111 162 163 167
+all: 106 107 110 111 162 163 166 167
+facets: 375 378 369 379 218 380
+element: 114 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 107 108 111 112 163 164 167 168
+nodes: 114 1 108 112 163 164 168
+all: 107 108 111 112 163 164 167 168
+facets: 378 381 372 382 221 383
+element: 115 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 109 110 84 88 165 166 140 144
+nodes: 115 1 110 88 165 166 144
+all: 109 110 84 88 165 166 140 144
+facets: 384 385 376 313 224 386
+element: 116 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 110 111 88 92 166 167 144 148
+nodes: 116 1 111 92 166 167 148
+all: 110 111 88 92 166 167 144 148
+facets: 385 387 379 324 226 388
+element: 117 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 111 112 92 96 167 168 148 152
+nodes: 117 1 112 96 167 168 152
+all: 111 112 92 96 167 168 148 152
+facets: 387 389 382 334 228 390
+element: 118 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 65 69 97 113 121 125 153 169
+nodes: 118 1 69 113 121 125 169
+all: 65 69 97 113 121 125 153 169
+facets: 338 391 271 392 231 393
+element: 119 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 69 73 113 114 125 129 169 170
+nodes: 119 1 73 114 125 129 170
+all: 69 73 113 114 125 129 169 170
+facets: 391 394 284 395 234 396
+element: 120 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 73 77 114 105 129 133 170 161
+nodes: 120 1 77 105 129 133 161
+all: 73 77 114 105 129 133 170 161
+facets: 394 364 294 397 236 398
+element: 121 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 97 113 98 115 153 169 154 171
+nodes: 121 1 113 115 153 169 171
+all: 97 113 98 115 153 169 154 171
+facets: 342 399 392 400 239 401
+element: 122 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 113 114 115 116 169 170 171 172
+nodes: 122 1 114 116 169 170 172
+all: 113 114 115 116 169 170 171 172
+facets: 399 402 395 403 242 404
+element: 123 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 114 105 116 109 170 161 172 165
+nodes: 123 1 105 109 170 161 165
+all: 114 105 116 109 170 161 172 165
+facets: 402 374 397 405 244 406
+element: 124 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 98 115 81 82 154 171 137 138
+nodes: 124 1 115 82 154 171 138
+all: 98 115 81 82 154 171 137 138
+facets: 345 407 400 306 246 408
+element: 125 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 115 116 82 83 171 172 138 139
+nodes: 125 1 116 83 171 172 139
+all: 115 116 82 83 171 172 138 139
+facets: 407 409 403 310 248 410
+element: 126 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 116 109 83 84 172 165 139 140
+nodes: 126 1 109 84 172 165 140
+all: 116 109 83 84 172 165 139 140
+facets: 409 384 405 314 249 411
+element: 127 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 68 103 72 117 124 159 128 173
+nodes: 127 1 103 117 124 159 173
+all: 68 103 72 117 124 159 128 173
+facets: 280 412 357 413 252 414
+element: 128 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 103 104 117 118 159 160 173 174
+nodes: 128 1 104 118 159 160 174
+all: 103 104 117 118 159 160 173 174
+facets: 412 415 360 416 255 417
+element: 129 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 104 93 118 94 160 149 174 150
+nodes: 129 1 93 94 160 149 150
+all: 104 93 118 94 160 149 174 150
+facets: 415 329 362 418 257 419
+element: 130 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 72 117 76 119 128 173 132 175
+nodes: 130 1 117 119 128 173 175
+all: 72 117 76 119 128 173 132 175
+facets: 291 420 413 421 260 422
+element: 131 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 117 118 119 120 173 174 175 176
+nodes: 131 1 118 120 173 174 176
+all: 117 118 119 120 173 174 175 176
+facets: 420 423 416 424 263 425
+element: 132 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 118 94 120 95 174 150 176 151
+nodes: 132 1 94 95 174 150 151
+all: 118 94 120 95 174 150 176 151
+facets: 423 332 418 426 265 427
+element: 133 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 76 119 80 108 132 175 136 164
+nodes: 133 1 119 108 132 175 164
+all: 76 119 80 108 132 175 136 164
+facets: 301 428 421 371 267 429
+element: 134 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 119 120 108 112 175 176 164 168
+nodes: 134 1 120 112 175 176 168
+all: 119 120 108 112 175 176 164 168
+facets: 428 430 424 381 269 431
+element: 135 1 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 120 95 112 96 176 151 168 152
+nodes: 135 1 95 96 176 151 152
+all: 120 95 112 96 176 151 168 152
+facets: 430 335 426 389 270 432

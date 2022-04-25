@@ -1,0 +1,8 @@
+!Elements.txt
+element: 1 0 1
+expansion: 3 3 3
+quadrature: 10 10 10
+vertices: 1 2 3 4 5 6 7 8
+nodes: 2 14 15 16 28 170 171 172 183 867 868 185 878 879 219 231 988 989 999
+all: 1 2 3 4 5 6 7 8
+facets: 1 2 3 4 5 6

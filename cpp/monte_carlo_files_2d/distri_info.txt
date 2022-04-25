@@ -1,0 +1,2 @@
+2.56 mean, 0.5 real
+0.0 mean, 0.1 imag

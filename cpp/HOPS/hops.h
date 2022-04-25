@@ -1,0 +1,12 @@
+#pragma once
+#include "../structure/Domain.h";
+#include "../run_modes.h"
+
+namespace HOPS {
+	std::complex<double> sensitivity_to_epsr(std::string& file_name, std::vector<std::complex<double>>& epsr_list, std::vector<std::complex<double>>& updated_qoi, std::complex<double> referenceFreq);
+	std::complex<double> get_QoI(Domain& dom_forward, Domain& dom_adjoint);
+	void monte_carlo_instance(std::string& file_name);
+	void multi_HOPS_epsr(std::string& file_name);
+	void multi_HOPS_multi_epsr(std::string& file_name);
+	void sensitivity_to_multi_epsr(std::string& file_name, std::vector<std::vector<std::complex<double>>>& epsr_list, std::vector<std::complex<double>>& updated_qoi, std::vector<std::complex<double>>& reference_values);
+}

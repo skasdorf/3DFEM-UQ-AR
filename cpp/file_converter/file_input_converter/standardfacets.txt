@@ -1,0 +1,7561 @@
+!Facets.txt
+facet: 1 2
+elements: 1 -1
+vertices: 1 69 354 377
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 2 2
+elements: 1 -1
+vertices: 5 2719 358 3704
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 3 2
+elements: 1 -1
+vertices: 1 5 354 358
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 4 2
+elements: 1 -1
+vertices: 69 2719 377 3704
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 5 2
+elements: 1 -1
+vertices: 1 5 69 2719
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 6 2
+elements: 1 -1
+vertices: 354 358 377 3704
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 7 2
+elements: 2 -1
+vertices: 5 73 358 2745
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 8 2
+elements: 2 -1
+vertices: 9 2723 362 3708
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 9 2
+elements: 2 -1
+vertices: 5 9 358 362
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 10 2
+elements: 2 -1
+vertices: 73 2723 2745 3708
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 11 2
+elements: 2 -1
+vertices: 5 9 73 2723
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 12 2
+elements: 2 -1
+vertices: 358 362 2745 3708
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 13 2
+elements: 3 -1
+vertices: 9 77 362 2749
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 14 2
+elements: 3 -1
+vertices: 13 2727 366 3712
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 15 2
+elements: 3 -1
+vertices: 9 13 362 366
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 16 2
+elements: 3 -1
+vertices: 77 2727 2749 3712
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 17 2
+elements: 3 -1
+vertices: 9 13 77 2727
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 18 2
+elements: 3 -1
+vertices: 362 366 2749 3712
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 19 2
+elements: 4 -1
+vertices: 13 81 366 2753
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 20 2
+elements: 4 -1
+vertices: 17 374 370 1894
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 21 2
+elements: 4 -1
+vertices: 13 17 366 370
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 22 2
+elements: 4 -1
+vertices: 81 374 2753 1894
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 23 2
+elements: 4 -1
+vertices: 13 17 81 374
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 24 2
+elements: 4 -1
+vertices: 366 370 2753 1894
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 25 2
+elements: 5 -1
+vertices: 69 137 377 385
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 26 2
+elements: 5 -1
+vertices: 73 2771 2745 3721
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 27 2
+elements: 5 -1
+vertices: 69 73 377 2745
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 28 2
+elements: 5 -1
+vertices: 137 2771 385 3721
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 29 2
+elements: 5 -1
+vertices: 69 73 137 2771
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 30 2
+elements: 5 -1
+vertices: 377 2745 385 3721
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 31 2
+elements: 6 -1
+vertices: 73 141 2745 2797
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 32 2
+elements: 6 -1
+vertices: 77 2775 2749 4215
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 33 2
+elements: 6 -1
+vertices: 73 77 2745 2749
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 34 2
+elements: 6 -1
+vertices: 141 2775 2797 4215
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 35 2
+elements: 6 -1
+vertices: 73 77 141 2775
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 36 2
+elements: 6 -1
+vertices: 2745 2749 2797 4215
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 37 2
+elements: 7 -1
+vertices: 77 145 2749 2801
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 38 2
+elements: 7 -1
+vertices: 81 2779 2753 4219
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 39 2
+elements: 7 -1
+vertices: 77 81 2749 2753
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 40 2
+elements: 7 -1
+vertices: 145 2779 2801 4219
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 41 2
+elements: 7 -1
+vertices: 77 81 145 2779
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 42 2
+elements: 7 -1
+vertices: 2749 2753 2801 4219
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 43 2
+elements: 8 -1
+vertices: 81 149 2753 2805
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 44 2
+elements: 8 -1
+vertices: 85 382 378 1902
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 45 2
+elements: 8 -1
+vertices: 81 85 2753 378
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 46 2
+elements: 8 -1
+vertices: 149 382 2805 1902
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 47 2
+elements: 8 -1
+vertices: 81 85 149 382
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 48 2
+elements: 8 -1
+vertices: 2753 378 2805 1902
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 49 2
+elements: 9 -1
+vertices: 137 205 385 393
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 50 2
+elements: 9 -1
+vertices: 141 2823 2797 3729
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 51 2
+elements: 9 -1
+vertices: 137 141 385 2797
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 52 2
+elements: 9 -1
+vertices: 205 2823 393 3729
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 53 2
+elements: 9 -1
+vertices: 137 141 205 2823
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 54 2
+elements: 9 -1
+vertices: 385 2797 393 3729
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 55 2
+elements: 10 -1
+vertices: 141 209 2797 2849
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 56 2
+elements: 10 -1
+vertices: 145 2827 2801 4251
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 57 2
+elements: 10 -1
+vertices: 141 145 2797 2801
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 58 2
+elements: 10 -1
+vertices: 209 2827 2849 4251
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 59 2
+elements: 10 -1
+vertices: 141 145 209 2827
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 60 2
+elements: 10 -1
+vertices: 2797 2801 2849 4251
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 61 2
+elements: 11 -1
+vertices: 145 213 2801 2853
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 62 2
+elements: 11 -1
+vertices: 149 2831 2805 4255
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 63 2
+elements: 11 -1
+vertices: 145 149 2801 2805
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 64 2
+elements: 11 -1
+vertices: 213 2831 2853 4255
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 65 2
+elements: 11 -1
+vertices: 145 149 213 2831
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 66 2
+elements: 11 -1
+vertices: 2801 2805 2853 4255
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 67 2
+elements: 12 -1
+vertices: 149 217 2805 2857
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 68 2
+elements: 12 -1
+vertices: 153 390 386 1910
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 69 2
+elements: 12 -1
+vertices: 149 153 2805 386
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 70 2
+elements: 12 -1
+vertices: 217 390 2857 1910
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 71 2
+elements: 12 -1
+vertices: 149 153 217 390
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 72 2
+elements: 12 -1
+vertices: 2805 386 2857 1910
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 73 2
+elements: 13 -1
+vertices: 205 273 393 401
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 74 2
+elements: 13 -1
+vertices: 209 2875 2849 1919
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 75 2
+elements: 13 -1
+vertices: 205 209 393 2849
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 76 2
+elements: 13 -1
+vertices: 273 2875 401 1919
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 77 2
+elements: 13 -1
+vertices: 205 209 273 2875
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 78 2
+elements: 13 -1
+vertices: 393 2849 401 1919
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 79 2
+elements: 14 -1
+vertices: 209 277 2849 405
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 80 2
+elements: 14 -1
+vertices: 213 2879 2853 1923
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 81 2
+elements: 14 -1
+vertices: 209 213 2849 2853
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 82 2
+elements: 14 -1
+vertices: 277 2879 405 1923
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 83 2
+elements: 14 -1
+vertices: 209 213 277 2879
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 84 2
+elements: 14 -1
+vertices: 2849 2853 405 1923
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 85 2
+elements: 15 -1
+vertices: 213 281 2853 409
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 86 2
+elements: 15 -1
+vertices: 217 2883 2857 1927
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 87 2
+elements: 15 -1
+vertices: 213 217 2853 2857
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 88 2
+elements: 15 -1
+vertices: 281 2883 409 1927
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 89 2
+elements: 15 -1
+vertices: 213 217 281 2883
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 90 2
+elements: 15 -1
+vertices: 2853 2857 409 1927
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 91 2
+elements: 16 -1
+vertices: 217 285 2857 413
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 92 2
+elements: 16 -1
+vertices: 221 398 394 1931
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 93 2
+elements: 16 -1
+vertices: 217 221 2857 394
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 94 2
+elements: 16 -1
+vertices: 285 398 413 1931
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 95 2
+elements: 16 -1
+vertices: 217 221 285 398
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 96 2
+elements: 16 -1
+vertices: 2857 394 413 1931
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 97 2
+elements: 17 -1
+vertices: 482 505 610 633
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 98 2
+elements: 17 -1
+vertices: 486 3032 614 3864
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 99 2
+elements: 17 -1
+vertices: 482 486 610 614
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 100 2
+elements: 17 -1
+vertices: 505 3032 633 3864
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 101 2
+elements: 17 -1
+vertices: 482 486 505 3032
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 102 2
+elements: 17 -1
+vertices: 610 614 633 3864
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 103 2
+elements: 18 -1
+vertices: 486 4185 614 4298
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 104 2
+elements: 18 -1
+vertices: 490 3036 618 3868
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 105 2
+elements: 18 -1
+vertices: 486 490 614 618
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 106 2
+elements: 18 -1
+vertices: 4185 3036 4298 3868
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 107 2
+elements: 18 -1
+vertices: 486 490 4185 3036
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 108 2
+elements: 18 -1
+vertices: 614 618 4298 3868
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 109 2
+elements: 19 -1
+vertices: 490 4189 618 4302
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 110 2
+elements: 19 -1
+vertices: 494 3040 622 3872
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 111 2
+elements: 19 -1
+vertices: 490 494 618 622
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 112 2
+elements: 19 -1
+vertices: 4189 3040 4302 3872
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 113 2
+elements: 19 -1
+vertices: 490 494 4189 3040
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 114 2
+elements: 19 -1
+vertices: 618 622 4302 3872
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 115 2
+elements: 20 -1
+vertices: 494 4193 622 4306
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 116 2
+elements: 20 -1
+vertices: 498 630 626 2118
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 117 2
+elements: 20 -1
+vertices: 494 498 622 626
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 118 2
+elements: 20 -1
+vertices: 4193 630 4306 2118
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 119 2
+elements: 20 -1
+vertices: 494 498 4193 630
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 120 2
+elements: 20 -1
+vertices: 622 626 4306 2118
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 121 2
+elements: 21 -1
+vertices: 505 513 633 641
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 122 2
+elements: 21 -1
+vertices: 4185 4309 4298 3881
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 123 2
+elements: 21 -1
+vertices: 505 4185 633 4298
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 124 2
+elements: 21 -1
+vertices: 513 4309 641 3881
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 125 2
+elements: 21 -1
+vertices: 505 4185 513 4309
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 126 2
+elements: 21 -1
+vertices: 633 4298 641 3881
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 127 2
+elements: 22 -1
+vertices: 4185 4221 4298 4313
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 128 2
+elements: 22 -1
+vertices: 4189 4791 4302 4896
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 129 2
+elements: 22 -1
+vertices: 4185 4189 4298 4302
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 130 2
+elements: 22 -1
+vertices: 4221 4791 4313 4896
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 131 2
+elements: 22 -1
+vertices: 4185 4189 4221 4791
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 132 2
+elements: 22 -1
+vertices: 4298 4302 4313 4896
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 133 2
+elements: 23 -1
+vertices: 4189 4225 4302 4801
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 134 2
+elements: 23 -1
+vertices: 4193 4310 4306 4678
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 135 2
+elements: 23 -1
+vertices: 4189 4193 4302 4306
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 136 2
+elements: 23 -1
+vertices: 4225 4310 4801 4678
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 137 2
+elements: 23 -1
+vertices: 4189 4193 4225 4310
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 138 2
+elements: 23 -1
+vertices: 4302 4306 4801 4678
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 139 2
+elements: 24 -1
+vertices: 4193 4229 4306 4314
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 140 2
+elements: 24 -1
+vertices: 506 638 634 2126
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 141 2
+elements: 24 -1
+vertices: 4193 506 4306 634
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 142 2
+elements: 24 -1
+vertices: 4229 638 4314 2126
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 143 2
+elements: 24 -1
+vertices: 4193 506 4229 638
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 144 2
+elements: 24 -1
+vertices: 4306 634 4314 2126
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 145 2
+elements: 25 -1
+vertices: 513 521 641 649
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 146 2
+elements: 25 -1
+vertices: 4221 4317 4313 3889
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 147 2
+elements: 25 -1
+vertices: 513 4221 641 4313
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 148 2
+elements: 25 -1
+vertices: 521 4317 649 3889
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 149 2
+elements: 25 -1
+vertices: 513 4221 521 4317
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 150 2
+elements: 25 -1
+vertices: 641 4313 649 3889
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 151 2
+elements: 26 -1
+vertices: 4221 4257 4313 4321
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 152 2
+elements: 26 -1
+vertices: 4225 4811 4801 4687
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 153 2
+elements: 26 -1
+vertices: 4221 4225 4313 4801
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 154 2
+elements: 26 -1
+vertices: 4257 4811 4321 4687
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 155 2
+elements: 26 -1
+vertices: 4221 4225 4257 4811
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 156 2
+elements: 26 -1
+vertices: 4313 4801 4321 4687
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 157 2
+elements: 27 -1
+vertices: 4225 4261 4801 4325
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 158 2
+elements: 27 -1
+vertices: 4229 4318 4314 4691
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 159 2
+elements: 27 -1
+vertices: 4225 4229 4801 4314
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 160 2
+elements: 27 -1
+vertices: 4261 4318 4325 4691
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 161 2
+elements: 27 -1
+vertices: 4225 4229 4261 4318
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 162 2
+elements: 27 -1
+vertices: 4801 4314 4325 4691
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 163 2
+elements: 28 -1
+vertices: 4229 4265 4314 4329
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 164 2
+elements: 28 -1
+vertices: 514 646 642 2134
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 165 2
+elements: 28 -1
+vertices: 4229 514 4314 642
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 166 2
+elements: 28 -1
+vertices: 4265 646 4329 2134
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 167 2
+elements: 28 -1
+vertices: 4229 514 4265 646
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 168 2
+elements: 28 -1
+vertices: 4314 642 4329 2134
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 169 2
+elements: 29 -1
+vertices: 521 529 649 657
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 170 2
+elements: 29 -1
+vertices: 4257 3067 4321 2143
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 171 2
+elements: 29 -1
+vertices: 521 4257 649 4321
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 172 2
+elements: 29 -1
+vertices: 529 3067 657 2143
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 173 2
+elements: 29 -1
+vertices: 521 4257 529 3067
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 174 2
+elements: 29 -1
+vertices: 649 4321 657 2143
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 175 2
+elements: 30 -1
+vertices: 4257 533 4321 661
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 176 2
+elements: 30 -1
+vertices: 4261 3071 4325 2147
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 177 2
+elements: 30 -1
+vertices: 4257 4261 4321 4325
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 178 2
+elements: 30 -1
+vertices: 533 3071 661 2147
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 179 2
+elements: 30 -1
+vertices: 4257 4261 533 3071
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 180 2
+elements: 30 -1
+vertices: 4321 4325 661 2147
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 181 2
+elements: 31 -1
+vertices: 4261 537 4325 665
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 182 2
+elements: 31 -1
+vertices: 4265 3075 4329 2151
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 183 2
+elements: 31 -1
+vertices: 4261 4265 4325 4329
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 184 2
+elements: 31 -1
+vertices: 537 3075 665 2151
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 185 2
+elements: 31 -1
+vertices: 4261 4265 537 3075
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 186 2
+elements: 31 -1
+vertices: 4325 4329 665 2151
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 187 2
+elements: 32 -1
+vertices: 4265 541 4329 669
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 188 2
+elements: 32 -1
+vertices: 522 654 650 2155
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 189 2
+elements: 32 -1
+vertices: 4265 522 4329 650
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 190 2
+elements: 32 -1
+vertices: 541 654 669 2155
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 191 2
+elements: 32 -1
+vertices: 4265 522 541 654
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 192 2
+elements: 32 -1
+vertices: 4329 650 669 2155
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 193 2
+elements: 33 -1
+vertices: 738 761 866 889
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 194 2
+elements: 33 -1
+vertices: 742 3224 870 4024
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 195 2
+elements: 33 -1
+vertices: 738 742 866 870
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 196 2
+elements: 33 -1
+vertices: 761 3224 889 4024
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 197 2
+elements: 33 -1
+vertices: 738 742 761 3224
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 198 2
+elements: 33 -1
+vertices: 866 870 889 4024
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 199 2
+elements: 34 -1
+vertices: 742 4362 870 4426
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 200 2
+elements: 34 -1
+vertices: 746 3228 874 4028
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 201 2
+elements: 34 -1
+vertices: 742 746 870 874
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 202 2
+elements: 34 -1
+vertices: 4362 3228 4426 4028
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 203 2
+elements: 34 -1
+vertices: 742 746 4362 3228
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 204 2
+elements: 34 -1
+vertices: 870 874 4426 4028
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 205 2
+elements: 35 -1
+vertices: 746 4366 874 4430
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 206 2
+elements: 35 -1
+vertices: 750 3232 878 4032
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 207 2
+elements: 35 -1
+vertices: 746 750 874 878
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 208 2
+elements: 35 -1
+vertices: 4366 3232 4430 4032
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 209 2
+elements: 35 -1
+vertices: 746 750 4366 3232
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 210 2
+elements: 35 -1
+vertices: 874 878 4430 4032
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 211 2
+elements: 36 -1
+vertices: 750 4370 878 4434
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 212 2
+elements: 36 -1
+vertices: 754 886 882 2342
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 213 2
+elements: 36 -1
+vertices: 750 754 878 882
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 214 2
+elements: 36 -1
+vertices: 4370 886 4434 2342
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 215 2
+elements: 36 -1
+vertices: 750 754 4370 886
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 216 2
+elements: 36 -1
+vertices: 878 882 4434 2342
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 217 2
+elements: 37 -1
+vertices: 761 769 889 897
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 218 2
+elements: 37 -1
+vertices: 4362 4437 4426 4041
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 219 2
+elements: 37 -1
+vertices: 761 4362 889 4426
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 220 2
+elements: 37 -1
+vertices: 769 4437 897 4041
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 221 2
+elements: 37 -1
+vertices: 761 4362 769 4437
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 222 2
+elements: 37 -1
+vertices: 889 4426 897 4041
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 223 2
+elements: 38 -1
+vertices: 4362 4377 4426 4441
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 224 2
+elements: 38 -1
+vertices: 4366 4864 4430 4520
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 225 2
+elements: 38 -1
+vertices: 4362 4366 4426 4430
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 226 2
+elements: 38 -1
+vertices: 4377 4864 4441 4520
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 227 2
+elements: 38 -1
+vertices: 4362 4366 4377 4864
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 228 2
+elements: 38 -1
+vertices: 4426 4430 4441 4520
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 229 2
+elements: 39 -1
+vertices: 4366 4913 4430 4874
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 230 2
+elements: 39 -1
+vertices: 4370 4438 4434 4524
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 231 2
+elements: 39 -1
+vertices: 4366 4370 4430 4434
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 232 2
+elements: 39 -1
+vertices: 4913 4438 4874 4524
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 233 2
+elements: 39 -1
+vertices: 4366 4370 4913 4438
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 234 2
+elements: 39 -1
+vertices: 4430 4434 4874 4524
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 235 2
+elements: 40 -1
+vertices: 4370 4378 4434 4442
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 236 2
+elements: 40 -1
+vertices: 762 894 890 2350
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 237 2
+elements: 40 -1
+vertices: 4370 762 4434 890
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 238 2
+elements: 40 -1
+vertices: 4378 894 4442 2350
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 239 2
+elements: 40 -1
+vertices: 4370 762 4378 894
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 240 2
+elements: 40 -1
+vertices: 4434 890 4442 2350
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 241 2
+elements: 41 -1
+vertices: 769 777 897 905
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 242 2
+elements: 41 -1
+vertices: 4377 4445 4441 4049
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 243 2
+elements: 41 -1
+vertices: 769 4377 897 4441
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 244 2
+elements: 41 -1
+vertices: 777 4445 905 4049
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 245 2
+elements: 41 -1
+vertices: 769 4377 777 4445
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 246 2
+elements: 41 -1
+vertices: 897 4441 905 4049
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 247 2
+elements: 42 -1
+vertices: 4377 4385 4441 4449
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 248 2
+elements: 42 -1
+vertices: 4913 4884 4874 4556
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 249 2
+elements: 42 -1
+vertices: 4377 4913 4441 4874
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 250 2
+elements: 42 -1
+vertices: 4385 4884 4449 4556
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 251 2
+elements: 42 -1
+vertices: 4377 4913 4385 4884
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 252 2
+elements: 42 -1
+vertices: 4441 4874 4449 4556
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 253 2
+elements: 43 -1
+vertices: 4913 4389 4874 4453
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 254 2
+elements: 43 -1
+vertices: 4378 4446 4442 4560
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 255 2
+elements: 43 -1
+vertices: 4913 4378 4874 4442
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 256 2
+elements: 43 -1
+vertices: 4389 4446 4453 4560
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 257 2
+elements: 43 -1
+vertices: 4913 4378 4389 4446
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 258 2
+elements: 43 -1
+vertices: 4874 4442 4453 4560
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 259 2
+elements: 44 -1
+vertices: 4378 4393 4442 4457
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 260 2
+elements: 44 -1
+vertices: 770 902 898 2358
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 261 2
+elements: 44 -1
+vertices: 4378 770 4442 898
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 262 2
+elements: 44 -1
+vertices: 4393 902 4457 2358
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 263 2
+elements: 44 -1
+vertices: 4378 770 4393 902
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 264 2
+elements: 44 -1
+vertices: 4442 898 4457 2358
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 265 2
+elements: 45 -1
+vertices: 777 785 905 913
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 266 2
+elements: 45 -1
+vertices: 4385 3259 4449 2367
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 267 2
+elements: 45 -1
+vertices: 777 4385 905 4449
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 268 2
+elements: 45 -1
+vertices: 785 3259 913 2367
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 269 2
+elements: 45 -1
+vertices: 777 4385 785 3259
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 270 2
+elements: 45 -1
+vertices: 905 4449 913 2367
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 271 2
+elements: 46 -1
+vertices: 4385 789 4449 917
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 272 2
+elements: 46 -1
+vertices: 4389 3263 4453 2371
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 273 2
+elements: 46 -1
+vertices: 4385 4389 4449 4453
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 274 2
+elements: 46 -1
+vertices: 789 3263 917 2371
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 275 2
+elements: 46 -1
+vertices: 4385 4389 789 3263
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 276 2
+elements: 46 -1
+vertices: 4449 4453 917 2371
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 277 2
+elements: 47 -1
+vertices: 4389 793 4453 921
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 278 2
+elements: 47 -1
+vertices: 4393 3267 4457 2375
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 279 2
+elements: 47 -1
+vertices: 4389 4393 4453 4457
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 280 2
+elements: 47 -1
+vertices: 793 3267 921 2375
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 281 2
+elements: 47 -1
+vertices: 4389 4393 793 3267
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 282 2
+elements: 47 -1
+vertices: 4453 4457 921 2375
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 283 2
+elements: 48 -1
+vertices: 4393 797 4457 925
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 284 2
+elements: 48 -1
+vertices: 778 910 906 2379
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 285 2
+elements: 48 -1
+vertices: 4393 778 4457 906
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 286 2
+elements: 48 -1
+vertices: 797 910 925 2379
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 287 2
+elements: 48 -1
+vertices: 4393 778 797 910
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 288 2
+elements: 48 -1
+vertices: 4457 906 925 2379
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 289 2
+elements: 49 -1
+vertices: 994 1017 1122 1145
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 290 2
+elements: 49 -1
+vertices: 998 3416 1126 1304
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 291 2
+elements: 49 -1
+vertices: 994 998 1122 1126
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 292 2
+elements: 49 -1
+vertices: 1017 3416 1145 1304
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 293 2
+elements: 49 -1
+vertices: 994 998 1017 3416
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 294 2
+elements: 49 -1
+vertices: 1122 1126 1145 1304
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 295 2
+elements: 50 -1
+vertices: 998 4490 1126 3442
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 296 2
+elements: 50 -1
+vertices: 1002 3420 1130 1308
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 297 2
+elements: 50 -1
+vertices: 998 1002 1126 1130
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 298 2
+elements: 50 -1
+vertices: 4490 3420 3442 1308
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 299 2
+elements: 50 -1
+vertices: 998 1002 4490 3420
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 300 2
+elements: 50 -1
+vertices: 1126 1130 3442 1308
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 301 2
+elements: 51 -1
+vertices: 1002 4494 1130 3446
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 302 2
+elements: 51 -1
+vertices: 1006 3424 1134 1312
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 303 2
+elements: 51 -1
+vertices: 1002 1006 1130 1134
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 304 2
+elements: 51 -1
+vertices: 4494 3424 3446 1312
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 305 2
+elements: 51 -1
+vertices: 1002 1006 4494 3424
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 306 2
+elements: 51 -1
+vertices: 1130 1134 3446 1312
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 307 2
+elements: 52 -1
+vertices: 1006 4498 1134 3450
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 308 2
+elements: 52 -1
+vertices: 1010 1142 1138 1316
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 309 2
+elements: 52 -1
+vertices: 1006 1010 1134 1138
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 310 2
+elements: 52 -1
+vertices: 4498 1142 3450 1316
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 311 2
+elements: 52 -1
+vertices: 1006 1010 4498 1142
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 312 2
+elements: 52 -1
+vertices: 1134 1138 3450 1316
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 313 2
+elements: 53 -1
+vertices: 1017 1025 1145 1153
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 314 2
+elements: 53 -1
+vertices: 4490 3468 3442 1372
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 315 2
+elements: 53 -1
+vertices: 1017 4490 1145 3442
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 316 2
+elements: 53 -1
+vertices: 1025 3468 1153 1372
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 317 2
+elements: 53 -1
+vertices: 1017 4490 1025 3468
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 318 2
+elements: 53 -1
+vertices: 1145 3442 1153 1372
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 319 2
+elements: 54 -1
+vertices: 4490 4526 3442 3494
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 320 2
+elements: 54 -1
+vertices: 4494 3472 3446 1376
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 321 2
+elements: 54 -1
+vertices: 4490 4494 3442 3446
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 322 2
+elements: 54 -1
+vertices: 4526 3472 3494 1376
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 323 2
+elements: 54 -1
+vertices: 4490 4494 4526 3472
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 324 2
+elements: 54 -1
+vertices: 3442 3446 3494 1376
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 325 2
+elements: 55 -1
+vertices: 4494 4530 3446 3498
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 326 2
+elements: 55 -1
+vertices: 4498 3476 3450 1380
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 327 2
+elements: 55 -1
+vertices: 4494 4498 3446 3450
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 328 2
+elements: 55 -1
+vertices: 4530 3476 3498 1380
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 329 2
+elements: 55 -1
+vertices: 4494 4498 4530 3476
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 330 2
+elements: 55 -1
+vertices: 3446 3450 3498 1380
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 331 2
+elements: 56 -1
+vertices: 4498 4534 3450 3502
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 332 2
+elements: 56 -1
+vertices: 1018 1150 1146 1384
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 333 2
+elements: 56 -1
+vertices: 4498 1018 3450 1146
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 334 2
+elements: 56 -1
+vertices: 4534 1150 3502 1384
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 335 2
+elements: 56 -1
+vertices: 4498 1018 4534 1150
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 336 2
+elements: 56 -1
+vertices: 3450 1146 3502 1384
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 337 2
+elements: 57 -1
+vertices: 1025 1033 1153 1161
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 338 2
+elements: 57 -1
+vertices: 4526 3520 3494 1440
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 339 2
+elements: 57 -1
+vertices: 1025 4526 1153 3494
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 340 2
+elements: 57 -1
+vertices: 1033 3520 1161 1440
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 341 2
+elements: 57 -1
+vertices: 1025 4526 1033 3520
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 342 2
+elements: 57 -1
+vertices: 1153 3494 1161 1440
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 343 2
+elements: 58 -1
+vertices: 4526 4562 3494 3546
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 344 2
+elements: 58 -1
+vertices: 4530 3524 3498 1444
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 345 2
+elements: 58 -1
+vertices: 4526 4530 3494 3498
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 346 2
+elements: 58 -1
+vertices: 4562 3524 3546 1444
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 347 2
+elements: 58 -1
+vertices: 4526 4530 4562 3524
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 348 2
+elements: 58 -1
+vertices: 3494 3498 3546 1444
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 349 2
+elements: 59 -1
+vertices: 4530 4566 3498 3550
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 350 2
+elements: 59 -1
+vertices: 4534 3528 3502 1448
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 351 2
+elements: 59 -1
+vertices: 4530 4534 3498 3502
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 352 2
+elements: 59 -1
+vertices: 4566 3528 3550 1448
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 353 2
+elements: 59 -1
+vertices: 4530 4534 4566 3528
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 354 2
+elements: 59 -1
+vertices: 3498 3502 3550 1448
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 355 2
+elements: 60 -1
+vertices: 4534 4570 3502 3554
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 356 2
+elements: 60 -1
+vertices: 1026 1158 1154 1452
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 357 2
+elements: 60 -1
+vertices: 4534 1026 3502 1154
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 358 2
+elements: 60 -1
+vertices: 4570 1158 3554 1452
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 359 2
+elements: 60 -1
+vertices: 4534 1026 4570 1158
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 360 2
+elements: 60 -1
+vertices: 3502 1154 3554 1452
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 361 2
+elements: 61 -1
+vertices: 1033 1041 1161 1169
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 362 2
+elements: 61 -1
+vertices: 4562 3572 3546 1508
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 363 2
+elements: 61 -1
+vertices: 1033 4562 1161 3546
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 364 2
+elements: 61 -1
+vertices: 1041 3572 1169 1508
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 365 2
+elements: 61 -1
+vertices: 1033 4562 1041 3572
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 366 2
+elements: 61 -1
+vertices: 1161 3546 1169 1508
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 367 2
+elements: 62 -1
+vertices: 4562 1045 3546 1173
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 368 2
+elements: 62 -1
+vertices: 4566 3576 3550 1512
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 369 2
+elements: 62 -1
+vertices: 4562 4566 3546 3550
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 370 2
+elements: 62 -1
+vertices: 1045 3576 1173 1512
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 371 2
+elements: 62 -1
+vertices: 4562 4566 1045 3576
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 372 2
+elements: 62 -1
+vertices: 3546 3550 1173 1512
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 373 2
+elements: 63 -1
+vertices: 4566 1049 3550 1177
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 374 2
+elements: 63 -1
+vertices: 4570 3580 3554 1516
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 375 2
+elements: 63 -1
+vertices: 4566 4570 3550 3554
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 376 2
+elements: 63 -1
+vertices: 1049 3580 1177 1516
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 377 2
+elements: 63 -1
+vertices: 4566 4570 1049 3580
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 378 2
+elements: 63 -1
+vertices: 3550 3554 1177 1516
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 379 2
+elements: 64 -1
+vertices: 4570 1053 3554 1181
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 380 2
+elements: 64 -1
+vertices: 1034 1166 1162 1520
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 381 2
+elements: 64 -1
+vertices: 4570 1034 3554 1162
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 382 2
+elements: 64 -1
+vertices: 1053 1166 1181 1520
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 383 2
+elements: 64 -1
+vertices: 4570 1034 1053 1166
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 384 2
+elements: 64 -1
+vertices: 3554 1162 1181 1520
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 385 0
+elements: 65 129
+vertices: 1 69 5203 5271
+designations: 2,3 1,3
+local_facet_indices: 1 3
+facet: 386 2
+elements: 65 -1
+vertices: 482 5241 5207 5835
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 387 0
+elements: 65 97
+vertices: 1 482 5203 5207
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 388 2
+elements: 65 -1
+vertices: 69 5241 5271 5835
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 389 2
+elements: 65 -1
+vertices: 1 482 69 5241
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 390 2
+elements: 65 -1
+vertices: 5203 5207 5271 5835
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 391 2
+elements: 66 -1
+vertices: 482 505 5207 5275
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 392 2
+elements: 66 -1
+vertices: 738 5245 5211 5839
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 393 0
+elements: 66 101
+vertices: 482 738 5207 5211
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 394 2
+elements: 66 -1
+vertices: 505 5245 5275 5839
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 395 2
+elements: 66 -1
+vertices: 482 738 505 5245
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 396 2
+elements: 66 -1
+vertices: 5207 5211 5275 5839
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 397 2
+elements: 67 -1
+vertices: 738 761 5211 5279
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 398 2
+elements: 67 -1
+vertices: 994 5249 5215 5843
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 399 0
+elements: 67 105
+vertices: 738 994 5211 5215
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 400 2
+elements: 67 -1
+vertices: 761 5249 5279 5843
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 401 2
+elements: 67 -1
+vertices: 738 994 761 5249
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 402 2
+elements: 67 -1
+vertices: 5211 5215 5279 5843
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 403 2
+elements: 68 -1
+vertices: 994 1017 5215 5283
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 404 2
+elements: 68 -1
+vertices: 1250 5253 5219 5847
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 405 0
+elements: 68 109
+vertices: 994 1250 5215 5219
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 406 2
+elements: 68 -1
+vertices: 1017 5253 5283 5847
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 407 2
+elements: 68 -1
+vertices: 994 1250 1017 5253
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 408 2
+elements: 68 -1
+vertices: 5215 5219 5283 5847
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 409 0
+elements: 69 130
+vertices: 69 137 5271 5339
+designations: 2,3 1,3
+local_facet_indices: 1 3
+facet: 410 2
+elements: 69 -1
+vertices: 505 5309 5275 5903
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 411 2
+elements: 69 -1
+vertices: 69 505 5271 5275
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 412 2
+elements: 69 -1
+vertices: 137 5309 5339 5903
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 413 2
+elements: 69 -1
+vertices: 69 505 137 5309
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 414 2
+elements: 69 -1
+vertices: 5271 5275 5339 5903
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 415 2
+elements: 70 -1
+vertices: 505 513 5275 5343
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 416 2
+elements: 70 -1
+vertices: 761 5313 5279 5907
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 417 2
+elements: 70 -1
+vertices: 505 761 5275 5279
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 418 2
+elements: 70 -1
+vertices: 513 5313 5343 5907
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 419 2
+elements: 70 -1
+vertices: 505 761 513 5313
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 420 2
+elements: 70 -1
+vertices: 5275 5279 5343 5907
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 421 2
+elements: 71 -1
+vertices: 761 769 5279 5347
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 422 2
+elements: 71 -1
+vertices: 1017 5317 5283 5911
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 423 2
+elements: 71 -1
+vertices: 761 1017 5279 5283
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 424 2
+elements: 71 -1
+vertices: 769 5317 5347 5911
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 425 2
+elements: 71 -1
+vertices: 761 1017 769 5317
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 426 2
+elements: 71 -1
+vertices: 5279 5283 5347 5911
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 427 2
+elements: 72 -1
+vertices: 1017 1025 5283 5351
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 428 2
+elements: 72 -1
+vertices: 1318 5321 5287 5915
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 429 2
+elements: 72 -1
+vertices: 1017 1318 5283 5287
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 430 2
+elements: 72 -1
+vertices: 1025 5321 5351 5915
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 431 2
+elements: 72 -1
+vertices: 1017 1318 1025 5321
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 432 2
+elements: 72 -1
+vertices: 5283 5287 5351 5915
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 433 0
+elements: 73 131
+vertices: 137 205 5339 5407
+designations: 2,3 1,3
+local_facet_indices: 1 3
+facet: 434 2
+elements: 73 -1
+vertices: 513 5377 5343 5971
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 435 2
+elements: 73 -1
+vertices: 137 513 5339 5343
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 436 2
+elements: 73 -1
+vertices: 205 5377 5407 5971
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 437 2
+elements: 73 -1
+vertices: 137 513 205 5377
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 438 2
+elements: 73 -1
+vertices: 5339 5343 5407 5971
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 439 2
+elements: 74 -1
+vertices: 513 521 5343 5411
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 440 2
+elements: 74 -1
+vertices: 769 5381 5347 5975
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 441 2
+elements: 74 -1
+vertices: 513 769 5343 5347
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 442 2
+elements: 74 -1
+vertices: 521 5381 5411 5975
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 443 2
+elements: 74 -1
+vertices: 513 769 521 5381
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 444 2
+elements: 74 -1
+vertices: 5343 5347 5411 5975
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 445 2
+elements: 75 -1
+vertices: 769 777 5347 5415
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 446 2
+elements: 75 -1
+vertices: 1025 5385 5351 5979
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 447 2
+elements: 75 -1
+vertices: 769 1025 5347 5351
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 448 2
+elements: 75 -1
+vertices: 777 5385 5415 5979
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 449 2
+elements: 75 -1
+vertices: 769 1025 777 5385
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 450 2
+elements: 75 -1
+vertices: 5347 5351 5415 5979
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 451 2
+elements: 76 -1
+vertices: 1025 1033 5351 5419
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 452 2
+elements: 76 -1
+vertices: 1386 5389 5355 5983
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 453 2
+elements: 76 -1
+vertices: 1025 1386 5351 5355
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 454 2
+elements: 76 -1
+vertices: 1033 5389 5419 5983
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 455 2
+elements: 76 -1
+vertices: 1025 1386 1033 5389
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 456 2
+elements: 76 -1
+vertices: 5351 5355 5419 5983
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 457 0
+elements: 77 132
+vertices: 205 273 5407 5475
+designations: 2,3 1,3
+local_facet_indices: 1 3
+facet: 458 2
+elements: 77 -1
+vertices: 521 5445 5411 6039
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 459 2
+elements: 77 -1
+vertices: 205 521 5407 5411
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 460 2
+elements: 77 -1
+vertices: 273 5445 5475 6039
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 461 2
+elements: 77 -1
+vertices: 205 521 273 5445
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 462 2
+elements: 77 -1
+vertices: 5407 5411 5475 6039
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 463 2
+elements: 78 -1
+vertices: 521 529 5411 5479
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 464 2
+elements: 78 -1
+vertices: 777 5449 5415 6043
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 465 2
+elements: 78 -1
+vertices: 521 777 5411 5415
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 466 2
+elements: 78 -1
+vertices: 529 5449 5479 6043
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 467 2
+elements: 78 -1
+vertices: 521 777 529 5449
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 468 2
+elements: 78 -1
+vertices: 5411 5415 5479 6043
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 469 2
+elements: 79 -1
+vertices: 777 785 5415 5483
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 470 2
+elements: 79 -1
+vertices: 1033 5453 5419 6047
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 471 2
+elements: 79 -1
+vertices: 777 1033 5415 5419
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 472 2
+elements: 79 -1
+vertices: 785 5453 5483 6047
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 473 2
+elements: 79 -1
+vertices: 777 1033 785 5453
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 474 2
+elements: 79 -1
+vertices: 5415 5419 5483 6047
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 475 2
+elements: 80 -1
+vertices: 1033 1041 5419 5487
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 476 2
+elements: 80 -1
+vertices: 1454 5457 5423 6051
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 477 2
+elements: 80 -1
+vertices: 1033 1454 5419 5423
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 478 2
+elements: 80 -1
+vertices: 1041 5457 5487 6051
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 479 2
+elements: 80 -1
+vertices: 1033 1454 1041 5457
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 480 2
+elements: 80 -1
+vertices: 5419 5423 5487 6051
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 481 2
+elements: 81 -1
+vertices: 17 498 6359 6427
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 482 2
+elements: 81 -1
+vertices: 85 6397 6363 6991
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 483 2
+elements: 81 -1
+vertices: 17 85 6359 6363
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 484 2
+elements: 81 -1
+vertices: 498 6397 6427 6991
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 485 2
+elements: 81 -1
+vertices: 17 85 498 6397
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 486 2
+elements: 81 -1
+vertices: 6359 6363 6427 6991
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 487 2
+elements: 82 -1
+vertices: 85 506 6363 6431
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 488 2
+elements: 82 -1
+vertices: 153 6401 6367 6995
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 489 2
+elements: 82 -1
+vertices: 85 153 6363 6367
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 490 2
+elements: 82 -1
+vertices: 506 6401 6431 6995
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 491 2
+elements: 82 -1
+vertices: 85 153 506 6401
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 492 2
+elements: 82 -1
+vertices: 6363 6367 6431 6995
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 493 2
+elements: 83 -1
+vertices: 153 514 6367 6435
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 494 2
+elements: 83 -1
+vertices: 221 6405 6371 6999
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 495 2
+elements: 83 -1
+vertices: 153 221 6367 6371
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 496 2
+elements: 83 -1
+vertices: 514 6405 6435 6999
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 497 2
+elements: 83 -1
+vertices: 153 221 514 6405
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 498 2
+elements: 83 -1
+vertices: 6367 6371 6435 6999
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 499 2
+elements: 84 -1
+vertices: 221 522 6371 6439
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 500 2
+elements: 84 -1
+vertices: 289 6409 6375 7003
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 501 2
+elements: 84 -1
+vertices: 221 289 6371 6375
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 502 2
+elements: 84 -1
+vertices: 522 6409 6439 7003
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 503 2
+elements: 84 -1
+vertices: 221 289 522 6409
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 504 2
+elements: 84 -1
+vertices: 6371 6375 6439 7003
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 505 2
+elements: 85 -1
+vertices: 498 754 6427 6495
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 506 2
+elements: 85 -1
+vertices: 506 6465 6431 7059
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 507 2
+elements: 85 -1
+vertices: 498 506 6427 6431
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 508 2
+elements: 85 -1
+vertices: 754 6465 6495 7059
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 509 2
+elements: 85 -1
+vertices: 498 506 754 6465
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 510 2
+elements: 85 -1
+vertices: 6427 6431 6495 7059
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 511 2
+elements: 86 -1
+vertices: 506 762 6431 6499
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 512 2
+elements: 86 -1
+vertices: 514 6469 6435 7063
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 513 2
+elements: 86 -1
+vertices: 506 514 6431 6435
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 514 2
+elements: 86 -1
+vertices: 762 6469 6499 7063
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 515 2
+elements: 86 -1
+vertices: 506 514 762 6469
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 516 2
+elements: 86 -1
+vertices: 6431 6435 6499 7063
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 517 2
+elements: 87 -1
+vertices: 514 770 6435 6503
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 518 2
+elements: 87 -1
+vertices: 522 6473 6439 7067
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 519 2
+elements: 87 -1
+vertices: 514 522 6435 6439
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 520 2
+elements: 87 -1
+vertices: 770 6473 6503 7067
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 521 2
+elements: 87 -1
+vertices: 514 522 770 6473
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 522 2
+elements: 87 -1
+vertices: 6435 6439 6503 7067
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 523 2
+elements: 88 -1
+vertices: 522 778 6439 6507
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 524 2
+elements: 88 -1
+vertices: 545 6477 6443 7071
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 525 2
+elements: 88 -1
+vertices: 522 545 6439 6443
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 526 2
+elements: 88 -1
+vertices: 778 6477 6507 7071
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 527 2
+elements: 88 -1
+vertices: 522 545 778 6477
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 528 2
+elements: 88 -1
+vertices: 6439 6443 6507 7071
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 529 2
+elements: 89 -1
+vertices: 754 1010 6495 6563
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 530 2
+elements: 89 -1
+vertices: 762 6533 6499 7127
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 531 2
+elements: 89 -1
+vertices: 754 762 6495 6499
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 532 2
+elements: 89 -1
+vertices: 1010 6533 6563 7127
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 533 2
+elements: 89 -1
+vertices: 754 762 1010 6533
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 534 2
+elements: 89 -1
+vertices: 6495 6499 6563 7127
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 535 2
+elements: 90 -1
+vertices: 762 1018 6499 6567
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 536 2
+elements: 90 -1
+vertices: 770 6537 6503 7131
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 537 2
+elements: 90 -1
+vertices: 762 770 6499 6503
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 538 2
+elements: 90 -1
+vertices: 1018 6537 6567 7131
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 539 2
+elements: 90 -1
+vertices: 762 770 1018 6537
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 540 2
+elements: 90 -1
+vertices: 6499 6503 6567 7131
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 541 2
+elements: 91 -1
+vertices: 770 1026 6503 6571
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 542 2
+elements: 91 -1
+vertices: 778 6541 6507 7135
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 543 2
+elements: 91 -1
+vertices: 770 778 6503 6507
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 544 2
+elements: 91 -1
+vertices: 1026 6541 6571 7135
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 545 2
+elements: 91 -1
+vertices: 770 778 1026 6541
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 546 2
+elements: 91 -1
+vertices: 6503 6507 6571 7135
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 547 2
+elements: 92 -1
+vertices: 778 1034 6507 6575
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 548 2
+elements: 92 -1
+vertices: 801 6545 6511 7139
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 549 2
+elements: 92 -1
+vertices: 778 801 6507 6511
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 550 2
+elements: 92 -1
+vertices: 1034 6545 6575 7139
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 551 2
+elements: 92 -1
+vertices: 778 801 1034 6545
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 552 2
+elements: 92 -1
+vertices: 6507 6511 6575 7139
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 553 2
+elements: 93 -1
+vertices: 1010 1266 6563 6631
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 554 2
+elements: 93 -1
+vertices: 1018 6601 6567 7195
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 555 2
+elements: 93 -1
+vertices: 1010 1018 6563 6567
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 556 2
+elements: 93 -1
+vertices: 1266 6601 6631 7195
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 557 2
+elements: 93 -1
+vertices: 1010 1018 1266 6601
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 558 2
+elements: 93 -1
+vertices: 6563 6567 6631 7195
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 559 2
+elements: 94 -1
+vertices: 1018 1334 6567 6635
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 560 2
+elements: 94 -1
+vertices: 1026 6605 6571 7199
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 561 2
+elements: 94 -1
+vertices: 1018 1026 6567 6571
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 562 2
+elements: 94 -1
+vertices: 1334 6605 6635 7199
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 563 2
+elements: 94 -1
+vertices: 1018 1026 1334 6605
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 564 2
+elements: 94 -1
+vertices: 6567 6571 6635 7199
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 565 2
+elements: 95 -1
+vertices: 1026 1402 6571 6639
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 566 2
+elements: 95 -1
+vertices: 1034 6609 6575 7203
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 567 2
+elements: 95 -1
+vertices: 1026 1034 6571 6575
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 568 2
+elements: 95 -1
+vertices: 1402 6609 6639 7203
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 569 2
+elements: 95 -1
+vertices: 1026 1034 1402 6609
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 570 2
+elements: 95 -1
+vertices: 6571 6575 6639 7203
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 571 2
+elements: 96 -1
+vertices: 1034 1470 6575 6643
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 572 2
+elements: 96 -1
+vertices: 1057 6613 6579 7207
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 573 2
+elements: 96 -1
+vertices: 1034 1057 6575 6579
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 574 2
+elements: 96 -1
+vertices: 1470 6613 6643 7207
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 575 2
+elements: 96 -1
+vertices: 1034 1057 1470 6613
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 576 2
+elements: 96 -1
+vertices: 6575 6579 6643 7207
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 577 2
+elements: 97 -1
+vertices: 5 7514 7484 8038
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 578 0
+elements: 97 129
+vertices: 1 5 5203 7484
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 579 2
+elements: 97 -1
+vertices: 482 7514 5207 8038
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 580 2
+elements: 97 -1
+vertices: 1 5 482 7514
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 581 2
+elements: 97 -1
+vertices: 5203 7484 5207 8038
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 582 2
+elements: 98 -1
+vertices: 5 486 7484 7544
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 583 2
+elements: 98 -1
+vertices: 9 7518 7488 8042
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 584 0
+elements: 98 133
+vertices: 5 9 7484 7488
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 585 2
+elements: 98 -1
+vertices: 486 7518 7544 8042
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 586 2
+elements: 98 -1
+vertices: 5 9 486 7518
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 587 2
+elements: 98 -1
+vertices: 7484 7488 7544 8042
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 588 2
+elements: 99 -1
+vertices: 9 490 7488 7548
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 589 2
+elements: 99 -1
+vertices: 13 7522 7492 8046
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 590 0
+elements: 99 137
+vertices: 9 13 7488 7492
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 591 2
+elements: 99 -1
+vertices: 490 7522 7548 8046
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 592 2
+elements: 99 -1
+vertices: 9 13 490 7522
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 593 2
+elements: 99 -1
+vertices: 7488 7492 7548 8046
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 594 2
+elements: 100 -1
+vertices: 13 494 7492 7552
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 595 2
+elements: 100 -1
+vertices: 17 6393 6359 8050
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 596 0
+elements: 100 141
+vertices: 13 17 7492 6359
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 597 2
+elements: 100 -1
+vertices: 494 6393 7552 8050
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 598 2
+elements: 100 -1
+vertices: 13 17 494 6393
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 599 2
+elements: 100 -1
+vertices: 7492 6359 7552 8050
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 600 2
+elements: 101 -1
+vertices: 486 7574 7544 8098
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 601 2
+elements: 101 -1
+vertices: 482 486 5207 7544
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 602 2
+elements: 101 -1
+vertices: 738 7574 5211 8098
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 603 2
+elements: 101 -1
+vertices: 482 486 738 7574
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 604 2
+elements: 101 -1
+vertices: 5207 7544 5211 8098
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 605 2
+elements: 102 -1
+vertices: 486 742 7544 7604
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 606 2
+elements: 102 -1
+vertices: 490 7578 7548 8102
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 607 2
+elements: 102 -1
+vertices: 486 490 7544 7548
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 608 2
+elements: 102 -1
+vertices: 742 7578 7604 8102
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 609 2
+elements: 102 -1
+vertices: 486 490 742 7578
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 610 2
+elements: 102 -1
+vertices: 7544 7548 7604 8102
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 611 2
+elements: 103 -1
+vertices: 490 746 7548 7608
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 612 2
+elements: 103 -1
+vertices: 494 7582 7552 8106
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 613 2
+elements: 103 -1
+vertices: 490 494 7548 7552
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 614 2
+elements: 103 -1
+vertices: 746 7582 7608 8106
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 615 2
+elements: 103 -1
+vertices: 490 494 746 7582
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 616 2
+elements: 103 -1
+vertices: 7548 7552 7608 8106
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 617 2
+elements: 104 -1
+vertices: 494 750 7552 7612
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 618 2
+elements: 104 -1
+vertices: 498 6461 6427 8110
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 619 2
+elements: 104 -1
+vertices: 494 498 7552 6427
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 620 2
+elements: 104 -1
+vertices: 750 6461 7612 8110
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 621 2
+elements: 104 -1
+vertices: 494 498 750 6461
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 622 2
+elements: 104 -1
+vertices: 7552 6427 7612 8110
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 623 2
+elements: 105 -1
+vertices: 742 7634 7604 8158
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 624 2
+elements: 105 -1
+vertices: 738 742 5211 7604
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 625 2
+elements: 105 -1
+vertices: 994 7634 5215 8158
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 626 2
+elements: 105 -1
+vertices: 738 742 994 7634
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 627 2
+elements: 105 -1
+vertices: 5211 7604 5215 8158
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 628 2
+elements: 106 -1
+vertices: 742 998 7604 7664
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 629 2
+elements: 106 -1
+vertices: 746 7638 7608 8162
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 630 2
+elements: 106 -1
+vertices: 742 746 7604 7608
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 631 2
+elements: 106 -1
+vertices: 998 7638 7664 8162
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 632 2
+elements: 106 -1
+vertices: 742 746 998 7638
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 633 2
+elements: 106 -1
+vertices: 7604 7608 7664 8162
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 634 2
+elements: 107 -1
+vertices: 746 1002 7608 7668
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 635 2
+elements: 107 -1
+vertices: 750 7642 7612 8166
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 636 2
+elements: 107 -1
+vertices: 746 750 7608 7612
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 637 2
+elements: 107 -1
+vertices: 1002 7642 7668 8166
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 638 2
+elements: 107 -1
+vertices: 746 750 1002 7642
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 639 2
+elements: 107 -1
+vertices: 7608 7612 7668 8166
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 640 2
+elements: 108 -1
+vertices: 750 1006 7612 7672
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 641 2
+elements: 108 -1
+vertices: 754 6529 6495 8170
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 642 2
+elements: 108 -1
+vertices: 750 754 7612 6495
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 643 2
+elements: 108 -1
+vertices: 1006 6529 7672 8170
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 644 2
+elements: 108 -1
+vertices: 750 754 1006 6529
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 645 2
+elements: 108 -1
+vertices: 7612 6495 7672 8170
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 646 2
+elements: 109 -1
+vertices: 998 7694 7664 8218
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 647 2
+elements: 109 -1
+vertices: 994 998 5215 7664
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 648 2
+elements: 109 -1
+vertices: 1250 7694 5219 8218
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 649 2
+elements: 109 -1
+vertices: 994 998 1250 7694
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 650 2
+elements: 109 -1
+vertices: 5215 7664 5219 8218
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 651 2
+elements: 110 -1
+vertices: 998 1254 7664 7724
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 652 2
+elements: 110 -1
+vertices: 1002 7698 7668 8222
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 653 2
+elements: 110 -1
+vertices: 998 1002 7664 7668
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 654 2
+elements: 110 -1
+vertices: 1254 7698 7724 8222
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 655 2
+elements: 110 -1
+vertices: 998 1002 1254 7698
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 656 2
+elements: 110 -1
+vertices: 7664 7668 7724 8222
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 657 2
+elements: 111 -1
+vertices: 1002 1258 7668 7728
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 658 2
+elements: 111 -1
+vertices: 1006 7702 7672 8226
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 659 2
+elements: 111 -1
+vertices: 1002 1006 7668 7672
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 660 2
+elements: 111 -1
+vertices: 1258 7702 7728 8226
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 661 2
+elements: 111 -1
+vertices: 1002 1006 1258 7702
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 662 2
+elements: 111 -1
+vertices: 7668 7672 7728 8226
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 663 2
+elements: 112 -1
+vertices: 1006 1262 7672 7732
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 664 2
+elements: 112 -1
+vertices: 1010 6597 6563 8230
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 665 2
+elements: 112 -1
+vertices: 1006 1010 7672 6563
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 666 2
+elements: 112 -1
+vertices: 1262 6597 7732 8230
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 667 2
+elements: 112 -1
+vertices: 1006 1010 1262 6597
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 668 2
+elements: 112 -1
+vertices: 7672 6563 7732 8230
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 669 2
+elements: 113 -1
+vertices: 273 277 5475 8552
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 670 2
+elements: 113 -1
+vertices: 529 8522 5479 9048
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 671 2
+elements: 113 -1
+vertices: 273 529 5475 5479
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 672 2
+elements: 113 -1
+vertices: 277 8522 8552 9048
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 673 2
+elements: 113 -1
+vertices: 273 529 277 8522
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 674 2
+elements: 113 -1
+vertices: 5475 5479 8552 9048
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 675 2
+elements: 114 -1
+vertices: 529 533 5479 8556
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 676 2
+elements: 114 -1
+vertices: 785 8526 5483 9052
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 677 2
+elements: 114 -1
+vertices: 529 785 5479 5483
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 678 2
+elements: 114 -1
+vertices: 533 8526 8556 9052
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 679 2
+elements: 114 -1
+vertices: 529 785 533 8526
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 680 2
+elements: 114 -1
+vertices: 5479 5483 8556 9052
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 681 2
+elements: 115 -1
+vertices: 785 789 5483 8560
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 682 2
+elements: 115 -1
+vertices: 1041 8530 5487 9056
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 683 2
+elements: 115 -1
+vertices: 785 1041 5483 5487
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 684 2
+elements: 115 -1
+vertices: 789 8530 8560 9056
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 685 2
+elements: 115 -1
+vertices: 785 1041 789 8530
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 686 2
+elements: 115 -1
+vertices: 5483 5487 8560 9056
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 687 2
+elements: 116 -1
+vertices: 1041 1045 5487 8564
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 688 2
+elements: 116 -1
+vertices: 1522 8534 5491 9060
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 689 2
+elements: 116 -1
+vertices: 1041 1522 5487 5491
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 690 2
+elements: 116 -1
+vertices: 1045 8534 8564 9060
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 691 2
+elements: 116 -1
+vertices: 1041 1522 1045 8534
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 692 2
+elements: 116 -1
+vertices: 5487 5491 8564 9060
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 693 2
+elements: 117 -1
+vertices: 277 281 8552 8620
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 694 2
+elements: 117 -1
+vertices: 533 8590 8556 9116
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 695 2
+elements: 117 -1
+vertices: 277 533 8552 8556
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 696 2
+elements: 117 -1
+vertices: 281 8590 8620 9116
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 697 2
+elements: 117 -1
+vertices: 277 533 281 8590
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 698 2
+elements: 117 -1
+vertices: 8552 8556 8620 9116
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 699 2
+elements: 118 -1
+vertices: 533 537 8556 8624
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 700 2
+elements: 118 -1
+vertices: 789 8594 8560 9120
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 701 2
+elements: 118 -1
+vertices: 533 789 8556 8560
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 702 2
+elements: 118 -1
+vertices: 537 8594 8624 9120
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 703 2
+elements: 118 -1
+vertices: 533 789 537 8594
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 704 2
+elements: 118 -1
+vertices: 8556 8560 8624 9120
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 705 2
+elements: 119 -1
+vertices: 789 793 8560 8628
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 706 2
+elements: 119 -1
+vertices: 1045 8598 8564 9124
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 707 2
+elements: 119 -1
+vertices: 789 1045 8560 8564
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 708 2
+elements: 119 -1
+vertices: 793 8598 8628 9124
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 709 2
+elements: 119 -1
+vertices: 789 1045 793 8598
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 710 2
+elements: 119 -1
+vertices: 8560 8564 8628 9124
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 711 2
+elements: 120 -1
+vertices: 1045 1049 8564 8632
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 712 2
+elements: 120 -1
+vertices: 1526 8602 8568 9128
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 713 2
+elements: 120 -1
+vertices: 1045 1526 8564 8568
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 714 2
+elements: 120 -1
+vertices: 1049 8602 8632 9128
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 715 2
+elements: 120 -1
+vertices: 1045 1526 1049 8602
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 716 2
+elements: 120 -1
+vertices: 8564 8568 8632 9128
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 717 2
+elements: 121 -1
+vertices: 281 285 8620 8688
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 718 2
+elements: 121 -1
+vertices: 537 8658 8624 9184
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 719 2
+elements: 121 -1
+vertices: 281 537 8620 8624
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 720 2
+elements: 121 -1
+vertices: 285 8658 8688 9184
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 721 2
+elements: 121 -1
+vertices: 281 537 285 8658
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 722 2
+elements: 121 -1
+vertices: 8620 8624 8688 9184
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 723 2
+elements: 122 -1
+vertices: 537 541 8624 8692
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 724 2
+elements: 122 -1
+vertices: 793 8662 8628 9188
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 725 2
+elements: 122 -1
+vertices: 537 793 8624 8628
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 726 2
+elements: 122 -1
+vertices: 541 8662 8692 9188
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 727 2
+elements: 122 -1
+vertices: 537 793 541 8662
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 728 2
+elements: 122 -1
+vertices: 8624 8628 8692 9188
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 729 2
+elements: 123 -1
+vertices: 793 797 8628 8696
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 730 2
+elements: 123 -1
+vertices: 1049 8666 8632 9192
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 731 2
+elements: 123 -1
+vertices: 793 1049 8628 8632
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 732 2
+elements: 123 -1
+vertices: 797 8666 8696 9192
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 733 2
+elements: 123 -1
+vertices: 793 1049 797 8666
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 734 2
+elements: 123 -1
+vertices: 8628 8632 8696 9192
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 735 2
+elements: 124 -1
+vertices: 1049 1053 8632 8700
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 736 2
+elements: 124 -1
+vertices: 1530 8670 8636 9196
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 737 2
+elements: 124 -1
+vertices: 1049 1530 8632 8636
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 738 2
+elements: 124 -1
+vertices: 1053 8670 8700 9196
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 739 2
+elements: 124 -1
+vertices: 1049 1530 1053 8670
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 740 2
+elements: 124 -1
+vertices: 8632 8636 8700 9196
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 741 2
+elements: 125 -1
+vertices: 285 289 8688 6375
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 742 2
+elements: 125 -1
+vertices: 541 8726 8692 9252
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 743 2
+elements: 125 -1
+vertices: 285 541 8688 8692
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 744 2
+elements: 125 -1
+vertices: 289 8726 6375 9252
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 745 2
+elements: 125 -1
+vertices: 285 541 289 8726
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 746 2
+elements: 125 -1
+vertices: 8688 8692 6375 9252
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 747 2
+elements: 126 -1
+vertices: 541 545 8692 6443
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 748 2
+elements: 126 -1
+vertices: 797 8730 8696 9256
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 749 2
+elements: 126 -1
+vertices: 541 797 8692 8696
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 750 2
+elements: 126 -1
+vertices: 545 8730 6443 9256
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 751 2
+elements: 126 -1
+vertices: 541 797 545 8730
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 752 2
+elements: 126 -1
+vertices: 8692 8696 6443 9256
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 753 2
+elements: 127 -1
+vertices: 797 801 8696 6511
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 754 2
+elements: 127 -1
+vertices: 1053 8734 8700 9260
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 755 2
+elements: 127 -1
+vertices: 797 1053 8696 8700
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 756 2
+elements: 127 -1
+vertices: 801 8734 6511 9260
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 757 2
+elements: 127 -1
+vertices: 797 1053 801 8734
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 758 2
+elements: 127 -1
+vertices: 8696 8700 6511 9260
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 759 2
+elements: 128 -1
+vertices: 1053 1057 8700 6579
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 760 2
+elements: 128 -1
+vertices: 1534 8738 8704 9264
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 761 2
+elements: 128 -1
+vertices: 1053 1534 8700 8704
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 762 2
+elements: 128 -1
+vertices: 1057 8738 6579 9264
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 763 2
+elements: 128 -1
+vertices: 1053 1534 1057 8738
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 764 2
+elements: 128 -1
+vertices: 8700 8704 6579 9264
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 765 2
+elements: 129 -1
+vertices: 69 9509 5271 9973
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 766 2
+elements: 129 -1
+vertices: 5 9509 7484 9973
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 767 2
+elements: 129 -1
+vertices: 1 69 5 9509
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 768 2
+elements: 129 -1
+vertices: 5203 5271 7484 9973
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 769 2
+elements: 130 -1
+vertices: 69 73 5271 9539
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 770 2
+elements: 130 -1
+vertices: 137 9513 5339 9977
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 771 2
+elements: 130 -1
+vertices: 73 9513 9539 9977
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 772 2
+elements: 130 -1
+vertices: 69 137 73 9513
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 773 2
+elements: 130 -1
+vertices: 5271 5339 9539 9977
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 774 2
+elements: 131 -1
+vertices: 137 141 5339 9543
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 775 2
+elements: 131 -1
+vertices: 205 9517 5407 9981
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 776 2
+elements: 131 -1
+vertices: 141 9517 9543 9981
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 777 2
+elements: 131 -1
+vertices: 137 205 141 9517
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 778 2
+elements: 131 -1
+vertices: 5339 5407 9543 9981
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 779 2
+elements: 132 -1
+vertices: 205 209 5407 9547
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 780 2
+elements: 132 -1
+vertices: 273 8518 5475 9985
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 781 2
+elements: 132 -1
+vertices: 209 8518 9547 9985
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 782 2
+elements: 132 -1
+vertices: 205 273 209 8518
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 783 2
+elements: 132 -1
+vertices: 5407 5475 9547 9985
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 784 2
+elements: 133 -1
+vertices: 73 9569 9539 10033
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 785 2
+elements: 133 -1
+vertices: 5 73 7484 9539
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 786 2
+elements: 133 -1
+vertices: 9 9569 7488 10033
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 787 2
+elements: 133 -1
+vertices: 5 73 9 9569
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 788 2
+elements: 133 -1
+vertices: 7484 9539 7488 10033
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 789 2
+elements: 134 -1
+vertices: 73 77 9539 9599
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 790 2
+elements: 134 -1
+vertices: 141 9573 9543 10037
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 791 2
+elements: 134 -1
+vertices: 73 141 9539 9543
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 792 2
+elements: 134 -1
+vertices: 77 9573 9599 10037
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 793 2
+elements: 134 -1
+vertices: 73 141 77 9573
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 794 2
+elements: 134 -1
+vertices: 9539 9543 9599 10037
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 795 2
+elements: 135 -1
+vertices: 141 145 9543 9603
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 796 2
+elements: 135 -1
+vertices: 209 9577 9547 10041
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 797 2
+elements: 135 -1
+vertices: 141 209 9543 9547
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 798 2
+elements: 135 -1
+vertices: 145 9577 9603 10041
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 799 2
+elements: 135 -1
+vertices: 141 209 145 9577
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 800 2
+elements: 135 -1
+vertices: 9543 9547 9603 10041
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 801 2
+elements: 136 -1
+vertices: 209 213 9547 9607
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 802 2
+elements: 136 -1
+vertices: 277 8586 8552 10045
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 803 2
+elements: 136 -1
+vertices: 209 277 9547 8552
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 804 2
+elements: 136 -1
+vertices: 213 8586 9607 10045
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 805 2
+elements: 136 -1
+vertices: 209 277 213 8586
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 806 2
+elements: 136 -1
+vertices: 9547 8552 9607 10045
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 807 2
+elements: 137 -1
+vertices: 77 9629 9599 10093
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 808 2
+elements: 137 -1
+vertices: 9 77 7488 9599
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 809 2
+elements: 137 -1
+vertices: 13 9629 7492 10093
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 810 2
+elements: 137 -1
+vertices: 9 77 13 9629
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 811 2
+elements: 137 -1
+vertices: 7488 9599 7492 10093
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 812 2
+elements: 138 -1
+vertices: 77 81 9599 9659
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 813 2
+elements: 138 -1
+vertices: 145 9633 9603 10097
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 814 2
+elements: 138 -1
+vertices: 77 145 9599 9603
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 815 2
+elements: 138 -1
+vertices: 81 9633 9659 10097
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 816 2
+elements: 138 -1
+vertices: 77 145 81 9633
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 817 2
+elements: 138 -1
+vertices: 9599 9603 9659 10097
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 818 2
+elements: 139 -1
+vertices: 145 149 9603 9663
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 819 2
+elements: 139 -1
+vertices: 213 9637 9607 10101
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 820 2
+elements: 139 -1
+vertices: 145 213 9603 9607
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 821 2
+elements: 139 -1
+vertices: 149 9637 9663 10101
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 822 2
+elements: 139 -1
+vertices: 145 213 149 9637
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 823 2
+elements: 139 -1
+vertices: 9603 9607 9663 10101
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 824 2
+elements: 140 -1
+vertices: 213 217 9607 9667
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 825 2
+elements: 140 -1
+vertices: 281 8654 8620 10105
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 826 2
+elements: 140 -1
+vertices: 213 281 9607 8620
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 827 2
+elements: 140 -1
+vertices: 217 8654 9667 10105
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 828 2
+elements: 140 -1
+vertices: 213 281 217 8654
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 829 2
+elements: 140 -1
+vertices: 9607 8620 9667 10105
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 830 2
+elements: 141 -1
+vertices: 81 9689 9659 10153
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 831 2
+elements: 141 -1
+vertices: 13 81 7492 9659
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 832 2
+elements: 141 -1
+vertices: 17 9689 6359 10153
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 833 2
+elements: 141 -1
+vertices: 13 81 17 9689
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 834 2
+elements: 141 -1
+vertices: 7492 9659 6359 10153
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 835 2
+elements: 142 -1
+vertices: 81 85 9659 6363
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 836 2
+elements: 142 -1
+vertices: 149 9693 9663 10157
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 837 2
+elements: 142 -1
+vertices: 81 149 9659 9663
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 838 2
+elements: 142 -1
+vertices: 85 9693 6363 10157
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 839 2
+elements: 142 -1
+vertices: 81 149 85 9693
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 840 2
+elements: 142 -1
+vertices: 9659 9663 6363 10157
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 841 2
+elements: 143 -1
+vertices: 149 153 9663 6367
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 842 2
+elements: 143 -1
+vertices: 217 9697 9667 10161
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 843 2
+elements: 143 -1
+vertices: 149 217 9663 9667
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 844 2
+elements: 143 -1
+vertices: 153 9697 6367 10161
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 845 2
+elements: 143 -1
+vertices: 149 217 153 9697
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 846 2
+elements: 143 -1
+vertices: 9663 9667 6367 10161
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 847 2
+elements: 144 -1
+vertices: 217 221 9667 6371
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 848 2
+elements: 144 -1
+vertices: 285 8722 8688 10165
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 849 2
+elements: 144 -1
+vertices: 217 285 9667 8688
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 850 2
+elements: 144 -1
+vertices: 221 8722 6371 10165
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 851 2
+elements: 144 -1
+vertices: 217 285 221 8722
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 852 2
+elements: 144 -1
+vertices: 9667 8688 6371 10165
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 853 2
+elements: 145 -1
+vertices: 1250 1318 5219 5287
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 854 2
+elements: 145 -1
+vertices: 1254 10409 7724 10873
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 855 2
+elements: 145 -1
+vertices: 1250 1254 5219 7724
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 856 2
+elements: 145 -1
+vertices: 1318 10409 5287 10873
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 857 2
+elements: 145 -1
+vertices: 1250 1254 1318 10409
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 858 2
+elements: 145 -1
+vertices: 5219 7724 5287 10873
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 859 2
+elements: 146 -1
+vertices: 1254 1322 7724 10439
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 860 2
+elements: 146 -1
+vertices: 1258 10413 7728 10877
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 861 2
+elements: 146 -1
+vertices: 1254 1258 7724 7728
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 862 2
+elements: 146 -1
+vertices: 1322 10413 10439 10877
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 863 2
+elements: 146 -1
+vertices: 1254 1258 1322 10413
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 864 2
+elements: 146 -1
+vertices: 7724 7728 10439 10877
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 865 2
+elements: 147 -1
+vertices: 1258 1326 7728 10443
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 866 2
+elements: 147 -1
+vertices: 1262 10417 7732 10881
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 867 2
+elements: 147 -1
+vertices: 1258 1262 7728 7732
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 868 2
+elements: 147 -1
+vertices: 1326 10417 10443 10881
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 869 2
+elements: 147 -1
+vertices: 1258 1262 1326 10417
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 870 2
+elements: 147 -1
+vertices: 7728 7732 10443 10881
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 871 2
+elements: 148 -1
+vertices: 1262 1330 7732 10447
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 872 2
+elements: 148 -1
+vertices: 1266 6633 6631 10885
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 873 2
+elements: 148 -1
+vertices: 1262 1266 7732 6631
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 874 2
+elements: 148 -1
+vertices: 1330 6633 10447 10885
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 875 2
+elements: 148 -1
+vertices: 1262 1266 1330 6633
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 876 2
+elements: 148 -1
+vertices: 7732 6631 10447 10885
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 877 2
+elements: 149 -1
+vertices: 1318 1386 5287 5355
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 878 2
+elements: 149 -1
+vertices: 1322 10469 10439 10933
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 879 2
+elements: 149 -1
+vertices: 1318 1322 5287 10439
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 880 2
+elements: 149 -1
+vertices: 1386 10469 5355 10933
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 881 2
+elements: 149 -1
+vertices: 1318 1322 1386 10469
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 882 2
+elements: 149 -1
+vertices: 5287 10439 5355 10933
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 883 2
+elements: 150 -1
+vertices: 1322 1390 10439 10499
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 884 2
+elements: 150 -1
+vertices: 1326 10473 10443 10937
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 885 2
+elements: 150 -1
+vertices: 1322 1326 10439 10443
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 886 2
+elements: 150 -1
+vertices: 1390 10473 10499 10937
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 887 2
+elements: 150 -1
+vertices: 1322 1326 1390 10473
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 888 2
+elements: 150 -1
+vertices: 10439 10443 10499 10937
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 889 2
+elements: 151 -1
+vertices: 1326 1394 10443 10503
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 890 2
+elements: 151 -1
+vertices: 1330 10477 10447 10941
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 891 2
+elements: 151 -1
+vertices: 1326 1330 10443 10447
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 892 2
+elements: 151 -1
+vertices: 1394 10477 10503 10941
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 893 2
+elements: 151 -1
+vertices: 1326 1330 1394 10477
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 894 2
+elements: 151 -1
+vertices: 10443 10447 10503 10941
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 895 2
+elements: 152 -1
+vertices: 1330 1398 10447 10507
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 896 2
+elements: 152 -1
+vertices: 1334 6637 6635 10945
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 897 2
+elements: 152 -1
+vertices: 1330 1334 10447 6635
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 898 2
+elements: 152 -1
+vertices: 1398 6637 10507 10945
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 899 2
+elements: 152 -1
+vertices: 1330 1334 1398 6637
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 900 2
+elements: 152 -1
+vertices: 10447 6635 10507 10945
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 901 2
+elements: 153 -1
+vertices: 1386 1454 5355 5423
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 902 2
+elements: 153 -1
+vertices: 1390 10529 10499 10993
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 903 2
+elements: 153 -1
+vertices: 1386 1390 5355 10499
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 904 2
+elements: 153 -1
+vertices: 1454 10529 5423 10993
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 905 2
+elements: 153 -1
+vertices: 1386 1390 1454 10529
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 906 2
+elements: 153 -1
+vertices: 5355 10499 5423 10993
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 907 2
+elements: 154 -1
+vertices: 1390 1458 10499 10559
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 908 2
+elements: 154 -1
+vertices: 1394 10533 10503 10997
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 909 2
+elements: 154 -1
+vertices: 1390 1394 10499 10503
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 910 2
+elements: 154 -1
+vertices: 1458 10533 10559 10997
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 911 2
+elements: 154 -1
+vertices: 1390 1394 1458 10533
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 912 2
+elements: 154 -1
+vertices: 10499 10503 10559 10997
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 913 2
+elements: 155 -1
+vertices: 1394 1462 10503 10563
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 914 2
+elements: 155 -1
+vertices: 1398 10537 10507 11001
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 915 2
+elements: 155 -1
+vertices: 1394 1398 10503 10507
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 916 2
+elements: 155 -1
+vertices: 1462 10537 10563 11001
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 917 2
+elements: 155 -1
+vertices: 1394 1398 1462 10537
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 918 2
+elements: 155 -1
+vertices: 10503 10507 10563 11001
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 919 2
+elements: 156 -1
+vertices: 1398 1466 10507 10567
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 920 2
+elements: 156 -1
+vertices: 1402 6641 6639 11005
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 921 2
+elements: 156 -1
+vertices: 1398 1402 10507 6639
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 922 2
+elements: 156 -1
+vertices: 1466 6641 10567 11005
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 923 2
+elements: 156 -1
+vertices: 1398 1402 1466 6641
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 924 2
+elements: 156 -1
+vertices: 10507 6639 10567 11005
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 925 2
+elements: 157 -1
+vertices: 1454 1522 5423 5491
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 926 2
+elements: 157 -1
+vertices: 1458 10589 10559 11053
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 927 2
+elements: 157 -1
+vertices: 1454 1458 5423 10559
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 928 2
+elements: 157 -1
+vertices: 1522 10589 5491 11053
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 929 2
+elements: 157 -1
+vertices: 1454 1458 1522 10589
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 930 2
+elements: 157 -1
+vertices: 5423 10559 5491 11053
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 931 2
+elements: 158 -1
+vertices: 1458 1526 10559 8568
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 932 2
+elements: 158 -1
+vertices: 1462 10593 10563 11057
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 933 2
+elements: 158 -1
+vertices: 1458 1462 10559 10563
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 934 2
+elements: 158 -1
+vertices: 1526 10593 8568 11057
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 935 2
+elements: 158 -1
+vertices: 1458 1462 1526 10593
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 936 2
+elements: 158 -1
+vertices: 10559 10563 8568 11057
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 937 2
+elements: 159 -1
+vertices: 1462 1530 10563 8636
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 938 2
+elements: 159 -1
+vertices: 1466 10597 10567 11061
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 939 2
+elements: 159 -1
+vertices: 1462 1466 10563 10567
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 940 2
+elements: 159 -1
+vertices: 1530 10597 8636 11061
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 941 2
+elements: 159 -1
+vertices: 1462 1466 1530 10597
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 942 2
+elements: 159 -1
+vertices: 10563 10567 8636 11061
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 943 2
+elements: 160 -1
+vertices: 1466 1534 10567 8704
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 944 2
+elements: 160 -1
+vertices: 1470 6645 6643 11065
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 945 2
+elements: 160 -1
+vertices: 1466 1470 10567 6643
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 946 2
+elements: 160 -1
+vertices: 1534 6645 8704 11065
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 947 2
+elements: 160 -1
+vertices: 1466 1470 1534 6645
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 948 2
+elements: 160 -1
+vertices: 10567 6643 8704 11065
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 949 -1
+elements: 161 225
+vertices: 5781 5849 11355 11423
+designations: 2,3 1,3
+local_facet_indices: 1 3
+facet: 950 2
+elements: 161 -1
+vertices: 5785 11393 11359 11987
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 951 -1
+elements: 161 193
+vertices: 5781 5785 11355 11359
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 952 2
+elements: 161 -1
+vertices: 5849 11393 11423 11987
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 953 2
+elements: 161 -1
+vertices: 5781 5785 5849 11393
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 954 2
+elements: 161 -1
+vertices: 11355 11359 11423 11987
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 955 2
+elements: 162 -1
+vertices: 5785 5853 11359 11427
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 956 2
+elements: 162 -1
+vertices: 5789 11397 11363 11991
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 957 -1
+elements: 162 197
+vertices: 5785 5789 11359 11363
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 958 2
+elements: 162 -1
+vertices: 5853 11397 11427 11991
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 959 2
+elements: 162 -1
+vertices: 5785 5789 5853 11397
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 960 2
+elements: 162 -1
+vertices: 11359 11363 11427 11991
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 961 2
+elements: 163 -1
+vertices: 5789 5857 11363 11431
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 962 2
+elements: 163 -1
+vertices: 5793 11401 11367 11995
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 963 -1
+elements: 163 201
+vertices: 5789 5793 11363 11367
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 964 2
+elements: 163 -1
+vertices: 5857 11401 11431 11995
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 965 2
+elements: 163 -1
+vertices: 5789 5793 5857 11401
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 966 2
+elements: 163 -1
+vertices: 11363 11367 11431 11995
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 967 2
+elements: 164 -1
+vertices: 5793 5861 11367 11435
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 968 2
+elements: 164 -1
+vertices: 5797 11405 11371 11999
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 969 -1
+elements: 164 205
+vertices: 5793 5797 11367 11371
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 970 2
+elements: 164 -1
+vertices: 5861 11405 11435 11999
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 971 2
+elements: 164 -1
+vertices: 5793 5797 5861 11405
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 972 2
+elements: 164 -1
+vertices: 11367 11371 11435 11999
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 973 -1
+elements: 165 226
+vertices: 5849 5917 11423 11491
+designations: 2,3 1,3
+local_facet_indices: 1 3
+facet: 974 2
+elements: 165 -1
+vertices: 5853 11461 11427 12055
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 975 2
+elements: 165 -1
+vertices: 5849 5853 11423 11427
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 976 2
+elements: 165 -1
+vertices: 5917 11461 11491 12055
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 977 2
+elements: 165 -1
+vertices: 5849 5853 5917 11461
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 978 2
+elements: 165 -1
+vertices: 11423 11427 11491 12055
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 979 2
+elements: 166 -1
+vertices: 5853 5921 11427 11495
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 980 2
+elements: 166 -1
+vertices: 5857 11465 11431 12059
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 981 2
+elements: 166 -1
+vertices: 5853 5857 11427 11431
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 982 2
+elements: 166 -1
+vertices: 5921 11465 11495 12059
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 983 2
+elements: 166 -1
+vertices: 5853 5857 5921 11465
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 984 2
+elements: 166 -1
+vertices: 11427 11431 11495 12059
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 985 2
+elements: 167 -1
+vertices: 5857 5925 11431 11499
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 986 2
+elements: 167 -1
+vertices: 5861 11469 11435 12063
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 987 2
+elements: 167 -1
+vertices: 5857 5861 11431 11435
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 988 2
+elements: 167 -1
+vertices: 5925 11469 11499 12063
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 989 2
+elements: 167 -1
+vertices: 5857 5861 5925 11469
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 990 2
+elements: 167 -1
+vertices: 11431 11435 11499 12063
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 991 2
+elements: 168 -1
+vertices: 5861 5929 11435 11503
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 992 2
+elements: 168 -1
+vertices: 5865 11473 11439 12067
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 993 2
+elements: 168 -1
+vertices: 5861 5865 11435 11439
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 994 2
+elements: 168 -1
+vertices: 5929 11473 11503 12067
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 995 2
+elements: 168 -1
+vertices: 5861 5865 5929 11473
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 996 2
+elements: 168 -1
+vertices: 11435 11439 11503 12067
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 997 -1
+elements: 169 227
+vertices: 5917 5985 11491 11559
+designations: 2,3 1,3
+local_facet_indices: 1 3
+facet: 998 2
+elements: 169 -1
+vertices: 5921 11529 11495 12123
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 999 2
+elements: 169 -1
+vertices: 5917 5921 11491 11495
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1000 2
+elements: 169 -1
+vertices: 5985 11529 11559 12123
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1001 2
+elements: 169 -1
+vertices: 5917 5921 5985 11529
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1002 2
+elements: 169 -1
+vertices: 11491 11495 11559 12123
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1003 2
+elements: 170 -1
+vertices: 5921 5989 11495 11563
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1004 2
+elements: 170 -1
+vertices: 5925 11533 11499 12127
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1005 2
+elements: 170 -1
+vertices: 5921 5925 11495 11499
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1006 2
+elements: 170 -1
+vertices: 5989 11533 11563 12127
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1007 2
+elements: 170 -1
+vertices: 5921 5925 5989 11533
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1008 2
+elements: 170 -1
+vertices: 11495 11499 11563 12127
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1009 2
+elements: 171 -1
+vertices: 5925 5993 11499 11567
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1010 2
+elements: 171 -1
+vertices: 5929 11537 11503 12131
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1011 2
+elements: 171 -1
+vertices: 5925 5929 11499 11503
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1012 2
+elements: 171 -1
+vertices: 5993 11537 11567 12131
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1013 2
+elements: 171 -1
+vertices: 5925 5929 5993 11537
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1014 2
+elements: 171 -1
+vertices: 11499 11503 11567 12131
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1015 2
+elements: 172 -1
+vertices: 5929 5997 11503 11571
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1016 2
+elements: 172 -1
+vertices: 5933 11541 11507 12135
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1017 2
+elements: 172 -1
+vertices: 5929 5933 11503 11507
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1018 2
+elements: 172 -1
+vertices: 5997 11541 11571 12135
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1019 2
+elements: 172 -1
+vertices: 5929 5933 5997 11541
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1020 2
+elements: 172 -1
+vertices: 11503 11507 11571 12135
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1021 -1
+elements: 173 228
+vertices: 5985 6053 11559 11627
+designations: 2,3 1,3
+local_facet_indices: 1 3
+facet: 1022 2
+elements: 173 -1
+vertices: 5989 11597 11563 12191
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1023 2
+elements: 173 -1
+vertices: 5985 5989 11559 11563
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1024 2
+elements: 173 -1
+vertices: 6053 11597 11627 12191
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1025 2
+elements: 173 -1
+vertices: 5985 5989 6053 11597
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1026 2
+elements: 173 -1
+vertices: 11559 11563 11627 12191
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1027 2
+elements: 174 -1
+vertices: 5989 6057 11563 11631
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1028 2
+elements: 174 -1
+vertices: 5993 11601 11567 12195
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1029 2
+elements: 174 -1
+vertices: 5989 5993 11563 11567
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1030 2
+elements: 174 -1
+vertices: 6057 11601 11631 12195
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1031 2
+elements: 174 -1
+vertices: 5989 5993 6057 11601
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1032 2
+elements: 174 -1
+vertices: 11563 11567 11631 12195
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1033 2
+elements: 175 -1
+vertices: 5993 6061 11567 11635
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1034 2
+elements: 175 -1
+vertices: 5997 11605 11571 12199
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1035 2
+elements: 175 -1
+vertices: 5993 5997 11567 11571
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1036 2
+elements: 175 -1
+vertices: 6061 11605 11635 12199
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1037 2
+elements: 175 -1
+vertices: 5993 5997 6061 11605
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1038 2
+elements: 175 -1
+vertices: 11567 11571 11635 12199
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1039 2
+elements: 176 -1
+vertices: 5997 6065 11571 11639
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1040 2
+elements: 176 -1
+vertices: 6001 11609 11575 12203
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1041 2
+elements: 176 -1
+vertices: 5997 6001 11571 11575
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1042 2
+elements: 176 -1
+vertices: 6065 11609 11639 12203
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1043 2
+elements: 176 -1
+vertices: 5997 6001 6065 11609
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1044 2
+elements: 176 -1
+vertices: 11571 11575 11639 12203
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1045 2
+elements: 177 -1
+vertices: 6937 7005 12511 12579
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1046 2
+elements: 177 -1
+vertices: 6941 12549 12515 13143
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1047 2
+elements: 177 -1
+vertices: 6937 6941 12511 12515
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1048 2
+elements: 177 -1
+vertices: 7005 12549 12579 13143
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1049 2
+elements: 177 -1
+vertices: 6937 6941 7005 12549
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1050 2
+elements: 177 -1
+vertices: 12511 12515 12579 13143
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1051 2
+elements: 178 -1
+vertices: 6941 7009 12515 12583
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1052 2
+elements: 178 -1
+vertices: 6945 12553 12519 13147
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1053 2
+elements: 178 -1
+vertices: 6941 6945 12515 12519
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1054 2
+elements: 178 -1
+vertices: 7009 12553 12583 13147
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1055 2
+elements: 178 -1
+vertices: 6941 6945 7009 12553
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1056 2
+elements: 178 -1
+vertices: 12515 12519 12583 13147
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1057 2
+elements: 179 -1
+vertices: 6945 7013 12519 12587
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1058 2
+elements: 179 -1
+vertices: 6949 12557 12523 13151
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1059 2
+elements: 179 -1
+vertices: 6945 6949 12519 12523
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1060 2
+elements: 179 -1
+vertices: 7013 12557 12587 13151
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1061 2
+elements: 179 -1
+vertices: 6945 6949 7013 12557
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1062 2
+elements: 179 -1
+vertices: 12519 12523 12587 13151
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1063 2
+elements: 180 -1
+vertices: 6949 7017 12523 12591
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1064 2
+elements: 180 -1
+vertices: 6953 12561 12527 13155
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1065 2
+elements: 180 -1
+vertices: 6949 6953 12523 12527
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1066 2
+elements: 180 -1
+vertices: 7017 12561 12591 13155
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1067 2
+elements: 180 -1
+vertices: 6949 6953 7017 12561
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1068 2
+elements: 180 -1
+vertices: 12523 12527 12591 13155
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1069 2
+elements: 181 -1
+vertices: 7005 7073 12579 12647
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1070 2
+elements: 181 -1
+vertices: 7009 12617 12583 13211
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1071 2
+elements: 181 -1
+vertices: 7005 7009 12579 12583
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1072 2
+elements: 181 -1
+vertices: 7073 12617 12647 13211
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1073 2
+elements: 181 -1
+vertices: 7005 7009 7073 12617
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1074 2
+elements: 181 -1
+vertices: 12579 12583 12647 13211
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1075 2
+elements: 182 -1
+vertices: 7009 7077 12583 12651
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1076 2
+elements: 182 -1
+vertices: 7013 12621 12587 13215
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1077 2
+elements: 182 -1
+vertices: 7009 7013 12583 12587
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1078 2
+elements: 182 -1
+vertices: 7077 12621 12651 13215
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1079 2
+elements: 182 -1
+vertices: 7009 7013 7077 12621
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1080 2
+elements: 182 -1
+vertices: 12583 12587 12651 13215
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1081 2
+elements: 183 -1
+vertices: 7013 7081 12587 12655
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1082 2
+elements: 183 -1
+vertices: 7017 12625 12591 13219
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1083 2
+elements: 183 -1
+vertices: 7013 7017 12587 12591
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1084 2
+elements: 183 -1
+vertices: 7081 12625 12655 13219
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1085 2
+elements: 183 -1
+vertices: 7013 7017 7081 12625
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1086 2
+elements: 183 -1
+vertices: 12587 12591 12655 13219
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1087 2
+elements: 184 -1
+vertices: 7017 7085 12591 12659
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1088 2
+elements: 184 -1
+vertices: 7021 12629 12595 13223
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1089 2
+elements: 184 -1
+vertices: 7017 7021 12591 12595
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1090 2
+elements: 184 -1
+vertices: 7085 12629 12659 13223
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1091 2
+elements: 184 -1
+vertices: 7017 7021 7085 12629
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1092 2
+elements: 184 -1
+vertices: 12591 12595 12659 13223
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1093 2
+elements: 185 -1
+vertices: 7073 7141 12647 12715
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1094 2
+elements: 185 -1
+vertices: 7077 12685 12651 13279
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1095 2
+elements: 185 -1
+vertices: 7073 7077 12647 12651
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1096 2
+elements: 185 -1
+vertices: 7141 12685 12715 13279
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1097 2
+elements: 185 -1
+vertices: 7073 7077 7141 12685
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1098 2
+elements: 185 -1
+vertices: 12647 12651 12715 13279
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1099 2
+elements: 186 -1
+vertices: 7077 7145 12651 12719
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1100 2
+elements: 186 -1
+vertices: 7081 12689 12655 13283
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1101 2
+elements: 186 -1
+vertices: 7077 7081 12651 12655
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1102 2
+elements: 186 -1
+vertices: 7145 12689 12719 13283
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1103 2
+elements: 186 -1
+vertices: 7077 7081 7145 12689
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1104 2
+elements: 186 -1
+vertices: 12651 12655 12719 13283
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1105 2
+elements: 187 -1
+vertices: 7081 7149 12655 12723
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1106 2
+elements: 187 -1
+vertices: 7085 12693 12659 13287
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1107 2
+elements: 187 -1
+vertices: 7081 7085 12655 12659
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1108 2
+elements: 187 -1
+vertices: 7149 12693 12723 13287
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1109 2
+elements: 187 -1
+vertices: 7081 7085 7149 12693
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1110 2
+elements: 187 -1
+vertices: 12655 12659 12723 13287
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1111 2
+elements: 188 -1
+vertices: 7085 7153 12659 12727
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1112 2
+elements: 188 -1
+vertices: 7089 12697 12663 13291
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1113 2
+elements: 188 -1
+vertices: 7085 7089 12659 12663
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1114 2
+elements: 188 -1
+vertices: 7153 12697 12727 13291
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1115 2
+elements: 188 -1
+vertices: 7085 7089 7153 12697
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1116 2
+elements: 188 -1
+vertices: 12659 12663 12727 13291
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1117 2
+elements: 189 -1
+vertices: 7141 7209 12715 12783
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1118 2
+elements: 189 -1
+vertices: 7145 12753 12719 13347
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1119 2
+elements: 189 -1
+vertices: 7141 7145 12715 12719
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1120 2
+elements: 189 -1
+vertices: 7209 12753 12783 13347
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1121 2
+elements: 189 -1
+vertices: 7141 7145 7209 12753
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1122 2
+elements: 189 -1
+vertices: 12715 12719 12783 13347
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1123 2
+elements: 190 -1
+vertices: 7145 7213 12719 12787
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1124 2
+elements: 190 -1
+vertices: 7149 12757 12723 13351
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1125 2
+elements: 190 -1
+vertices: 7145 7149 12719 12723
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1126 2
+elements: 190 -1
+vertices: 7213 12757 12787 13351
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1127 2
+elements: 190 -1
+vertices: 7145 7149 7213 12757
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1128 2
+elements: 190 -1
+vertices: 12719 12723 12787 13351
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1129 2
+elements: 191 -1
+vertices: 7149 7217 12723 12791
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1130 2
+elements: 191 -1
+vertices: 7153 12761 12727 13355
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1131 2
+elements: 191 -1
+vertices: 7149 7153 12723 12727
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1132 2
+elements: 191 -1
+vertices: 7217 12761 12791 13355
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1133 2
+elements: 191 -1
+vertices: 7149 7153 7217 12761
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1134 2
+elements: 191 -1
+vertices: 12723 12727 12791 13355
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1135 2
+elements: 192 -1
+vertices: 7153 7221 12727 12795
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1136 2
+elements: 192 -1
+vertices: 7157 12765 12731 13359
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1137 2
+elements: 192 -1
+vertices: 7153 7157 12727 12731
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1138 2
+elements: 192 -1
+vertices: 7221 12765 12795 13359
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1139 2
+elements: 192 -1
+vertices: 7153 7157 7221 12765
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1140 2
+elements: 192 -1
+vertices: 12727 12731 12795 13359
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1141 2
+elements: 193 -1
+vertices: 7994 13666 13636 14190
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1142 -1
+elements: 193 225
+vertices: 5781 7994 11355 13636
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 1143 2
+elements: 193 -1
+vertices: 5785 13666 11359 14190
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1144 2
+elements: 193 -1
+vertices: 5781 7994 5785 13666
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1145 2
+elements: 193 -1
+vertices: 11355 13636 11359 14190
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1146 2
+elements: 194 -1
+vertices: 7994 8054 13636 13696
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1147 2
+elements: 194 -1
+vertices: 7998 13670 13640 14194
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1148 -1
+elements: 194 229
+vertices: 7994 7998 13636 13640
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 1149 2
+elements: 194 -1
+vertices: 8054 13670 13696 14194
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1150 2
+elements: 194 -1
+vertices: 7994 7998 8054 13670
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1151 2
+elements: 194 -1
+vertices: 13636 13640 13696 14194
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1152 2
+elements: 195 -1
+vertices: 7998 8058 13640 13700
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1153 2
+elements: 195 -1
+vertices: 8002 13674 13644 14198
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1154 -1
+elements: 195 233
+vertices: 7998 8002 13640 13644
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 1155 2
+elements: 195 -1
+vertices: 8058 13674 13700 14198
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1156 2
+elements: 195 -1
+vertices: 7998 8002 8058 13674
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1157 2
+elements: 195 -1
+vertices: 13640 13644 13700 14198
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1158 2
+elements: 196 -1
+vertices: 8002 8062 13644 13704
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1159 2
+elements: 196 -1
+vertices: 6937 12545 12511 14202
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1160 -1
+elements: 196 237
+vertices: 8002 6937 13644 12511
+designations: 1,3 2,3
+local_facet_indices: 3 1
+facet: 1161 2
+elements: 196 -1
+vertices: 8062 12545 13704 14202
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1162 2
+elements: 196 -1
+vertices: 8002 6937 8062 12545
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1163 2
+elements: 196 -1
+vertices: 13644 12511 13704 14202
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1164 2
+elements: 197 -1
+vertices: 8054 13726 13696 14250
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1165 2
+elements: 197 -1
+vertices: 5785 8054 11359 13696
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1166 2
+elements: 197 -1
+vertices: 5789 13726 11363 14250
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1167 2
+elements: 197 -1
+vertices: 5785 8054 5789 13726
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1168 2
+elements: 197 -1
+vertices: 11359 13696 11363 14250
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1169 2
+elements: 198 -1
+vertices: 8054 8114 13696 13756
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1170 2
+elements: 198 -1
+vertices: 8058 13730 13700 14254
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1171 2
+elements: 198 -1
+vertices: 8054 8058 13696 13700
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1172 2
+elements: 198 -1
+vertices: 8114 13730 13756 14254
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1173 2
+elements: 198 -1
+vertices: 8054 8058 8114 13730
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1174 2
+elements: 198 -1
+vertices: 13696 13700 13756 14254
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1175 2
+elements: 199 -1
+vertices: 8058 8118 13700 13760
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1176 2
+elements: 199 -1
+vertices: 8062 13734 13704 14258
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1177 2
+elements: 199 -1
+vertices: 8058 8062 13700 13704
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1178 2
+elements: 199 -1
+vertices: 8118 13734 13760 14258
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1179 2
+elements: 199 -1
+vertices: 8058 8062 8118 13734
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1180 2
+elements: 199 -1
+vertices: 13700 13704 13760 14258
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1181 2
+elements: 200 -1
+vertices: 8062 8122 13704 13764
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1182 2
+elements: 200 -1
+vertices: 7005 12613 12579 14262
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1183 2
+elements: 200 -1
+vertices: 8062 7005 13704 12579
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1184 2
+elements: 200 -1
+vertices: 8122 12613 13764 14262
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1185 2
+elements: 200 -1
+vertices: 8062 7005 8122 12613
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1186 2
+elements: 200 -1
+vertices: 13704 12579 13764 14262
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1187 2
+elements: 201 -1
+vertices: 8114 13786 13756 14310
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1188 2
+elements: 201 -1
+vertices: 5789 8114 11363 13756
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1189 2
+elements: 201 -1
+vertices: 5793 13786 11367 14310
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1190 2
+elements: 201 -1
+vertices: 5789 8114 5793 13786
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1191 2
+elements: 201 -1
+vertices: 11363 13756 11367 14310
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1192 2
+elements: 202 -1
+vertices: 8114 8174 13756 13816
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1193 2
+elements: 202 -1
+vertices: 8118 13790 13760 14314
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1194 2
+elements: 202 -1
+vertices: 8114 8118 13756 13760
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1195 2
+elements: 202 -1
+vertices: 8174 13790 13816 14314
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1196 2
+elements: 202 -1
+vertices: 8114 8118 8174 13790
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1197 2
+elements: 202 -1
+vertices: 13756 13760 13816 14314
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1198 2
+elements: 203 -1
+vertices: 8118 8178 13760 13820
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1199 2
+elements: 203 -1
+vertices: 8122 13794 13764 14318
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1200 2
+elements: 203 -1
+vertices: 8118 8122 13760 13764
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1201 2
+elements: 203 -1
+vertices: 8178 13794 13820 14318
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1202 2
+elements: 203 -1
+vertices: 8118 8122 8178 13794
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1203 2
+elements: 203 -1
+vertices: 13760 13764 13820 14318
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1204 2
+elements: 204 -1
+vertices: 8122 8182 13764 13824
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1205 2
+elements: 204 -1
+vertices: 7073 12681 12647 14322
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1206 2
+elements: 204 -1
+vertices: 8122 7073 13764 12647
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1207 2
+elements: 204 -1
+vertices: 8182 12681 13824 14322
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1208 2
+elements: 204 -1
+vertices: 8122 7073 8182 12681
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1209 2
+elements: 204 -1
+vertices: 13764 12647 13824 14322
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1210 2
+elements: 205 -1
+vertices: 8174 13846 13816 14370
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1211 2
+elements: 205 -1
+vertices: 5793 8174 11367 13816
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1212 2
+elements: 205 -1
+vertices: 5797 13846 11371 14370
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1213 2
+elements: 205 -1
+vertices: 5793 8174 5797 13846
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1214 2
+elements: 205 -1
+vertices: 11367 13816 11371 14370
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1215 2
+elements: 206 -1
+vertices: 8174 8234 13816 13876
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1216 2
+elements: 206 -1
+vertices: 8178 13850 13820 14374
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1217 2
+elements: 206 -1
+vertices: 8174 8178 13816 13820
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1218 2
+elements: 206 -1
+vertices: 8234 13850 13876 14374
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1219 2
+elements: 206 -1
+vertices: 8174 8178 8234 13850
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1220 2
+elements: 206 -1
+vertices: 13816 13820 13876 14374
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1221 2
+elements: 207 -1
+vertices: 8178 8238 13820 13880
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1222 2
+elements: 207 -1
+vertices: 8182 13854 13824 14378
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1223 2
+elements: 207 -1
+vertices: 8178 8182 13820 13824
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1224 2
+elements: 207 -1
+vertices: 8238 13854 13880 14378
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1225 2
+elements: 207 -1
+vertices: 8178 8182 8238 13854
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1226 2
+elements: 207 -1
+vertices: 13820 13824 13880 14378
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1227 2
+elements: 208 -1
+vertices: 8182 8242 13824 13884
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1228 2
+elements: 208 -1
+vertices: 7141 12749 12715 14382
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1229 2
+elements: 208 -1
+vertices: 8182 7141 13824 12715
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1230 2
+elements: 208 -1
+vertices: 8242 12749 13884 14382
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1231 2
+elements: 208 -1
+vertices: 8182 7141 8242 12749
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1232 2
+elements: 208 -1
+vertices: 13824 12715 13884 14382
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1233 2
+elements: 209 -1
+vertices: 6053 9062 11627 14704
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1234 2
+elements: 209 -1
+vertices: 6057 14674 11631 15200
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1235 2
+elements: 209 -1
+vertices: 6053 6057 11627 11631
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1236 2
+elements: 209 -1
+vertices: 9062 14674 14704 15200
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1237 2
+elements: 209 -1
+vertices: 6053 6057 9062 14674
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1238 2
+elements: 209 -1
+vertices: 11627 11631 14704 15200
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1239 2
+elements: 210 -1
+vertices: 6057 9066 11631 14708
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1240 2
+elements: 210 -1
+vertices: 6061 14678 11635 15204
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1241 2
+elements: 210 -1
+vertices: 6057 6061 11631 11635
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1242 2
+elements: 210 -1
+vertices: 9066 14678 14708 15204
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1243 2
+elements: 210 -1
+vertices: 6057 6061 9066 14678
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1244 2
+elements: 210 -1
+vertices: 11631 11635 14708 15204
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1245 2
+elements: 211 -1
+vertices: 6061 9070 11635 14712
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1246 2
+elements: 211 -1
+vertices: 6065 14682 11639 15208
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1247 2
+elements: 211 -1
+vertices: 6061 6065 11635 11639
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1248 2
+elements: 211 -1
+vertices: 9070 14682 14712 15208
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1249 2
+elements: 211 -1
+vertices: 6061 6065 9070 14682
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1250 2
+elements: 211 -1
+vertices: 11635 11639 14712 15208
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1251 2
+elements: 212 -1
+vertices: 6065 9074 11639 14716
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1252 2
+elements: 212 -1
+vertices: 6069 14686 11643 15212
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1253 2
+elements: 212 -1
+vertices: 6065 6069 11639 11643
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1254 2
+elements: 212 -1
+vertices: 9074 14686 14716 15212
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1255 2
+elements: 212 -1
+vertices: 6065 6069 9074 14686
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1256 2
+elements: 212 -1
+vertices: 11639 11643 14716 15212
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1257 2
+elements: 213 -1
+vertices: 9062 9130 14704 14772
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1258 2
+elements: 213 -1
+vertices: 9066 14742 14708 15268
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1259 2
+elements: 213 -1
+vertices: 9062 9066 14704 14708
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1260 2
+elements: 213 -1
+vertices: 9130 14742 14772 15268
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1261 2
+elements: 213 -1
+vertices: 9062 9066 9130 14742
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1262 2
+elements: 213 -1
+vertices: 14704 14708 14772 15268
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1263 2
+elements: 214 -1
+vertices: 9066 9134 14708 14776
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1264 2
+elements: 214 -1
+vertices: 9070 14746 14712 15272
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1265 2
+elements: 214 -1
+vertices: 9066 9070 14708 14712
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1266 2
+elements: 214 -1
+vertices: 9134 14746 14776 15272
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1267 2
+elements: 214 -1
+vertices: 9066 9070 9134 14746
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1268 2
+elements: 214 -1
+vertices: 14708 14712 14776 15272
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1269 2
+elements: 215 -1
+vertices: 9070 9138 14712 14780
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1270 2
+elements: 215 -1
+vertices: 9074 14750 14716 15276
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1271 2
+elements: 215 -1
+vertices: 9070 9074 14712 14716
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1272 2
+elements: 215 -1
+vertices: 9138 14750 14780 15276
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1273 2
+elements: 215 -1
+vertices: 9070 9074 9138 14750
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1274 2
+elements: 215 -1
+vertices: 14712 14716 14780 15276
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1275 2
+elements: 216 -1
+vertices: 9074 9142 14716 14784
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1276 2
+elements: 216 -1
+vertices: 9078 14754 14720 15280
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1277 2
+elements: 216 -1
+vertices: 9074 9078 14716 14720
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1278 2
+elements: 216 -1
+vertices: 9142 14754 14784 15280
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1279 2
+elements: 216 -1
+vertices: 9074 9078 9142 14754
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1280 2
+elements: 216 -1
+vertices: 14716 14720 14784 15280
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1281 2
+elements: 217 -1
+vertices: 9130 9198 14772 14840
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1282 2
+elements: 217 -1
+vertices: 9134 14810 14776 15336
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1283 2
+elements: 217 -1
+vertices: 9130 9134 14772 14776
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1284 2
+elements: 217 -1
+vertices: 9198 14810 14840 15336
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1285 2
+elements: 217 -1
+vertices: 9130 9134 9198 14810
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1286 2
+elements: 217 -1
+vertices: 14772 14776 14840 15336
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1287 2
+elements: 218 -1
+vertices: 9134 9202 14776 14844
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1288 2
+elements: 218 -1
+vertices: 9138 14814 14780 15340
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1289 2
+elements: 218 -1
+vertices: 9134 9138 14776 14780
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1290 2
+elements: 218 -1
+vertices: 9202 14814 14844 15340
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1291 2
+elements: 218 -1
+vertices: 9134 9138 9202 14814
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1292 2
+elements: 218 -1
+vertices: 14776 14780 14844 15340
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1293 2
+elements: 219 -1
+vertices: 9138 9206 14780 14848
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1294 2
+elements: 219 -1
+vertices: 9142 14818 14784 15344
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1295 2
+elements: 219 -1
+vertices: 9138 9142 14780 14784
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1296 2
+elements: 219 -1
+vertices: 9206 14818 14848 15344
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1297 2
+elements: 219 -1
+vertices: 9138 9142 9206 14818
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1298 2
+elements: 219 -1
+vertices: 14780 14784 14848 15344
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1299 2
+elements: 220 -1
+vertices: 9142 9210 14784 14852
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1300 2
+elements: 220 -1
+vertices: 9146 14822 14788 15348
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1301 2
+elements: 220 -1
+vertices: 9142 9146 14784 14788
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1302 2
+elements: 220 -1
+vertices: 9210 14822 14852 15348
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1303 2
+elements: 220 -1
+vertices: 9142 9146 9210 14822
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1304 2
+elements: 220 -1
+vertices: 14784 14788 14852 15348
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1305 2
+elements: 221 -1
+vertices: 9198 6953 14840 12527
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1306 2
+elements: 221 -1
+vertices: 9202 14878 14844 15404
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1307 2
+elements: 221 -1
+vertices: 9198 9202 14840 14844
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1308 2
+elements: 221 -1
+vertices: 6953 14878 12527 15404
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1309 2
+elements: 221 -1
+vertices: 9198 9202 6953 14878
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1310 2
+elements: 221 -1
+vertices: 14840 14844 12527 15404
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1311 2
+elements: 222 -1
+vertices: 9202 7021 14844 12595
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1312 2
+elements: 222 -1
+vertices: 9206 14882 14848 15408
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1313 2
+elements: 222 -1
+vertices: 9202 9206 14844 14848
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1314 2
+elements: 222 -1
+vertices: 7021 14882 12595 15408
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1315 2
+elements: 222 -1
+vertices: 9202 9206 7021 14882
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1316 2
+elements: 222 -1
+vertices: 14844 14848 12595 15408
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1317 2
+elements: 223 -1
+vertices: 9206 7089 14848 12663
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1318 2
+elements: 223 -1
+vertices: 9210 14886 14852 15412
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1319 2
+elements: 223 -1
+vertices: 9206 9210 14848 14852
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1320 2
+elements: 223 -1
+vertices: 7089 14886 12663 15412
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1321 2
+elements: 223 -1
+vertices: 9206 9210 7089 14886
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1322 2
+elements: 223 -1
+vertices: 14848 14852 12663 15412
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1323 2
+elements: 224 -1
+vertices: 9210 7157 14852 12731
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1324 2
+elements: 224 -1
+vertices: 9214 14890 14856 15416
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1325 2
+elements: 224 -1
+vertices: 9210 9214 14852 14856
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1326 2
+elements: 224 -1
+vertices: 7157 14890 12731 15416
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1327 2
+elements: 224 -1
+vertices: 9210 9214 7157 14890
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1328 2
+elements: 224 -1
+vertices: 14852 14856 12731 15416
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1329 2
+elements: 225 -1
+vertices: 5849 15661 11423 16125
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1330 2
+elements: 225 -1
+vertices: 7994 15661 13636 16125
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1331 2
+elements: 225 -1
+vertices: 5781 5849 7994 15661
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1332 2
+elements: 225 -1
+vertices: 11355 11423 13636 16125
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1333 2
+elements: 226 -1
+vertices: 5849 9989 11423 15691
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1334 2
+elements: 226 -1
+vertices: 5917 15665 11491 16129
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1335 2
+elements: 226 -1
+vertices: 9989 15665 15691 16129
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1336 2
+elements: 226 -1
+vertices: 5849 5917 9989 15665
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1337 2
+elements: 226 -1
+vertices: 11423 11491 15691 16129
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1338 2
+elements: 227 -1
+vertices: 5917 9993 11491 15695
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1339 2
+elements: 227 -1
+vertices: 5985 15669 11559 16133
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1340 2
+elements: 227 -1
+vertices: 9993 15669 15695 16133
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1341 2
+elements: 227 -1
+vertices: 5917 5985 9993 15669
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1342 2
+elements: 227 -1
+vertices: 11491 11559 15695 16133
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1343 2
+elements: 228 -1
+vertices: 5985 9997 11559 15699
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1344 2
+elements: 228 -1
+vertices: 6053 14670 11627 16137
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1345 2
+elements: 228 -1
+vertices: 9997 14670 15699 16137
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1346 2
+elements: 228 -1
+vertices: 5985 6053 9997 14670
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1347 2
+elements: 228 -1
+vertices: 11559 11627 15699 16137
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1348 2
+elements: 229 -1
+vertices: 9989 15721 15691 16185
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1349 2
+elements: 229 -1
+vertices: 7994 9989 13636 15691
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1350 2
+elements: 229 -1
+vertices: 7998 15721 13640 16185
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1351 2
+elements: 229 -1
+vertices: 7994 9989 7998 15721
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1352 2
+elements: 229 -1
+vertices: 13636 15691 13640 16185
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1353 2
+elements: 230 -1
+vertices: 9989 10049 15691 15751
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1354 2
+elements: 230 -1
+vertices: 9993 15725 15695 16189
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1355 2
+elements: 230 -1
+vertices: 9989 9993 15691 15695
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1356 2
+elements: 230 -1
+vertices: 10049 15725 15751 16189
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1357 2
+elements: 230 -1
+vertices: 9989 9993 10049 15725
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1358 2
+elements: 230 -1
+vertices: 15691 15695 15751 16189
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1359 2
+elements: 231 -1
+vertices: 9993 10053 15695 15755
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1360 2
+elements: 231 -1
+vertices: 9997 15729 15699 16193
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1361 2
+elements: 231 -1
+vertices: 9993 9997 15695 15699
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1362 2
+elements: 231 -1
+vertices: 10053 15729 15755 16193
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1363 2
+elements: 231 -1
+vertices: 9993 9997 10053 15729
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1364 2
+elements: 231 -1
+vertices: 15695 15699 15755 16193
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1365 2
+elements: 232 -1
+vertices: 9997 10057 15699 15759
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1366 2
+elements: 232 -1
+vertices: 9062 14738 14704 16197
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1367 2
+elements: 232 -1
+vertices: 9997 9062 15699 14704
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1368 2
+elements: 232 -1
+vertices: 10057 14738 15759 16197
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1369 2
+elements: 232 -1
+vertices: 9997 9062 10057 14738
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1370 2
+elements: 232 -1
+vertices: 15699 14704 15759 16197
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1371 2
+elements: 233 -1
+vertices: 10049 15781 15751 16245
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1372 2
+elements: 233 -1
+vertices: 7998 10049 13640 15751
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1373 2
+elements: 233 -1
+vertices: 8002 15781 13644 16245
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1374 2
+elements: 233 -1
+vertices: 7998 10049 8002 15781
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1375 2
+elements: 233 -1
+vertices: 13640 15751 13644 16245
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1376 2
+elements: 234 -1
+vertices: 10049 10109 15751 15811
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1377 2
+elements: 234 -1
+vertices: 10053 15785 15755 16249
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1378 2
+elements: 234 -1
+vertices: 10049 10053 15751 15755
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1379 2
+elements: 234 -1
+vertices: 10109 15785 15811 16249
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1380 2
+elements: 234 -1
+vertices: 10049 10053 10109 15785
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1381 2
+elements: 234 -1
+vertices: 15751 15755 15811 16249
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1382 2
+elements: 235 -1
+vertices: 10053 10113 15755 15815
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1383 2
+elements: 235 -1
+vertices: 10057 15789 15759 16253
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1384 2
+elements: 235 -1
+vertices: 10053 10057 15755 15759
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1385 2
+elements: 235 -1
+vertices: 10113 15789 15815 16253
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1386 2
+elements: 235 -1
+vertices: 10053 10057 10113 15789
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1387 2
+elements: 235 -1
+vertices: 15755 15759 15815 16253
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1388 2
+elements: 236 -1
+vertices: 10057 10117 15759 15819
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1389 2
+elements: 236 -1
+vertices: 9130 14806 14772 16257
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1390 2
+elements: 236 -1
+vertices: 10057 9130 15759 14772
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1391 2
+elements: 236 -1
+vertices: 10117 14806 15819 16257
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1392 2
+elements: 236 -1
+vertices: 10057 9130 10117 14806
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1393 2
+elements: 236 -1
+vertices: 15759 14772 15819 16257
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1394 2
+elements: 237 -1
+vertices: 10109 15841 15811 16305
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1395 2
+elements: 237 -1
+vertices: 8002 10109 13644 15811
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1396 2
+elements: 237 -1
+vertices: 6937 15841 12511 16305
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1397 2
+elements: 237 -1
+vertices: 8002 10109 6937 15841
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1398 2
+elements: 237 -1
+vertices: 13644 15811 12511 16305
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1399 2
+elements: 238 -1
+vertices: 10109 6941 15811 12515
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1400 2
+elements: 238 -1
+vertices: 10113 15845 15815 16309
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1401 2
+elements: 238 -1
+vertices: 10109 10113 15811 15815
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1402 2
+elements: 238 -1
+vertices: 6941 15845 12515 16309
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1403 2
+elements: 238 -1
+vertices: 10109 10113 6941 15845
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1404 2
+elements: 238 -1
+vertices: 15811 15815 12515 16309
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1405 2
+elements: 239 -1
+vertices: 10113 6945 15815 12519
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1406 2
+elements: 239 -1
+vertices: 10117 15849 15819 16313
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1407 2
+elements: 239 -1
+vertices: 10113 10117 15815 15819
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1408 2
+elements: 239 -1
+vertices: 6945 15849 12519 16313
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1409 2
+elements: 239 -1
+vertices: 10113 10117 6945 15849
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1410 2
+elements: 239 -1
+vertices: 15815 15819 12519 16313
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1411 2
+elements: 240 -1
+vertices: 10117 6949 15819 12523
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1412 2
+elements: 240 -1
+vertices: 9198 14874 14840 16317
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1413 2
+elements: 240 -1
+vertices: 10117 9198 15819 14840
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1414 2
+elements: 240 -1
+vertices: 6949 14874 12523 16317
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1415 2
+elements: 240 -1
+vertices: 10117 9198 6949 14874
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1416 2
+elements: 240 -1
+vertices: 15819 14840 12523 16317
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1417 2
+elements: 241 -1
+vertices: 5797 5865 11371 11439
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1418 2
+elements: 241 -1
+vertices: 8234 16561 13876 17025
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1419 2
+elements: 241 -1
+vertices: 5797 8234 11371 13876
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1420 2
+elements: 241 -1
+vertices: 5865 16561 11439 17025
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1421 2
+elements: 241 -1
+vertices: 5797 8234 5865 16561
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1422 2
+elements: 241 -1
+vertices: 11371 13876 11439 17025
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1423 2
+elements: 242 -1
+vertices: 8234 10889 13876 16591
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1424 2
+elements: 242 -1
+vertices: 8238 16565 13880 17029
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1425 2
+elements: 242 -1
+vertices: 8234 8238 13876 13880
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1426 2
+elements: 242 -1
+vertices: 10889 16565 16591 17029
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1427 2
+elements: 242 -1
+vertices: 8234 8238 10889 16565
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1428 2
+elements: 242 -1
+vertices: 13876 13880 16591 17029
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1429 2
+elements: 243 -1
+vertices: 8238 10893 13880 16595
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1430 2
+elements: 243 -1
+vertices: 8242 16569 13884 17033
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1431 2
+elements: 243 -1
+vertices: 8238 8242 13880 13884
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1432 2
+elements: 243 -1
+vertices: 10893 16569 16595 17033
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1433 2
+elements: 243 -1
+vertices: 8238 8242 10893 16569
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1434 2
+elements: 243 -1
+vertices: 13880 13884 16595 17033
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1435 2
+elements: 244 -1
+vertices: 8242 10897 13884 16599
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1436 2
+elements: 244 -1
+vertices: 7209 12785 12783 17037
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1437 2
+elements: 244 -1
+vertices: 8242 7209 13884 12783
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1438 2
+elements: 244 -1
+vertices: 10897 12785 16599 17037
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1439 2
+elements: 244 -1
+vertices: 8242 7209 10897 12785
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1440 2
+elements: 244 -1
+vertices: 13884 12783 16599 17037
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1441 2
+elements: 245 -1
+vertices: 5865 5933 11439 11507
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1442 2
+elements: 245 -1
+vertices: 10889 16621 16591 17085
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1443 2
+elements: 245 -1
+vertices: 5865 10889 11439 16591
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1444 2
+elements: 245 -1
+vertices: 5933 16621 11507 17085
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1445 2
+elements: 245 -1
+vertices: 5865 10889 5933 16621
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1446 2
+elements: 245 -1
+vertices: 11439 16591 11507 17085
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1447 2
+elements: 246 -1
+vertices: 10889 10949 16591 16651
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1448 2
+elements: 246 -1
+vertices: 10893 16625 16595 17089
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1449 2
+elements: 246 -1
+vertices: 10889 10893 16591 16595
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1450 2
+elements: 246 -1
+vertices: 10949 16625 16651 17089
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1451 2
+elements: 246 -1
+vertices: 10889 10893 10949 16625
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1452 2
+elements: 246 -1
+vertices: 16591 16595 16651 17089
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1453 2
+elements: 247 -1
+vertices: 10893 10953 16595 16655
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1454 2
+elements: 247 -1
+vertices: 10897 16629 16599 17093
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1455 2
+elements: 247 -1
+vertices: 10893 10897 16595 16599
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1456 2
+elements: 247 -1
+vertices: 10953 16629 16655 17093
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1457 2
+elements: 247 -1
+vertices: 10893 10897 10953 16629
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1458 2
+elements: 247 -1
+vertices: 16595 16599 16655 17093
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1459 2
+elements: 248 -1
+vertices: 10897 10957 16599 16659
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1460 2
+elements: 248 -1
+vertices: 7213 12789 12787 17097
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1461 2
+elements: 248 -1
+vertices: 10897 7213 16599 12787
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1462 2
+elements: 248 -1
+vertices: 10957 12789 16659 17097
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1463 2
+elements: 248 -1
+vertices: 10897 7213 10957 12789
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1464 2
+elements: 248 -1
+vertices: 16599 12787 16659 17097
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1465 2
+elements: 249 -1
+vertices: 5933 6001 11507 11575
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1466 2
+elements: 249 -1
+vertices: 10949 16681 16651 17145
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1467 2
+elements: 249 -1
+vertices: 5933 10949 11507 16651
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1468 2
+elements: 249 -1
+vertices: 6001 16681 11575 17145
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1469 2
+elements: 249 -1
+vertices: 5933 10949 6001 16681
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1470 2
+elements: 249 -1
+vertices: 11507 16651 11575 17145
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1471 2
+elements: 250 -1
+vertices: 10949 11009 16651 16711
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1472 2
+elements: 250 -1
+vertices: 10953 16685 16655 17149
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1473 2
+elements: 250 -1
+vertices: 10949 10953 16651 16655
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1474 2
+elements: 250 -1
+vertices: 11009 16685 16711 17149
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1475 2
+elements: 250 -1
+vertices: 10949 10953 11009 16685
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1476 2
+elements: 250 -1
+vertices: 16651 16655 16711 17149
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1477 2
+elements: 251 -1
+vertices: 10953 11013 16655 16715
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1478 2
+elements: 251 -1
+vertices: 10957 16689 16659 17153
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1479 2
+elements: 251 -1
+vertices: 10953 10957 16655 16659
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1480 2
+elements: 251 -1
+vertices: 11013 16689 16715 17153
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1481 2
+elements: 251 -1
+vertices: 10953 10957 11013 16689
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1482 2
+elements: 251 -1
+vertices: 16655 16659 16715 17153
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1483 2
+elements: 252 -1
+vertices: 10957 11017 16659 16719
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1484 2
+elements: 252 -1
+vertices: 7217 12793 12791 17157
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1485 2
+elements: 252 -1
+vertices: 10957 7217 16659 12791
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1486 2
+elements: 252 -1
+vertices: 11017 12793 16719 17157
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1487 2
+elements: 252 -1
+vertices: 10957 7217 11017 12793
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1488 2
+elements: 252 -1
+vertices: 16659 12791 16719 17157
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1489 2
+elements: 253 -1
+vertices: 6001 6069 11575 11643
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1490 2
+elements: 253 -1
+vertices: 11009 16741 16711 17205
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1491 2
+elements: 253 -1
+vertices: 6001 11009 11575 16711
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1492 2
+elements: 253 -1
+vertices: 6069 16741 11643 17205
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1493 2
+elements: 253 -1
+vertices: 6001 11009 6069 16741
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1494 2
+elements: 253 -1
+vertices: 11575 16711 11643 17205
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1495 2
+elements: 254 -1
+vertices: 11009 9078 16711 14720
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1496 2
+elements: 254 -1
+vertices: 11013 16745 16715 17209
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1497 2
+elements: 254 -1
+vertices: 11009 11013 16711 16715
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1498 2
+elements: 254 -1
+vertices: 9078 16745 14720 17209
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1499 2
+elements: 254 -1
+vertices: 11009 11013 9078 16745
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1500 2
+elements: 254 -1
+vertices: 16711 16715 14720 17209
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1501 2
+elements: 255 -1
+vertices: 11013 9146 16715 14788
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1502 2
+elements: 255 -1
+vertices: 11017 16749 16719 17213
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1503 2
+elements: 255 -1
+vertices: 11013 11017 16715 16719
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1504 2
+elements: 255 -1
+vertices: 9146 16749 14788 17213
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1505 2
+elements: 255 -1
+vertices: 11013 11017 9146 16749
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1506 2
+elements: 255 -1
+vertices: 16715 16719 14788 17213
+designations: 0,0 0,0
+local_facet_indices: 6 -1
+facet: 1507 2
+elements: 256 -1
+vertices: 11017 9214 16719 14856
+designations: 0,0 0,0
+local_facet_indices: 1 -1
+facet: 1508 2
+elements: 256 -1
+vertices: 7221 12797 12795 17217
+designations: 0,0 0,0
+local_facet_indices: 2 -1
+facet: 1509 2
+elements: 256 -1
+vertices: 11017 7221 16719 12795
+designations: 0,0 0,0
+local_facet_indices: 3 -1
+facet: 1510 2
+elements: 256 -1
+vertices: 9214 12797 14856 17217
+designations: 0,0 0,0
+local_facet_indices: 4 -1
+facet: 1511 2
+elements: 256 -1
+vertices: 11017 7221 9214 12797
+designations: 0,0 0,0
+local_facet_indices: 5 -1
+facet: 1512 2
+elements: 256 -1
+vertices: 16719 12795 14856 17217
+designations: 0,0 0,0
+local_facet_indices: 6 -1

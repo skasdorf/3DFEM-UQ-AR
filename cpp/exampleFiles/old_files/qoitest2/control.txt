@@ -1,0 +1,11 @@
+!Example Control File
+Adjoint: true
+Readprevious: false
+elements file name: elements.txt
+facets file name: facets.txt
+geometry file name: geometry.txt
+materials file name: materials.txt
+conditions file name: boundary.txt
+monostatic scattering file name: scattering.txt
+input_unknowns_global file name: unknownsAdjoint.dat
+basic_structure: 5 5661 648 432 0 1 0 300000000 300000000 1

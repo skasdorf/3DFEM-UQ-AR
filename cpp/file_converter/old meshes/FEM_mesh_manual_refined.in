@@ -1,0 +1,479 @@
+******************************************************************************
+*** FEMIN.DAT - input file for program FEM, revised February 20, 2015      ***
+*** program for analysis of  											   ***
+*** Electromagnetic Structures 											   ***
+*** (5.0)																   ***
+******************************************************************************
+ I M P O R T A N T  N O T E S:
+a)  N0 EMPTY LINES are allowed and ONLY NECESSARY DATA should exist in file.
+b)  Text lines (excluding ---, === and ***) may be changed, BUT NOT OMITTED.
+c)  Sets of data MUST be typed as the first line below the line "...====data:"
+		and MUST be followed by the starred line (****).
+d)  All data must be set in BASIC SI UNITS (m, Hz, V, V/m, ohm, S/m, ...).
+******************************************************************************
+******************************************************************************
+
+------------------------------------------------------------------------------
+   1. TEXTUAL PROBLEM-DESCRIPTION (8 text lines, including empty lines):
+=========================================================================data:
+1| Scattering by a dielectric sphere radius = .5m, Epsr = 2.25.
+2| Uses first order spherical ABC
+3| 8 Center element, 48 cushion elements
+4|
+5|
+6|
+7|
+8|
+******************************************************************************
+
+------------------------------------------------------------------------------
+   2. BASIC STRUCTURE DESCRIPTION (Description lines):
+    MODE - NODES - NOEL - NBC - NGEN - NWAVES - NPORTS - FSTART - FSTOP - NFR
+------------------------------------------------------------------------------
+    MODE:     Mode of operation [1, 2, 3, 4, 5, 6, 7, 8, 9]
+		5 - Scatterer
+    NODES:    Number of nodes
+    NOEL:     Number of elements
+    NBC:      Number of boundary conditions
+    NGEN:     Number of generators
+    NWAVES:   Number of incident waves
+    NPORTS:   Number of ports
+    FSTART:   Start frequency
+    FSTOP:    End frequency
+    NFR:      Number of frequency points
+=========================================================================data:
+	5	79	7	6	0	1	0	300000000	300000000	1 
+******************************************************************************
+
+------------------------------------------------------------------------------
+   3. GLOBAL NODES DESCRIPTION (Node lines):
+    Node no. - x - y - z
+------------------------------------------------------------------------------
+    Node no: Node number
+    x:       Node x-coordinate
+    y:       Node y-coordinate
+    z:       Node z-coordinate
+=========================================================================data:
+1    -1.0000   -1.0000   -1.0000
+2    -1.0000   -1.0000         0
+3    -1.0000   -1.0000    1.0000
+4    -1.0000         0   -1.0000
+5    -1.0000         0         0
+6    -1.0000         0    1.0000
+7    -1.0000    1.0000   -1.0000
+8    -1.0000    1.0000         0
+9    -1.0000    1.0000    1.0000
+10   -0.6500   -0.6500   -0.6500
+11   -0.6500   -0.6500         0
+12   -0.6500   -0.6500    0.6500
+13   -0.6500         0   -0.6500
+14   -0.6500         0         0
+15   -0.6500         0    0.6500
+16   -0.6500    0.6500   -0.6500
+17   -0.6500    0.6500         0
+18   -0.6500    0.6500    0.6500
+19   -0.3000   -0.3000   -0.3000
+20   -0.3000   -0.3000         0
+21   -0.3000   -0.3000    0.3000
+22   -0.3000         0   -0.3000
+23   -0.3000         0         0
+24   -0.3000         0    0.3000
+25   -0.3000    0.3000   -0.3000
+26   -0.3000    0.3000         0
+27   -0.3000    0.3000    0.3000
+28         0   -1.0000   -1.0000
+29         0   -1.0000         0
+30         0   -1.0000    1.0000
+31         0   -0.6500   -0.6500
+32         0   -0.6500         0
+33         0   -0.6500    0.6500
+34         0   -0.3000   -0.3000
+35         0   -0.3000         0
+36         0   -0.3000    0.3000
+37         0         0   -1.0000
+38         0         0   -0.6500
+39         0         0   -0.3000
+40         0         0         0
+41         0         0    0.3000
+42         0         0    0.6500
+43         0         0    1.0000
+44         0    0.3000   -0.3000
+45         0    0.3000         0
+46         0    0.3000    0.3000
+47         0    0.6500   -0.6500
+48         0    0.6500         0
+49         0    0.6500    0.6500
+50         0    1.0000   -1.0000
+51         0    1.0000         0
+52         0    1.0000    1.0000
+53    0.3000   -0.3000   -0.3000
+54    0.3000   -0.3000         0
+55    0.3000   -0.3000    0.3000
+56    0.3000         0   -0.3000
+57    0.3000         0         0
+58    0.3000         0    0.3000
+59    0.3000    0.3000   -0.3000
+60    0.3000    0.3000         0
+61    0.3000    0.3000    0.3000
+62    0.6500   -0.6500   -0.6500
+63    0.6500   -0.6500         0
+64    0.6500   -0.6500    0.6500
+65    0.6500         0   -0.6500
+66    0.6500         0         0
+67    0.6500         0    0.6500
+68    0.6500    0.6500   -0.6500
+69    0.6500    0.6500         0
+70    0.6500    0.6500    0.6500
+71    1.0000   -1.0000   -1.0000
+72    1.0000   -1.0000         0
+73    1.0000   -1.0000    1.0000
+74    1.0000         0   -1.0000
+75    1.0000         0         0
+76    1.0000         0    1.0000
+77    1.0000    1.0000   -1.0000
+78    1.0000    1.0000         0
+79    1.0000    1.0000    1.0000   
+
+******************************************************************************
+
+------------------------------------------------------------------------------
+   4. 3D ELEMENT NODES DESCRIPTION (Element lines):
+    El. no. - El. ord. - n1 - n2 - n3 - n4 - n5 - n6 - n7 - n8 - ... - n27
+------------------------------------------------------------------------------
+	El. no:  Element number
+	El. ord: Geometrical order of the element (1,2, or 4)
+
+	n1:      Global node number for local element node 1 (u=-1,v=-1,w=-1)
+	n2:      Global node number for local element node 2 (u=+1,v=-1,w=-1)
+	n3:      Global node number for local element node 3 (u=-1,v=+1,w=-1)
+	n4:      Global node number for local element node 4 (u=+1,v=+1,w=-1)
+	n5:      Global node number for local element node 5 (u=-1,v=-1,w=+1)
+	n6:      Global node number for local element node 6 (u=+1,v=-1,w=+1)
+	n7:      Global node number for local element node 7 (u=-1,v=+1,w=+1)
+	n8:      Global node number for local element node 8 (u=+1,v=+1,w=+1)
+	... -n27:Global node number for local element node 27,etc.
+	For Order N, there should be (N+1)^3 control points
+=========================================================================data:
+1 2 1 54 28 4 57 31 7 60 34 10 63 37 13 66 40 16 68 42 19 71 45 22 74 48 25 77 51
+2 2 9 62 36 6 59 33 3 56 30 18 70 44 15 67 41 12 65 39 27 79 53 24 76 50 21 73 47
+3 2 1 2 3 54 55 56 28 29 30 10 11 12 63 64 65 37 38 39  19 20 21 71 72 73 45 46 47
+4 2 9 8 7 62 21 60 36 35 34 18 17 16 70 69 68 44 43 42 27 26 25 79 78 77 53 52 51
+5 2 1 2 3 4 5 6 7 8 9 54 55 56 57 58 59 60 61 62 28 29 30 31 32 33 34 35 36
+6 2 27 26 25 24 23 22 21 20 19 79 78 77 76 75 74 73 72 71 53 52 51 50 49 48 47 46 45
+7 2 28 29 30 31 32 33 34 35 36 37 38 39 40 14 41 42 43 44 45 46 47 48 49 50 51 52 53
+
+******************************************************************************
+------------------------------------------------------------------------------
+   5. 2D ELEMENT NODES DESCRIPTION (Element lines):
+    El. no. - El. ord. - n1 - n2 - n3 - n4 - n5 - n6 - n7 - n8 - n9 - ...
+------------------------------------------------------------------------------
+	This section not currently in use
+=========================================================================data:
+******************************************************************************
+
+------------------------------------------------------------------------------
+   6. 3D ELEMENT PARAMETERS DESCRIPTION (Element lines):
+    El. no. - hcode - icode - pmlcode - epsre - epsim - mure - muim
+------------------------------------------------------------------------------
+	El. no:	Element number
+	hcode:	Homogeneity code(1 or 0) 	[1 - homogeneous, 0 - inhomogeneous]
+	icode:	Isotropy code (1 or 0) 	 	[1 - isotropic, 0 - anistropic]
+	pmlcode:perfectly matched layer code (1 or 0) [1 - PML, 0 - Non-PML]
+	epsre:	Real{Epsilon Relative}
+	epsim: 	Imaginary{Epsilon Relative}
+	mure:	Real{Mu Relative}
+	muim:	Imaginary{Mu Relative}
+
+------------------------------------------------------------------------------
+	For every inhomogeneous or anistropic element, add the following lines:
+------------------------------------------------------------------------------
+	El. no. - Kuvw - Symmetry
+	EpsRxx(1) - EpsRxx(2) - ... - EpsRxx(8) - ... - EpsRxx(27)
+	EpsRxy(1) - EpsRxy(2) - ... - EpsRxy(8) - ... - EpsRxy(27)
+	.
+	.
+	.
+	EpsRzz(1) - EpsRzz(2) - ... - EpsRzz(8) - ... - EpsRzz(27)
+	MuRxx(1) - MuRxx(2) - ... - MuRxx(8) - ... - MuRxx(27)
+	.
+	.
+	.
+	MuRzz(1) - MuRzz(2) - ... - MuRzz(8) - ... - MuRzz(27)
+------------------------------------------------------------------------------
+	Kuvw: inhomogeneity approximation order (0 for anistropic, homogeneous)
+		In each EpsR and MuR line, there should be (Kuvw + 1)^3 entries
+	Epsr and MuR must be complex numbers specified in 
+		cartesian form(e.g. EpsRxx = 2.25 0.0)
+	If Symmetry = 1, there should be 6 lines for EpsR and 6 for MuR (xx,xy,xz,
+		yy,yz,zz components of tensor)
+	If symmetry = 0, full tensor must be specified (9 lines each)
+=========================================================================data:
+1  1  1  0  2.25  0.00  1.00  0.00 
+2  1  1  0  2.25  0.00  1.00  0.00 
+3  1  1  0  2.25  0.00  1.00  0.00 
+4  1  1  0  2.25  0.00  1.00  0.00 
+5  1  1  0  2.25  0.00  1.00  0.00 
+6  1  1  0  2.25  0.00  1.00  0.00 
+7  1  1  0  2.25  0.00  1.00  0.00 
+
+******************************************************************************
+
+------------------------------------------------------------------------------
+   7. 2D ELEMENT PARAMETERS DESCRIPTION (Element lines):
+    El. no. - hcode - epsre - epsim - mure - muim - sigma
+------------------------------------------------------------------------------
+	This section not currently in use
+=========================================================================data:
+******************************************************************************
+
+------------------------------------------------------------------------------
+   8. 3D BOUNDARY CONDITIONS (bc lines):
+    No. - P1 - P2 - P3 - P4 - TYPE - PORT
+    ...
+    No. - P1 - P2 - P3 - P4 - TYPE - PORT
+------------------------------------------------------------------------------
+    No.:	Number of BC
+    P1 - P4:	Points defining the surface to which the condition applies   
+     ----------------------------------------------------------
+     |Vector defined by the cross product 1-2 X 1-3 determines|
+     |the outward looking normal for the FemView rendition. In|
+     |the example below, the normal points towards the viewer.|
+     | |
+     |3     4     |
+     | |
+     |1     2     |
+     ----------------------------------------------------------
+    TYPE:	Type of BC:
+			-1 = PEC,
+			 0 = ABC(1st),
+			 1 = SYM,
+			 5 = PML Boundary (face between PML element and normal Element)
+    PORT:     Port number to which BC is associated [Should be 0]
+
+=========================================================================data:
+	1 1 19 7 25 -1 0
+	2 3 9 21 27 -1 0
+	3 1 3 19 21 -1 0
+	4 7 9 25 27 -1 0
+	5 1 3 7 9 -1 0
+	6 19 21 25 27 -1 0
+
+******************************************************************************
+
+------------------------------------------------------------------------------
+   9. 2D BOUNDARY CONDITIONS (bc lines):
+    No. - P1 - P2
+    ...
+    No. - P1 - P2
+------------------------------------------------------------------------------
+	This section not currently in use
+=========================================================================data:
+******************************************************************************
+
+------------------------------------------------------------------------------
+  10. 3D NUMERICS (FEM analysis only) 
+    'Basis'
+    El. No.    - NU - NV - NW - NGLU - NGLV - NGLW
+    ...
+    El. No.    - NU - NV - NW - NGLU - NGLV - NGLW
+------------------------------------------------------------------------------
+	Basis:    Type of basis functions:
+		  'KOLUNDZIJA' = Kolundzija polynomials
+		  'LEGENDRE'   = Legendre polynomials
+  	El. No:    Element number
+	NU:        Order of the approximation polynom	for u-coordinate
+	NV:        Order of the approximation polynom	for v-coordinate
+	NW:        Order of the approximation polynom	for w-coordinate
+    NGLU:      Order of the Gaus-Legendre integration formula for u-coordinate
+	NGLV:      Order of the Gaus-Legendre integration formula for v-coordinate
+	NGLW:      Order of the Gaus-Legendre integration formula for w-coordinate
+=========================================================================data:
+'KOLUNDZIJA'
+1  	3  3  3  	10  10  10
+2  	3  3  3  	10  10  10
+3  	3  3  3  	10  10  10
+4  	3  3  3  	10  10  10
+5  	3  3  3  	10  10  10
+6  	3  3  3  	10  10  10
+7  	3  3  3  	10  10  10
+
+******************************************************************************
+
+------------------------------------------------------------------------------
+  11. 2D NUMERICS (FEM analysis only)  (2D numerics lines):
+    'Basis'
+    El. No. - NU - NV - NGLU - NGLV
+------------------------------------------------------------------------------
+	This section not currently in use
+=========================================================================data:
+******************************************************************************
+
+------------------------------------------------------------------------------
+  12. GENERATORS (generator lines):
+    Gen no. - Gen type  -  Exc(Re,   Im) -  r1  -  r2 - Mode*
+------------------------------------------------------------------------------
+	This section not currently in use
+=========================================================================data:
+******************************************************************************
+
+------------------------------------------------------------------------------
+  13. WAVES (waves lines):
+    Wave no. - Theta - Phi - Etheta (Re, Im) - Ephi (Re, Im)
+------------------------------------------------------------------------------
+    Wave no.:  Wave number 
+    Theta:     Theta incident (degrees from z-axis) 
+    Phi:       Phi incident (degrees from x-axis in the x-O-y plane)
+    Etheta:    Real{E theta}   Theta polarized component of incident field
+    EtIm:      Imaginary (Etheta)
+    EfRe:      Real (Ephi)		Phi polzarized component of incident field
+    EfIm:      Imaginary (Ephi)
+=========================================================================data:
+1      90.0   0.0  1.0 0.0   0.0 0.0 
+******************************************************************************
+
+------------------------------------------------------------------------------
+  14. MONOSTATIC SCATTERING PATTERN (RCS) (waves lines):
+    TSTART - TSTOP - NT - PSTART - PSTOP - NP
+------------------------------------------------------------------------------
+    TSTART:    Theta start
+    TSTOP:     Theta stop
+    NT:        Number of theta angles 
+    PSTART:    Phi start
+    PSTOP:     Phi stop
+    NP:        Number of phi angles
+=========================================================================data:
+90	90	1	0	180	181	
+******************************************************************************
+
+------------------------------------------------------------------------------
+  15. WAVEGUIDE TE10 (waveguide lines):
+    Port no. - PTYPE - s1 - s2 - s3
+------------------------------------------------------------------------------
+	This section not currently in use
+=========================================================================data: 
+******************************************************************************
+
+------------------------------------------------------------------------------
+  16. PLOT (2 + No. of Plots lines):
+    'PERFORM PLOT'
+	No. of Plots (only if 'PERFORM PLOT' = 'YES')
+------------------------------------------------------------------------------
+    'PERFORM PLOT':  'YES' / 'NO '
+	No. of Plots - How many Plots to perform
+	For each plot, add the following line:
+------------------------------------------------------------------------------
+	PlotNo. - Element - u1 - u2 - Nu - v1 - v2 - Nv - w1 - w2 - Nw
+------------------------------------------------------------------------------
+	PlotNo.: Number of the plot
+	Element: Number of the element to plot fields in
+    u1:    First u-point (real number between -1 and 1)   
+    u2:    Last  u-point (real number between -1 and 1)
+    Nu:    Number of points along u (integer)
+    v1:    First v-point (real number between -1 and 1)   
+    v2:    Last  v-point (real number between -1 and 1)
+    Nv:    Number of points along v (integer)
+    w1:    First w-point (real number between -1 and 1)   
+    w2:    Last  w-point (real number between -1 and 1)
+    Nw:    Number of points along w (integer)
+
+    NOTE:  Stop value has to be >= Start value.
+=========================================================================data:
+   'NO'
+
+******************************************************************************
+
+------------------------------------------------------------------------------
+ 17. PLOT2D (4 lines):
+    'PERFORM PLOT'
+    El. No. - NPTSU - NPTSV
+------------------------------------------------------------------------------
+	This section not currently in use
+=========================================================================data:
+******************************************************************************
+
+------------------------------------------------------------------------------
+  18. OUTPUT (single line)
+    'OUTMATRIX' - 'OUTCNUMBER'
+------------------------------------------------------------------------------	
+    'OUTMATRIX':    'YES' / 'NO'        Output FEM matrix to file
+    'OUTCNUMBER':   'YES' / 'NO'        Output Condition number to file
+
+    NOTE:  Matrices and condition numbers can be output for single frequency
+analysis only.
+=========================================================================data:
+    'NO'  'NO'
+******************************************************************************
+
+------------------------------------------------------------------------------
+  19. SOLVER AND STORAGE (single line)
+    SMODE - EPSILON - WSFACTOR - GENMAT
+------------------------------------------------------------------------------	
+    SMODE:    Mode of solving and storage [1, 2]
+   1 - LU Decomposition       [Full Matrix Storage]
+   2 - Sparse Gaussian Elimination (SGE) [Sparse Storage]
+
+    EPSILON:  If absolute value of an entry in the SGE scheme is below this
+   limit, it will be considered as zero. Applies only if SMODE = 2.
+
+    WSFACTOR: WorkSpace Limit for the sparse solver DLSLZG. The default value
+   is DEFAULT = 23N + 8 * MAXNZ, where MAXNZ = 3NZ. This value will
+   be increased WSFACTOR times to become WSFACTOR * DEFAULT.
+   1.0 - default workspace
+  >1.0 - modified workspace
+
+    GENMAT:  'YES' / 'NO'   Generate FEM matrices cArSparse, cBrSparse
+      cSrSparse [and cBSrSparse] during program run
+	      If 'YES', matrices are generated during program execution.
+	      If 'NO',  matrices are red from the disk. Matrix filling is
+			bypassed.
+	      NOTE: Works only for FEM-MOM frequency independent sparse LU
+	 analysis.
+=========================================================================data:
+    2	   1.0d-12          2.2 'YES' 'YES' 'NO'
+******************************************************************************
+
+------------------------------------------------------------------------------
+  20. SOLVER TWEAKING DETAILS (single line)
+    PERTURBSIZE	- FILLIN
+------------------------------------------------------------------------------	
+    PERTURBSIZE - Specifies order of magnitude for pivot perturbation
+	i.e., if PERTURBSIZE = 12, Size of the pivot perturbation is 1E-12
+
+    FILLIN - Mode of Fill-in reduction reordering (perturbation)
+	0 - uses minimum degree reduction method (no METIS)
+	2 - uses METIS nested dissection reordering
+=========================================================================data:
+    13	2
+******************************************************************************
+
+------------------------------------------------------------------------------
+  21. PRINTING MATRIX LIST
+    PRINTMATRICESCODE
+	NUMBEROFELEMENTS (if PRINTMATRICESCODE == 1)
+------------------------------------------------------------------------------	
+    PRINTMATRICESCODE - 0 for no matrices
+						1 for some matrices (specified below)
+						2 to print all matrices
+						
+    NUMBEROFELEMENTS - number of elements, listed below
+	
+	For each element for which to print the matrix, add the following line:
+------------------------------------------------------------------------------
+	Matrix No. - ElementNo.
+		Matrix No. - Which matrix is this in the list
+		ElementNo.  - What element should the printed matrices correspond to
+=========================================================================data:
+    0
+******************************************************************************
+
+------------------------------------------------------------------------------
+  22. ADJOINT INFORMATION
+------------------------------------------------------------------------------
+    ISADJOINT	- READPREVIOUS - OUTPUTUNKNOWNS
+------------------------------------------------------------------------------
+	ISADJOINT - 1 To Solve Adjoint Problem, 0 to Solve Forward Problem
+	READPREVIOUS - 1 To input Unknowns from a previous Solve, 0 otherwise
+	OUTPUTUNKNOWNS - 1 To write unknown coefficients to data file, 0 otherwise
+=========================================================================data:
+    0 0 0
+******************************************************************************

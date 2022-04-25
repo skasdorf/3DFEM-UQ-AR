@@ -1,0 +1,11 @@
+!Control File for Mystery Mesh
+Adjoint: false
+Readprevious: false
+elements file name: elements.txt
+facets file name: facets.txt
+geometry file name: geometry.txt
+materials file name: materials.txt
+conditions file name: boundary.txt
+monostatic scattering file name: scattering.txt
+input_unknowns_global file name: unknownsAdjoint.dat
+basic_structure: 5 72525 7424 1280 0 1 0 10000000000 10000000000 1
