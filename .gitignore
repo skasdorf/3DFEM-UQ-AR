@@ -631,3 +631,4 @@ cpp/executable/x64/Release/run_modes.obj
 cpp/executable/x64/Release/sparseSolver.obj
 cpp/executable/x64/Release/StructureControl.obj
 cpp/executable/x64/Release/unitVectorsM.obj
+cpp/executable/*

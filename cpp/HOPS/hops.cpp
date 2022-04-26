@@ -188,15 +188,14 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	materials_in.close();
 
 	//acceptable error
-	double delta = 0.2;
+	double delta = 0.1;
 
 	/*std::vector<std::complex<double>> references = {{30000000, 0.0}};
 	double diff = 500000000;*/
 
 
-	//full list of references
-	std::vector<std::complex<double>> referencesFull = { 20000000,21000000,22000000,23000000,24000000,25000000,26000000,27000000,28000000,29000000,30000000,31000000,32000000,33000000,34000000,35000000,36000000,37000000,38000000,39000000,40000000 };
-	
+	std::vector<std::complex<double>> referencesFull = { 15000000,15416666.6666667,15833333.3333333,16250000,16666666.6666667,17083333.3333333,17500000,17916666.6666667,18333333.3333333,18750000,19166666.6666667,19583333.3333333,20000000,20416666.6666667,20833333.3333333,21250000,21666666.6666667,22083333.3333333,22500000,22916666.6666667,23333333.3333333,23750000,24166666.6666667,24583333.3333333,25000000,25416666.6666667,25833333.3333333,26250000,26666666.6666667,27083333.3333333,27500000,27916666.6666667,28333333.3333333,28750000,29166666.6666667,29583333.3333333,30000000,30416666.6666667,30833333.3333333,31250000,31666666.6666667,32083333.3333333,32500000,32916666.6666667,33333333.3333333,33750000,34166666.6666667,34583333.3333333,35000000,35416666.6666667,35833333.3333333,36250000,36666666.6666667,37083333.3333333,37500000,37916666.6666667,38333333.3333333,38750000,39166666.6666667,39583333.3333333,40000000 };
+	//double diff = abs(references[1].real() - references[0].real()) / 2.0;
 
 	double size = referencesFull.size();
 
@@ -215,7 +214,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	//some declarations
 	std::string in_file_name;
 
-
+	int iterations = 0;
 	while (toggle) {
 		std::cout << "_____________________________________________________________Pass in the for loop_______________________________________________\n";
 
@@ -289,26 +288,38 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 		}
 
-	
 		//these are the test values to be compared generated within HOPS.  HOPS[size-2] = min, HOPS[size-1] = max
+		//new method, end point is the midpoint on the hi side, end point - 1 is the midpoint on the low side
 		for (int i = 0; i < references.size(); ++i) {
-			//need to include if statements for beginning/end locations
 
 			//HOPS_splitting[i].push_back(references[i - 1]);
 			//HOPS_splitting[i].push_back(references[i + 1]);
 
-			if (i == 0)
-				HOPS_splitting[i].push_back(references[i]);
-			else
-				HOPS_splitting[i].push_back(references[i - 1]);
 
-			if (i == references.size()-1)
-				HOPS_splitting[i].push_back(references[i]);
+			if (i != 0)
+				HOPS_splitting[i].push_back((references[i] + references[i - 1]) / 2.0);
 			else
-				HOPS_splitting[i].push_back(references[i + 1]);
+				HOPS_splitting[i].push_back(0.0);
 
-			//std::cout << "references[i-1]: " << references[i - 1] << std::endl;
-			//std::cout << "references[i+1]: " << references[i + 1] << std::endl;
+			if (i != references.size() - 1)
+				HOPS_splitting[i].push_back((references[i] + references[i + 1]) / 2.0);
+			else
+				HOPS_splitting[i].push_back(0.0);
+
+
+
+
+			//original method
+			//if (i == 0)
+			//	HOPS_splitting[i].push_back(references[i]);
+			//else
+			//	HOPS_splitting[i].push_back(references[i - 1]);
+
+			//if (i == references.size()-1)
+			//	HOPS_splitting[i].push_back(references[i]);
+			//else
+			//	HOPS_splitting[i].push_back(references[i + 1]);
+
 
 		}
 		std::cout << "mat_counter: " << mat_counter << std::endl;
@@ -336,6 +347,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		double hiError = 0.0;
 		toggle = false;
 
+		//val is the endpoint of HOPS_splitting
 		int val = references.size()-1;
 		std::vector<std::complex<double>> referencesNew = references;
 		std::vector<int> refIndexNew = refIndex;
@@ -365,7 +377,12 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		//}
 		//else
 
-			hiError = std::abs(referenceVals[i + 1] - qoi_list[i][val]) / std::abs(referenceVals[i + 1]);
+			//[i][val] is hi side on current point, [i+1][val-1] is lo side on the next point
+		
+			hiError = std::abs(qoi_list[i][val] - qoi_list[i + 1][val - 1]) / std::abs(qoi_list[i][val]);
+
+			//old method
+			//hiError = std::abs(referenceVals[i + 1] - qoi_list[i][val]) / std::abs(referenceVals[i + 1]);
 
 			if (hiError > delta){
 				toggle = true;
@@ -401,6 +418,9 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		std::cout << "references.size() " <<references.size() << std::endl;
 		//std::vector<std::vector<std::complex<double>>> qoi_list(references.size());
 		//std::vector<std::vector<std::complex<double>>> HOPS_splitting(references.size());
+		std::cout << "Number of iterations: " << iterations << std::endl;
+		iterations++;
+		if (iterations >= 6) { break; }
 	}
 
 	std::cout << "out of the while loop=============================";
@@ -417,7 +437,8 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	int index = 0;
 	for (int i = 0; i < qoi_list.size(); i++) {
 		//need to remove the max/min test values for each of the batches
-		for (int j = 0; j < qoi_list[i].size()-2; ++j) {
+		//remove 1 for new method, 2 for older version
+		for (int j = 0; j < qoi_list[i].size()-1; ++j) {
 			if (index > HOPS_splitting[index].size()) index++;
 			//std::cout << "i: " << i << " j: " << j << std::endl;
 			qoi_dist_out << HOPS_splitting[i][j].real() << " " << qoi_list[i][j].real() << " " << qoi_list[i][j].imag() << std::endl;
