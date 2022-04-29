@@ -177,7 +177,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 	//load in the list of random materials being tested
 	std::vector<std::complex<double>> material_list;
-	std::ifstream materials_in("../ioFiles/input/frequencies_list_low_normal_dev4.txt");
+	std::ifstream materials_in("../ioFiles/input/frequencies_list_low_normal_dev5.txt");
 	std::string line;
 	//std::cout << "Current rounding material values to match the shitty output from MATLAB!" << std::endl;
 	while (std::getline(materials_in, line)) {
@@ -188,13 +188,13 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	materials_in.close();
 
 	//acceptable error
-	double delta = 0.1;
+	double delta = 0.08;
 
 	/*std::vector<std::complex<double>> references = {{30000000, 0.0}};
 	double diff = 500000000;*/
 
-
-	std::vector<std::complex<double>> referencesFull = { 15000000,15416666.6666667,15833333.3333333,16250000,16666666.6666667,17083333.3333333,17500000,17916666.6666667,18333333.3333333,18750000,19166666.6666667,19583333.3333333,20000000,20416666.6666667,20833333.3333333,21250000,21666666.6666667,22083333.3333333,22500000,22916666.6666667,23333333.3333333,23750000,24166666.6666667,24583333.3333333,25000000,25416666.6666667,25833333.3333333,26250000,26666666.6666667,27083333.3333333,27500000,27916666.6666667,28333333.3333333,28750000,29166666.6666667,29583333.3333333,30000000,30416666.6666667,30833333.3333333,31250000,31666666.6666667,32083333.3333333,32500000,32916666.6666667,33333333.3333333,33750000,34166666.6666667,34583333.3333333,35000000,35416666.6666667,35833333.3333333,36250000,36666666.6666667,37083333.3333333,37500000,37916666.6666667,38333333.3333333,38750000,39166666.6666667,39583333.3333333,40000000 };
+	std::vector<std::complex<double>> referencesFull = { 10000000.000000, 10600000.000000, 11200000.000000, 11800000.000000, 12400000.000000, 13000000.000000, 13600000.000000, 14200000.000000, 14800000.000000, 15400000.000000, 16000000.000000, 16600000.000000, 17200000.000000, 17800000.000000, 18400000.000000, 19000000.000000, 19600000.000000, 20200000.000000, 20800000.000000, 21400000.000000, 22000000.000000, 22600000.000000, 23200000.000000, 23800000.000000, 24400000.000000, 25000000.000000, 25600000.000000, 26200000.000000, 26800000.000000, 27400000.000000, 28000000.000000, 28600000.000000, 29200000.000000, 29800000.000000, 30400000.000000, 31000000.000000, 31600000.000000, 32200000.000000, 32800000.000000, 33400000.000000, 34000000.000000, 34600000.000000, 35200000.000000, 35800000.000000, 36400000.000000, 37000000.000000, 37600000.000000, 38200000.000000, 38800000.000000, 39400000.000000, 40000000.000000};
+	//std::vector<std::complex<double>> referencesFull = { 15000000,15416666.6666667,15833333.3333333,16250000,16666666.6666667,17083333.3333333,17500000,17916666.6666667,18333333.3333333,18750000,19166666.6666667,19583333.3333333,20000000,20416666.6666667,20833333.3333333,21250000,21666666.6666667,22083333.3333333,22500000,22916666.6666667,23333333.3333333,23750000,24166666.6666667,24583333.3333333,25000000,25416666.6666667,25833333.3333333,26250000,26666666.6666667,27083333.3333333,27500000,27916666.6666667,28333333.3333333,28750000,29166666.6666667,29583333.3333333,30000000,30416666.6666667,30833333.3333333,31250000,31666666.6666667,32083333.3333333,32500000,32916666.6666667,33333333.3333333,33750000,34166666.6666667,34583333.3333333,35000000,35416666.6666667,35833333.3333333,36250000,36666666.6666667,37083333.3333333,37500000,37916666.6666667,38333333.3333333,38750000,39166666.6666667,39583333.3333333,40000000 };
 	//double diff = abs(references[1].real() - references[0].real()) / 2.0;
 
 	double size = referencesFull.size();
@@ -207,6 +207,8 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 	//refIndex is the index of the ref_i file so that it can be called correctly from the reference_files folder
 	std::vector<int> refIndex = { 0, int(size - 1) / 2, int(size - 1) };
+	//std::vector<int> refIndex = { 10, 35, 60 };
+
 
 	//toggle to end the while loop
 	bool toggle = true;
@@ -244,10 +246,10 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		diffLo[diffLo.size() - 1] = diffHi[diffLo.size() - 2];
 		diffHi[diffHi.size() - 1] = diffHi[diffLo.size() - 2];
 
-		for (int i = 0; i < references.size(); ++i) {
-			std::cout << "diffLo[i]: " << diffLo[i] << std::endl;
-			std::cout << "diffHi[i]: " << diffHi[i] << std::endl;
-		}
+		//for (int i = 0; i < references.size(); ++i) {
+		//	std::cout << "diffLo[i]: " << diffLo[i] << std::endl;
+		//	std::cout << "diffHi[i]: " << diffHi[i] << std::endl;
+		//}
 		//double diff = (references[1].real() - references[0].real()) / 2.0;
 
 		int mat_counter = 0;
@@ -324,9 +326,9 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		}
 		std::cout << "mat_counter: " << mat_counter << std::endl;
 
-		for (int i = 0; i < references.size(); i++) {
-			std::cout << "new references: " << references[i] << std::endl;
-		}
+		//for (int i = 0; i < references.size(); i++) {
+		//	std::cout << "new references: " << references[i] << std::endl;
+		//}
 
 		std::vector<std::complex<double>> referenceVals(references.size());
 
@@ -341,6 +343,10 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 			std::cout << "Testing for reference number: " << i << std::endl;
 			referenceVals[i] = HOPS::sensitivity_to_epsr(in_file_name, HOPS_splitting[i], qoi_list[i], references[i]);
 
+		}
+
+		if (HOPS_splitting.size() >= 10) {
+			break;
 		}
 
 		double loError = 0.0;
@@ -379,7 +385,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 			//[i][val] is hi side on current point, [i+1][val-1] is lo side on the next point
 		
-			hiError = std::abs(qoi_list[i][val] - qoi_list[i + 1][val - 1]) / std::abs(qoi_list[i][val]);
+			hiError = std::abs(qoi_list[i][val] - qoi_list[i + 1][val - 1]) / std::abs(qoi_list[i][val] + qoi_list[i+1][val-1])/2.0;
 
 			//old method
 			//hiError = std::abs(referenceVals[i + 1] - qoi_list[i][val]) / std::abs(referenceVals[i + 1]);
