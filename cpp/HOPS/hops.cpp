@@ -7,6 +7,11 @@ std::complex<double> get_QoI2(Domain& dom_forward, Domain& dom_adjoint) {
 	return qoi;
 }
 
+inline std::complex<double> operator/(std::complex<double> c1, double d1) {
+	std::complex<double> output = { c1.real() / d1, c1.imag() / d1 };
+	return output;
+}
+
 double norm(std::vector < std::complex<double>> v1) {
 	std::complex<double> norm = 0.0;
 	for (int i = 0; i < v1.size(); ++i) {
@@ -188,7 +193,9 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	materials_in.close();
 
 	//acceptable error
-	double delta = 0.08;
+	double delta = 0.05;
+	std::vector<double> stdDevRCSList;
+	std::vector<std::complex<double>> stdDevList;
 
 	/*std::vector<std::complex<double>> references = {{30000000, 0.0}};
 	double diff = 500000000;*/
@@ -217,6 +224,18 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	std::string in_file_name;
 
 	int iterations = 0;
+
+	std::vector<std::vector<double>> RCS(references.size());
+	std::complex<double> sum = 0.0;
+	double sumRCS = 0.0;
+
+	std::complex<double> mean;
+	double meanRCS;
+
+	std::complex<double> stdDev = 0.0;
+	double stdDevRCS = 0.0;
+
+
 	while (toggle) {
 		std::cout << "_____________________________________________________________Pass in the for loop_______________________________________________\n";
 
@@ -225,6 +244,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 		qoi_list.resize(references.size());
 		HOPS_splitting.resize(references.size());
+		RCS.resize(references.size());
 
 		for (int i = 0; i < references.size(); ++i) {
 			std::cout << "references[i]: " << references[i] << "  refIndex: " << refIndex[i] << std::endl;
@@ -345,9 +365,53 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 		}
 
-		if (HOPS_splitting.size() >= 10) {
+		
+
+		//end condition based on convergence
+		double size = 0.0;
+		for (int i = 0; i < qoi_list.size(); i++) {
+			for (int j = 0; j < qoi_list[i].size() - 2; j++) {
+				sum = sum + qoi_list[i][j];
+				RCS[i].push_back(sqrt(qoi_list[i][j].real() * qoi_list[i][j].real() + qoi_list[i][j].imag() * qoi_list[i][j].imag()) / (4 * 3.14159));
+				sumRCS = sumRCS + RCS[i][j];
+				size = size + 1.0;
+			}
+		}
+
+		mean = sum / size;
+		meanRCS = sumRCS / size;
+
+		
+		for (int i = 0; i < qoi_list.size(); i++) {
+			for (int j = 0; j < qoi_list[i].size(); ++j) {
+				stdDev = stdDev + (qoi_list[i][j] - mean) * (qoi_list[i][j] - mean);
+				stdDevRCS = stdDevRCS + (RCS[i][j] - meanRCS) * (RCS[i][j] - meanRCS);
+				
+			}
+		}
+		stdDev = sqrt(stdDev / size);
+		stdDevRCS = sqrt(stdDevRCS / size);
+		
+
+		stdDevList.push_back(stdDev);
+		stdDevRCSList.push_back(stdDevRCS);
+		
+		double devChange = abs(stdDevList[stdDevList.size() - 1] - stdDevList[stdDevList.size() - 2]) / abs(stdDevList[stdDevList.size() - 1] + stdDevList[stdDevList.size() - 2]) / 2.0;
+		double devChangeRCS = abs(stdDevRCSList[stdDevRCSList.size() - 1] - stdDevRCSList[stdDevRCSList.size() - 2]) / abs(stdDevRCSList[stdDevRCSList.size() - 1] + stdDevRCSList[stdDevRCSList.size() - 2]) / 2.0;
+
+		std::cout << "Mean: " << stdDevRCS<< " std dev: " << meanRCS << std::endl;
+
+		if (devChangeRCS < 0.05) {
+			std::cout << "Convergence condition met" << std::endl;		
 			break;
 		}
+
+
+		
+		////end condition based on iterations
+		//if (HOPS_splitting.size() >= 10) {
+		//	break;
+		//}
 
 		double loError = 0.0;
 		double hiError = 0.0;
@@ -357,10 +421,6 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		int val = references.size()-1;
 		std::vector<std::complex<double>> referencesNew = references;
 		std::vector<int> refIndexNew = refIndex;
-
-		for (int i = 0; i < references.size(); i++) {
-			std::cout << "third references: " << references[i] << std::endl;
-		}
 
 		int index = 0;
 		//std::cout << "references.size(): " << references.size() << std::endl;
@@ -421,30 +481,23 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		//refIndex.clear();
 
 
-		std::cout << "references.size() " <<references.size() << std::endl;
+		std::cout << "references.size() " << references.size() << std::endl;
 		//std::vector<std::vector<std::complex<double>>> qoi_list(references.size());
 		//std::vector<std::vector<std::complex<double>>> HOPS_splitting(references.size());
-		std::cout << "Number of iterations: " << iterations << std::endl;
-		iterations++;
-		if (iterations >= 6) { break; }
+		//std::cout << "Number of iterations: " << iterations << std::endl;
+		//iterations++;
+		//if (iterations >= 6) { break; }
 	}
 
 	std::cout << "out of the while loop=============================";
 
-	for (int i = 0; i < qoi_list.size(); ++i) {
-		for (int k = 0; k < qoi_list[i].size(); ++k) {
-			std::cout << qoi_list[i][k] << std::endl;
-		}
-	}
-
 	//output results to file
-	std::ofstream qoi_dist_out("../ioFiles/output/qoi_HOPS5_dist_normal_dev4.txt");
+	std::ofstream qoi_dist_out("../ioFiles/output/qoi_HOPS_dist_normal_AR.txt");
 	std::cout << qoi_list.size() << std::endl;
 	int index = 0;
 	for (int i = 0; i < qoi_list.size(); i++) {
 		//need to remove the max/min test values for each of the batches
-		//remove 1 for new method, 2 for older version
-		for (int j = 0; j < qoi_list[i].size()-1; ++j) {
+		for (int j = 0; j < qoi_list[i].size()-2; ++j) {
 			if (index > HOPS_splitting[index].size()) index++;
 			//std::cout << "i: " << i << " j: " << j << std::endl;
 			qoi_dist_out << HOPS_splitting[i][j].real() << " " << qoi_list[i][j].real() << " " << qoi_list[i][j].imag() << std::endl;
