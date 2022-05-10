@@ -182,7 +182,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 	//load in the list of random materials being tested
 	std::vector<std::complex<double>> material_list;
-	std::ifstream materials_in("../ioFiles/input/frequencies_list_low_normal_dev5.txt");
+	std::ifstream materials_in("../ioFiles/input/frequencies_list_low_uniform_dev5.txt");
 	std::string line;
 	//std::cout << "Current rounding material values to match the shitty output from MATLAB!" << std::endl;
 	while (std::getline(materials_in, line)) {
@@ -200,7 +200,11 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	/*std::vector<std::complex<double>> references = {{30000000, 0.0}};
 	double diff = 500000000;*/
 
+	// reference files a
 	std::vector<std::complex<double>> referencesFull = { 10000000.000000, 10600000.000000, 11200000.000000, 11800000.000000, 12400000.000000, 13000000.000000, 13600000.000000, 14200000.000000, 14800000.000000, 15400000.000000, 16000000.000000, 16600000.000000, 17200000.000000, 17800000.000000, 18400000.000000, 19000000.000000, 19600000.000000, 20200000.000000, 20800000.000000, 21400000.000000, 22000000.000000, 22600000.000000, 23200000.000000, 23800000.000000, 24400000.000000, 25000000.000000, 25600000.000000, 26200000.000000, 26800000.000000, 27400000.000000, 28000000.000000, 28600000.000000, 29200000.000000, 29800000.000000, 30400000.000000, 31000000.000000, 31600000.000000, 32200000.000000, 32800000.000000, 33400000.000000, 34000000.000000, 34600000.000000, 35200000.000000, 35800000.000000, 36400000.000000, 37000000.000000, 37600000.000000, 38200000.000000, 38800000.000000, 39400000.000000, 40000000.000000};
+	
+	//references b
+	//std::vector<std::complex<double>> referencesFull = { 15000000.000000, 17727272.727273, 20454545.454545, 23181818.181818, 25909090.909091, 28636363.636364, 31363636.363636, 34090909.090909, 36818181.818182, 39545454.545455, 42272727.272727, 45000000.000000 };
 	//std::vector<std::complex<double>> referencesFull = { 15000000,15416666.6666667,15833333.3333333,16250000,16666666.6666667,17083333.3333333,17500000,17916666.6666667,18333333.3333333,18750000,19166666.6666667,19583333.3333333,20000000,20416666.6666667,20833333.3333333,21250000,21666666.6666667,22083333.3333333,22500000,22916666.6666667,23333333.3333333,23750000,24166666.6666667,24583333.3333333,25000000,25416666.6666667,25833333.3333333,26250000,26666666.6666667,27083333.3333333,27500000,27916666.6666667,28333333.3333333,28750000,29166666.6666667,29583333.3333333,30000000,30416666.6666667,30833333.3333333,31250000,31666666.6666667,32083333.3333333,32500000,32916666.6666667,33333333.3333333,33750000,34166666.6666667,34583333.3333333,35000000,35416666.6666667,35833333.3333333,36250000,36666666.6666667,37083333.3333333,37500000,37916666.6666667,38333333.3333333,38750000,39166666.6666667,39583333.3333333,40000000 };
 	//double diff = abs(references[1].real() - references[0].real()) / 2.0;
 
@@ -241,10 +245,14 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 		qoi_list.clear();
 		HOPS_splitting.clear();
+		RCS.clear();
 
 		qoi_list.resize(references.size());
 		HOPS_splitting.resize(references.size());
 		RCS.resize(references.size());
+
+		std::cout << "check here: RCS: " << RCS[1].size() << " qoi: " << qoi_list[1].size() << std::endl;
+
 
 		for (int i = 0; i < references.size(); ++i) {
 			std::cout << "references[i]: " << references[i] << "  refIndex: " << refIndex[i] << std::endl;
@@ -381,14 +389,17 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		mean = sum / size;
 		meanRCS = sumRCS / size;
 
-		
+
 		for (int i = 0; i < qoi_list.size(); i++) {
-			for (int j = 0; j < qoi_list[i].size(); ++j) {
+			std::cout << "RCS[" << i << "].size() " << RCS[i].size() << "  qoi: " << qoi_list[i].size() << std::endl;
+			for (int j = 0; j < qoi_list[i].size()-2; ++j) {
 				stdDev = stdDev + (qoi_list[i][j] - mean) * (qoi_list[i][j] - mean);
 				stdDevRCS = stdDevRCS + (RCS[i][j] - meanRCS) * (RCS[i][j] - meanRCS);
 				
 			}
 		}
+		std::cout << "Made it here ---------------------------------------\n";
+
 		stdDev = sqrt(stdDev / size);
 		stdDevRCS = sqrt(stdDevRCS / size);
 		
@@ -398,7 +409,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		
 		double devChange = abs(stdDevList[stdDevList.size() - 1] - stdDevList[stdDevList.size() - 2]) / abs(stdDevList[stdDevList.size() - 1] + stdDevList[stdDevList.size() - 2]) / 2.0;
 		double devChangeRCS = abs(stdDevRCSList[stdDevRCSList.size() - 1] - stdDevRCSList[stdDevRCSList.size() - 2]) / abs(stdDevRCSList[stdDevRCSList.size() - 1] + stdDevRCSList[stdDevRCSList.size() - 2]) / 2.0;
-
+		
 		std::cout << "Mean: " << stdDevRCS<< " std dev: " << meanRCS << std::endl;
 
 		if (devChangeRCS < 0.05) {
@@ -492,7 +503,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	std::cout << "out of the while loop=============================";
 
 	//output results to file
-	std::ofstream qoi_dist_out("../ioFiles/output/qoi_HOPS_dist_normal_AR.txt");
+	std::ofstream qoi_dist_out("../ioFiles/output/qoi_HOPS_dist_uniform_AR.txt");
 	std::cout << qoi_list.size() << std::endl;
 	int index = 0;
 	for (int i = 0; i < qoi_list.size(); i++) {
