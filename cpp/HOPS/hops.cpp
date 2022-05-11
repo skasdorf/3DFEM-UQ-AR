@@ -193,12 +193,17 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	materials_in.close();
 
 	//acceptable error
-	double delta = 0.05;
+	double delta = 0.08;
+
+	//convergence condition
+	double stdLim = 0.1;
+
+	//iteration limit
+	int itLim = 3;
+
 	std::vector<double> stdDevRCSList;
 	std::vector<std::complex<double>> stdDevList;
 
-	/*std::vector<std::complex<double>> references = {{30000000, 0.0}};
-	double diff = 500000000;*/
 
 	// reference files a
 	std::vector<std::complex<double>> referencesFull = { 10000000.000000, 10600000.000000, 11200000.000000, 11800000.000000, 12400000.000000, 13000000.000000, 13600000.000000, 14200000.000000, 14800000.000000, 15400000.000000, 16000000.000000, 16600000.000000, 17200000.000000, 17800000.000000, 18400000.000000, 19000000.000000, 19600000.000000, 20200000.000000, 20800000.000000, 21400000.000000, 22000000.000000, 22600000.000000, 23200000.000000, 23800000.000000, 24400000.000000, 25000000.000000, 25600000.000000, 26200000.000000, 26800000.000000, 27400000.000000, 28000000.000000, 28600000.000000, 29200000.000000, 29800000.000000, 30400000.000000, 31000000.000000, 31600000.000000, 32200000.000000, 32800000.000000, 33400000.000000, 34000000.000000, 34600000.000000, 35200000.000000, 35800000.000000, 36400000.000000, 37000000.000000, 37600000.000000, 38200000.000000, 38800000.000000, 39400000.000000, 40000000.000000};
@@ -273,11 +278,6 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		//this sets the diff for the last element diffLo[end] = diffLo[end-1] diffHi[end] shouldn't be needed provided the final reference is higher than any monte carlo point
 		diffLo[diffLo.size() - 1] = diffHi[diffLo.size() - 2];
 		diffHi[diffHi.size() - 1] = diffHi[diffLo.size() - 2];
-
-		//for (int i = 0; i < references.size(); ++i) {
-		//	std::cout << "diffLo[i]: " << diffLo[i] << std::endl;
-		//	std::cout << "diffHi[i]: " << diffHi[i] << std::endl;
-		//}
 		//double diff = (references[1].real() - references[0].real()) / 2.0;
 
 		int mat_counter = 0;
@@ -337,8 +337,6 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 				HOPS_splitting[i].push_back(0.0);
 
 
-
-
 			//original method
 			//if (i == 0)
 			//	HOPS_splitting[i].push_back(references[i]);
@@ -391,14 +389,12 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 
 		for (int i = 0; i < qoi_list.size(); i++) {
-			std::cout << "RCS[" << i << "].size() " << RCS[i].size() << "  qoi: " << qoi_list[i].size() << std::endl;
 			for (int j = 0; j < qoi_list[i].size()-2; ++j) {
 				stdDev = stdDev + (qoi_list[i][j] - mean) * (qoi_list[i][j] - mean);
 				stdDevRCS = stdDevRCS + (RCS[i][j] - meanRCS) * (RCS[i][j] - meanRCS);
 				
 			}
 		}
-		std::cout << "Made it here ---------------------------------------\n";
 
 		stdDev = sqrt(stdDev / size);
 		stdDevRCS = sqrt(stdDevRCS / size);
@@ -412,17 +408,13 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		
 		std::cout << "Mean: " << stdDevRCS<< " std dev: " << meanRCS << std::endl;
 
-		if (devChangeRCS < 0.05) {
+		if (devChangeRCS < stdLim) {
 			std::cout << "Convergence condition met" << std::endl;		
 			break;
 		}
 
 
-		
-		////end condition based on iterations
-		//if (HOPS_splitting.size() >= 10) {
-		//	break;
-		//}
+		//adding references point based on error
 
 		double loError = 0.0;
 		double hiError = 0.0;
@@ -464,8 +456,16 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 			if (hiError > delta){
 				toggle = true;
 				//references = vectorInsert(i + 1, (references[i + 1] - references[i]) / 2.0 + references[i], newVector);
-				references.insert(it + i + index + 1, (references[i + index + 1] - references[i + index]) / 2.0 + references[i + index]);
-			    refIndex.insert(it2 + i + index + 1, (refIndex[i + index + 1] - refIndex[i + index]) / 2 + refIndex[i + index]);
+
+
+
+				//old method, doesn't get exactly correct frequency value
+				//references.insert(it + i + index + 1, (references[i + index + 1] - references[i + index]) / 2.0 + references[i + index]);
+				
+				int refFullIndex = (refIndex[i + index + 1] - refIndex[i + index]) / 2 + refIndex[i + index];
+				references.insert(it + i + index + 1, referencesFull[refFullIndex]);
+				
+			    refIndex.insert(it2 + i + index + 1, refFullIndex);
 
 				//account for the extra element in references
 				index++;
@@ -481,23 +481,11 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 			//}
 		}
 
-		//references.clear();
-		//references.resize(referencesNew.size());
-		//references = referencesNew;
-		//referencesNew.clear();
-
-		//refIndex.clear();
-		//refIndex.resize(refIndexNew.size());
-		//refIndex = refIndexNew;
-		//refIndex.clear();
-
-
-		std::cout << "references.size() " << references.size() << std::endl;
-		//std::vector<std::vector<std::complex<double>>> qoi_list(references.size());
-		//std::vector<std::vector<std::complex<double>>> HOPS_splitting(references.size());
-		//std::cout << "Number of iterations: " << iterations << std::endl;
-		//iterations++;
-		//if (iterations >= 6) { break; }
+		iterations++;
+		if (iterations >= itLim) { 
+			std::cout << "iteration condition met\n";
+			break; 
+		}
 	}
 
 	std::cout << "out of the while loop=============================";
