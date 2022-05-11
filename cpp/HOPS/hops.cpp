@@ -457,6 +457,14 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 			//this is done to subdivide highest error
 			if (hiError > hiErrorCheck) {
+
+				//check to see if the value is already contained in the vector
+				int refFullIndex = (refIndex[i + 1] - refIndex[i]) / 2 + refIndex[i];
+				if (std::find(refIndex.begin(), refIndex.end(), refFullIndex) != refIndex.end()) { 
+					std::cout << "found a duplicate\n";
+					break; 
+				}
+
 				hiErrorIndex = i;
 				hiErrorCheck = hiError;
 			}
