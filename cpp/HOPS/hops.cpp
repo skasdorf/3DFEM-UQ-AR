@@ -193,13 +193,13 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	materials_in.close();
 
 	//acceptable error
-	double delta = 0.05;
+	double delta = 0.08;
 
 	//convergence condition
-	double stdLim = 0.05;
+	double stdLim = 0.1;
 
 	//iteration limit
-	int itLim = 6;
+	int itLim = 4;
 
 	std::vector<double> stdDevRCSList;
 	std::vector<std::complex<double>> stdDevList;
@@ -286,6 +286,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 
 		for (int j = 0; j < material_list.size(); ++j) {
+			if (material_list[j].real() < 15.5e6) { continue; }
 			for (int i = 0; i < references.size(); ++i) {
 				//check if random var falls within upper lim
 				if ((material_list[j].real() - references[i].real()) >= 0.0) {
@@ -429,6 +430,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		int val = references.size()-1;
 		std::vector<std::complex<double>> referencesNew = references;
 		std::vector<int> refIndexNew = refIndex;
+		int index = 0;
 
 		//std::cout << "references.size(): " << references.size() << std::endl;
 		for (int i = 0; i < val; ++i) {
@@ -452,7 +454,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 			//[i][val] is hi side on current point, [i+1][val-1] is lo side on the next point
 		
-			hiError = std::abs(qoi_list[i][val] - qoi_list[i + 1][val - 1]) / std::abs(qoi_list[i][val] + qoi_list[i+1][val-1])/2.0;
+			hiError = std::abs(qoi_list[i][val] - qoi_list[i + 1][val - 1]) / (std::abs(qoi_list[i][val] + qoi_list[i+1][val-1])/2.0);
 
 
 			//this is done to subdivide highest error
@@ -469,10 +471,11 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 				hiErrorCheck = hiError;
 			}
 			//old method
-			//hiError = std::abs(referenceVals[i + 1] - qoi_list[i][val]) / std::abs(referenceVals[i + 1]);
-
-
+			
 			////////////////////////////////this method subdivides everywhere///////////////////////////////////
+			
+			//hiError = std::abs(referenceVals[i + 1] - qoi_list[i][val]) / std::abs(referenceVals[i + 1]);
+			//			
 			//if (hiError > delta){
 			//	toggle = true;
 			//	
@@ -495,7 +498,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 			//}
 		}
 
-		////////////also done to subdivide lowest error////////////////////
+		////////////done to subdivide lowest error////////////////////
 		auto it = references.begin();
 		auto it2 = refIndex.begin();
 		int refFullIndex = (refIndex[hiErrorIndex + 1] - refIndex[hiErrorIndex]) / 2 + refIndex[hiErrorIndex];
@@ -515,7 +518,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	std::cout << "out of the while loop=============================";
 
 	//output results to file
-	std::ofstream qoi_dist_out("../ioFiles/output/sweep/qoi_HOPS_dist_normal_AR8.txt");
+	std::ofstream qoi_dist_out("../ioFiles/output/sweep/qoi_HOPS_dist_normal_AR6.txt");
 	std::cout << qoi_list.size() << std::endl;
 	int index = 0;
 	for (int i = 0; i < qoi_list.size(); i++) {
