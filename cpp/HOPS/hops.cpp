@@ -192,10 +192,10 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	double delta = 0.0008;
 
 	//convergence condition
-	double stdLim = 0.1;
+	double stdLim = 0.0001;
 
 	//iteration limit
-	int itLim = 7;
+	int itLim = 2;
 
 	std::vector<double> stdDevRCSList;
 	std::vector<std::complex<double>> stdDevList;
@@ -218,14 +218,15 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	double size = referencesFull.size();
 
 	//initial set of the references to be passed into HOPS (first, middle, last) requires odd number of references in the full vector
-	std::vector<std::complex<double>> references = { referencesFull[0], referencesFull[(size - 1) / 2], referencesFull[size - 1] };
+	//std::vector<std::complex<double>> references = { referencesFull[0], referencesFull[(size - 1) / 2], referencesFull[size - 1] };
+	std::vector<std::complex<double>> references = { referencesFull[0],referencesFull[1], referencesFull[2],referencesFull[4],referencesFull[6],referencesFull[7],referencesFull[9] };
 	//std::vector<std::complex<double>> references = referencesFull;
 	std::vector<std::vector<std::complex<double>>> qoi_list(references.size());
 	std::vector<std::vector<std::complex<double>>> HOPS_splitting(references.size());
 
 	//refIndex is the index of the ref_i file so that it can be called correctly from the reference_files folder
-	std::vector<int> refIndex = { 0, int(size - 1) / 2, int(size - 1) };
-	//std::vector<int> refIndex = {  };
+	//std::vector<int> refIndex = { 0, int(size - 1) / 2, int(size - 1) };
+	std::vector<int> refIndex = {0,1, 2, 4, 6, 7, 9 };
 
 
 	//toggle to end the while loop
@@ -469,7 +470,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 			int jMin = HOPS_splitting[i+1].size() - 2;
 			int jMax = HOPS_splitting[i].size() - 1;
 
-			//stupid add iterators, fuck you
+			//stupid ass iterators, i hate you
 			auto it = references.begin();
 			auto it2 = refIndex.begin();
 			//if (i == references.size() - 1) { break; }
@@ -492,10 +493,16 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 			//[i][val] is hi side on current point, [i+1][val-1] is lo side on the next point
 
 
-			//  max - min(i+1) / 
-			hiError = std::abs(qoi_list[i][jMax] - qoi_list[i + 1][jMin]) / (std::abs(qoi_list[i][jMax] + qoi_list[i + 1][jMin]) / 2.0);
+			//  max - min(i+1)
 
-			std::cout << "hiError: " << hiError << "  i: " << i << " j: " << jMin << "  refIndex[i]: " << refIndex[i] << " splitting[i][j+1] " << HOPS_splitting[i][jMax] << "  splitting[i+1][j] " << HOPS_splitting[i + 1][jMin] << std::endl;
+			//calculate RCS max and min values for error calculation
+			double RCSmax = (qoi_list[i][jMax].real() * qoi_list[i][jMax].real() + qoi_list[i][jMax].imag() * qoi_list[i][jMax].imag()) / (4 * 3.14159);
+			double RCSmin = (qoi_list[i+1][jMin].real() * qoi_list[i + 1][jMin].real() + qoi_list[i + 1][jMin].imag() * qoi_list[i + 1][jMin].imag()) / (4 * 3.14159);
+			hiError = std::abs(RCSmax - RCSmin) / std::abs(RCSmax + RCSmin);
+			//issue with abs vs RCS calculation
+			//hiError = std::abs(qoi_list[i][jMax] - qoi_list[i + 1][jMin]) / (std::abs(qoi_list[i][jMax] + qoi_list[i + 1][jMin]));
+
+			std::cout << "hiError: " << hiError << "  i: " << i << " j: " << jMin << "  refIndex[i]: " << refIndex[i] << " (max)splitting[i][j+1] " << qoi_list[i][jMax] << " (min next point) splitting[i+1][j] " << qoi_list[i + 1][jMin] << std::endl;
 
 
 
@@ -567,7 +574,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	std::cout << "out of the while loop=============================\n";
 
 	//output results to file
-	std::ofstream qoi_dist_out("../ioFiles/output/sweep/qoi_HOPS_materialAR6.txt");
+	std::ofstream qoi_dist_out("../ioFiles/output/sweep/qoi_HOPS_materialAR8.txt");
 	int index = 0;
 	for (int i = 0; i < qoi_list.size(); i++) {
 		//need to remove the max/min test values for each of the batches
