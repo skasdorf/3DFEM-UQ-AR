@@ -219,14 +219,14 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 	//initial set of the references to be passed into HOPS (first, middle, last) requires odd number of references in the full vector
 	//std::vector<std::complex<double>> references = { referencesFull[0], referencesFull[(size - 1) / 2], referencesFull[size - 1] };
-	std::vector<std::complex<double>> references = { referencesFull[0],referencesFull[1], referencesFull[2],referencesFull[4],referencesFull[6],referencesFull[7],referencesFull[9] };
+	std::vector<std::complex<double>> references = { referencesFull[0],referencesFull[1], referencesFull[2],referencesFull[3],referencesFull[4],referencesFull[6],referencesFull[7],referencesFull[9] };
 	//std::vector<std::complex<double>> references = referencesFull;
 	std::vector<std::vector<std::complex<double>>> qoi_list(references.size());
 	std::vector<std::vector<std::complex<double>>> HOPS_splitting(references.size());
 
 	//refIndex is the index of the ref_i file so that it can be called correctly from the reference_files folder
 	//std::vector<int> refIndex = { 0, int(size - 1) / 2, int(size - 1) };
-	std::vector<int> refIndex = {0,1, 2, 4, 6, 7, 9 };
+	std::vector<int> refIndex = {0,1, 2,3, 4, 6, 7, 9 };
 
 
 	//toggle to end the while loop
@@ -514,7 +514,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 				int refFullIndex = (refIndex[i + 1] - refIndex[i]) / 2 + refIndex[i];
 				if (std::find(refIndex.begin(), refIndex.end(), refFullIndex) != refIndex.end()) {
 					std::cout << "found a duplicate\n";
-					break;
+					continue;
 				}
 
 				hiErrorIndex = i;
@@ -574,7 +574,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	std::cout << "out of the while loop=============================\n";
 
 	//output results to file
-	std::ofstream qoi_dist_out("../ioFiles/output/sweep/qoi_HOPS_materialAR8.txt");
+	std::ofstream qoi_dist_out("../ioFiles/output/sweep/qoi_HOPS_materialAR9.txt");
 	int index = 0;
 	for (int i = 0; i < qoi_list.size(); i++) {
 		//need to remove the max/min test values for each of the batches
