@@ -1932,8 +1932,19 @@ void Domain::findelements_abs_sparse() {
 				j0 = lMat - e->unknownsStart + 1;
 				//perturbed k0
 				//std::cout << "k0 factor: " << k0 << "cEps factor: " << cEps << std::endl;
-				e->cBr_HOPS(i0, j0) = 2.0*k0*cSolB*cEps;
-				e->cBr_HOPS(j0, i0) = e->cBr_HOPS(i0,j0);
+
+
+				//////////////////////////////Frequency Perturbation///////////////////////////////////////////////
+				//e->cBr_HOPS(i0, j0) = 2.0*k0*cSolB*cEps;
+				////--------------------------------------------------------------------------------------------------
+
+				////////////////////////////Material Perturbation////////////////////////////////////////////////
+				e->cBr_HOPS(i0, j0) = k0 * k0 * cSolB;
+				////-------------------------------------------------------------------------------------------------
+
+				e->cBr_HOPS(j0, i0) = e->cBr_HOPS(i0, j0);
+
+
 				if (iHomCode == 1 && aCode == 1) {
 					cSolA = cSolA / cMu;
 					cSolB = cEps * cSolB;

@@ -296,12 +296,26 @@ void Integral_g::findGWave(Scatter*scatter1, const std::vector<int>& vectorD, co
 						if (e->cGr_eps_el[iCon] != 0.0) {
 							std::cout << "What the fuckkk" << std::endl;
 						}
-						e->cGr_eps_el[iCon] = -scatter1->K0[freqNumber] * 2.0 *cSolG_eps;
+						////////////////////////////////Frequency Perturbation//////////////////////////////////////////
+						//e->cGr_eps_el[iCon] = -1.0*scatter1->K0[freqNumber] * 2.0 *cSolG_eps;
+						//---------------------------------------------------------------------------------------------
+
+						////////////////////////////////Material Perturbation//////////////////////////////////////////
+						e->cGr_eps_el[iCon] = -1.0 * scatter1->K0[freqNumber] * scatter1->K0[freqNumber] * cSolG_eps / e->materials.epsr_list[0][0];
+						//---------------------------------------------------------------------------------------------
 					}
 					else {
+						////////////////////////////////Frequency Perturbation//////////////////////////////////////////
+						//scatter1->cGr[freqNumber][iCon] = scatter1->cGr[freqNumber][iCon] + 2.0 * scatter1->K0[freqNumber] * cSolGtotal;
+						//scatter1->cGr_eps[iCon] = scatter1->cGr_eps[iCon] + 2.0 * scatter1->K0[freqNumber] * cSolG_eps;
+						//e->cGr_eps_el[iCon] =scatter1->K0[freqNumber] * 2.0 * cSolG_eps;
+						//-----------------------------------------------------------------------------------------------
+
+						////////////////////////////////Material Perturbation//////////////////////////////////////////
 						scatter1->cGr[freqNumber][iCon] = scatter1->cGr[freqNumber][iCon] + scatter1->K0[freqNumber] * scatter1->K0[freqNumber] * cSolGtotal;
-						scatter1->cGr_eps[iCon] = scatter1->cGr_eps[iCon] + scatter1->K0[freqNumber] * scatter1->K0[freqNumber] * cSolG_eps;
-						e->cGr_eps_el[iCon] =scatter1->K0[freqNumber] * scatter1->K0[freqNumber] * cSolG_eps;
+						scatter1->cGr_eps[iCon] = scatter1->cGr_eps[iCon] + scatter1->K0[freqNumber] * scatter1->K0[freqNumber] * cSolG_eps / e->materials.epsr_list[0][0];
+						e->cGr_eps_el[iCon] = scatter1->K0[freqNumber] * scatter1->K0[freqNumber] * cSolG_eps / e->materials.epsr_list[0][0];
+						//--------------------------------------------------------------------------------------------
 					}
 				}
 

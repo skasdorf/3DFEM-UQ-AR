@@ -67,6 +67,7 @@ std::complex<double> HOPS::sensitivity_to_epsr(std::string & file_name, std::vec
 	//get the forward solution
 	auto t1 = std::chrono::high_resolution_clock::now();
 	Domain dom_forward(mesh_name);
+
 	run::_standard(dom_forward, mesh_name, plot, false, higher_order, check_results, false, referenceFreq.real());
 	std::cout << "Forward solve time: " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - t1).count() << std::endl;
 	//get the adjoint solution
@@ -77,14 +78,6 @@ std::complex<double> HOPS::sensitivity_to_epsr(std::string & file_name, std::vec
 	std::complex<double> reference_qoi = get_QoI(dom_forward, dom_adjoint);
 
 	std::cout << "reference qoi: " << reference_qoi << " scattered field: " << std::endl;
-	//std::vector<double> iR(dom_forward.iRow.begin(), dom_forward.iRow.end());
-	//std::vector<Eigen::dcomplex> cEsc = postproc::findesc(dom_forward, k0, iR);
-	//std::cout << "Reference scattered field: " << reference_esc << std::endl;
-	//
-	//std::complex<double> reference_qoi = postproc::findrcs(dom_forward, cEsc, k0);
-	/*std::complex<double> test_qoi = get_QoI2(dom_forward, dom_adjoint);
-	std::cout << "ref: " << reference_qoi << " test: " << test_qoi << std::endl;*/
-	//get epsilon difference (of element in the scatterer)
 	
 	std::complex<double> eps_diff = 0.0;
 	std::complex<double> reference_material = 0.0;
@@ -98,17 +91,14 @@ std::complex<double> HOPS::sensitivity_to_epsr(std::string & file_name, std::vec
 	}
 	//get the remainder of the estimate
 	std::complex<double> dQoI = 0.0;
-	//loop through the stored RHS pieces from the forward solve and scale by the conjugate of the adjoint
-	//for (int j = 0; j < dom_adjoint.cAlpha.size(); ++j) {
-	//	dQoI += eps_diff*dom_forward.scatter1.cGr_eps[j] * std::conj(dom_adjoint.cAlpha[j]); //anything associated with air or pml is zero anyway...
-	//}
 	std::cout << "current dQoI: " << dQoI << std::endl;
 	std::complex<double> dQoI2 = 0.0, dQoI1 = 0.0, dQoI2_ver1 = 0.0, dQoI2_ver2 = 0.0;
 	//loop through the stored Bint pieces
 	for (auto e = dom_forward.elements.begin(); e != dom_forward.elements.end(); ++e) {
 
-		//if (e->materials.region == 1) {
-			//if in scatterer
+		////////////////////Material Perturbation//////////////////////////////////////
+		if (e->materials.region == 1) {
+			// ------------------------------------------------------------------------------
 			for (int i_unkn = e->unknownsStart; i_unkn <= e->unknownsEnd; ++i_unkn) {
 				int icon = abs(dom_forward.vectorD[i_unkn]);
 				dQoI += e->cGr_eps_el[icon] * std::conj(dom_adjoint.cAlpha[icon]);
@@ -124,20 +114,27 @@ std::complex<double> HOPS::sensitivity_to_epsr(std::string & file_name, std::vec
 					dQoI += e->cBr_HOPS(i0, j0)*dom_forward.cAlpha[icon] * std::conj(dom_adjoint.cAlpha[jcon]);
 				}
 			}
-		//}
+			/////////////////Material Perturbation///////////////////////////////////////////////////
+		}
+		//--------------------------------------------------------------------------------------
 	}
 	double kReal = 2 * 3.14159 / (2.99E8 / referenceFreq.real());
 	std::complex<double> referenceK = (kReal, 0.0);
 	//now have the base QoI modifier, need to scale by the change in perturbed material parameter
 	for (int i = 0; i < epsr_list.size(); ++i) {
-		//eps_diff = epsr_list[i] / k0 - 1.0;
-		//eps_diff = eps_diff * k0;
-		double k0_list = epsr_list[i].real() * 2.0 * 3.14159 / 3e8;
+		/////////////////////////////////////////Frequency Perturbation/////////////////////////////////////////////
+		//double k0_list = epsr_list[i].real() * 2.0 * 3.14159 / 3e8;
 		//eps_diff = -1.0*k0_list + k0;
-		eps_diff = (k0_list / k0 - 1.0) * k0;
-		
-		updated_qoi.push_back(reference_qoi + eps_diff * dQoI);
+		//eps_diff = (k0_list / k0 - 1.0) * k0;
+		//---------------------------------------------------------------------------------------------------------
+
+		///////////////////////////////////////Material Perturbation//////////////////////////////////////////////
+		eps_diff = epsr_list[i] - referenceFreq;
+		///-------------------------------------------------------------------------------------------------------
+
+		updated_qoi.push_back(reference_qoi + eps_diff * dQoI);// +eps_diff * eps_diff * dQoI2 / 2.0);
 		//std::cout << reference_qoi + eps_diff * dQoI << std::endl;
+		//std::cout << "qoi: " << reference_qoi + eps_diff * dQoI << std::endl;
 		
 	}
 	return reference_qoi;
@@ -173,7 +170,6 @@ void HOPS::monte_carlo_instance(std::string & file_name)
 	run::_RHS_compute(dom_adjoint_rhs, mesh_name, plot, true, higher_order, check_results);
 	//get QoI
 	std::complex<double> qoi = get_QoI2(dom_forward, dom_adjoint_rhs);
-	std::cout << "qoi at 150 MHz: " << qoi << std::endl;
 }
 
 void HOPS::multi_HOPS_epsr(std::string & file_name)
@@ -182,48 +178,54 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 	//load in the list of random materials being tested
 	std::vector<std::complex<double>> material_list;
-	std::ifstream materials_in("../ioFiles/input/frequencies_list_low_normal_dev5.txt");
+	std::ifstream materials_in("../ioFiles/input/materials_list.txt");
 	std::string line;
 	//std::cout << "Current rounding material values to match the shitty output from MATLAB!" << std::endl;
 	while (std::getline(materials_in, line)) {
-		auto data = functions::split(line, ' ');
+		auto data = functions::split(line, '\t');
 		//material_list.push_back(std::complex<double>(std::stod(data[0]), roundf(std::stod(data[1])*100.0)/100.0));
 		material_list.push_back(std::complex<double>(std::stod(data[0]), std::stod(data[1])));
 	}
 	materials_in.close();
 
 	//acceptable error
-	double delta = 0.08;
+	double delta = 0.0008;
 
 	//convergence condition
 	double stdLim = 0.1;
 
 	//iteration limit
-	int itLim = 4;
+	int itLim = 7;
 
 	std::vector<double> stdDevRCSList;
 	std::vector<std::complex<double>> stdDevList;
 
 
-	// reference files a
-	std::vector<std::complex<double>> referencesFull = { 10000000.000000, 10600000.000000, 11200000.000000, 11800000.000000, 12400000.000000, 13000000.000000, 13600000.000000, 14200000.000000, 14800000.000000, 15400000.000000, 16000000.000000, 16600000.000000, 17200000.000000, 17800000.000000, 18400000.000000, 19000000.000000, 19600000.000000, 20200000.000000, 20800000.000000, 21400000.000000, 22000000.000000, 22600000.000000, 23200000.000000, 23800000.000000, 24400000.000000, 25000000.000000, 25600000.000000, 26200000.000000, 26800000.000000, 27400000.000000, 28000000.000000, 28600000.000000, 29200000.000000, 29800000.000000, 30400000.000000, 31000000.000000, 31600000.000000, 32200000.000000, 32800000.000000, 33400000.000000, 34000000.000000, 34600000.000000, 35200000.000000, 35800000.000000, 36400000.000000, 37000000.000000, 37600000.000000, 38200000.000000, 38800000.000000, 39400000.000000, 40000000.000000};
-	
-	//references b
-	//std::vector<std::complex<double>> referencesFull = { 15000000.000000, 17727272.727273, 20454545.454545, 23181818.181818, 25909090.909091, 28636363.636364, 31363636.363636, 34090909.090909, 36818181.818182, 39545454.545455, 42272727.272727, 45000000.000000 };
-	//std::vector<std::complex<double>> referencesFull = { 15000000,15416666.6666667,15833333.3333333,16250000,16666666.6666667,17083333.3333333,17500000,17916666.6666667,18333333.3333333,18750000,19166666.6666667,19583333.3333333,20000000,20416666.6666667,20833333.3333333,21250000,21666666.6666667,22083333.3333333,22500000,22916666.6666667,23333333.3333333,23750000,24166666.6666667,24583333.3333333,25000000,25416666.6666667,25833333.3333333,26250000,26666666.6666667,27083333.3333333,27500000,27916666.6666667,28333333.3333333,28750000,29166666.6666667,29583333.3333333,30000000,30416666.6666667,30833333.3333333,31250000,31666666.6666667,32083333.3333333,32500000,32916666.6666667,33333333.3333333,33750000,34166666.6666667,34583333.3333333,35000000,35416666.6666667,35833333.3333333,36250000,36666666.6666667,37083333.3333333,37500000,37916666.6666667,38333333.3333333,38750000,39166666.6666667,39583333.3333333,40000000 };
-	//double diff = abs(references[1].real() - references[0].real()) / 2.0;
+	///////////////////////Material Perturbation/////////////////////////////////////////////////////////////////////
+	//std::vector<std::complex<double>> references = { {4.0, -2.0} };
+	std::vector<std::complex<double>> referencesFull = { {1.000000, -2.000000},{1.666667, -2.000000},{2.333333, -2.000000},{3.000000, -2.000000},{3.666667, -2.000000},{4.333333, -2.000000},{5.000000, -2.000000},{5.666667, -2.000000},{6.333333, -2.000000},{7.000000, -2.000000} };
+	//----------------------------------------------------------------------------------------------------------------
+
+	////////////////Frequency Perturbation//////////////////////////////////////////////////////////////////
+	//std::vector<std::complex<double>> references = { 10000000.000000, 12142857.142857, 14285714.285714, 16428571.428571, 18571428.571429, 20714285.714286, 22857142.857143, 25000000.000000, 27142857.142857, 29285714.285714, 31428571.428571, 33571428.571429, 35714285.714286, 37857142.857143, 40000000.000000};
+	//std::vector<std::complex<double>> references = { 10000000.000000, 17500000.000000, 25000000.000000, 32500000.000000, 40000000.000000 };
+
+	//std::vector<std::complex<double>> references = { 10000000.000000, 12727272.727273, 15454545.454545, 18181818.181818, 20909090.909091, 23636363.636364, 26363636.363636, 29090909.090909, 31818181.818182, 34545454.545455, 37272727.272727, 40000000.000000 };
+	//std::vector<std::complex<double>> references = { 10000000.000000, 11500000.000000, 13000000.000000, 14500000.000000, 16000000.000000, 17500000.000000, 19000000.000000, 20500000.000000, 22000000.000000, 23500000.000000, 25000000.000000, 26500000.000000, 28000000.000000, 29500000.000000, 31000000.000000, 32500000.000000, 34000000.000000, 35500000.000000, 37000000.000000, 38500000.000000, 40000000.000000};
+	//std::vector<std::complex<double>> references = { 15000000,15416666.6666667,15833333.3333333,16250000,16666666.6666667,17083333.3333333,17500000,17916666.6666667,18333333.3333333,18750000,19166666.6666667,19583333.3333333,20000000,20416666.6666667,20833333.3333333,21250000,21666666.6666667,22083333.3333333,22500000,22916666.6666667,23333333.3333333,23750000,24166666.6666667,24583333.3333333,25000000,25416666.6666667,25833333.3333333,26250000,26666666.6666667,27083333.3333333,27500000,27916666.6666667,28333333.3333333,28750000,29166666.6666667,29583333.3333333,30000000,30416666.6666667,30833333.3333333,31250000,31666666.6666667,32083333.3333333,32500000,32916666.6666667,33333333.3333333,33750000,34166666.6666667,34583333.3333333,35000000,35416666.6666667,35833333.3333333,36250000,36666666.6666667,37083333.3333333,37500000,37916666.6666667,38333333.3333333,38750000,39166666.6666667,39583333.3333333,40000000 };
+	////-----------------------------------------------------------------------------------------------------
 
 	double size = referencesFull.size();
 
 	//initial set of the references to be passed into HOPS (first, middle, last) requires odd number of references in the full vector
 	std::vector<std::complex<double>> references = { referencesFull[0], referencesFull[(size - 1) / 2], referencesFull[size - 1] };
-
+	//std::vector<std::complex<double>> references = referencesFull;
 	std::vector<std::vector<std::complex<double>>> qoi_list(references.size());
 	std::vector<std::vector<std::complex<double>>> HOPS_splitting(references.size());
 
 	//refIndex is the index of the ref_i file so that it can be called correctly from the reference_files folder
 	std::vector<int> refIndex = { 0, int(size - 1) / 2, int(size - 1) };
-	//std::vector<int> refIndex = { 10, 35, 60 };
+	//std::vector<int> refIndex = {  };
 
 
 	//toggle to end the while loop
@@ -256,8 +258,6 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		HOPS_splitting.resize(references.size());
 		RCS.resize(references.size());
 
-		std::cout << "check here: RCS: " << RCS[1].size() << " qoi: " << qoi_list[1].size() << std::endl;
-
 
 		for (int i = 0; i < references.size(); ++i) {
 			std::cout << "references[i]: " << references[i] << "  refIndex: " << refIndex[i] << std::endl;
@@ -267,12 +267,13 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		//diff on the low and high side of the reference point (subdivisions mean that it isn't always the same)
 		std::vector<double> diffLo(references.size());
 		std::vector<double> diffHi(references.size());
-		for (int i = 0; i < diffHi.size()-1; ++i) {
+		for (int i = 0; i < diffHi.size() - 1; ++i) {
 			diffHi[i] = abs(references[i + 1].real() - references[i].real()) / 2.0;
 			if (i == 0)
 				diffLo[i] = diffHi[i];
 			else
-				diffLo[i] = abs(references[i - 1].real() - references[i].real()) / 2.0;	
+				diffLo[i] = abs(references[i - 1].real() - references[i].real()) / 2.0;
+
 		}
 
 		//this sets the diff for the last element diffLo[end] = diffLo[end-1] diffHi[end] shouldn't be needed provided the final reference is higher than any monte carlo point
@@ -282,11 +283,9 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 		int mat_counter = 0;
 
-		std::cout << "HOPS_splitting.size(): " << HOPS_splitting.size() << "   materials_list.size(): " << material_list.size() << "   references.size(): " << references.size() << "   diffHi.size(): " << diffHi.size() << "   diffLo.size()" << diffLo.size() << std::endl;
-
 
 		for (int j = 0; j < material_list.size(); ++j) {
-			if (material_list[j].real() < 15.5e6) { continue; }
+			//if (material_list[j].real() < 15.5e6) { continue; }
 			for (int i = 0; i < references.size(); ++i) {
 				//check if random var falls within upper lim
 				if ((material_list[j].real() - references[i].real()) >= 0.0) {
@@ -319,25 +318,28 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 		}
 
-		//these are the test values to be compared generated within HOPS.  HOPS[size-2] = min, HOPS[size-1] = max
-		//new method, end point is the midpoint on the hi side, end point - 1 is the midpoint on the low side
+		//these are the test values to be compared generated within HOPS.  HOPS_splitting[size-2] = min, HOPS_splitting[size-1] = max
+		// ie first push_back is min value, second push_back is max value, within a given segment
+
 		for (int i = 0; i < references.size(); ++i) {
 
 			//HOPS_splitting[i].push_back(references[i - 1]);
 			//HOPS_splitting[i].push_back(references[i + 1]);
 
 
-			if (i != 0)
-				HOPS_splitting[i].push_back((references[i] + references[i - 1]) / 2.0);
-			else
+			if (i == 0) {
 				HOPS_splitting[i].push_back(0.0);
-
-			if (i != references.size() - 1)
 				HOPS_splitting[i].push_back((references[i] + references[i + 1]) / 2.0);
-			else
+			}
+			else if (i == references.size() - 1) {
+				HOPS_splitting[i].push_back((references[i] + references[i - 1]) / 2.0);
 				HOPS_splitting[i].push_back(0.0);
+			}
+			else {
+				HOPS_splitting[i].push_back((references[i] + references[i - 1]) / 2.0);
+				HOPS_splitting[i].push_back((references[i] + references[i + 1]) / 2.0);
 
-
+			}
 			//original method
 			//if (i == 0)
 			//	HOPS_splitting[i].push_back(references[i]);
@@ -351,6 +353,18 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 
 		}
+
+		for (int i = 0; i < references.size(); i++) {
+			std::cout << "i: " << i << " (min/max)  HOPS_Splitting[i][size-2]: " << HOPS_splitting[i][HOPS_splitting[i].size() - 2] << "  HOPS_Splitting[i][size-1]: " << HOPS_splitting[i][HOPS_splitting[i].size() - 1] << std::endl;
+		}
+
+		for (int i = 0; i < references.size(); i++) {
+			for (int j = HOPS_splitting[i].size() - 2; j < HOPS_splitting[i].size(); j++) {
+				std::cout << "New check: HOPS_Splitting[i][j]" << i << " " << j << " " << HOPS_splitting[i][j] << std::endl;
+			}
+		}
+
+
 		std::cout << "mat_counter: " << mat_counter << std::endl;
 
 		//for (int i = 0; i < references.size(); i++) {
@@ -363,16 +377,22 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		for (int i = 0; i < references.size(); ++i) {
 			if (HOPS_splitting[i].size() == 0) continue;
 			in_file_name = file_name;
-			//std::string command = "..\\file_input_converter ..\\reference_files_freq\\ref_0.in ..\\exampleFiles\\references\\";
-			std::string command = "..\\file_input_converter ..\\reference_files_freq_low\\ref_" + std::to_string(refIndex[i]) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
+
+			//////////////////////////////Frequency Perturbation///////////////////////////////////////////////////////////////////////////////////////////////
+			//std::string command = "..\\file_input_converter ..\\reference_files_freq_low_HOPS\\ref_" + std::to_string(i) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
 			//std::string command = "..\\file_input_converter ..\\reference_files_freq\\ref_3.in ..\\exampleFiles\\" + in_file_name + "\\";
+			//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+			/////////////////////////////Material Perturbation///////////////////////////////////////////////////////////////////////////////
+			//std::string command = "..\\file_input_converter ..\\reference_files_mat\\ref_0.in ..\\exampleFiles\\" + in_file_name + "\\";
+			std::string command = "..\\file_input_converter ..\\reference_files_mat\\ref_" + std::to_string(refIndex[i]) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
+			//--------------------------------------------------------------------------------------------------------------------------------------------------
+
 			std::system(command.c_str());
-			std::cout << "Testing for reference number: " << i << std::endl;
+			std::cout << "Testing for reference number: " << refIndex[i] << std::endl;
 			referenceVals[i] = HOPS::sensitivity_to_epsr(in_file_name, HOPS_splitting[i], qoi_list[i], references[i]);
 
 		}
-
-		
 
 		//end condition based on convergence
 		double size = 0.0;
@@ -390,27 +410,27 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 
 		for (int i = 0; i < qoi_list.size(); i++) {
-			for (int j = 0; j < qoi_list[i].size()-2; ++j) {
+			for (int j = 0; j < qoi_list[i].size() - 2; ++j) {
 				stdDev = stdDev + (qoi_list[i][j] - mean) * (qoi_list[i][j] - mean);
 				stdDevRCS = stdDevRCS + (RCS[i][j] - meanRCS) * (RCS[i][j] - meanRCS);
-				
+
 			}
 		}
 
 		stdDev = sqrt(stdDev / size);
 		stdDevRCS = sqrt(stdDevRCS / size);
-		
+
 
 		stdDevList.push_back(stdDev);
 		stdDevRCSList.push_back(stdDevRCS);
-		
+
 		double devChange = abs(stdDevList[stdDevList.size() - 1] - stdDevList[stdDevList.size() - 2]) / abs(stdDevList[stdDevList.size() - 1] + stdDevList[stdDevList.size() - 2]) / 2.0;
 		double devChangeRCS = abs(stdDevRCSList[stdDevRCSList.size() - 1] - stdDevRCSList[stdDevRCSList.size() - 2]) / abs(stdDevRCSList[stdDevRCSList.size() - 1] + stdDevRCSList[stdDevRCSList.size() - 2]) / 2.0;
-		
-		std::cout << "Mean: " << stdDevRCS<< " std dev: " << meanRCS << std::endl;
+
+		std::cout << "Mean: " << stdDevRCS << " std dev: " << meanRCS << std::endl;
 
 		if (devChangeRCS < stdLim) {
-			std::cout << "Convergence condition met" << std::endl;		
+			std::cout << "Convergence condition met" << std::endl;
 			break;
 		}
 
@@ -427,14 +447,29 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		toggle = false;
 
 		//val is the endpoint of HOPS_splitting
-		int val = references.size()-1;
+		int val = HOPS_splitting.size() - 1;
 		std::vector<std::complex<double>> referencesNew = references;
 		std::vector<int> refIndexNew = refIndex;
 		int index = 0;
-
+		std::cout << "++++++++++++++++++++++val: " << val << std::endl;
 		//std::cout << "references.size(): " << references.size() << std::endl;
-		for (int i = 0; i < val; ++i) {
 
+
+		for (int i = 0; i < references.size(); i++) {
+			for (int j = HOPS_splitting[i].size() - 2; j < HOPS_splitting[i].size(); j++) {
+				std::cout << "New check___2: HOPS_Splitting[i][j]" << i << " " << j << " " << HOPS_splitting[i][j] << std::endl;
+			}
+		}
+
+
+		for (int i = 0; i < references.size() - 1; ++i) {
+
+
+			//check for min or max end value of HOPS_splitting
+			int jMin = HOPS_splitting[i+1].size() - 2;
+			int jMax = HOPS_splitting[i].size() - 1;
+
+			//stupid add iterators, fuck you
 			auto it = references.begin();
 			auto it2 = refIndex.begin();
 			//if (i == references.size() - 1) { break; }
@@ -446,34 +481,42 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 
 			// 
-		//shouldn't need this with only doing hiError at the moment
-		//if (i == index - 1) {
-		//	hiError = 0.0;
-		//}
-		//else
+			//shouldn't need this with only doing hiError at the moment
+			//if (i == index - 1) {
+			//	hiError = 0.0;
+			//}
+			//else
+
+			//qoi_list[i][val] should be max, qoi_list[i][val-1] is min
 
 			//[i][val] is hi side on current point, [i+1][val-1] is lo side on the next point
-		
-			hiError = std::abs(qoi_list[i][val] - qoi_list[i + 1][val - 1]) / (std::abs(qoi_list[i][val] + qoi_list[i+1][val-1])/2.0);
+
+
+			//  max - min(i+1) / 
+			hiError = std::abs(qoi_list[i][jMax] - qoi_list[i + 1][jMin]) / (std::abs(qoi_list[i][jMax] + qoi_list[i + 1][jMin]) / 2.0);
+
+			std::cout << "hiError: " << hiError << "  i: " << i << " j: " << jMin << "  refIndex[i]: " << refIndex[i] << " splitting[i][j+1] " << HOPS_splitting[i][jMax] << "  splitting[i+1][j] " << HOPS_splitting[i + 1][jMin] << std::endl;
+
 
 
 			//this is done to subdivide highest error
 			if (hiError > hiErrorCheck) {
 
+
 				//check to see if the value is already contained in the vector
 				int refFullIndex = (refIndex[i + 1] - refIndex[i]) / 2 + refIndex[i];
-				if (std::find(refIndex.begin(), refIndex.end(), refFullIndex) != refIndex.end()) { 
+				if (std::find(refIndex.begin(), refIndex.end(), refFullIndex) != refIndex.end()) {
 					std::cout << "found a duplicate\n";
-					break; 
+					break;
 				}
 
 				hiErrorIndex = i;
 				hiErrorCheck = hiError;
 			}
 			//old method
-			
+
 			////////////////////////////////this method subdivides everywhere///////////////////////////////////
-			
+
 			//hiError = std::abs(referenceVals[i + 1] - qoi_list[i][val]) / std::abs(referenceVals[i + 1]);
 			//			
 			//if (hiError > delta){
@@ -487,15 +530,21 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 			//	index++;
 			//	std::cout << "i: " << i << "    hi error: " << hiError << "     references[i+1]: " << references[i+1] << "    references[i]: " << references[i] << std::endl;
 			//}
-			//////////////////////////////////////////////////////////////////////////////////////
-		
+			///------------------------------------------------------------------------------------------------
 
+			//don't need currently
 			//if (loError < delta) {
 			//	toggle = true;
 			//	auto it = references.begin() + i;
 			//	references.insert(it, (references[i] - references[i - 1]) / 2.0);
 			//	refIndex.insert(it, (refIndex[i] - refIndex[i - 1]) / 2);
 			//}
+	}
+
+		for (int i = 0; i < references.size(); i++) {
+			for (int j = HOPS_splitting[i].size() - 2; j < HOPS_splitting[i].size(); j++) {
+				std::cout << "New check___3____________________________: HOPS_Splitting[i][j]" << i << " " << j << " " << HOPS_splitting[i][j] << std::endl;
+			}
 		}
 
 		////////////done to subdivide lowest error////////////////////
@@ -505,28 +554,27 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		references.insert(it + hiErrorIndex + 1, referencesFull[refFullIndex]);
 		refIndex.insert(it2 + hiErrorIndex + 1, refFullIndex);
 		toggle = true;
-		//////////////////////////////////////////////////////////////////
-
 
 		iterations++;
-		if (iterations >= itLim) { 
+		if (iterations >= itLim) {
 			std::cout << "iteration condition met\n";
-			break; 
+			break;
 		}
+		///-------------------------------------------------------------
+
 	}
 
-	std::cout << "out of the while loop=============================";
+	std::cout << "out of the while loop=============================\n";
 
 	//output results to file
-	std::ofstream qoi_dist_out("../ioFiles/output/sweep/qoi_HOPS_dist_normal_AR6.txt");
-	std::cout << qoi_list.size() << std::endl;
+	std::ofstream qoi_dist_out("../ioFiles/output/sweep/qoi_HOPS_materialAR6.txt");
 	int index = 0;
 	for (int i = 0; i < qoi_list.size(); i++) {
 		//need to remove the max/min test values for each of the batches
 		for (int j = 0; j < qoi_list[i].size()-2; ++j) {
 			if (index > HOPS_splitting[index].size()) index++;
 			//std::cout << "i: " << i << " j: " << j << std::endl;
-			qoi_dist_out << HOPS_splitting[i][j].real() << " " << qoi_list[i][j].real() << " " << qoi_list[i][j].imag() << std::endl;
+			qoi_dist_out << HOPS_splitting[i][j].real() << " " << HOPS_splitting[i][j].imag() << " " << qoi_list[i][j].real() << " " << qoi_list[i][j].imag() << std::endl;
 		}
 	}
 	qoi_dist_out.close();

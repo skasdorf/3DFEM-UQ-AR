@@ -46,9 +46,16 @@ void run::_standard(Domain& dom, std::string mesh_name, bool plot, bool useAdjoi
 	fileIO.file_input(mesh_name);
 	//fileIO2.file_input(mesh_name);
 	
+	/////////////////////////////////Frequency Perturbation///////////////////////////////////////////////////
 	//control frequency from input list instead of control file
-	dom.sc.fstart = freq;
-	dom.sc.fstop = freq;
+	//dom.sc.fstart = freq;
+	//dom.sc.fstop = freq;
+	//--------------------------------------------------------------------------------------------------------
+
+	/////////////////////////////////Material Perturbation///////////////////////////////////////////////////
+	dom.sc.fstart = 200e6;
+	dom.sc.fstop = 200e6;
+	//--------------------------------------------------------------------------------------------------------
 
 	dom.sc.useAdjoint = useAdjoint;
 	dom.error = false;
