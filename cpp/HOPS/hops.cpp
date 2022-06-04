@@ -197,6 +197,25 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	}
 	materials_in.close();
 
+	//for sweeping ref inputs, otherwise use next segment for mat or freq perturbation with set references---------------------------------
+	//std::vector<double> referencesReal;
+	//std::string refString = "../reference_files_mat/input_ref_list.txt";
+	//std::ifstream refs_in(refString);
+	//std::string line2;
+	////std::cout << "Current rounding material values to match the shitty output from MATLAB!" << std::endl;
+	//while (std::getline(refs_in, line2)) {
+	//	auto data = functions::split(line2, ' ');
+	//	//material_list.push_back(std::complex<double>(std::stod(data[0]), roundf(std::stod(data[1])*100.0)/100.0));
+	//	referencesReal.push_back(std::stod(data[0]));
+	//}
+	//refs_in.close();
+	//std::vector<std::complex<double>> referencesFull;
+	//for (int i = 0; i < referencesReal.size(); i++) {
+	//	referencesFull.push_back(std::complex<double>(referencesReal[i], -2.0));
+	//}
+
+
+
 	//acceptable error
 	double delta = 0.0008;
 
@@ -204,8 +223,13 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	double stdLim = 0.0001;
 
 	//iteration limit
-	int itLim = 15;
+	int itLim = 20;
 
+	//material_list.txt
+	//double matStd = 1.0;
+	//double matMean = 4.5;
+
+	//material_list2.txt
 	double matStd = 1.0;
 	double matMean = 4.5;
 
@@ -305,40 +329,59 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 		int mat_counter = 0;
 
-
 		for (int j = 0; j < material_list.size(); ++j) {
-			//if (material_list[j].real() < 15.5e6) { continue; }
+			double min_dist = 1.0e15;
+			int min_index = -1;
+
 			for (int i = 0; i < references.size(); ++i) {
 				//check if random var falls within upper lim
-				if ((material_list[j].real() - references[i].real()) >= 0.0) {
-					if ((material_list[j].real() - references[i].real()) <= diffHi[i]) {
-						HOPS_splitting[i].push_back(material_list[j]);
-						mat_counter++;
-						break;
-					}
+				double dist = norm(references[i] - material_list[j]);
+				if (dist < min_dist)
+				{
+					min_index = i;
+					min_dist = dist;
 				}
-				else {
-					//check if random var falls within lower lim
-					if ((material_list[j].real() - references[i].real()) >= -diffLo[i]) {
-						HOPS_splitting[i].push_back(material_list[j]);
-						mat_counter++;
-
-						//if (material_list[j].real() > max[i]) {
-						//	max[i] = material_list[j].real();
-						//	maxIndex[i] = HOPS_splitting[i].size() - 1;
-						//}
-						//if (material_list[j].real() < min[i]) {
-						//	min[i] = material_list[j].real();
-						//	min[i] = HOPS_splitting[i].size() - 1;
-						//}
-
-						break;
-					}
-				}
-
 			}
-
+			assert(min_index >= 0 && "Suitable reference point not found!");
+			HOPS_splitting[min_index].push_back(material_list[j]);
+			++mat_counter;
 		}
+
+
+		//old method for adding to HOPS_splitting
+		//for (int j = 0; j < material_list.size(); ++j) {
+		//	//if (material_list[j].real() < 15.5e6) { continue; }
+		//	for (int i = 0; i < references.size(); ++i) {
+		//		//check if random var falls within upper lim
+		//		if ((material_list[j].real() - references[i].real()) >= 0.0) {
+		//			if ((material_list[j].real() - references[i].real()) <= diffHi[i]) {
+		//				HOPS_splitting[i].push_back(material_list[j]);
+		//				mat_counter++;
+		//				break;
+		//			}
+		//		}
+		//		else {
+		//			//check if random var falls within lower lim
+		//			if ((material_list[j].real() - references[i].real()) >= -diffLo[i]) {
+		//				HOPS_splitting[i].push_back(material_list[j]);
+		//				mat_counter++;
+
+		//				//if (material_list[j].real() > max[i]) {
+		//				//	max[i] = material_list[j].real();
+		//				//	maxIndex[i] = HOPS_splitting[i].size() - 1;
+		//				//}
+		//				//if (material_list[j].real() < min[i]) {
+		//				//	min[i] = material_list[j].real();
+		//				//	min[i] = HOPS_splitting[i].size() - 1;
+		//				//}
+
+		//				break;
+		//			}
+		//		}
+
+		//	}
+
+		//}
 
 		//these are the test values to be compared generated within HOPS.  HOPS_splitting[size-2] = min, HOPS_splitting[size-1] = max
 		// ie first push_back is min value, second push_back is max value, within a given segment
@@ -524,6 +567,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 			////calculate derivatives
 			double dRCSI = (RCSmaxI - RCSminI) / xI;
 			double dRCSIPlus = (RCSmaxIPlus - RCSminIPlus) / xIPlus;
+			//could be slightly incorrect, divide by upperDistanceI + lowerDistanceIPlus1
 			double d2RCS = (dRCSIPlus - dRCSI) / (xIPlus / 2.0 + xI / 2.0);
 
 			double qoiI = (referenceVals[i].real() * referenceVals[i].real() + referenceVals[i].imag() * referenceVals[i].imag()) / (4.0 * 3.14159);
@@ -554,7 +598,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 			std::cout << "i: " << i << " RCS max i: " << RCSmaxI << " RCS min i+1: " << RCSminIPlus << std::endl;
 			std::cout << "i: " << i << " error: " << check1 << " error taylor: " << check2 << std::endl;
 			std::cout << "i: " << i << " reference[i]: " << references[i].real() << " references[i+1]: " << references[i+1].real() << " integral val: " << integral << std::endl;
-
+			//std::cout << "i: " << i << " integral vals"
 			//check for 2nd order taylor approx vs first order error
 			if (check1 > check2)
 				hiError = check1;
@@ -562,7 +606,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 				hiError = check2;
 
 			//just assign based on first order error
-			//hiError = check1;
+			hiError = check1;
 
 			//issue with abs vs RCS calculation
 			//hiError = std::abs(qoi_list[i][jMax] - qoi_list[i + 1][jMin]) / (std::abs(qoi_list[i][jMax] + qoi_list[i + 1][jMin]));
@@ -629,7 +673,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		///-------------------------------------------------------------
 
 		//AR sweep output
-		std::string outF = "../ioFiles/output/sweep/taylor/qoi_HOPS_materialAR" + std::to_string(iterations + 2) + ".txt";
+		std::string outF = "../ioFiles/output/sweep/firstOrder2/qoi_HOPS_materialAR" + std::to_string(iterations + 2) + ".txt";
 		std::ofstream qoi_dist_out(outF);
 		int index = 0;
 		for (int i = 0; i < qoi_list.size(); i++) {
