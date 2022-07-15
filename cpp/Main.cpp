@@ -13,6 +13,7 @@
 #include "postprocessing\postprocessing.h"
 #include <random>
 #include "HOPS\hops.h"
+#include "Kriging\kriging.h"
 void refine_main(std::vector<int>& refiners, std::complex<double>& qoi, const int& n, int& numu, char ref_type) {
 	/////////////////////////
 	//Run options:
@@ -543,7 +544,8 @@ int main() {
 		Domain dom_forward(mesh_name);
 		//run::_standard(dom_forward, mesh_name, plot, false, higher_order, check_results, true);
 		//HOPS::multi_HOPS_multi_epsr(mesh_name);
-		HOPS::multi_HOPS_epsr(mesh_name);
+		//HOPS::multi_HOPS_epsr(mesh_name);
+		Kriging::multi_HOPS_epsr(mesh_name);
 		//HOPS::monte_carlo_instance(mesh_name);
 		//run::_element_error(mesh_name, plot, useAdjoint, higher_order, check_results, .2);
 		//run::_element_error_AF(mesh_name, plot, useAdjoint, higher_order, check_results, .2, 2.0/3.0);

@@ -1,5 +1,7 @@
 #include "hops.h"
 #include <math.h>
+#include <Eigen/Dense>
+using namespace Eigen;
 
 std::complex<double> get_QoI2(Domain& dom_forward, Domain& dom_adjoint) {
 	std::complex<double> qoi = 0.0;
@@ -9,12 +11,12 @@ std::complex<double> get_QoI2(Domain& dom_forward, Domain& dom_adjoint) {
 	return qoi;
 }
 
-inline std::complex<double> operator/(std::complex<double> c1, double d1) {
+static inline std::complex<double> operator/(std::complex<double> c1, double d1) {
 	std::complex<double> output = { c1.real() / d1, c1.imag() / d1 };
 	return output;
 }
 
-double norm(std::vector < std::complex<double>> v1) {
+static double norm(std::vector < std::complex<double>> v1) {
 	std::complex<double> norm = 0.0;
 	for (int i = 0; i < v1.size(); ++i) {
 		norm += v1[i] * std::conj(v1[i]);
@@ -24,32 +26,141 @@ double norm(std::vector < std::complex<double>> v1) {
 
 }
 
-std::vector<std::complex<double>> vectorInsert(int position, std::complex<double> value, std::vector<std::complex<double>> vector) {
-	std::vector<std::complex<double>> newVector(vector.size() + 1);
+//std::vector<std::complex<double>> vectorInsert(int position, std::complex<double> value, std::vector<std::complex<double>> vector) {
+//	std::vector<std::complex<double>> newVector(vector.size() + 1);
+//
+//	for (int i = 0; i < newVector.size(); ++i) {
+//		while (i < position) {
+//			newVector[i] = vector[i];
+//		}
+//		if (i == position) {
+//			newVector[i] = value;
+//		}
+//		while (i > position) {
+//			newVector[i] = vector[i - 1];
+//		}
+//	}
+//
+//	return newVector;
+//
+//}
 
-	for (int i = 0; i < newVector.size(); ++i) {
-		while (i < position) {
-			newVector[i] = vector[i];
-		}
-		if (i == position) {
-			newVector[i] = value;
-		}
-		while (i > position) {
-			newVector[i] = vector[i - 1];
-		}
-	}
-
-	return newVector;
-
-}
-
-inline std::vector<std::complex<double>> operator-(std::vector < std::complex<double>>& v1, std::vector < std::complex<double>>& v2) {
+static inline std::vector<std::complex<double>> operator-(std::vector < std::complex<double>>& v1, std::vector < std::complex<double>>& v2) {
 	std::vector<std::complex<double>> vout;
 	for (int i = 0; i < v1.size(); ++i) {
 		vout.push_back(v1[i] - v2[i]);
 	}
 	return vout;
 }
+
+//std::vector<std::vector<double>> buildDMatrix(std::vector<std::complex<double>> x, std::vector<std::complex<double>> y) {
+//	std::vector<std::vector<double>> dMat(x.size());
+//	int index = 0;
+//	for (int i = 0; i < x.size(); ++i) {
+//		double RCSi = sqrt(y[i].real() * y[i].real() + y[i].imag() * y[i].imag()) / 4 / 3.14159;
+//		for (int j = 0; j < x.size(); ++j) {
+//			double RCSj = sqrt(y[j].real() * y[j].real() + y[j].imag() * y[j].imag()) / 4 / 3.14159;
+//			dMat[index].push_back(i);
+//			dMat[index].push_back(j);
+//			dMat[index].push_back(abs(x[i].real() - x[j].real()));
+//			dMat[index].push_back((RCSi - RCSj) * (RCSi - RCSj));
+//			index++;
+//		}
+//	}
+//	return dMat;
+//}
+//
+//std::vector<double> buildVariogram(std::vector<std::vector<double>> dMat, std::vector<std::complex<double>> x, std::vector<double>& edges) {
+//
+//	std::vector<double> binCounts(edges.size()-1);
+//	std::vector<double> binIdx(x.size()*x.size());
+//	for (int i = 0; i < edges.size(); ++i) {
+//		for (int j = 0; j < binIdx.size(); ++j) {
+//			if (dMat[j][2] < edges[i + 1] && dMat[j][2] >= edges[i]) {
+//				binCounts[i] += 1.0;
+//				binIdx[j] = i;
+//			}
+//		}
+//	}
+//
+//	std::vector<double> variogram(edges.size());
+//	for (int i = 0; i < edges.size() - 1.0; ++i) {
+//		for (int j = 0; j < binIdx.size(); ++j) {
+//			if (binCounts[i] != 0) {
+//				if (binIdx[j] == i) {
+//					variogram[int(binIdx[j])] += dMat[j][3];
+//				}
+//			}
+//		}
+//	}
+//	for (int i = 0; i < variogram.size(); ++i) {
+//		variogram[i] = variogram[i] / (2.0 * binCounts[i]);
+//	}
+//	return variogram;
+//	
+//}
+//
+//std::vector<double> kriging(std::vector<double> variogramFit, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<std::complex<double>> ySample) {
+//	const int size = xSample.size();
+//	//Matrix <double, Dynamic, Dynamic> krigMat;
+//	MatrixXd krigMat(size, size);
+//	for (int i = 0; i < d.size(); ++i) {
+//		for (int j = 0; j < d.size(); ++j) {
+//			if (i == d.size() - 1) {
+//				krigMat.setConstant(i, j, 1.0);
+//			}
+//			if (j == d.size() - 1) {
+//				krigMat.setConstant(i, j, 1.0);
+//			}
+//			double dist = abs(xSample[i] - xSample[j]);
+//			auto it = std::lower_bound(d.begin(), d.end(), dist);
+//			int index = it - d.begin();
+//			krigMat.setConstant(i, j, variogramFit[index]);
+//		}
+//	}
+//	krigMat.setConstant(d.size(), d.size(), 0.0);
+//
+//
+//
+//
+//}
+//
+//void trimVariogram(std::vector<double>& variogram, std::vector<double>& edges) {
+//	int idx = 0;
+//	std::vector<double> variogramNew;
+//	std::vector<double> edgesNew;
+//	for (int i = 0; i < variogram.size(); i++) {
+//		if (!isnan(variogram[i])) {
+//			variogramNew[idx] = variogram[i];
+//			edgesNew[idx] = edges[i];
+//		}
+//	}
+//	variogram = variogramNew;
+//	edges = edgesNew;
+//
+//}
+//
+//std::vector<double> fitVariogram(std::vector<double> variogram, std::vector<double> edges, std::vector<double> d) {
+//	double xSum = 0.0;
+//	double ySum = 0.0;
+//	double x2Sum = 0.0;
+//	double xySum = 0.0;
+//	for (int i = 0; i < variogram.size(); ++i) {
+//		xSum += edges[i];
+//		ySum += variogram[i];
+//		x2Sum += x2Sum + (edges[i] * edges[i]);
+//		xySum += xySum + (edges[i] * variogram[i]);
+//	}
+//	double slope = (edges.size() * xySum - xSum * ySum) / (edges.size() * x2Sum - xSum * xSum);
+//	std::vector<double> fitVariogram(d.size());
+//
+//
+//	for (int i = 0; i < d.size(); ++i) {
+//		fitVariogram[i] = slope * d[i];
+//	}
+//	return fitVariogram;
+//}
+
 std::complex<double> HOPS::sensitivity_to_epsr(std::string & file_name, std::vector<std::complex<double>>& epsr_list, std::vector<std::complex<double>>& updated_qoi, std::complex<double> referenceFreq)
 {
 	//get orig QoI
@@ -515,7 +626,8 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		std::vector<std::complex<double>> referencesNew = references;
 		std::vector<int> refIndexNew = refIndex;
 		//int index = 0;
-
+		// 
+		//old method using linear and taylor series for error check
 		for (int i = 0; i < references.size() - 1; ++i) {
 
 			//indexing
@@ -606,7 +718,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 				hiError = check2;
 
 			//just assign based on first order error
-			hiError = check1;
+			//hiError = check1;
 
 			//issue with abs vs RCS calculation
 			//hiError = std::abs(qoi_list[i][jMax] - qoi_list[i + 1][jMin]) / (std::abs(qoi_list[i][jMax] + qoi_list[i + 1][jMin]));
@@ -657,6 +769,39 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 			//}
 	}
 
+		
+	////calculate variogram
+	//double nBins = 10;
+
+	//double maxDist = abs(references[references.size() - 1].real() - references[0].real());
+	////double binTol = maxDist / nBins;
+	//std::vector<double> edges;
+	//for (int i = 0; i <= nBins; i++) {
+	//	edges.push_back(i * maxDist / nBins);
+	//}
+
+	////linspace for the x values in the variogramFit
+	//int fitSize = 100;
+	//std::vector<double> d;
+	//for (int i = 0; i <= fitSize; ++i) {
+	//	d.push_back(i * maxDist / fitSize);
+	//}
+
+
+	//std::vector<std::vector<double>> dMat = buildDMatrix(references, referenceVals);
+	//std::vector<double> variogram = buildVariogram(dMat, references, edges);
+	//trimVariogram(variogram, edges);
+	//std::vector<double> variogramFit = fitVariogram(variogram, edges, d);
+
+
+	//	for (int i = 0; i < referencesFull.size(); ++i) {
+	//		std::vector<std::complex<double>> referencesTemp = references;
+	//		auto it = std::upper_bound(referencesTemp.cbegin(), referencesTemp.cend(), referencesFull[i]);
+	//		referencesTemp.insert(it, referencesFull[i]);
+
+
+	//	}
+
 		////////////done to subdivide lowest error////////////////////
 		auto it = references.begin();
 		auto it2 = refIndex.begin();
@@ -665,6 +810,8 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		refIndex.insert(it2 + hiErrorIndex + 1, refFullIndex);
 		toggle = true;
 
+
+		//iteration limit//
 		iterations++;
 		if (iterations >= itLim) {
 			std::cout << "iteration condition met\n";
