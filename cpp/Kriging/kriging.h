@@ -9,6 +9,6 @@ namespace Kriging {
 	void multi_HOPS_epsr(std::string& file_name);
 	void multi_HOPS_multi_epsr(std::string& file_name);
 	double normalFunction(double x, double mean, double std);
-	double trap_integral(double intervalBeg, double intervalEnd, double mean, double std);
+	double trap_integral(double intervalMid, double mean, double std, double step);
 	void sensitivity_to_multi_epsr(std::string& file_name, std::vector<std::vector<std::complex<double>>>& epsr_list, std::vector<std::complex<double>>& updated_qoi, std::vector<std::complex<double>>& reference_values);
 }

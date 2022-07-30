@@ -8,4 +8,4 @@ materials file name: materials.txt
 conditions file name: boundary.txt
 monostatic scattering file name: scattering.txt
 input_unknowns_global file name: unknownsAdjoint.dat
-basic_structure: 5 2273 256 192 0 1 0 145000000 145000000 1
+basic_structure: 5 2273 256 192 0 1 0 200000000 200000000 1

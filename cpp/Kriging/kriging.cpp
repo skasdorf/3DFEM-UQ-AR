@@ -54,6 +54,10 @@ static int find_index(std::vector<std::complex<double>> array, std::complex<doub
 
 }
 
+static bool complexComparitor(std::complex<double> a, std::complex<double> b) {
+	return real(a) <= real(b);
+}
+
 static void insert_complex(std::vector<std::complex<double>>& array, int index, std::complex<double> value) {
 	std::vector<std::complex<double>> tempArray(array.size() + 1);
 
@@ -191,8 +195,37 @@ static double calcVariance(std::vector<double> variogramFit, std::vector<double>
 	//std::cout << "covVec\n" << covVec << std::endl;
 
 	MatrixXd varianceVec = weightVec.transpose() * varMat * weightVec - covVec.transpose() * weightVec - weightVec.transpose() * covVec;
+	//std::cout << "old variance: " << varianceVec;
 	variance = abs(varianceVec(0, 0));
+
+	//scale relative
+	//variance = variance / xVal;
 	//std::cout << "variance:\n" << varianceVec << std::endl;
+	variance = 0.0;
+	//from textbook source:
+	for (int i = 0; i < size; ++i) {
+		for (int j = 0; j < size; ++j) {
+
+			double dist = abs(xSample[i].real() - xSample[j].real());
+			auto it = std::lower_bound(d.begin(), d.end(), dist);
+			int index = it - d.begin();
+			
+			variance -= weights[i] * weights[j] * variogramFit[index];
+		}
+	}
+
+	for (int i = 0; i < size; ++i) {
+
+		double dist = abs(xSample[i].real() - xVal);
+		auto it = std::lower_bound(d.begin(), d.end(), dist);
+		int index = it - d.begin();
+
+		variance += 2.0 * weights[i] * variogramFit[index];
+	}
+
+	//std::cout << "\tnew variance: " << variance << std::endl;
+
+
 	return variance;
 }
 
@@ -372,26 +405,30 @@ std::complex<double> Kriging::sensitivity_to_epsr(std::string & file_name, std::
 
 	double kReal = 2 * 3.14159 / (2.99E8 / referenceFreq.real());
 	std::complex<double> referenceK = (kReal, 0.0);
+	std::cout << "check 1---------------------------\n";
+
 	//now have the base QoI modifier, need to scale by the change in perturbed material parameter
-	for (int i = 0; i < epsr_list.size(); ++i) {
-		/////////////////////////////////////////Frequency Perturbation/////////////////////////////////////////////
-		//double k0_list = epsr_list[i].real() * 2.0 * 3.14159 / 3e8;
-		//eps_diff = -1.0*k0_list + k0;
-		//eps_diff = (k0_list / k0 - 1.0) * k0;
-		//---------------------------------------------------------------------------------------------------------
+	//for (int i = 0; i < epsr_list.size(); ++i) {
+	//	/////////////////////////////////////////Frequency Perturbation/////////////////////////////////////////////
+	//	//double k0_list = epsr_list[i].real() * 2.0 * 3.14159 / 3e8;
+	//	//eps_diff = -1.0*k0_list + k0;
+	//	//eps_diff = (k0_list / k0 - 1.0) * k0;
+	//	//---------------------------------------------------------------------------------------------------------
 
-		///////////////////////////////////////Material Perturbation//////////////////////////////////////////////
-		eps_diff = epsr_list[i] - referenceFreq;
-		///-------------------------------------------------------------------------------------------------------
-
-
-		updated_qoi.push_back(reference_qoi + eps_diff * dQoI);// +eps_diff * eps_diff * dQoI2 / 2.0);
+	//	///////////////////////////////////////Material Perturbation//////////////////////////////////////////////
+	//	eps_diff = epsr_list[i] - referenceFreq;
+	//	///-------------------------------------------------------------------------------------------------------
 
 
-		//std::cout << reference_qoi + eps_diff * dQoI << std::endl;
-		//std::cout << "qoi: " << reference_qoi + eps_diff * dQoI << std::endl;
-		
-	}
+	//	updated_qoi.push_back(reference_qoi + eps_diff * dQoI);// +eps_diff * eps_diff * dQoI2 / 2.0);
+
+
+	//	//std::cout << reference_qoi + eps_diff * dQoI << std::endl;
+	//	//std::cout << "qoi: " << reference_qoi + eps_diff * dQoI << std::endl;
+	//	
+	//}
+	std::cout << "check 2---------------------------\n";
+
 	return reference_qoi;
 }
 
@@ -460,6 +497,8 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 	//	referencesFull.push_back(std::complex<double>(referencesReal[i], -2.0));
 	//}
 
+	sort(material_list.begin(), material_list.end(), complexComparitor);
+
 	//acceptable error
 	double delta = 0.0008;
 
@@ -502,20 +541,25 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 
 	double size = referencesFull.size();
 
+	int loRefIndex = find_index(referencesFull, material_list[0]) - 1;
+	if (loRefIndex < 0) { loRefIndex = 0; }
+
+	int hiRefIndex = find_lowest(referencesFull, material_list[material_list.size() - 1]) + 1;
+	if (hiRefIndex > size - 1) { hiRefIndex = size - 1; }
+
+	int midRefIndex = (loRefIndex + hiRefIndex) / 2;
+
 	//initial set of the references to be passed into HOPS (first, middle, last) requires odd number of references in the full vector
-	std::vector<std::complex<double>> references = { referencesFull[0], referencesFull[(size - 1) / 2], referencesFull[size - 1] };
-	references = { referencesFull[0], referencesFull[32], referencesFull[65]};
-	//references = { referencesFull[0], referencesFull[7], referencesFull[14], referencesFull[21], referencesFull[28], referencesFull[35], referencesFull[42], referencesFull[50] };
-	//references = { referencesFull[0], referencesFull[3], referencesFull[6],referencesFull[9], referencesFull[12],referencesFull[15], referencesFull[18],referencesFull[21], referencesFull[24],referencesFull[27], referencesFull[30], referencesFull[33], referencesFull[36],referencesFull[39], referencesFull[42], referencesFull[45], referencesFull[49] };
-	//std::vector<std::complex<double>> references = referencesFull;
+	//std::vector<std::complex<double>> references = { referencesFull[0], referencesFull[(size - 1) / 2], referencesFull[size - 1] };
+	std::vector<std::complex<double>> references = { referencesFull[loRefIndex], referencesFull[midRefIndex], referencesFull[hiRefIndex] };
+
 	std::vector<std::vector<std::complex<double>>> qoi_list(references.size());
 	std::vector<std::vector<std::complex<double>>> HOPS_splitting(references.size());
 
 	//refIndex is the index of the ref_i file so that it can be called correctly from the reference_files folder
-	std::vector<int> refIndex = { 0, int(size - 1) / 2, int(size - 1) };
+	std::vector<int> refIndex = { loRefIndex, midRefIndex, hiRefIndex };
+	//std::vector<int> refIndex = { 0, int(size - 1) / 2, int(size - 1) };
 	//refIndex = { 0, 32, 65 };
-	//refIndex = { 0, 7, 14, 21, 28, 35, 42, 50};
-	//refIndex = {0, 12, 15, 18, 21, 25, 37, 43, 50};
 
 
 	//toggle to end the while loop
@@ -556,6 +600,9 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 	while (toggle) {
 		std::cout << "_____________________________________________________________Pass in the for loop_______________________________________________\n";
 
+		//need to get rid of qoi_list (not neccessary for kriging), but I need to first get rid of its use in sensitivity_to_epsr method.
+		qoi_list.clear();
+		qoi_list.resize(references.size());
 		weights.clear();
 		weights.resize(material_list.size());
 		reconstruction.clear();
@@ -590,6 +637,8 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 			std::cout << "Testing for reference number: " << refIndex[i] << std::endl;
 			referenceVals[i] = Kriging::sensitivity_to_epsr(in_file_name, HOPS_splitting[i], qoi_list[i], references[i]);
 
+
+
 		}
 
 		
@@ -611,21 +660,23 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		int val = HOPS_splitting.size() - 1;
 		std::vector<std::complex<double>> referencesNew = references;
 		std::vector<int> refIndexNew = refIndex;
-
-
 		
 		//calculate variogram_______________________________________________________________
-		double nBins = 25;
 
-		double maxDist = abs(references[references.size() - 1].real() - references[0].real()) / 2.0;
+		//main params for variogram (this and fit method)
+		double nBins = 10;
+		double maxDist = abs(references[references.size() - 1].real() - references[0].real());// / 2.0;
+
+
 		//double binTol = maxDist / nBins;
 		std::vector<double> edges;
 		for (int i = 0; i <= nBins; i++) {
 			edges.push_back(i * maxDist / nBins);
 		}
 
+
 		//linspace for the x values in the variogramFit
-		int fitSize = 200;
+		int fitSize = 5000;
 		std::vector<double> d;
 		for (int i = 0; i <= fitSize; ++i) {
 			d.push_back(i * maxDist / fitSize);
@@ -634,18 +685,25 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		std::vector<std::vector<double>> dMat = buildDMatrix(references, referenceVals);
 
 		std::vector<double> variogram = buildVariogram(dMat, references, edges);
+
 		trimVariogram(variogram, edges);
+
 		std::vector<double> variogramFit = fitVariogram(variogram, edges, d);
+
 
 		for (int i = 0; i < material_list.size(); ++i) {
 			kriging(variogramFit, d, references, weights[i], material_list[i].real());
 			reconstruction[i] = krigSum(weights[i], referenceVals);
-		}                                             
-
-
+		}         
 		//break;
 
 		std::cout << "referencesFull.size(): " << referencesFull.size() << std::endl;
+
+		bestVar = 0;
+		//find max variance for next iteration
+
+		double matMean = 4.5;
+		double matStd = 1.0;
 
 		for (int i = 0; i < referencesFull.size(); ++i) {
 			double variance = 0.0;
@@ -654,6 +712,9 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 
 			//skip values of referencesFull that are already contained in references
 			if (std::find(references.begin(), references.end(), referencesFull[i]) != references.end())
+				continue;
+			//skip values of referencesFull outside the range
+			if (i < loRefIndex || i >  hiRefIndex)
 				continue;
 
 			//resize temporary vectors
@@ -664,10 +725,13 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 			referencesTemp = references;
 			//referencesReal.resize(references.size());
 			
-
+			//find the index of insertion point
 			int index = find_lowest(references, referencesFull[i]);
+
+			//insert referenceFull value into referencesTemp
 			insert_complex(referencesTemp, index, referencesFull[i]);
 
+			//get index of the added value
 			int weightIndex = find_index(referencesTemp, referencesFull[i]);
 
 			for (int j = 0; j < referencesTemp.size(); ++j) {
@@ -686,17 +750,14 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 
 			
 			//---------variogram---------------
-			double nBins = 10;
 
-			double maxDist = abs(referencesTemp[referencesTemp.size() - 1].real() - referencesTemp[0].real());
-			//double binTol = maxDist / nBins;
 			std::vector<double> edges;
 			for (int j = 0; j <= nBins; j++) {
 				edges.push_back(j * maxDist / nBins);
 			}
 
 			//linspace for the x values in the variogramFit
-			int fitSize = 100;
+			int fitSize = 5000;
 			std::vector<double> d;
 			for (int j = 0; j <= fitSize; ++j) {
 				d.push_back(j * maxDist / fitSize);
@@ -705,7 +766,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 			//build referenceVals from previous reconstruction
 			//not sure if this works.  Should find the closest material parameter in material list to referencesTemp.
 			//it should then fill referenceValsTemp with the cooresponding index from the kriging reconstruction
-
+			//i think this is no longer necessary
 			std::vector<std::complex<double>> referenceValsTemp(referencesTemp.size());
 			for (int j = 0; j < referenceValsTemp.size(); j++) {
 				//maybe just set the added reference value to reconstruction (others already calculated explicitly)
@@ -714,10 +775,21 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 				//std::cout << "referencesTemp[j](value looking to match): " << referencesTemp[j] << " material_list[index](index should match): " << material_list[index] << std::endl;
 			}
 
-			//find the weights reference closest to referencesFull[i].  referencesFull[i] is the new test point x*
-
+			//find the weights with referencesFull[i] as the new test point x0
 			kriging(variogramFit, d, references, weightsTemp[i], referencesFull[i].real());
+
+			//calculate the variance of the added referencesFull point
 			variance = calcVariance(variogramFit, d, references, weightsTemp[i], referencesFull[i].real());
+
+
+			std::cout << "variance: " << variance;
+
+			double integral = Kriging::trap_integral(referencesFull[i].real(), matMean, matStd, material_list[1].real() - material_list[0].real());
+
+			std::cout << "   integral: " << integral << std::endl;
+
+
+			variance *= integral;
 
 
 			////_____________________________OLD METHOD for calculating variance____________________________________________________
@@ -760,7 +832,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 				//bestAvg = avg;
 				bestVar = variance;
 				//bestReference = referencesFull[i];
-				std::cout << "best value: " << referencesFull[i] << std::endl;
+				std::cout << "best value---------------------------------------------------: " << referencesFull[i] << std::endl;
 				//bestReferenceVal = referenceValsTemp[weightIndex];
 				
 				referencesTempBest.clear();
@@ -818,12 +890,12 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		///-------------------------------------------------------------
 
 		//AR sweep output
-		std::string outF = "../ioFiles/output/kriging/sweep/qoi_kriging" + std::to_string(iterations + 2) + ".txt";
+		std::string outF = "../ioFiles/output/kriging/sweep3/qoi_kriging" + std::to_string(iterations + 2) + ".txt";
 		std::ofstream qoi_dist_out(outF);
 		for (int i = 0; i < material_list.size(); ++i) {
-			if (material_list[i].real() < 2.0 || material_list[i].real() > 7.0) {
-				continue;
-			}
+			//if (material_list[i].real() < 2.0 || material_list[i].real() > 7.0) {
+			//	continue;
+			//}
 			qoi_dist_out << material_list[i].real() << " " << material_list[i].imag() << " " << reconstruction[i].real() << " " << reconstruction[i].imag() << std::endl;
 		}
 		qoi_dist_out.close();
@@ -854,9 +926,10 @@ double Kriging::normalFunction(double x, double mean, double std) {
 	return integral;
 }
 
-double Kriging::trap_integral(double intervalBeg, double intervalEnd, double mean, double std) {
-	double count = 250.0;
-	double step = (intervalEnd - intervalBeg) / count;
+double Kriging::trap_integral(double intervalMid, double mean, double std, double step) {
+	double count = 50.0;
+	double intervalBeg = intervalMid - count * step / 2.0;
+	double intervalEnd = intervalMid + count * step / 2.0;
 	double integral = 0.5 * (Kriging::normalFunction(intervalBeg, mean, std) + Kriging::normalFunction(intervalEnd, mean, std));
 	for (int i = 0; i < (int)count; ++i) {
 		integral += Kriging::normalFunction(intervalBeg + step * i, mean, std);

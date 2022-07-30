@@ -40,6 +40,16 @@ def find_nearest(array, value):
     idx = (np.abs(array - value)).argmin()
     return array[idx], idx
 
+
+def find_min(array, value):
+	array = np.asarray(array)
+
+	for i in range(len(array)):
+		if ((value - array[i]) >= 0):
+			arrVal = array[i]
+			iVal = i
+	return arrVal, iVal
+
 def readInput(file):
     db1 = []
     db2 = []
@@ -74,6 +84,10 @@ xData = np.sort(xData)
 
 xSamples = np.array([xData[0], xData[250], xData[500], xData[750], xData[999]])
 ySamples = np.array([yData[0], yData[250], yData[500], yData[750], yData[999]])
+
+# xSamples = np.array([xData[0], xData[500], xData[999]])
+# ySamples = np.array([yData[0], yData[500], yData[999]])
+
 # xSamples = np.array([xData[0], xData[50], xData[100], xData[150], xData[200], xData[250], xData[300], xData[350], xData[400], xData[450], xData[500], xData[550], xData[600], xData[650], xData[700], xData[750], xData[800], xData[850], xData[900], xData[950], xData[999]])
 # ySamples = np.array([yData[0], yData[50], yData[100], yData[150], yData[200], yData[250], yData[300], yData[350], yData[400], yData[450], yData[500], yData[550], yData[600], yData[650], yData[700], yData[750], yData[800], yData[850], yData[900], yData[950], yData[999]])
 
@@ -81,11 +95,11 @@ ySamples = np.array([yData[0], yData[250], yData[500], yData[750], yData[999]])
 xSampLen = len(xSamples)
 xDataLen = len(xData)
 
-#_______________________________________________MATLAB Attempt______________________________________________________________________
+#_______________________________________________MATLAB Attempt VARIOGRAM______________________________________________________________________
 
-maxDist = (xSamples[xSampLen-1] - xSamples[0]) / 2.0
+maxDist = (xSamples[xSampLen-1] - xSamples[0]) / 1.0
 # maxDist = 4.8
-nBins = 30
+nBins = 10
 binTol = maxDist / nBins
 
 #calculate distance matrix
@@ -147,7 +161,7 @@ for i in range(len(variogram)):
 		newVariogram.append(variogram[i])
 		newEdges.append(edges[i])
 bins = np.array(newBins)
-edges = np.array(newEdges)
+# edges = np.array(newEdges)
 variogram = np.array(newVariogram)
 # variogram = v.data()[1]
 #-----------
@@ -174,7 +188,7 @@ parameters, covariance = curve_fit(linVar, bins, variogram)
 m = parameters[0]
 # b = parameters[1]
 
-d = np.linspace(0, maxDist, 100)
+d = np.linspace(0, maxDist, 10)
 variogramOld = variogram
 variogram = linVar(d, m)
 #------------------------
@@ -199,8 +213,11 @@ plt.figure(3)
 plt.scatter(xData, z)
 plt.scatter(xData, yData)
 
-variogram = v.data()
-variogram = variogram[1]
+
+#this makes the calculated variogram put into normal method
+# variogram = v.data()
+# xDistCheck = variogram[0]
+# variogram = variogram[1]
 
 #__________________________________ Old Attempt_________________________________________________________
 #create variogram
@@ -268,7 +285,8 @@ for i in range(xSampLen+1):
 variance[xSampLen][xSampLen] = 0
 
 varVec = np.zeros((xSampLen+1, 1))
-
+iVec = np.zeros((xSampLen+1, 1))
+xDistVec = np.zeros((xSampLen+1, 1))
 xPredicted = []
 for k in range(xDataLen): #each pass in this loops predicts a yVal from xData values
 	#xData[k] is one of the 1000 monte carlo points
@@ -279,16 +297,16 @@ for k in range(xDataLen): #each pass in this loops predicts a yVal from xData va
 		# xDist = abs(xSamples[i] - xData[k])
 		# xDist = np.sqrt(xSamples[i]**2 + xData[k]**2)
 
-		print(xDist)
+		# print(xDist)
 		# [value, index] = find_nearest(edges, xDist)
 		[value, index] = find_nearest(d, xDist)
+
+		iVec[i] = index
 		varVec[i] = variogram[index]
+		xDistVec[i]  = xDist
 		# varVec[i] = 1/2.0*(ySamples[i] - yData[k])**2
 		# varVec[i] = 1/2.0 * (xSamples[i] - xData[k])**2
 	varVec[xSampLen] = 1
-
-
-	print(varVec)
 
 	weights = 0
 	weights = np.matmul(np.linalg.inv(variance), varVec)
