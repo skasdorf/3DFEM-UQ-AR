@@ -698,11 +698,17 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 	std::vector<double> referencesReal(references.size());
 	std::vector<std::complex<double>> referencesTemp(references.size());
 	std::vector<std::complex<double>> referenceVals(references.size());
+	bool maxVar = true;
+	bool avgVar = true;
+	double varAvg;
+
+
 
 	while (toggle) {
 		std::cout << "_____________________________________________________________Pass in the for loop_______________________________________________\n";
 
 		//need to get rid of qoi_list (not neccessary for kriging), but I need to first get rid of its use in sensitivity_to_epsr method.
+		
 		qoi_list.clear();
 		qoi_list.resize(references.size());
 		weights.clear();
@@ -735,7 +741,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 			//--------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
+			//setting so that new passes in the while loop only run solve for new points
 			if (references.size() == 3) {			
 				std::string command = "..\\file_input_converter ..\\reference_files_mat\\ref_" + std::to_string(refIndex[i]) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
 				std::system(command.c_str());
@@ -808,6 +814,8 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 
 		std::vector<double> variogramFit = fitVariogram(variogram, edges, d);
 
+
+		varAvg = 0.0;
 		//---------------------  Kriging System Solution --------------------------------------------
 
 		for (int i = 0; i < material_list.size(); ++i) {
@@ -902,7 +910,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 
 			//calculate the variance of the added referencesFull point
 			variance = calcVariance(variogramFit, d, references, weightsTemp[i], referencesFull[i].real());
-
+			varAvg += variance * variance;
 
 			std::cout << "variance: " << variance;
 
@@ -911,7 +919,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 			std::cout << "   integral: " << integral << std::endl;
 
 			//weighting function
-			variance *= integral;
+			//variance *= integral;
 
 
 			////_____________________________OLD METHOD for calculating variance____________________________________________________
@@ -974,6 +982,21 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		//auto it = references.begin();
 		// 
 		//set new reference values;
+
+		//average value of sample points
+		double z0 = 0.0;
+		for (int i = 0; i < referenceValsTempBest.size(); ++i) {
+			z0 += referenceValsTempBest[i].real();
+		}
+		z0 /= referenceValsTempBest.size();
+
+		//stopping criteria
+		if ((1 / z0 * sqrt(varAvg / referencesTempBest.size())) < 0.001 && (1 / z0 * bestVar) < 0.003) {
+			toggle = false;
+			std::cout << "convergence condition met\n";
+			break;
+		}
+
 		
 		auto refIt = std::lower_bound(refIndex.begin(), refIndex.end(), bestIndex);
 		insertIndex = refIt - refIndex.begin();
@@ -1013,7 +1036,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		///-------------------------------------------------------------
 
 		//AR sweep output
-		std::string outF = "../ioFiles/output/taylorKriging/sweep2/qoi_kriging" + std::to_string(iterations + 2) + ".txt";
+		std::string outF = "../ioFiles/output/taylorKriging/sweep3/qoi_kriging" + std::to_string(iterations + 2) + ".txt";
 		std::ofstream qoi_dist_out(outF);
 		for (int i = 0; i < material_list.size(); ++i) {
 			//if (material_list[i].real() < 2.0 || material_list[i].real() > 7.0) {
