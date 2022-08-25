@@ -82,11 +82,11 @@ xData = np.sort(xData)
 
 
 
-xSamples = np.array([xData[0], xData[250], xData[500], xData[750], xData[999]])
-ySamples = np.array([yData[0], yData[250], yData[500], yData[750], yData[999]])
+# xSamples = np.array([xData[0], xData[125], xData[250], xData[500], xData[750], xData[999]])
+# ySamples = np.array([yData[0], yData[125], yData[250], yData[500], yData[750], yData[999]])
 
-# xSamples = np.array([xData[0], xData[500], xData[999]])
-# ySamples = np.array([yData[0], yData[500], yData[999]])
+xSamples = np.array([xData[0], xData[500], xData[999]])
+ySamples = np.array([yData[0], yData[500], yData[999]])
 
 # xSamples = np.array([xData[0], xData[50], xData[100], xData[150], xData[200], xData[250], xData[300], xData[350], xData[400], xData[450], xData[500], xData[550], xData[600], xData[650], xData[700], xData[750], xData[800], xData[850], xData[900], xData[950], xData[999]])
 # ySamples = np.array([yData[0], yData[50], yData[100], yData[150], yData[200], yData[250], yData[300], yData[350], yData[400], yData[450], yData[500], yData[550], yData[600], yData[650], yData[700], yData[750], yData[800], yData[850], yData[900], yData[950], yData[999]])
@@ -195,16 +195,11 @@ variogram = linVar(d, m)
 
 
 
-plt.figure(2)
-plt.scatter(bins, variogramOld)
-plt.plot(d, variogram)
-plt.xlabel("h", fontsize = 18)
-plt.ylabel("$\gamma(h)$", fontsize = 18)
-# plt.show()
 
 
 
-v = skg.Variogram(xSamples, ySamples, fit_method = 'lm')
+
+v = skg.Variogram(xSamples, ySamples, model = 'spherical')
 # v.plot()
 ok = skg.OrdinaryKriging(v)
 z = ok.transform(xData, np.ones(xData.shape)*0.0)
@@ -212,6 +207,16 @@ z = ok.transform(xData, np.ones(xData.shape)*0.0)
 plt.figure(3)
 plt.scatter(xData, z)
 plt.scatter(xData, yData)
+
+plt.figure(2)
+plt.scatter(bins, variogramOld)
+plt.plot(d, variogram)
+data = v.data()
+plt.plot(data[0], data[1])
+plt.scatter(v.bins, v.experimental)
+plt.xlabel("h", fontsize = 18)
+plt.ylabel("$\gamma(h)$", fontsize = 18)
+# plt.show()
 
 
 #this makes the calculated variogram put into normal method
