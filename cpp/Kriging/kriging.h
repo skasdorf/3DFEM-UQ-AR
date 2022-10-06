@@ -2,7 +2,7 @@
 #include "../run_modes.h"
 
 namespace Kriging {
-	std::complex<double> sensitivity_to_epsr(std::string& file_name, std::vector<std::complex<double>>& epsr_list, std::vector<std::complex<double>>& updated_qoi, std::complex<double> referenceFreq);
+	std::complex<double> sensitivity_to_epsr(std::string& file_name, std::vector<std::complex<double>>& epsr_list, std::vector<std::complex<double>>& updated_qoi, std::complex<double> referenceFreq, std::complex<double>& gradient);
 	std::complex<double> get_QoI(Domain& dom_forward, Domain& dom_adjoint);
 	std::complex<double> get_QoI2(Domain& dom_forward, Domain& dom_adjoint);
 	void monte_carlo_instance(std::string& file_name);

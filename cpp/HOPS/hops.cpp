@@ -266,6 +266,7 @@ std::complex<double> HOPS::sensitivity_to_epsr(std::string & file_name, std::vec
 		//std::cout << "qoi: " << reference_qoi + eps_diff * dQoI << std::endl;
 		
 	}
+
 	gradient = dQoI;
 	return reference_qoi;
 }
@@ -290,25 +291,158 @@ void HOPS::monte_carlo_instance(std::string & file_name)
 	bool basis_error = false;
 	bool higher_order = false;
 	bool check_results = false;
+
+
+
+	//this works for just output value///
 	//mesh inputs
+	//std::string mesh_name = file_name;
+	////get the forward solution
+	//Domain dom_forward(mesh_name);
+	//run::_standard(dom_forward, mesh_name, plot, false, higher_order, check_results, false, 0.0);
+	////get RHS
+	//Domain dom_adjoint_rhs(mesh_name);
+	//run::_RHS_compute(dom_adjoint_rhs, mesh_name, plot, true, higher_order, check_results);
+	////get QoI
+	//std::complex<double> qoi = get_QoI2(dom_forward, dom_adjoint_rhs);
+
+	//instead for value and gradient we need to call sensitivity to epsr
 	std::string mesh_name = file_name;
-	//get the forward solution
-	Domain dom_forward(mesh_name);
-	run::_standard(dom_forward, mesh_name, plot, false, higher_order, check_results, false, 0.0);
-	//get RHS
-	Domain dom_adjoint_rhs(mesh_name);
-	run::_RHS_compute(dom_adjoint_rhs, mesh_name, plot, true, higher_order, check_results);
-	//get QoI
-	std::complex<double> qoi = get_QoI2(dom_forward, dom_adjoint_rhs);
+
+
+
 }
 
+
+
+void HOPS::monte_carlo_dual(std::string& file_name)
+{
+	//compute the forward solution
+	//then compute just the RHS for the adjoint solution (to get the QoI term to compare w/ HOPS)
+	bool check_q = false;
+	bool plot = false;
+	bool sens = false;
+	bool error = false;
+	bool refine = false;
+	bool basis_error = false;
+	bool higher_order = false;
+	bool check_results = false;
+
+
+
+	//this works for just output value///
+	// 
+	//mesh inputs
+	//std::string mesh_name = file_name;
+	////get the forward solution
+	//Domain dom_forward(mesh_name);
+	//run::_standard(dom_forward, mesh_name, plot, false, higher_order, check_results, false, 0.0);
+	////get RHS
+	//Domain dom_adjoint_rhs(mesh_name);
+	//run::_RHS_compute(dom_adjoint_rhs, mesh_name, plot, true, higher_order, check_results);
+	////get QoI
+	//std::complex<double> qoi = get_QoI2(dom_forward, dom_adjoint_rhs);
+	// 
+	//instead for value and gradient we need to call sensitivity to epsr
+
+
+
+	//materials list
+	std::vector<std::complex<double>> material_list;
+	std::ifstream materials_in("../ioFiles/input/materials_list2.txt");
+	std::string line;
+	//std::cout << "Current rounding material values to match the shitty output from MATLAB!" << std::endl;
+	while (std::getline(materials_in, line)) {
+		auto data = functions::split(line, ' ');
+		//material_list.push_back(std::complex<double>(std::stod(data[0]), roundf(std::stod(data[1])*100.0)/100.0));
+		material_list.push_back(std::complex<double>(std::stod(data[0]), std::stod(data[1])));
+		//std::cout << std::stod(data[0]) << std::endl;
+	}
+	materials_in.close();
+
+	std::vector<std::vector<std::complex<double>>> HOPS_splitting(material_list.size());
+	std::vector<std::vector<std::complex<double>>> qoi_list(material_list.size());
+	//sort(material_list.begin(), material_list.end(), complexComparitor);
+
+	std::vector<std::complex<double>> gradient(material_list.size());
+	std::vector<std::complex<double>> referenceVals(material_list.size());
+	std::vector<std::complex<double>> references(material_list.size());
+
+	//for (int i = 0; i < material_list.size(); ++i) {
+	//	HOPS_splitting[i] = material_list[i];
+	//}
+
+
+	std::cout << "made it here 1 ...........................\n";
+
+	//iterating through references now and get the qois
+	for (int i = 500; i < 1000; ++i) {
+		//if (HOPS_splitting[i].size() == 0) continue;
+		std::string in_file_name = file_name;
+
+		//////////////////////////////Frequency Perturbation///////////////////////////////////////////////////////////////////////////////////////////////
+		//std::string command = "..\\file_input_converter ..\\reference_files_freq_low_HOPS\\ref_" + std::to_string(i) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
+		//std::string command = "..\\file_input_converter ..\\reference_files_freq\\ref_3.in ..\\exampleFiles\\" + in_file_name + "\\";
+		//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+		std::cout << "made it here 2 ...........................\n";
+
+		/////////////////////////////Material Perturbation///////////////////////////////////////////////////////////////////////////////
+		//std::string command = "..\\file_input_converter ..\\reference_files_mat\\ref_0.in ..\\exampleFiles\\" + in_file_name + "\\";
+		std::string command = "..\\file_input_converter ..\\reference_files_mat_newCarlo\\ref_" + std::to_string(i) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
+		//--------------------------------------------------------------------------------------------------------------------------------------------------
+
+		std::cout << "material_list[i]: " << material_list[i] << std::endl;
+
+		std::system(command.c_str());
+		std::cout << "Testing for reference number: " << i << std::endl;
+		referenceVals[i] = HOPS::sensitivity_to_epsr(in_file_name, HOPS_splitting[i], qoi_list[i], material_list[i], gradient[i]);
+
+		std::cout << "made it here 4 ...........................\n";
+
+		//output one time
+		//output results to file
+		std::ofstream qoi_dist_out("../ioFiles/output/MonteCarlo/MC.txt", std::ios::out | std::ios::app);
+		qoi_dist_out << material_list[i].real() << " " << material_list[i].imag() << " " << referenceVals[i].real() << " " << referenceVals[i].imag() << " " << gradient[i].real() << " " << gradient[i].imag() << std::endl;
+
+
+		qoi_dist_out.close();
+
+	}
+
+
+
+
+
+
+	//output one time
+//output results to file
+//std::ofstream qoi_dist_out("../ioFiles/output/sweep/weight/qoi_HOPS_materialAR0.txt");
+//int index = 0;
+//for (int i = 0; i < qoi_list.size(); i++) {
+//	//need to remove the max/min test values for each of the batches
+//	for (int j = 0; j < qoi_list[i].size()-2; ++j) {
+//		if (index > HOPS_splitting[index].size()) index++;
+//		//std::cout << "i: " << i << " j: " << j << std::endl;
+//		qoi_dist_out << HOPS_splitting[i][j].real() << " " << HOPS_splitting[i][j].imag() << " " << qoi_list[i][j].real() << " " << qoi_list[i][j].imag() << std::endl;
+//	}
+//}
+//qoi_dist_out.close();
+
+
+}
+
+
+
+
+//different method////
 void HOPS::multi_HOPS_epsr(std::string & file_name)
 {
 
 
 	//load in the list of random materials being tested
 	std::vector<std::complex<double>> material_list;
-	std::ifstream materials_in("../ioFiles/input/materials_list.txt");
+	std::ifstream materials_in("../ioFiles/input/materials_list2.txt");
 	std::string line;
 	//std::cout << "Current rounding material values to match the shitty output from MATLAB!" << std::endl;
 	while (std::getline(materials_in, line)) {
@@ -363,13 +497,14 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 
 	///////////////////////Material Perturbation/////////////////////////////////////////////////////////////////////
-	//std::vector<std::complex<double>> references = { {4.0, -2.0} };
-	//std::vector<std::complex<double>> referencesFull = { {1.000000, -2.000000},{1.666667, -2.000000},{2.333333, -2.000000},{3.000000, -2.000000},{3.666667, -2.000000},{4.333333, -2.000000},{5.000000, -2.000000},{5.666667, -2.000000},{6.333333, -2.000000},{7.000000, -2.000000} };
-	//std::vector<std::complex<double>> referencesFull = { {1.000000, -2.000000},{1.300000, -2.000000},{1.600000, -2.000000},{1.900000, -2.000000},{2.200000, -2.000000},{2.500000, -2.000000},{2.800000, -2.000000},{3.100000, -2.000000},{3.400000, -2.000000},{3.700000, -2.000000},{4.000000, -2.000000},{4.300000, -2.000000},{4.600000, -2.000000},{4.900000, -2.000000},{5.200000, -2.000000},{5.500000, -2.000000},{5.800000, -2.000000},{6.100000, -2.000000},{6.400000, -2.000000},{6.700000, -2.000000},{7.000000, -2.000000} };
-	//std::vector<std::complex<double>> referencesFull = { {2.000000, -2.000000},{2.250000, -2.000000},{2.500000, -2.000000},{2.750000, -2.000000},{3.000000, -2.000000},{3.250000, -2.000000},{3.500000, -2.000000},{3.750000, -2.000000},{4.000000, -2.000000},{4.250000, -2.000000},{4.500000, -2.000000},{4.750000, -2.000000},{5.000000, -2.000000},{5.250000, -2.000000},{5.500000, -2.000000},{5.750000, -2.000000},{6.000000, -2.000000},{6.250000, -2.000000},{6.500000, -2.000000},{6.750000, -2.000000},{7.000000, -2.000000} };
-	std::vector<std::complex<double>> referencesFull = { {1.500000, -2.000000}, { 1.600000, -2.000000 }, { 1.700000, -2.000000 }, { 1.800000, -2.000000 }, { 1.900000, -2.000000 }, { 2.000000, -2.000000 }, { 2.100000, -2.000000 }, { 2.200000, -2.000000 }, { 2.300000, -2.000000 }, { 2.400000, -2.000000 }, { 2.500000, -2.000000 }, { 2.600000, -2.000000 }, { 2.700000, -2.000000 }, { 2.800000, -2.000000 }, { 2.900000, -2.000000 }, { 3.000000, -2.000000 }, { 3.100000, -2.000000 }, { 3.200000, -2.000000 }, { 3.300000, -2.000000 }, { 3.400000, -2.000000 }, { 3.500000, -2.000000 }, { 3.600000, -2.000000 }, { 3.700000, -2.000000 }, { 3.800000, -2.000000 }, { 3.900000, -2.000000 }, { 4.000000, -2.000000 }, { 4.100000, -2.000000 }, { 4.200000, -2.000000 }, { 4.300000, -2.000000 }, { 4.400000, -2.000000 }, { 4.500000, -2.000000 }, { 4.600000, -2.000000 }, { 4.700000, -2.000000 }, { 4.800000, -2.000000 }, { 4.900000, -2.000000 }, { 5.000000, -2.000000 }, { 5.100000, -2.000000 }, { 5.200000, -2.000000 }, { 5.300000, -2.000000 }, { 5.400000, -2.000000 }, { 5.500000, -2.000000 }, { 5.600000, -2.000000 }, { 5.700000, -2.000000 }, { 5.800000, -2.000000 }, { 5.900000, -2.000000 }, { 6.000000, -2.000000 }, { 6.100000, -2.000000 }, { 6.200000, -2.000000 }, { 6.300000, -2.000000 }, { 6.400000, -2.000000 }, { 6.500000, -2.000000 }, { 6.600000, -2.000000 }, { 6.700000, -2.000000 }, { 6.800000, -2.000000 }, { 6.900000, -2.000000 }, { 7.000000, -2.000000 }, { 7.100000, -2.000000 }, { 7.200000, -2.000000 }, { 7.300000, -2.000000 }, { 7.400000, -2.000000 }, { 7.500000, -2.000000 }, { 7.600000, -2.000000 }, { 7.700000, -2.000000 }, { 7.800000, -2.000000 }, { 7.900000, -2.000000 }, { 8.000000, -2.000000 } };
 
+	//old frequency and material range
+	//std::vector<std::complex<double>> referencesFull = { {1.500000, -2.000000}, { 1.600000, -2.000000 }, { 1.700000, -2.000000 }, { 1.800000, -2.000000 }, { 1.900000, -2.000000 }, { 2.000000, -2.000000 }, { 2.100000, -2.000000 }, { 2.200000, -2.000000 }, { 2.300000, -2.000000 }, { 2.400000, -2.000000 }, { 2.500000, -2.000000 }, { 2.600000, -2.000000 }, { 2.700000, -2.000000 }, { 2.800000, -2.000000 }, { 2.900000, -2.000000 }, { 3.000000, -2.000000 }, { 3.100000, -2.000000 }, { 3.200000, -2.000000 }, { 3.300000, -2.000000 }, { 3.400000, -2.000000 }, { 3.500000, -2.000000 }, { 3.600000, -2.000000 }, { 3.700000, -2.000000 }, { 3.800000, -2.000000 }, { 3.900000, -2.000000 }, { 4.000000, -2.000000 }, { 4.100000, -2.000000 }, { 4.200000, -2.000000 }, { 4.300000, -2.000000 }, { 4.400000, -2.000000 }, { 4.500000, -2.000000 }, { 4.600000, -2.000000 }, { 4.700000, -2.000000 }, { 4.800000, -2.000000 }, { 4.900000, -2.000000 }, { 5.000000, -2.000000 }, { 5.100000, -2.000000 }, { 5.200000, -2.000000 }, { 5.300000, -2.000000 }, { 5.400000, -2.000000 }, { 5.500000, -2.000000 }, { 5.600000, -2.000000 }, { 5.700000, -2.000000 }, { 5.800000, -2.000000 }, { 5.900000, -2.000000 }, { 6.000000, -2.000000 }, { 6.100000, -2.000000 }, { 6.200000, -2.000000 }, { 6.300000, -2.000000 }, { 6.400000, -2.000000 }, { 6.500000, -2.000000 }, { 6.600000, -2.000000 }, { 6.700000, -2.000000 }, { 6.800000, -2.000000 }, { 6.900000, -2.000000 }, { 7.000000, -2.000000 }, { 7.100000, -2.000000 }, { 7.200000, -2.000000 }, { 7.300000, -2.000000 }, { 7.400000, -2.000000 }, { 7.500000, -2.000000 }, { 7.600000, -2.000000 }, { 7.700000, -2.000000 }, { 7.800000, -2.000000 }, { 7.900000, -2.000000 }, { 8.000000, -2.000000 } };
+
+	//new material range
+	std::vector<std::complex<double>> referencesFull = { {1.000000, -2.000000},{1.100000, -2.000000},{1.200000, -2.000000},{1.300000, -2.000000},{1.400000, -2.000000},{1.500000, -2.000000},{1.600000, -2.000000},{1.700000, -2.000000},{1.800000, -2.000000},{1.900000, -2.000000},{2.000000, -2.000000},{2.100000, -2.000000},{2.200000, -2.000000},{2.300000, -2.000000},{2.400000, -2.000000},{2.500000, -2.000000},{2.600000, -2.000000},{2.700000, -2.000000},{2.800000, -2.000000},{2.900000, -2.000000},{3.000000, -2.000000},{3.100000, -2.000000},{3.200000, -2.000000},{3.300000, -2.000000},{3.400000, -2.000000},{3.500000, -2.000000},{3.600000, -2.000000},{3.700000, -2.000000},{3.800000, -2.000000},{3.900000, -2.000000},{4.000000, -2.000000},{4.100000, -2.000000},{4.200000, -2.000000},{4.300000, -2.000000},{4.400000, -2.000000},{4.500000, -2.000000},{4.600000, -2.000000},{4.700000, -2.000000},{4.800000, -2.000000},{4.900000, -2.000000},{5.000000, -2.000000},{5.100000, -2.000000},{5.200000, -2.000000},{5.300000, -2.000000},{5.400000, -2.000000},{5.500000, -2.000000},{5.600000, -2.000000},{5.700000, -2.000000},{5.800000, -2.000000},{5.900000, -2.000000},{6.000000, -2.000000},{6.100000, -2.000000},{6.200000, -2.000000},{6.300000, -2.000000},{6.400000, -2.000000},{6.500000, -2.000000},{6.600000, -2.000000},{6.700000, -2.000000},{6.800000, -2.000000},{6.900000, -2.000000},{7.000000, -2.000000},{7.100000, -2.000000},{7.200000, -2.000000},{7.300000, -2.000000},{7.400000, -2.000000},{7.500000, -2.000000},{7.600000, -2.000000},{7.700000, -2.000000},{7.800000, -2.000000},{7.900000, -2.000000},{8.000000, -2.000000} };
 	//----------------------------------------------------------------------------------------------------------------
+
 
 	////////////////Frequency Perturbation//////////////////////////////////////////////////////////////////
 	//std::vector<std::complex<double>> references = { 10000000.000000, 12142857.142857, 14285714.285714, 16428571.428571, 18571428.571429, 20714285.714286, 22857142.857143, 25000000.000000, 27142857.142857, 29285714.285714, 31428571.428571, 33571428.571429, 35714285.714286, 37857142.857143, 40000000.000000};
@@ -383,9 +518,36 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	double size = referencesFull.size();
 
 	//initial set of the references to be passed into HOPS (first, middle, last) requires odd number of references in the full vector
-	std::vector<std::complex<double>> references = { referencesFull[0], referencesFull[(size - 1) / 2], referencesFull[size - 1] };
-	//references = { referencesFull[0], referencesFull[2], referencesFull[4], referencesFull[6], referencesFull[8], referencesFull[10], referencesFull[12], referencesFull[14], referencesFull[16], referencesFull[18], referencesFull[20], referencesFull[22], referencesFull[24], referencesFull[26], referencesFull[28], referencesFull[30], referencesFull[32], referencesFull[34], referencesFull[36], referencesFull[38], referencesFull[40], referencesFull[42], referencesFull[44], referencesFull[46], referencesFull[48], referencesFull[50], referencesFull[52], referencesFull[54], referencesFull[56], referencesFull[58], referencesFull[60], referencesFull[62], referencesFull[64]};
-	references = referencesFull;
+	std::vector<std::complex<double>> references;
+	std::vector<int> refIndex;
+	references = { referencesFull[0], referencesFull[5], referencesFull[10], referencesFull[15], referencesFull[20], referencesFull[25], referencesFull[30], referencesFull[35], referencesFull[40], referencesFull[45], referencesFull[50], referencesFull[55], referencesFull[60], referencesFull[65], referencesFull[70]};
+	refIndex = {0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70};
+
+
+
+	//std::vector<std::complex<double>> references = { referencesFull[0], referencesFull[(size - 1) / 2], referencesFull[size - 1] };
+	//references = { referencesFull[0], referencesFull[1], referencesFull[2], referencesFull[4], referencesFull[5], referencesFull[6], referencesFull[8], referencesFull[9], referencesFull[10], referencesFull[12], referencesFull[13], referencesFull[14], referencesFull[16], referencesFull[17], referencesFull[18], referencesFull[20], referencesFull[21], referencesFull[22], referencesFull[24], referencesFull[25], referencesFull[26], referencesFull[28], referencesFull[29], referencesFull[30], referencesFull[32], referencesFull[33], referencesFull[34], referencesFull[36], referencesFull[37], referencesFull[38], referencesFull[40], referencesFull[41], referencesFull[42], referencesFull[44], referencesFull[45], referencesFull[46], referencesFull[48], referencesFull[49], referencesFull[50], referencesFull[52], referencesFull[53], referencesFull[54], referencesFull[56], referencesFull[57], referencesFull[58], referencesFull[60], referencesFull[61], referencesFull[62], referencesFull[64]};
+	
+	//references = referencesFull;
+
+
+	for (int i = 0; i < refIndex.size(); ++i) {
+		std::cout << "i: " << i << "  references[i]: " << references[i] << "  refIndex[i]: " << refIndex[i] << std::endl;
+	}
+
+	//easy sweep condition
+	refIndex.clear();
+	references.clear();
+	for (int i = 0; i < 71; i += 1) {
+		refIndex.push_back(i);
+		references.push_back(referencesFull[i]);
+	}
+	if (refIndex[refIndex.size() - 1] != 70) {
+		refIndex.push_back(70);
+		references.push_back(70);
+	}
+	//-------
+
 
 	//gradient for use in spline interpolation
 	std::vector <std::complex<double>> gradient(references.size());
@@ -397,9 +559,15 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	std::vector<std::vector<std::complex<double>>> HOPS_splitting(references.size());
 
 	//refIndex is the index of the ref_i file so that it can be called correctly from the reference_files folder
-	std::vector<int> refIndex = { 0, int(size - 1) / 2, int(size - 1) };
-	refIndex = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65};
+	//std::vector<int> refIndex = { 0, int(size - 1) / 2, int(size - 1) };
+	//refIndex = {0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62, 64};
 
+
+
+
+	for (int i = 0; i < refIndex.size(); ++i) {
+		std::cout << "NEW i: " << i << "  references[i]: " << references[i] << "  refIndex[i]: " << refIndex[i] << std::endl;
+	}
 
 	//toggle to end the while loop
 	bool toggle = true;
@@ -481,6 +649,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 		//hops splitting is N-1 segments BETWEEN N reference points
 		int rIdx = 0;
+		//checking for monte carlo security
 		for (int j = 0; j < material_list.size(); ++j) {
 
 			if (material_list[j].real() <= references[rIdx + 1].real()) {
@@ -596,7 +765,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 			/////////////////////////////Material Perturbation///////////////////////////////////////////////////////////////////////////////
 			//std::string command = "..\\file_input_converter ..\\reference_files_mat\\ref_0.in ..\\exampleFiles\\" + in_file_name + "\\";
-			std::string command = "..\\file_input_converter ..\\reference_files_mat\\ref_" + std::to_string(refIndex[i]) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
+			std::string command = "..\\file_input_converter ..\\reference_files_mat_newRange\\ref_" + std::to_string(refIndex[i]) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
 			//--------------------------------------------------------------------------------------------------------------------------------------------------
 
 			std::system(command.c_str());
@@ -777,17 +946,22 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 
 		//AR sweep output
-		std::string outF = "../ioFiles/output/sweep/spline/qoi_HOPS_materialAR" + std::to_string(iterations + 2) + ".txt";
+		std::string outF = "../ioFiles/output/sweep/splineGrad/qoi_HOPS_materialAR" + std::to_string(iterations + 2) + ".txt";
+		//std::string outF = "../ioFiles/output/sweep/splineGrad/qoi_HOPS_materialAR15.txt";
 		std::ofstream qoi_dist_out(outF);
 		int index = 0;
 		for (int i = 0; i < qoi_list.size() - 1; i++) {
 			//need to remove the max/min test values for each of the batches
+
+
 			for (int j = 0; j < qoi_list[i].size() - 2; ++j) {
 				if (index > HOPS_splitting[index].size()) index++;
+
 				//std::cout << "i: " << i << " j: " << j << std::endl;
 				qoi_dist_out << HOPS_splitting[i][j].real() << " " << HOPS_splitting[i][j].imag() << " " << qoi_list[i][j].real() << " " << qoi_list[i][j].imag() << std::endl;
 			}
 		}
+
 		qoi_dist_out.close();
 		//just quits (no iteration)
 		break;

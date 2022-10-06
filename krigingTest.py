@@ -5,6 +5,7 @@ from scipy.stats import norm
 import skgstat as skg
 from scipy.optimize import curve_fit
 from pprint import pprint
+from scipy.stats import norm
 
 
 def printArray(arr):
@@ -71,15 +72,16 @@ def readInput(file):
     return xData, mag
 
 
-xData, yData = readInput('../3DFEM-UQ/cpp/ioFiles/output/qoi_monte_carlo_1000_mat.txt')
+# xData, yData = readInput('../3DFEM-UQ/cpp/ioFiles/output/qoi_monte_carlo_1000_mat.txt')
 
-# xData = np.random.normal(10, 1, 201)
-# xData = np.linspace(0, 5, 201)
-# yData = np.random.normal(2, 0.5, 201)
-yData = np.sort(yData)
-xData = np.sort(xData)
+# # xData = np.random.normal(10, 1, 201)
+# # xData = np.linspace(0, 5, 201)
+# # yData = np.random.normal(2, 0.5, 201)
+# yData = np.sort(yData)
+# xData = np.sort(xData)
 
-
+xData = np.linspace(0, 10, 1000)
+yData = norm.pdf(xData, loc = 5, scale = 1)
 
 
 # xSamples = np.array([xData[0], xData[125], xData[250], xData[500], xData[750], xData[999]])
@@ -205,7 +207,7 @@ ok = skg.OrdinaryKriging(v)
 z = ok.transform(xData, np.ones(xData.shape)*0.0)
 
 plt.figure(3)
-plt.scatter(xData, z)
+plt.scatter(xData, z, color = 'b')
 plt.scatter(xData, yData)
 
 plt.figure(2)
