@@ -391,7 +391,9 @@ void HOPS::monte_carlo_dual(std::string& file_name)
 
 		/////////////////////////////Material Perturbation///////////////////////////////////////////////////////////////////////////////
 		//std::string command = "..\\file_input_converter ..\\reference_files_mat\\ref_0.in ..\\exampleFiles\\" + in_file_name + "\\";
-		std::string command = "..\\file_input_converter ..\\reference_files_mat_newCarlo4\\ref_" + std::to_string(i) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
+		//std::string command = "..\\file_input_converter ..\\reference_files_mat_newCarlo4\\ref_" + std::to_string(i) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
+		std::string command = "..\\file_input_converter ..\\..\\..\\FEM-Matlab\\Meshing_of_Spheres_dl\\Meshing_of_Spheres\\monte_carlo_files_mat\\ref_" + std::to_string(i) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
+
 		//--------------------------------------------------------------------------------------------------------------------------------------------------
 
 		std::cout << "material_list[i]: " << material_list[i] << std::endl;
