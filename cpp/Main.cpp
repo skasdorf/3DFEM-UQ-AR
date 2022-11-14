@@ -548,7 +548,7 @@ int main() {
 		//HOPS::multi_HOPS_epsr(mesh_name);
 		Kriging::multi_HOPS_epsr(mesh_name);
 		//HOPS::monte_carlo_dual(mesh_name);
-
+		Bayes::posterior(mesh_name);
 
 
 		//run::_element_error(mesh_name, plot, useAdjoint, higher_order, check_results, .2);
