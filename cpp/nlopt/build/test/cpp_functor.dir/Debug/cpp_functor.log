@@ -1,0 +1,7 @@
+﻿  Building Custom Rule F:/Github/3DFEM-UQ-AR/cpp/nlopt/test/CMakeLists.txt
+  cpp_functor.cxx
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\build\nlopt.hpp(440,1): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\build\nlopt.hpp(465,1): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\build\nlopt.hpp(497,1): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\build\nlopt.hpp(508,1): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  cpp_functor.vcxproj -> F:\Github\3DFEM-UQ-AR\cpp\nlopt\build\test\Debug\cpp_functor.exe

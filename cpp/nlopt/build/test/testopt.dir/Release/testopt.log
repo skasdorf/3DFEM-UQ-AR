@@ -1,0 +1,16 @@
+﻿  Building Custom Rule F:/Github/3DFEM-UQ-AR/cpp/nlopt/test/CMakeLists.txt
+  testfuncs.c
+  testopt.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  timer.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\timer.c(54,22): warning C4244: 'return': conversion from 'time_t' to 'double', possible loss of data
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\timer.c(85,22): warning C4244: 'return': conversion from 'time_t' to 'unsigned long', possible loss of data
+  mt19937ar.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  nlopt-getopt.c
+  Generating Code...
+  testopt.vcxproj -> F:\Github\3DFEM-UQ-AR\cpp\nlopt\build\test\Release\testopt.exe

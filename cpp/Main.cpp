@@ -14,6 +14,7 @@
 #include <random>
 #include "HOPS\hops.h"
 #include "Kriging\kriging.h"
+#include "Bayes\bayes.h"
 void refine_main(std::vector<int>& refiners, std::complex<double>& qoi, const int& n, int& numu, char ref_type) {
 	/////////////////////////
 	//Run options:
@@ -548,7 +549,7 @@ int main() {
 		//HOPS::multi_HOPS_epsr(mesh_name);
 		Kriging::multi_HOPS_epsr(mesh_name);
 		//HOPS::monte_carlo_dual(mesh_name);
-		Bayes::posterior(mesh_name);
+		//Bayes::posterior(mesh_name);
 
 
 		//run::_element_error(mesh_name, plot, useAdjoint, higher_order, check_results, .2);

@@ -2,13 +2,15 @@
 #include "../run_modes.h"
 
 namespace Kriging {
-	std::complex<long double> sensitivity_to_epsr(std::string& file_name, std::vector<std::complex<long double>>& epsr_list, std::vector<std::complex<long double>>& updated_qoi, std::complex<long double> referenceFreq, std::complex<long double>& gradient);
-	std::complex<long double> get_QoI(Domain& dom_forward, Domain& dom_adjoint);
-	std::complex<long double> get_QoI2(Domain& dom_forward, Domain& dom_adjoint);
+	std::complex<double> sensitivity_to_epsr(std::string& file_name, std::vector<std::complex<double>>& epsr_list, std::vector<std::complex<double>>& updated_qoi, std::complex<double> referenceFreq, std::complex<double>& gradient);
+	std::complex<double> get_QoI(Domain& dom_forward, Domain& dom_adjoint);
+	std::complex<double> get_QoI2(Domain& dom_forward, Domain& dom_adjoint);
 	void monte_carlo_instance(std::string& file_name);
 	void multi_HOPS_epsr(std::string& file_name);
 	void multi_HOPS_multi_epsr(std::string& file_name);
-	long double normalFunction(long double x, long double mean, long double std);
-	long double trap_integral(long double intervalMid, long double mean, long double std, long double step);
-	void sensitivity_to_multi_epsr(std::string& file_name, std::vector<std::vector<std::complex<long double>>>& epsr_list, std::vector<std::complex<long double>>& updated_qoi, std::vector<std::complex<long double>>& reference_values);
+	double normalFunction(double x, double mean, double std);
+	//std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit, std::vector<double> variogramFitFirstD, std::vector<double> variogramFitSecondD, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal, std::vector<double> variogramFitGrad, std::vector<std::complex<double>> yVals, std::vector<std::complex<double>> yValsGrad);
+
+	double trap_integral(double intervalMid, double mean, double std, double step);
+	void sensitivity_to_multi_epsr(std::string& file_name, std::vector<std::vector<std::complex<double>>>& epsr_list, std::vector<std::complex<double>>& updated_qoi, std::vector<std::complex<double>>& reference_values);
 }

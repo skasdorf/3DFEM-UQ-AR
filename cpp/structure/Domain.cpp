@@ -24,7 +24,7 @@ void Domain::clear_all_submatrices(std::vector<Element>& elements) {
 		std::vector<std::vector<double>>().swap(e->fuPowers.matrix);
 		std::vector<std::vector<double>>().swap(e->fvPowers.matrix);
 		std::vector<std::vector<double>>().swap(e->fwPowers.matrix);
-	
+
 		std::vector<std::vector<double>>().swap(e->fpuPowers.matrix);
 		std::vector<std::vector<double>>().swap(e->fpvPowers.matrix);
 		std::vector<std::vector<double>>().swap(e->fpwPowers.matrix);
@@ -97,7 +97,7 @@ void Domain::makeNT() {
 			sum += nTotal[iuvw][current_element][4];
 		}
 
-		
+
 		e->disconnected_dimension = sume;
 	}
 	this->ntCum = ntCum;
@@ -130,7 +130,7 @@ void Domain::definers_defrmnls() {
 	int mm, nn, ll, m, n, k, l, broj, jmax, imnl, jmin;
 	double ep = 0.0000001;
 	for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
-		int tempOrders = (e->geom_order + 1)*(e->geom_order + 1)*(e->geom_order + 1);
+		int tempOrders = (e->geom_order + 1) * (e->geom_order + 1) * (e->geom_order + 1);
 		e->nRs = tempOrders;
 		e->rs = matrix2d<double>(tempOrders, 3);
 		imax = tempOrders; // note: this assumes that ku, kv, kw are equal to each other 
@@ -147,25 +147,25 @@ void Domain::definers_defrmnls() {
 				um = -1.0;
 				for (k = 1; k <= e->geom_order; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 			}
 			else if (mm == e->geom_order) {
 				um = 1;
 				for (k = 0; k < e->geom_order; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 			}
 			else {
 				um = (2 * mm - kr) / kr;
 				for (k = 0; k < mm; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 				for (k = mm + 1; k <= e->geom_order; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 			}
 			kr = double(e->geom_order);
@@ -173,25 +173,25 @@ void Domain::definers_defrmnls() {
 				um = -1.0;
 				for (k = 1; k <= e->geom_order; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 			}
 			else if (nn == e->geom_order) {
 				um = 1.0;
 				for (k = 0; k <= e->geom_order - 1; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 			}
 			else {
 				um = (2 * nn - kr) / kr;
 				for (k = 0; k < nn; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 				for (k = nn + 1; k <= e->geom_order; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 			}
 			kr = 1 * e->geom_order;
@@ -199,25 +199,25 @@ void Domain::definers_defrmnls() {
 				um = -1.0;
 				for (k = 1; k <= e->geom_order; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 			}
 			else if (ll == e->geom_order) {
 				um = 1;
 				for (k = 0; k < e->geom_order; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 			}
 			else {
 				um = (2 * ll - kr) / kr;
 				for (k = 0; k <= ll - 1; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 				for (k = ll + 1; k <= e->geom_order; ++k) {
 					uk = (2 * k - kr) / kr;
-					imen = imen*(um - uk);
+					imen = imen * (um - uk);
 				}
 			}
 			jmax = pow(2, e->geom_order) - 1;
@@ -230,7 +230,7 @@ void Domain::definers_defrmnls() {
 					if (k != mm) {
 						if (broj % 2 == 0) {
 							uk = (kr - 2 * k) / kr;
-							koef = koef*uk;
+							koef = koef * uk;
 							//if (abs(koef - 0.0) < ep) koef = 0;
 						}
 						else ++m;
@@ -241,7 +241,7 @@ void Domain::definers_defrmnls() {
 				for (k = 0; k <= e->geom_order; ++k) {
 					if (k != nn) {
 						uk = (kr - 2 * k) / kr;
-						koef = koef*uk;
+						koef = koef * uk;
 						//if (abs(koef - 0.0) < ep) koef = 0;
 					}
 				}
@@ -249,7 +249,7 @@ void Domain::definers_defrmnls() {
 				for (k = 0; k <= e->geom_order; ++k) {
 					if (k != ll) {
 						uk = (kr - 2 * k) / kr;
-						koef = koef*uk;
+						koef = koef * uk;
 						//if (abs(koef - 0.0) < ep) koef = 0;
 					}
 				}
@@ -257,12 +257,12 @@ void Domain::definers_defrmnls() {
 
 				//Point ptest = (this->nodes)[e->all_indices[icnt]];
 				//std::vector<double> temp = this->nodes[e->all_indices[icnt-1]].toVector()*(koef / imen);
-				(e->rs)(imnl) = (e->rs)(imnl) + this->nodes[e->all_indices[icnt - 1] - 1].toVector()*(koef / imen);
+				(e->rs)(imnl) = (e->rs)(imnl) + this->nodes[e->all_indices[icnt - 1] - 1].toVector() * (koef / imen);
 
 
 			}
 			jmin = pow(2, e->geom_order);
-			jmax = jmin*jmin - 1;
+			jmax = jmin * jmin - 1;
 			for (int jcnt = jmin; jcnt <= jmax; ++jcnt) {
 				m = 0;
 				n = 0;
@@ -273,7 +273,7 @@ void Domain::definers_defrmnls() {
 					if (k != mm) {
 						if (broj % 2 == 0) {
 							uk = (kr - 2 * k) / kr;
-							koef = koef*uk;
+							koef = koef * uk;
 							//if (abs(koef - 0.0) < ep) koef = 0;
 						}
 						else ++m;
@@ -285,7 +285,7 @@ void Domain::definers_defrmnls() {
 					if (k != nn) {
 						if (broj % 2 == 0) {
 							uk = (kr - 2 * k) / kr;
-							koef = koef*uk;
+							koef = koef * uk;
 							//if (abs(koef - 0.0) < ep) koef = 0;
 						}
 						else ++n;
@@ -296,20 +296,20 @@ void Domain::definers_defrmnls() {
 				for (k = 0; k <= e->geom_order; ++k) {
 					if (k != ll) {
 						uk = (kr - 2 * k) / kr;
-						koef = koef*uk;
+						koef = koef * uk;
 						//if (abs(koef - 0.0) < ep) koef = 0;
 					}
 				}
-				imnl = (e->geom_order + 1)*n + m + 1;
+				imnl = (e->geom_order + 1) * n + m + 1;
 
 
-				(e->rs)(imnl) = (e->rs)(imnl) + this->nodes[e->all_indices[icnt - 1] - 1].toVector()*(koef / imen);
+				(e->rs)(imnl) = (e->rs)(imnl) + this->nodes[e->all_indices[icnt - 1] - 1].toVector() * (koef / imen);
 
 
 			}
 			jmin = (pow(2, e->geom_order));
-			jmin = jmin*jmin;
-			jmax = jmin*pow(2, e->geom_order) - 1;
+			jmin = jmin * jmin;
+			jmax = jmin * pow(2, e->geom_order) - 1;
 			for (int jcnt = jmin; jcnt <= jmax; ++jcnt) {
 				if (jcnt == 21) {
 					int stop = 0;
@@ -324,7 +324,7 @@ void Domain::definers_defrmnls() {
 					if (k != mm) {
 						if (broj % 2 == 0) {
 							uk = (kr - 2 * k) / kr;
-							koef = koef*uk;
+							koef = koef * uk;
 							//	if (abs(koef - 0.0) < ep) koef = 0;
 						}
 						else ++m;
@@ -337,7 +337,7 @@ void Domain::definers_defrmnls() {
 					if (k != nn) {
 						if (broj % 2 == 0) {
 							uk = (kr - 2 * k) / kr;
-							koef = koef*uk;
+							koef = koef * uk;
 							//	if (abs(koef - 0.0) < ep) koef = 0;
 						}
 						else ++n;
@@ -349,7 +349,7 @@ void Domain::definers_defrmnls() {
 					if (k != ll) {
 						if (broj % 2 == 0) {
 							uk = (kr - 2 * k) / kr;
-							koef = koef*uk;
+							koef = koef * uk;
 							//if (abs(koef - 0.0) < ep) koef = 0;
 						}
 						else ++l;
@@ -357,9 +357,9 @@ void Domain::definers_defrmnls() {
 					}
 				}
 				imnl = (e->geom_order + 1);
-				imnl = imnl*imnl*l + imnl*n + m + 1;
+				imnl = imnl * imnl * l + imnl * n + m + 1;
 
-				(e->rs)(imnl) = (e->rs)(imnl) + this->nodes[e->all_indices[icnt - 1] - 1].toVector()*(koef / imen);
+				(e->rs)(imnl) = (e->rs)(imnl) + this->nodes[e->all_indices[icnt - 1] - 1].toVector() * (koef / imen);
 
 			}
 		}
@@ -389,10 +389,10 @@ int Domain::DADDR(int element_index, int face_index, int coord, int a, int b) {
 	case 1:
 		switch (coord) {
 		case 2:
-			addr = this->ntCum[element_index][2] + a*nTotal[2][element_index][3] + b + 1;
+			addr = this->ntCum[element_index][2] + a * nTotal[2][element_index][3] + b + 1;
 			break;
 		case 3:
-			addr = this->ntCum[element_index][3] + a*nTotal[3][element_index][3] + b + 1;
+			addr = this->ntCum[element_index][3] + a * nTotal[3][element_index][3] + b + 1;
 			break;
 		default:
 			std::cout << "FAILURE" << std::endl;
@@ -402,10 +402,10 @@ int Domain::DADDR(int element_index, int face_index, int coord, int a, int b) {
 	case 2:
 		switch (coord) {
 		case 2:
-			addr = ntCum[element_index][2] + nTotal[2][element_index][2] * nTotal[2][element_index][3] + a*nTotal[2][element_index][3] + b + 1;
+			addr = ntCum[element_index][2] + nTotal[2][element_index][2] * nTotal[2][element_index][3] + a * nTotal[2][element_index][3] + b + 1;
 			break;
 		case 3:
-			addr = ntCum[element_index][3] + nTotal[3][element_index][2] * nTotal[3][element_index][3] + a*nTotal[3][element_index][3] + b + 1;
+			addr = ntCum[element_index][3] + nTotal[3][element_index][2] * nTotal[3][element_index][3] + a * nTotal[3][element_index][3] + b + 1;
 			break;
 		default:
 			std::cout << "FAILURE" << std::endl;
@@ -415,10 +415,10 @@ int Domain::DADDR(int element_index, int face_index, int coord, int a, int b) {
 	case 3:
 		switch (coord) {
 		case 1:
-			addr = ntCum[element_index][1] + a*nTotal[1][element_index][2] * nTotal[1][element_index][3] + b + 1;
+			addr = ntCum[element_index][1] + a * nTotal[1][element_index][2] * nTotal[1][element_index][3] + b + 1;
 			break;
 		case 3:
-			addr = ntCum[element_index][3] + a*nTotal[3][element_index][2] * nTotal[3][element_index][3] + b + 1;
+			addr = ntCum[element_index][3] + a * nTotal[3][element_index][2] * nTotal[3][element_index][3] + b + 1;
 			break;
 		default:
 			std::cout << "FAILURE" << std::endl;
@@ -427,10 +427,10 @@ int Domain::DADDR(int element_index, int face_index, int coord, int a, int b) {
 	case 4:
 		switch (coord) {
 		case 1:
-			addr = ntCum[element_index][1] + a*nTotal[1][element_index][2] * nTotal[1][element_index][3] + nTotal[1][element_index][3] + b + 1;
+			addr = ntCum[element_index][1] + a * nTotal[1][element_index][2] * nTotal[1][element_index][3] + nTotal[1][element_index][3] + b + 1;
 			break;
 		case 3:
-			addr = ntCum[element_index][3] + a*nTotal[3][element_index][2] * nTotal[3][element_index][3] + nTotal[3][element_index][3] + b + 1;
+			addr = ntCum[element_index][3] + a * nTotal[3][element_index][2] * nTotal[3][element_index][3] + nTotal[3][element_index][3] + b + 1;
 			break;
 		default:
 			std::cout << "FAILURE" << std::endl;
@@ -440,10 +440,10 @@ int Domain::DADDR(int element_index, int face_index, int coord, int a, int b) {
 	case 5:
 		switch (coord) {
 		case 1:
-			addr = ntCum[element_index][1] + a*nTotal[1][element_index][2] * nTotal[1][element_index][3] + b*nTotal[1][element_index][3] + 1;
+			addr = ntCum[element_index][1] + a * nTotal[1][element_index][2] * nTotal[1][element_index][3] + b * nTotal[1][element_index][3] + 1;
 			break;
 		case 2:
-			addr = ntCum[element_index][2] + a*nTotal[2][element_index][2] * nTotal[2][element_index][3] + b*nTotal[2][element_index][3] + 1;
+			addr = ntCum[element_index][2] + a * nTotal[2][element_index][2] * nTotal[2][element_index][3] + b * nTotal[2][element_index][3] + 1;
 			break;
 		default:
 			std::cout << "FAILURE" << std::endl;
@@ -453,10 +453,10 @@ int Domain::DADDR(int element_index, int face_index, int coord, int a, int b) {
 	case 6:
 		switch (coord) {
 		case 1:
-			addr = ntCum[element_index][1] + a*nTotal[1][element_index][2] * nTotal[1][element_index][3] + b*nTotal[1][element_index][3] + 2;
+			addr = ntCum[element_index][1] + a * nTotal[1][element_index][2] * nTotal[1][element_index][3] + b * nTotal[1][element_index][3] + 2;
 			break;
 		case 2:
-			addr = ntCum[element_index][2] + a*nTotal[2][element_index][2] * nTotal[2][element_index][3] + b*nTotal[2][element_index][3] + 2;
+			addr = ntCum[element_index][2] + a * nTotal[2][element_index][2] * nTotal[2][element_index][3] + b * nTotal[2][element_index][3] + 2;
 			break;
 		default:
 			std::cout << "FAILURE" << std::endl;
@@ -547,7 +547,7 @@ void Domain::set_bc_elements() {
 		else if (fac_it->boundary_condition == 5) {
 			if (this->elements[fac_it->element_indices.first - 1].type != 1) this->elements[fac_it->element_indices.first - 1].PML_boundary_list[bcept[2] - 1] = 1;
 			if (fac_it->element_indices.second > 0)
-			if (this->elements[fac_it->element_indices.second - 1].type != 1) this->elements[fac_it->element_indices.second - 1].PML_boundary_list[bcept[2] - 1] = 1;
+				if (this->elements[fac_it->element_indices.second - 1].type != 1) this->elements[fac_it->element_indices.second - 1].PML_boundary_list[bcept[2] - 1] = 1;
 		}
 		else EXIT_FAILURE;
 	}
@@ -583,7 +583,7 @@ std::vector<int> Domain::prenumunknowns() {
 					vectorD[i] = 0;
 				}
 				if (vectorDi < 0) sign = -1 * sign;
-				vectorD[i] = sign*vectorD[absVectorD];
+				vectorD[i] = sign * vectorD[absVectorD];
 			}
 		}
 	}
@@ -631,7 +631,7 @@ void Domain::fill_eiuvwijk() {
 							eiUVWijk[iDis][3] = i;
 							eiUVWijk[iDis][4] = j;
 							eiUVWijk[iDis][5] = k;
-							
+
 						}
 					}
 				}
@@ -646,7 +646,7 @@ void Domain::fill_eiuvwijk() {
 							eiUVWijk[iDis][3] = i;
 							eiUVWijk[iDis][4] = j;
 							eiUVWijk[iDis][5] = k;
-							
+
 						}
 					}
 				}
@@ -661,14 +661,14 @@ void Domain::fill_eiuvwijk() {
 							eiUVWijk[iDis][3] = i;
 							eiUVWijk[iDis][4] = j;
 							eiUVWijk[iDis][5] = k;
-							
+
 						}
 					}
 				}
 				break;
 			}
 		}
-		
+
 
 		e->unknownsEnd = iDis;
 	}
@@ -686,160 +686,160 @@ void Domain::fill_eiuvwijk_refine(int order_dif) {
 	int iDis = 0;
 	for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
 		(*e).unknownsStart = iDis + 1;
-			for (int iuvw = 1; iuvw <= 3; ++iuvw) {
-				switch (iuvw) {
-				case 1:
-					for (int i = 0; i < e->expansion[0]; ++i) { //nu
-						for (int j = 0; j <= e->expansion[1]; ++j) { //nv
-							for (int k = 0; k <= e->expansion[2]; ++k) { //nw
-								++iDis;
-								eiUVWijk[iDis][1] = e->index;
-								eiUVWijk[iDis][2] = iuvw;
-								eiUVWijk[iDis][3] = i;
-								eiUVWijk[iDis][4] = j;
-								eiUVWijk[iDis][5] = k;
-								if (e->refine) {
-									int vectorD_storage = this->vectorD[iDis];
-									if (i >= e->expansion[0] - order_dif) {
-										if (j < 2 || k < 2) this->vectorD[iDis] = 0;
-										
-									}
-									if (j > e->expansion[1] - order_dif) {
-										if (k < 2) this->vectorD[iDis] = 0;
-										
-									}
-									if (k > e->expansion[2] - order_dif) {
-										if (j < 2) this->vectorD[iDis] = 0;
-									}
-									//adding the tangential components 
-									//check if v or w connection exists
-									//if (i > 1) continue;
-									//if (e->adjacent_list.v_dir > 0) {
-									//	if (k < 2) continue;
-									//	if (e->adjacent_list.v_dir < 2) { //add -v face fcn
-									//		if (j != 0) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}if (e->adjacent_list.v_dir < 3) {//add +v face fcn
-									//		if (j != 1) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}
-									//}if (e->adjacent_list.w_dir > 0) {
-									//	if (j < 2) continue;
-									//	if (e->adjacent_list.w_dir < 2) {//add -w face fcn
-									//		if (k != 0) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}if (e->adjacent_list.w_dir < 3) { //add +w face fcn
-									//		if (k != 1) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}
-									//}
+		for (int iuvw = 1; iuvw <= 3; ++iuvw) {
+			switch (iuvw) {
+			case 1:
+				for (int i = 0; i < e->expansion[0]; ++i) { //nu
+					for (int j = 0; j <= e->expansion[1]; ++j) { //nv
+						for (int k = 0; k <= e->expansion[2]; ++k) { //nw
+							++iDis;
+							eiUVWijk[iDis][1] = e->index;
+							eiUVWijk[iDis][2] = iuvw;
+							eiUVWijk[iDis][3] = i;
+							eiUVWijk[iDis][4] = j;
+							eiUVWijk[iDis][5] = k;
+							if (e->refine) {
+								int vectorD_storage = this->vectorD[iDis];
+								if (i >= e->expansion[0] - order_dif) {
+									if (j < 2 || k < 2) this->vectorD[iDis] = 0;
+
 								}
+								if (j > e->expansion[1] - order_dif) {
+									if (k < 2) this->vectorD[iDis] = 0;
+
+								}
+								if (k > e->expansion[2] - order_dif) {
+									if (j < 2) this->vectorD[iDis] = 0;
+								}
+								//adding the tangential components 
+								//check if v or w connection exists
+								//if (i > 1) continue;
+								//if (e->adjacent_list.v_dir > 0) {
+								//	if (k < 2) continue;
+								//	if (e->adjacent_list.v_dir < 2) { //add -v face fcn
+								//		if (j != 0) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}if (e->adjacent_list.v_dir < 3) {//add +v face fcn
+								//		if (j != 1) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}
+								//}if (e->adjacent_list.w_dir > 0) {
+								//	if (j < 2) continue;
+								//	if (e->adjacent_list.w_dir < 2) {//add -w face fcn
+								//		if (k != 0) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}if (e->adjacent_list.w_dir < 3) { //add +w face fcn
+								//		if (k != 1) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}
+								//}
 							}
 						}
 					}
-					break;
-				case 2:
-					for (int i = 0; i <= e->expansion[0]; ++i) {
-						for (int j = 0; j < e->expansion[1]; ++j) {
-							for (int k = 0; k <= e->expansion[2]; ++k) {
-								++iDis;
-								eiUVWijk[iDis][1] = e->index;
-								eiUVWijk[iDis][2] = iuvw;
-								eiUVWijk[iDis][3] = i;
-								eiUVWijk[iDis][4] = j;
-								eiUVWijk[iDis][5] = k;
-								if (e->refine) {
-									int vectorD_storage = this->vectorD[iDis];
-									if (j >= e->expansion[0] - order_dif) {
-										if (i < 2 || k < 2) this->vectorD[iDis] = 0;
-										continue;
-									}
-									if (i > e->expansion[0] - order_dif) {
-										if (k < 2) this->vectorD[iDis] = 0;
-										continue;
-									}
-									if (k > e->expansion[2] - order_dif) {
-										if (i < 2) this->vectorD[iDis] = 0;
-									}
-									//adding the tangential components 
-									//check if u or w connection exists
-									//if (j > 1) continue;
-									//if (e->adjacent_list.u_dir > 0) {
-									//	if (k < 2) continue;
-									//	if (e->adjacent_list.u_dir < 2) { //add -v face fcn
-									//		if (i != 0) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}if (e->adjacent_list.u_dir < 3) {//add +v face fcn
-									//		if (i != 1) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}
-									//}if (e->adjacent_list.w_dir > 0) {
-									//	if (i < 2) continue;
-									//	if (e->adjacent_list.w_dir < 2) {//add -w face fcn
-									//		if (k != 0) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}if (e->adjacent_list.w_dir < 3) { //add +w face fcn
-									//		if (k != 1) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}
-									//}
-								}
-							}
-						}
-					}
-					break;
-				case 3:
-					for (int i = 0; i <= e->expansion[0]; ++i) {
-						for (int j = 0; j <= e->expansion[1]; ++j) {
-							for (int k = 0; k < e->expansion[2]; ++k) {
-								++iDis;
-								eiUVWijk[iDis][1] = e->index;
-								eiUVWijk[iDis][2] = iuvw;
-								eiUVWijk[iDis][3] = i;
-								eiUVWijk[iDis][4] = j;
-								eiUVWijk[iDis][5] = k;
-								if (e->refine) {
-									int vectorD_storage = this->vectorD[iDis];
-									if (k >= e->expansion[2] - order_dif) {
-										if (i < 2 || j < 2) this->vectorD[iDis] = 0;
-										continue;
-									}
-									if (j > e->expansion[1] - order_dif) {
-										if (i < 2) this->vectorD[iDis] = 0;
-										continue;
-									}
-									if (i > e->expansion[0] - order_dif) {
-										if (j < 2) this->vectorD[iDis] = 0;
-									}
-									//adding the tangential components 
-									//check if u or v connection exists
-									//if (k > 1) continue;
-									//if (e->adjacent_list.u_dir > 0) {
-									//	if (j < 2) continue;
-									//	if (e->adjacent_list.u_dir < 2) { //add -v face fcn
-									//		if (i != 0) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}if (e->adjacent_list.u_dir < 3) {//add +v face fcn
-									//		if (i != 1) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}
-									//}if (e->adjacent_list.v_dir > 0) {
-									//	if (i < 2) continue;
-									//	if (e->adjacent_list.v_dir < 2) {//add -w face fcn
-									//		if (j != 0) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}if (e->adjacent_list.v_dir < 3) { //add +w face fcn
-									//		if (j != 1) continue;
-									//		this->vectorD[iDis] = vectorD_storage;
-									//	}
-									//}
-								}
-							}
-						}
-					}
-					break;
 				}
+				break;
+			case 2:
+				for (int i = 0; i <= e->expansion[0]; ++i) {
+					for (int j = 0; j < e->expansion[1]; ++j) {
+						for (int k = 0; k <= e->expansion[2]; ++k) {
+							++iDis;
+							eiUVWijk[iDis][1] = e->index;
+							eiUVWijk[iDis][2] = iuvw;
+							eiUVWijk[iDis][3] = i;
+							eiUVWijk[iDis][4] = j;
+							eiUVWijk[iDis][5] = k;
+							if (e->refine) {
+								int vectorD_storage = this->vectorD[iDis];
+								if (j >= e->expansion[0] - order_dif) {
+									if (i < 2 || k < 2) this->vectorD[iDis] = 0;
+									continue;
+								}
+								if (i > e->expansion[0] - order_dif) {
+									if (k < 2) this->vectorD[iDis] = 0;
+									continue;
+								}
+								if (k > e->expansion[2] - order_dif) {
+									if (i < 2) this->vectorD[iDis] = 0;
+								}
+								//adding the tangential components 
+								//check if u or w connection exists
+								//if (j > 1) continue;
+								//if (e->adjacent_list.u_dir > 0) {
+								//	if (k < 2) continue;
+								//	if (e->adjacent_list.u_dir < 2) { //add -v face fcn
+								//		if (i != 0) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}if (e->adjacent_list.u_dir < 3) {//add +v face fcn
+								//		if (i != 1) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}
+								//}if (e->adjacent_list.w_dir > 0) {
+								//	if (i < 2) continue;
+								//	if (e->adjacent_list.w_dir < 2) {//add -w face fcn
+								//		if (k != 0) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}if (e->adjacent_list.w_dir < 3) { //add +w face fcn
+								//		if (k != 1) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}
+								//}
+							}
+						}
+					}
+				}
+				break;
+			case 3:
+				for (int i = 0; i <= e->expansion[0]; ++i) {
+					for (int j = 0; j <= e->expansion[1]; ++j) {
+						for (int k = 0; k < e->expansion[2]; ++k) {
+							++iDis;
+							eiUVWijk[iDis][1] = e->index;
+							eiUVWijk[iDis][2] = iuvw;
+							eiUVWijk[iDis][3] = i;
+							eiUVWijk[iDis][4] = j;
+							eiUVWijk[iDis][5] = k;
+							if (e->refine) {
+								int vectorD_storage = this->vectorD[iDis];
+								if (k >= e->expansion[2] - order_dif) {
+									if (i < 2 || j < 2) this->vectorD[iDis] = 0;
+									continue;
+								}
+								if (j > e->expansion[1] - order_dif) {
+									if (i < 2) this->vectorD[iDis] = 0;
+									continue;
+								}
+								if (i > e->expansion[0] - order_dif) {
+									if (j < 2) this->vectorD[iDis] = 0;
+								}
+								//adding the tangential components 
+								//check if u or v connection exists
+								//if (k > 1) continue;
+								//if (e->adjacent_list.u_dir > 0) {
+								//	if (j < 2) continue;
+								//	if (e->adjacent_list.u_dir < 2) { //add -v face fcn
+								//		if (i != 0) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}if (e->adjacent_list.u_dir < 3) {//add +v face fcn
+								//		if (i != 1) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}
+								//}if (e->adjacent_list.v_dir > 0) {
+								//	if (i < 2) continue;
+								//	if (e->adjacent_list.v_dir < 2) {//add -w face fcn
+								//		if (j != 0) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}if (e->adjacent_list.v_dir < 3) { //add +w face fcn
+								//		if (j != 1) continue;
+								//		this->vectorD[iDis] = vectorD_storage;
+								//	}
+								//}
+							}
+						}
+					}
+				}
+				break;
 			}
+		}
 		e->unknownsEnd = iDis;
 	}
 	this->eiUVWijk = eiUVWijk;
@@ -877,7 +877,7 @@ void Domain::make_unknown_description() {
 	}
 }
 
-void Domain::vectorDSignPW(int addr1, int addr2, int signPW, int b, std::vector<int> &vectorD) {
+void Domain::vectorDSignPW(int addr1, int addr2, int signPW, int b, std::vector<int>& vectorD) {
 
 	if (std::abs(vectorD[addr2]) < std::abs(vectorD[addr1])) {
 		functions::MIMAISWAP(&addr1, &addr2);
@@ -902,7 +902,7 @@ void Domain::startMatching(int numberOfElements, int e1, int e2, std::vector<std
 	std::vector<int> ja = { 0,2,2,1,1,1,1 };
 	std::vector<int> jb = { 0,3,3,3,3,2,2 };
 
-	
+
 
 	int a1, a2, b1, b2, x1, x2, y1, y2, addr1, addr2;
 	int alo, ahi, blo, bhi, f1, c1, f2, c2, c2mod;
@@ -960,7 +960,7 @@ void Domain::startMatching(int numberOfElements, int e1, int e2, std::vector<std
 		b1 = nTotal[c1][e1][jb1] - 1;
 		b2 = nTotal[c2mod][e2][jb2] - 1;
 
-		
+
 
 		if (a2 < a1) {
 			alo = a2;
@@ -971,7 +971,7 @@ void Domain::startMatching(int numberOfElements, int e1, int e2, std::vector<std
 			ahi = a2;
 		}
 
-	
+
 
 		if (b2 < b1) {
 			blo = b2;
@@ -1021,7 +1021,7 @@ void Domain::startMatching(int numberOfElements, int e1, int e2, std::vector<std
 					break;
 				}
 
-				addr2 = DADDR(e2, f2, c2mod, x1, y1); 
+				addr2 = DADDR(e2, f2, c2mod, x1, y1);
 				addr1 = DADDR(e1, f1, c1, tempzero, b);
 				vectorDSignPW(addr1, addr2, signPW, b, vectorD);
 				addr2 = DADDR(e2, f2, c2mod, x2, y2);
@@ -1373,12 +1373,12 @@ void Domain::findPowersLagrange(const int& kuvw, const int& nglu, const int& ngl
 	for (int i = 0; i <= nglu + 1; i++) { // for u
 		x = xglu[i]; //Gauss-Legendre Integration point
 		for (int m = 0; m <= kuvw; m++) {
-			xm = (2.0*m - kuvw) / kuvw; //Lagrange Interpolation point
+			xm = (2.0 * m - kuvw) / kuvw; //Lagrange Interpolation point
 			f = 1.0;
 			for (int j = 0; j <= kuvw; j++) {
-				xj = (2.0*j - kuvw) / kuvw;
+				xj = (2.0 * j - kuvw) / kuvw;
 				if (j != m) {
-					f = f*(x - xj) / (xm - xj);
+					f = f * (x - xj) / (xm - xj);
 				}
 			}//for j
 			fuPowersLagr(i, m) = f;
@@ -1388,12 +1388,12 @@ void Domain::findPowersLagrange(const int& kuvw, const int& nglu, const int& ngl
 	for (int i = 0; i <= nglv + 1; i++) { // for v
 		x = xglv[i]; //Gauss-Legendre Integration point
 		for (int m = 0; m <= kuvw; m++) {
-			xm = (2.0*m - kuvw) / kuvw; //Lagrange Interpolation point
+			xm = (2.0 * m - kuvw) / kuvw; //Lagrange Interpolation point
 			f = 1.0;
 			for (int j = 0; j <= kuvw; j++) {
-				xj = (2.0*j - kuvw) / kuvw;
+				xj = (2.0 * j - kuvw) / kuvw;
 				if (j != m) {
-					f = f*(x - xj) / (xm - xj);
+					f = f * (x - xj) / (xm - xj);
 				}
 			}//for j
 			fvPowersLagr(i, m) = f;
@@ -1403,12 +1403,12 @@ void Domain::findPowersLagrange(const int& kuvw, const int& nglu, const int& ngl
 	for (int i = 0; i <= nglw + 1; i++) { // for w
 		x = xglw[i]; //Gauss-Legendre Integration point
 		for (int m = 0; m <= kuvw; m++) {
-			xm = (2.0*m - kuvw) / kuvw; //Lagrange Interpolation point
+			xm = (2.0 * m - kuvw) / kuvw; //Lagrange Interpolation point
 			f = 1.0;
 			for (int j = 0; j <= kuvw; j++) {
-				xj = (2.0*j - kuvw) / kuvw;
+				xj = (2.0 * j - kuvw) / kuvw;
 				if (j != m) {
-					f = f*(x - xj) / (xm - xj);
+					f = f * (x - xj) / (xm - xj);
 				}
 			}//for j
 			fwPowersLagr(i, m) = f;
@@ -1418,7 +1418,7 @@ void Domain::findPowersLagrange(const int& kuvw, const int& nglu, const int& ngl
 }//void findPowersLagrange
 
 double Domain::trilagrangeoduvw(const int& m, const int& n, const int& l, const int& i, const int& j, const int& k, const matrix2d<double>& fuPowersLagr, const matrix2d<double>& fvPowersLagr, const matrix2d<double>& fwPowersLagr) {
-	return fuPowersLagr(m, i)*fvPowersLagr(n, j)*fwPowersLagr(l, k);
+	return fuPowersLagr(m, i) * fvPowersLagr(n, j) * fwPowersLagr(l, k);
 }
 
 
@@ -1434,7 +1434,7 @@ void Domain::find_eps_mu_matrix(const int& kuvw, const int& nglu, const int& ngl
 					for (int mat_loc = 0; mat_loc < muRel.size(); ++mat_loc) { //nodes
 						int kuvwp = kuvw + 1;
 						double f = trilagrangeoduvw(m, n, l, mat_loc % (kuvwp), int(floor(mat_loc / kuvwp)) % kuvwp,
-							int(floor(mat_loc / (kuvwp*kuvwp))), fuPowersLagr, fvPowersLagr, fwPowersLagr);
+							int(floor(mat_loc / (kuvwp * kuvwp))), fuPowersLagr, fvPowersLagr, fwPowersLagr);
 
 						muRelInt(s, m, n, l) += muRel[mat_loc][s - 1] * f;
 					}
@@ -1454,7 +1454,7 @@ void Domain::find_eps_mu_hermitian(const int& size1, const int& nglu, const int&
 			for (int w = 0; w <= nglw + 1; ++w) {
 				if (size1 == 1) MuRelIntInv(1, u, v, w).imag(-MuRelIntInv(1, u, v, w).imag());
 				else if (size1 == 3) {
-					MuRelIntInv(1, u, v, w).imag(-MuRelIntInv(1,u,v,w).imag());
+					MuRelIntInv(1, u, v, w).imag(-MuRelIntInv(1, u, v, w).imag());
 					MuRelIntInv(2, u, v, w).imag(-MuRelIntInv(2, u, v, w).imag());
 					MuRelIntInv(3, u, v, w).imag(-MuRelIntInv(3, u, v, w).imag());
 				}
@@ -1487,7 +1487,7 @@ void Domain::find_eps_mu_hermitian(const int& size1, const int& nglu, const int&
 }
 
 void Domain::SPARSE_PACKING(std::vector<int>& iRow,
-	std::vector<int>&jCol, int& nNZ, int noAbcBCs,
+	std::vector<int>& jCol, int& nNZ, int noAbcBCs,
 	std::vector<dcomplex>& cArSparse,
 	std::vector<dcomplex>& cBrSparse,
 	std::vector<dcomplex>& cSrSparse) {
@@ -1502,17 +1502,17 @@ void Domain::SPARSE_PACKING(std::vector<int>& iRow,
 	int myElementCount = this->elements.size();
 	std::vector<int> IsContained = std::vector<int>(myElementCount + 1);
 
-	
+
 
 	int e1, e2, i0, j0, i1, j1, lim1, D1, D2, C1, C2;
 	int index1, index2, k0, k1, k2, k3;
 	int FoundFlag;
 
-	
+
 
 	for (auto elem = ++this->elements.begin(); elem != this->elements.end(); ++elem) {
 
-		
+
 		lim1 = elem->unknownsStart - 1;
 		for (int i = elem->unknownsStart; i <= elem->unknownsEnd; ++i) {
 			i0 = i - lim1;
@@ -1551,13 +1551,13 @@ void Domain::SPARSE_PACKING(std::vector<int>& iRow,
 								if ((this->unknown_description[C1][2 * k0] == this->unknown_description[C2][2 * k1]) &&
 									(this->unknown_description[C1][2 * k0] < elem->index) && (FoundFlag == 0)) //&&
 									/*(IsContained[unknown_description(C1, 2 * k0)] == 1))*/ {
-										//The element it should be copied to
-										e2 = this->unknown_description[C1][2 * k0];
-										//The global disconnected unknown on that element (basis)
-										k2 = k0;
-										//The global disconnected unknown on that element (testing)
-										k3 = k1;
-										FoundFlag = 1;
+									//The element it should be copied to
+									e2 = this->unknown_description[C1][2 * k0];
+									//The global disconnected unknown on that element (basis)
+									k2 = k0;
+									//The global disconnected unknown on that element (testing)
+									k3 = k1;
+									FoundFlag = 1;
 								}
 							}
 						}
@@ -1567,19 +1567,19 @@ void Domain::SPARSE_PACKING(std::vector<int>& iRow,
 					//If we found somewhere else to put those entries, copy them over to the previous element
 					if (e2 != 0) {
 
-						i1 = this->unknown_description[C1][2 * k2 + 1] - this->elements[e2-1].unknownsStart + 1;
-						j1 = this->unknown_description[C2][2 * k3 + 1] - this->elements[e2-1].unknownsStart + 1;
+						i1 = this->unknown_description[C1][2 * k2 + 1] - this->elements[e2 - 1].unknownsStart + 1;
+						j1 = this->unknown_description[C2][2 * k3 + 1] - this->elements[e2 - 1].unknownsStart + 1;
 						//std::cout << "e2: " << e2 << std::endl;
 						//std::cout << "i1: " << i1 << std::endl;
 						//std::cout << "j1: " << j1 << std::endl;
 						//this->elements[e2-1].error_structure.push_back(Error_struct(e2, e1, i1, j1, this->elements[e2 - 1].cArPAK(i1, j1), this->elements[e2 - 1].cBrPAK(i1, j1), 0));
-						this->elements[e2-1].cArPAK(i1, j1) =
-							this->elements[e2-1].cArPAK(i1, j1) + elem->cArPAK(i0, j0);
-						this->elements[e2-1].cBrPAK(i1, j1) =
-							this->elements[e2-1].cBrPAK(i1, j1) + elem->cBrPAK(i0, j0);
+						this->elements[e2 - 1].cArPAK(i1, j1) =
+							this->elements[e2 - 1].cArPAK(i1, j1) + elem->cArPAK(i0, j0);
+						this->elements[e2 - 1].cBrPAK(i1, j1) =
+							this->elements[e2 - 1].cBrPAK(i1, j1) + elem->cBrPAK(i0, j0);
 						if (noAbcBCs > 0) {
-							this->elements[e2-1].cSrPAK(i1, j1) =
-								this->elements[e2-1].cSrPAK(i1, j1) + elem->cSrPAK(i0, j0);
+							this->elements[e2 - 1].cSrPAK(i1, j1) =
+								this->elements[e2 - 1].cSrPAK(i1, j1) + elem->cSrPAK(i0, j0);
 						}
 
 
@@ -1595,7 +1595,7 @@ void Domain::SPARSE_PACKING(std::vector<int>& iRow,
 	}
 
 
-	
+
 	for (auto elem = this->elements.begin(); elem != this->elements.end(); ++elem) {
 		//int error_tracker = 0; //keeps track of index for error_struct
 
@@ -1654,9 +1654,9 @@ void Domain::SPARSE_PACKING(std::vector<int>& iRow,
 								jCol.push_back(D1);
 							}
 						}
-							else {
+						else {
 
-								nNZ = nNZ + 1;
+							nNZ = nNZ + 1;
 							//	cArSparse[nNZ] = elem->cArPAK(i0, j0);
 							//	cBrSparse[nNZ] = elem->cBrPAK(i0, j0);
 								/*for (auto err_it = elem->error_structure.begin(); err_it != elem->error_structure.end(); ++err_it) {
@@ -1665,41 +1665,41 @@ void Domain::SPARSE_PACKING(std::vector<int>& iRow,
 										break;
 									}
 								}*/
-								cArSparse.push_back(elem->cArPAK(i0, j0));
-								cBrSparse.push_back(elem->cBrPAK(i0, j0));
-								if (noAbcBCs > 0) { //cSrSparse[nNZ] = elem->cSrPAK(i0, j0); 
-									cSrSparse.push_back(elem->cSrPAK(i0, j0));
-								}
+							cArSparse.push_back(elem->cArPAK(i0, j0));
+							cBrSparse.push_back(elem->cBrPAK(i0, j0));
+							if (noAbcBCs > 0) { //cSrSparse[nNZ] = elem->cSrPAK(i0, j0); 
+								cSrSparse.push_back(elem->cSrPAK(i0, j0));
+							}
 
-								//iRow[nNZ] = D2;
-								//jCol[nNZ] = D1;
+							//iRow[nNZ] = D2;
+							//jCol[nNZ] = D1;
 
-								iRow.push_back(D2);
-								jCol.push_back(D1);
+							iRow.push_back(D2);
+							jCol.push_back(D1);
 
-								if (D1 != D2) {
-									nNZ = nNZ + 1;
-									//cArSparse[nNZ] = elem->cArPAK(j0, i0);
-									//cBrSparse[nNZ] = elem->cBrPAK(j0, i0);
-									cArSparse.push_back(elem->cArPAK(j0, i0));
-									cBrSparse.push_back(elem->cBrPAK(j0, i0));
-									if (noAbcBCs > 0) //cSrSparse[nNZ] = elem->cSrPAK(j0, i0);
-										cSrSparse.push_back(elem->cSrPAK(j0, i0));
+							if (D1 != D2) {
+								nNZ = nNZ + 1;
+								//cArSparse[nNZ] = elem->cArPAK(j0, i0);
+								//cBrSparse[nNZ] = elem->cBrPAK(j0, i0);
+								cArSparse.push_back(elem->cArPAK(j0, i0));
+								cBrSparse.push_back(elem->cBrPAK(j0, i0));
+								if (noAbcBCs > 0) //cSrSparse[nNZ] = elem->cSrPAK(j0, i0);
+									cSrSparse.push_back(elem->cSrPAK(j0, i0));
 
-									//iRow[nNZ] = D1;
-									//jCol[nNZ] = D2;
-									iRow.push_back(D1);
-									jCol.push_back(D2);
-								}
+								//iRow[nNZ] = D1;
+								//jCol[nNZ] = D2;
+								iRow.push_back(D1);
+								jCol.push_back(D2);
 							}
 						}
 					}
 				}
 			}
 		}
-	
+	}
 
-	
+
+
 
 }
 
@@ -1729,10 +1729,10 @@ void Domain::findelements_abs_sparse() {
 
 	//for (auto e = elements.begin(); e != elements.end(); ++e) {
 #pragma omp parallel for num_threads(6)
-	for (int e_index = 0; e_index < elements.size(); ++e_index){
-	//	std::cout << e_index << std::endl;
-			auto e = &elements[e_index];
-			e->cGr_eps_el = std::vector<std::complex<double>>(this->scatter1.cGr[1].size(), 0.0);
+	for (int e_index = 0; e_index < elements.size(); ++e_index) {
+		//	std::cout << e_index << std::endl;
+		auto e = &elements[e_index];
+		e->cGr_eps_el = std::vector<std::complex<double>>(this->scatter1.cGr[1].size(), 0.0);
 		//(i0_table[e->index - 1]) = std::vector<std::vector<std::vector<std::vector<int>>>>(4, std::vector<std::vector<std::vector<int>>>(e->expansion[0]+1, std::vector<std::vector<int>>(e->expansion[1]+1, std::vector<int>(e->expansion[2]+1))));
 		//auto t1 = std::chrono::high_resolution_clock::now();
 		Integral_c c_integrator(&(*e));
@@ -1774,12 +1774,12 @@ void Domain::findelements_abs_sparse() {
 		e->avMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
 		e->awMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
 
-	
+
 		unitVectorsM::unitaryvectors(nglu, nglv, nglw, xglu, xglv, xglw,
 			e->geom_order, e->rs, e->rMatrix, e->auMatrix, e->avMatrix, e->awMatrix,
 			e->jacobian, e->nRs, 2);
 		int indicatorBasisType = 1; //kolund basis
-	
+
 		e->uPowers = eval.get_u_samples(nglu, nu)[0];
 		e->vPowers = eval.get_v_samples(nglv, nv)[0];
 		e->wPowers = eval.get_w_samples(nglw, nw)[0];
@@ -1813,7 +1813,7 @@ void Domain::findelements_abs_sparse() {
 			e->MuRelInt(1, 1, 1, 1) = cMu;
 			e->EpsRelInt(1, 1, 1, 1) = cEps;
 			if (isAdjoint == true) {
-				
+
 				cMu.imag(-cMu.imag());
 				cEps.imag(-cEps.imag());
 				e->EpsRelInt(1, 1, 1, 1).imag(-e->EpsRelInt(1, 1, 1, 1).imag());
@@ -1821,12 +1821,12 @@ void Domain::findelements_abs_sparse() {
 			}
 		}
 		else {
-			if (kuvw != -1) { 
+			if (kuvw != -1) {
 				findPowersLagrange(kuvw, nglu, nglv, nglw, xglu, xglv, xglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr);
-				
+
 				find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.epsr_list, e->EpsRelInt);
 				find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.mur_list, e->MuRelInt);
-				
+
 				if (aCode == 0) {
 					if (iHomCode == 0) {
 						functions::find_mur_inv(size1, e->MuRelInt, nglu, nglv, nglw, e->MuRelIntInv);
@@ -1850,18 +1850,18 @@ void Domain::findelements_abs_sparse() {
 					functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
 					if (isAdjoint) {
 						find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
-						e->EpsRelInt(1,1,1,1).imag(-e->EpsRelInt(1,1,1,1).imag());
+						e->EpsRelInt(1, 1, 1, 1).imag(-e->EpsRelInt(1, 1, 1, 1).imag());
 						e->MuRelInt(1, 1, 1, 1).imag(-e->MuRelInt(1, 1, 1, 1).imag());
 					}
 				}
-				
+
 
 			}
 		}
 		int iCon;
-//#pragma omp parallel for
+		//#pragma omp parallel for
 		for (int kMat = e->unknownsStart; kMat <= e->unknownsEnd; ++kMat) {
-			
+
 			iCon = abs(vectorD[kMat]);
 			//if (iCon == 0) continue;
 			int eh = eiUVWijk[kMat][1];
@@ -1883,7 +1883,7 @@ void Domain::findelements_abs_sparse() {
 						this->elements[eh - 1].PML_boundary_list[face - 1] != 1) {
 						continue;
 					}
-					if (((this->elements[eh - 1]).PML_boundary_list[face-1] == 1) && this->elements[eh - 1].materials.region == 2) {
+					if (((this->elements[eh - 1]).PML_boundary_list[face - 1] == 1) && this->elements[eh - 1].materials.region == 2) {
 						continue;
 					}
 					gInts.set_e(&(this->elements[eh - 1]));
@@ -1897,12 +1897,12 @@ void Domain::findelements_abs_sparse() {
 					gInts.set_e(&(this->elements[eh - 1]));
 					gInts.findGWave(&scatter1, vectorD, isAdjoint, iuvwh, ih, jh, kh, size1,//. . .
 						kMat, iCon, face);
-					
+
 				}
 			}
 
 			for (int lMat = kMat; lMat <= e->unknownsEnd; ++lMat) {
-				
+
 				int jCon = abs(vectorD[lMat]);
 				if (jCon == 0) continue;
 				int el = eiUVWijk[lMat][1];
@@ -1914,16 +1914,13 @@ void Domain::findelements_abs_sparse() {
 					exit(EXIT_FAILURE);
 				}
 				std::complex<double> cSolStotal(0, 0), cSolA, cSolB, cSolS;
-				
-				if (tracker == 121) {
-					pause++;
-				}
+
 
 				//c_integrator.findC(iuvwh, iuvw, ih, jh, kh, i, j, k, cSolA, size1);
 				//std::cout << std::setprecision(15) << cSolA << std::endl;
 
 				c_integrator.findC(iuvwh, iuvw, ih, jh, kh, i, j, k, cSolA, size1, eval);
-				
+
 
 				d_integrator.findD(iuvwh, iuvw, ih, jh, kh, i, j, k, cSolB, size1);
 				//std::cout << std::setprecision(15) << cSolB << std::endl;
@@ -1935,13 +1932,19 @@ void Domain::findelements_abs_sparse() {
 
 
 				//////////////////////////////Frequency Perturbation///////////////////////////////////////////////
-				//e->cBr_HOPS(i0, j0) = 2.0*k0*cSolB*cEps;
+				//if (iHomCode == 1 && aCode == 1)
+				//	e->cBr_HOPS(i0, j0) = 2.0*k0*cSolB*cEps;
+				//else
+				//	// If iHomCode != 1 || aCode != 1, then the cEps term is already included in the integration
+				//	// of cSolB (as we have tensor/matrix material parameters) -- See below in the filling of cBrPAK
+				//	e->cBr_HOPS(i0, j0) = 2.0 * k0 * cSolB;
 				////--------------------------------------------------------------------------------------------------
 
 				////////////////////////////Material Perturbation////////////////////////////////////////////////
 				e->cBr_HOPS(i0, j0) = k0 * k0 * cSolB;
 				////-------------------------------------------------------------------------------------------------
 
+				// Due to symmetry, copy the value over
 				e->cBr_HOPS(j0, i0) = e->cBr_HOPS(i0, j0);
 
 
@@ -1953,7 +1956,7 @@ void Domain::findelements_abs_sparse() {
 					//if (vectorD[lMat]/vectorD[kMat] > 0){
 					e->cArPAK(i0, j0) = cSolA;
 					e->cBrPAK(i0, j0) = cSolB;
-				//	e->cBr_HOPS(i0, j0) = cSolB;
+					//	e->cBr_HOPS(i0, j0) = cSolB;
 					if (cSolStotal != std::complex<double>(0, 0)) {
 						e->cSrPAK(i0, j0) = cSolStotal;
 					}
@@ -1979,7 +1982,7 @@ void Domain::findelements_abs_sparse() {
 					else {
 						e->cArPAK(j0, i0) = -cSolA;
 						e->cBrPAK(j0, i0) = -cSolB;
-					//	e->cBr_HOPS(j0, i0) = -cSolB;
+						//	e->cBr_HOPS(j0, i0) = -cSolB;
 						if (cSolStotal != std::complex<double>(0, 0)) {
 							e->cSrPAK(j0, i0) = -cSolStotal;
 						}
@@ -1995,42 +1998,7 @@ void Domain::findelements_abs_sparse() {
 			<< " milliseconds\n";*/
 	}
 	//output i0_table
-	if (!this->sc.useAdjoint) {
-		
-			//std::ofstream file_i0_out;
-			//if (!this->higher_order) {
-			//	std::cout << "Writing i0_table to file..." << std::endl;
-			//	file_i0_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/i0_table.txt");
-			//	for (int elem_it = 0; elem_it < this->elements.size(); ++elem_it) {
-			//		for (int iuvwhi = 1; iuvwhi <= 3; ++iuvwhi){
-			//		for (int i = 0; i < this->i0_table[elem_it][iuvwhi].size(); ++i) {
-			//			for (int j = 0; j < this->i0_table[elem_it][iuvwhi][i].size(); ++j) {
-			//				for (int k = 0; k < this->i0_table[elem_it][iuvwhi][i][j].size(); ++k) {
-			//					file_i0_out << this->i0_table[elem_it][iuvwhi][i][j][k] << " ";
-			//				}
-			//			}
-			//			}
-			//		}
-			//		file_i0_out << std::endl;
-			//	}
-			//	file_i0_out.close();
-			//}
-			//else {
-			//	//file_i0_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/cPAKs_higher.txt");
-			//	//std::cout << "Writing cPAKs to file..." << std::endl;
-			//	//for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
-			//	//	//for every element
-			//	//	for (int i = 0; i < e->cArPAK.size(1); ++i) {
-			//	//		for (int j = 0; j < e->cArPAK.size(2); ++j) {
-			//	//			file_i0_out << i << " " << j << " " << std::setprecision(10) << e->cArPAK(i, j).real() << " " << e->cArPAK(i, j).imag() 
-			//	//				<< " " << e->cBrPAK(i, j).real() << " " << e->cBrPAK(i, j).imag() << " ";
-			//	//		}
-			//	//	}
-			//	//	file_i0_out << std::endl;
-			//	//}
-			//	//file_i0_out.close();
-			//}
-	}
+
 
 	//check that cBrPak, cArPak are that same
 	if (check_results) {
@@ -2040,56 +2008,7 @@ void Domain::findelements_abs_sparse() {
 		file.open("../exampleFiles/debug_data/" + mesh_name + "/cArPAK_mat.txt");
 		file2.open("../exampleFiles/debug_data/" + mesh_name + "/cBrPAK_mat.txt");
 		bool messed_up = false;
-		//for (int e = 1; e <= this->elements.size() / 30; ++e) {
 
-		//	messed_up = false;
-		//	int elem = 30 * e - 1;
-		//	//int elem = 599;
-		//	std::cout << "Testing acc for elem: " << elem + 1 << std::endl;
-		//	for (int i0_it = 1; i0_it <= this->elements[elem].disconnected_dimension; ++i0_it) {
-		//		for (int j0_it = 1; j0_it <= this->elements[elem].disconnected_dimension; ++j0_it) {
-		//			////////////////////////////cAr/////////////////////////////////
-		//			std::getline(file, line);
-		//			std::vector<std::string> input_line = functions::split(line, ' ');
-		//			if (abs(this->elements[elem].cArPAK(i0_it, j0_it).real() - std::stod(input_line[0])) > 1e-8) {
-		//				std::cout << "ERROR for cArPAK at ELEM: " << elem + 1 << std::endl;
-		//				std::cout << "Error at: " << i0_it << " ," << j0_it << std::endl;
-		//				//	std::cin.get();
-
-		//				messed_up = true;
-		//			}
-		//			std::getline(file, line);
-		//			input_line = functions::split(line, ' ');
-		//			if (abs(this->elements[elem].cArPAK(i0_it, j0_it).imag() - std::stod(input_line[0])) > 1e-8) {
-		//				std::cout << "ERROR for cArPAK at ELEM: " << elem + 1 << std::endl;
-		//				std::cout << "Error at: " << i0_it << " ," << j0_it << std::endl;
-		//				//	std::cin.get();
-		//				messed_up = true;
-		//			}
-		//			//////////////////////////cBr///////////////////////////////////
-		//			std::getline(file2, line);
-		//			input_line = functions::split(line, ' ');
-		//			if (abs(this->elements[elem].cBrPAK(i0_it, j0_it).real() - std::stod(input_line[0])) > 1e-8) {
-		//				std::cout << "ERROR for cBrPAK at ELEM: " << elem + 1 << std::endl;
-		//				std::cout << "Error at: " << i0_it << " ," << j0_it << std::endl;
-		//				//	std::cin.get();
-
-		//				messed_up = true;
-		//			}
-		//			std::getline(file2, line);
-		//			input_line = functions::split(line, ' ');
-		//			if (abs(this->elements[elem].cBrPAK(i0_it, j0_it).imag() - std::stod(input_line[0])) > 1e-8) {
-		//				std::cout << "ERROR for cBrPAK at ELEM: " << elem + 1 << std::endl;
-		//				std::cout << "Error at: " << i0_it << " ," << j0_it << std::endl;
-		//				//std::cin.get();
-		//				messed_up = true;
-		//			}
-		//		}
-		//	}
-
-		//	messed_up ? std::cout << "Error at element number " << elem + 1 << "!" << std::endl
-		//		: std::cout << "Correct results ats element number " << elem + 1 << "!" << std::endl;
-		//}
 		file.close(); file2.close();
 		file.open("../exampleFiles/debug_data/" + mesh_name + "/cGr_mat.txt");
 		for (int waveNo = 1; waveNo <= this->scatter1.numberOfWaves; ++waveNo) {
@@ -2117,7 +2036,7 @@ void Domain::findelements_abs_sparse() {
 	//sparsepacking function
 	//std::vector<int> iRow, jCol;
 	std::vector<std::complex<double>> cArSparse, cSrSparse, cFEMrSparse;
-	
+
 	SPARSE_PACKING(iRow, jCol, nNz, 0, cArSparse, this->cBrSparse, cSrSparse);
 	//now to do freq sweep
 	double eps = 1e-7;
@@ -2131,50 +2050,7 @@ void Domain::findelements_abs_sparse() {
 		auto solver_start = std::chrono::high_resolution_clock::now();
 		solver.doEverything(cFEMrSparse, iRow, jCol, nNz, this->matDimCon, this->scatter1.cGr[fcount], sparseMatrix, this->cAlpha);
 		std::cout << "solving time: " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - solver_start).count() << std::endl;
-		//auto t1 = std::chrono::high_resolution_clock::now();
-		//if (error) {
-		//	//compute total qoi error using cFEMrSparse and loaded in previous coefficients
-		//	std::vector<std::complex<double>> cAlphaForLower, cAlphaAdjoint, cGr_higher;
-		//	read_previous_solve(mesh_name, cAlphaForLower, cAlphaAdjoint, cGr_higher);
-		//	//match coeff from old solve with new solve by iterating through all unknowns
-		//	std::vector<int> lower_to_higher;
-		//	int kMat_l = 1;
-		//	for (int kMat = 1; kMat <= matDimDis; ++kMat) {
-		//		if (kMat_l >= dom2.matDimDis + 1) break;
-		//		int eh = this->eiUVWijk[kMat][1];
-		//		int iuvwh = this->eiUVWijk[kMat][2];
-		//		int ih = this->eiUVWijk[kMat][3];
-		//		int jh = this->eiUVWijk[kMat][4];
-		//		int kh = this->eiUVWijk[kMat][5];
 
-		//		int eh_l = dom2.eiUVWijk[kMat_l][1];
-		//		int iuvwh_l = dom2.eiUVWijk[kMat_l][2];
-		//		int ih_l = dom2.eiUVWijk[kMat_l][3];
-		//		int jh_l = dom2.eiUVWijk[kMat_l][4];
-		//		int kh_l = dom2.eiUVWijk[kMat_l][5];
-		//		//////////
-		//		if ((eh_l == eh) && (iuvwh == iuvwh_l) && (ih_l == ih) && (jh_l == jh) && (kh_l == kh)) {
-		//			lower_to_higher.push_back(kMat);
-		//			++kMat_l;
-		//		}
-		//	}
-		//	std::complex<double> error_e_total = 0;
-		//	//iterate through cAlphaLower values
-		//	for (int cIt = 1; cIt < cAlphaForLower.size(); ++cIt) {
-		//		std::complex<double> cAlphaLowerVal = cAlphaForLower[cIt];
-		//		//get index in higher order system from above
-		//		int col_index = lower_to_higher[cIt - 1];
-		//		//iterate through nNz terms in cFEMrSparse, scaling by the cAlpha value, then by the cAdj value
-		//		for (Eigen::SparseMatrix<std::complex<double>>::InnerIterator it(sparseMatrix, col_index-1); it; ++it)
-		//		{
-		//			
-		//			int cAlphaLoc = it.row() + 1;   // row index
-		//			error_e_total += cAlphaLowerVal*std::conj(cAlphaAdjoint[cAlphaLoc])*it.value();
-
-		//		}
-		//	}
-		//	std::cout << "Total qoi error due to the deriv and non deriv terms (not include f.adj): " << error_e_total << std::endl;
-		//}
 		//compare with fortran here
 		if (check_results) {
 			bool wrong_calpha = false;
@@ -2231,7 +2107,7 @@ void Domain::findelements_abs_sparse() {
 			}
 		}
 		//std::endl;
-	} 
+	}
 	//std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - t1).count()
 	std::cout << "Finished testing for mesh: " << mesh_name << std::endl;
 }
@@ -2414,7 +2290,7 @@ void Domain::_RHS_ONLY() {
 			}
 		}
 
-	}	
+	}
 }
 bool Domain::check_q() {
 	std::cout << "Checking Q (loading results from file)..." << std::endl;
@@ -2424,15 +2300,15 @@ bool Domain::check_q() {
 	//load in the cAlphaForward
 	//std::vector<std::complex<double>> cAlphaForward, cAlphaAdjoint, cGrForward, cGrAdjoint;
 	std::vector<std::complex<double>> cGrForward, cGrAdjoint;
-	
+
 	file.open("../exampleFiles/debug_data/" + mesh_name + "/results/cAlpha.txt");
 	getline(file, line);
 	std::vector<std::string> line_input;
 	while (getline(file, line)) {
 		line = line.substr(1, line.size() - 2);
-		line_input = functions::split(line, ' ' );
+		line_input = functions::split(line, ' ');
 		cAlphaForward.push_back(std::complex<double>(std::stod(line_input[0]), std::stod(line_input[1])));
-	
+
 	}
 	file.close();
 	file.open("../exampleFiles/debug_data/" + mesh_name + "/adjoint/results/cAlpha.txt");
@@ -2441,7 +2317,7 @@ bool Domain::check_q() {
 		line = line.substr(1, line.size() - 2);
 		line_input = functions::split(line, ' ');
 		cAlphaAdjoint.push_back(std::complex<double>(std::stod(line_input[0]), std::stod(line_input[1])));
-	
+
 	}
 	file.close();
 	file.open("../exampleFiles/debug_data/" + mesh_name + "/results/cGr.txt");
@@ -2461,7 +2337,7 @@ bool Domain::check_q() {
 	}
 	file.close();
 	//do the summations for forward and adjoint
-	std::complex<double> sumForward(0,0), sumAdjoint(0,0);
+	std::complex<double> sumForward(0, 0), sumAdjoint(0, 0);
 	for (int i = 0; i < cAlphaForward.size(); ++i) {
 		sumForward += cAlphaForward[i] * std::conj(cGrAdjoint[i]);
 	}
@@ -2469,23 +2345,23 @@ bool Domain::check_q() {
 		sumAdjoint += std::conj(cAlphaAdjoint[i]) * cGrForward[i];
 	}
 	//note: takes conjugate of the adjoint sum due to def of inner product
-	/*if ((abs(sumAdjoint.real() - sumForward.real()) < 1e-5) && (abs(sumForward.imag() + sumAdjoint.imag()) < 1e-5)) { 
+	/*if ((abs(sumAdjoint.real() - sumForward.real()) < 1e-5) && (abs(sumForward.imag() + sumAdjoint.imag()) < 1e-5)) {
 		std::cout << "Qoi result: " << std::setprecision(15) << sumForward << std::endl;*/
 	std::cout << "Qoi result: " << std::setprecision(15) << sumAdjoint << "and " << sumForward << std::endl;
 	if (error) {
-		
-		
-			//load qoi error results
+
+
+		//load qoi error results
 		std::complex<double> total_qoi_error(0, 0);
-			file.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_error.txt");
-			while (getline(file, line)) {
-				auto input_line = functions::split(line, ' ');
-				sumAdjoint.real(sumAdjoint.real() + std::stod(input_line[0]));
-				sumAdjoint.imag(sumAdjoint.imag() + std::stod(input_line[1]));
-				total_qoi_error.real(total_qoi_error.real() + (std::stod(input_line[0])));
-				total_qoi_error.imag(total_qoi_error.imag() + (std::stod(input_line[1])));
-			}
-			std::cout << "Qoi error total: " << std::setprecision(15) << total_qoi_error << std::endl;
+		file.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_error.txt");
+		while (getline(file, line)) {
+			auto input_line = functions::split(line, ' ');
+			sumAdjoint.real(sumAdjoint.real() + std::stod(input_line[0]));
+			sumAdjoint.imag(sumAdjoint.imag() + std::stod(input_line[1]));
+			total_qoi_error.real(total_qoi_error.real() + (std::stod(input_line[0])));
+			total_qoi_error.imag(total_qoi_error.imag() + (std::stod(input_line[1])));
+		}
+		std::cout << "Qoi error total: " << std::setprecision(15) << total_qoi_error << std::endl;
 		std::cout << "Qoi with Qoi Error added: " << std::setprecision(15) << sumAdjoint << std::endl;
 		file.close();
 
@@ -2536,9 +2412,9 @@ bool Domain::check_q() {
 		}
 		//note: takes conjugate of the adjoint sum due to def of inner product
 		//if ((abs(sumAdjoint_higher.real() - sumForward_higher.real()) < 1e-5) && (abs(sumForward_higher.imag() + sumAdjoint_higher.imag()) < 1e-5)) {
-			std::cout << "Qoi result (higher): " << std::setprecision(15) << sumAdjoint_higher << std::endl;
+		std::cout << "Qoi result (higher): " << std::setprecision(15) << sumAdjoint_higher << std::endl;
 		//}
-		return true; 
+		return true;
 	}
 	else return false;
 }
@@ -2561,14 +2437,14 @@ void findPowersSens(const int& nu, const int& nv, const int& nw, const int& nglu
 		fpuPowers(i, 0) = -1.0;
 		fpuPowers(i, 1) = 1.0;
 		for (int j = 2; j <= nu; ++j) {
-			uPowers(i, j) = uPowers(i, j - 1)*x;
+			uPowers(i, j) = uPowers(i, j - 1) * x;
 			if (j % 2 == 0) {
 				fuPowers(i, j) = uPowers(i, j) - 1.0;
-				fpuPowers(i, j) = j*uPowers(i, j - 1);
+				fpuPowers(i, j) = j * uPowers(i, j - 1);
 			}
 			else {
 				fuPowers(i, j) = uPowers(i, j) - x;
-				fpuPowers(i, j) = j*  uPowers(i, j - 1) - 1.0;
+				fpuPowers(i, j) = j * uPowers(i, j - 1) - 1.0;
 			}
 		}
 	}
@@ -2581,14 +2457,14 @@ void findPowersSens(const int& nu, const int& nv, const int& nw, const int& nglu
 		fpvPowers(i, 0) = -1.0;
 		fpvPowers(i, 1) = 1.0;
 		for (int j = 2; j <= nv; ++j) {
-			vPowers(i, j) = vPowers(i, j - 1)*x;
+			vPowers(i, j) = vPowers(i, j - 1) * x;
 			if (j % 2 == 0) {
 				fvPowers(i, j) = vPowers(i, j) - 1.0;
-				fpvPowers(i, j) = j* vPowers(i, j - 1);
+				fpvPowers(i, j) = j * vPowers(i, j - 1);
 			}
 			else {
 				fvPowers(i, j) = vPowers(i, j) - x;
-				fpvPowers(i, j) = j*vPowers(i, j - 1) - 1.0;
+				fpvPowers(i, j) = j * vPowers(i, j - 1) - 1.0;
 			}
 		}
 	}
@@ -2601,14 +2477,14 @@ void findPowersSens(const int& nu, const int& nv, const int& nw, const int& nglu
 		fpwPowers(i, 0) = -1.0;
 		fpwPowers(i, 1) = 1.0;
 		for (int j = 2; j <= nw; ++j) {
-			wPowers(i, j) = wPowers(i, j - 1)*x;
+			wPowers(i, j) = wPowers(i, j - 1) * x;
 			if (j % 2 == 0) {
 				fwPowers(i, j) = wPowers(i, j) - 1.0;
-				fpwPowers(i, j) = j*wPowers(i, j - 1);
+				fpwPowers(i, j) = j * wPowers(i, j - 1);
 			}
 			else {
 				fwPowers(i, j) = wPowers(i, j) - x;
-				fpwPowers(i, j) = j*wPowers(i, j - 1) - 1.0;
+				fpwPowers(i, j) = j * wPowers(i, j - 1) - 1.0;
 			}
 		}
 	}
@@ -2647,9 +2523,9 @@ void Domain::spherical_sensitivity(const int& myElementCount, std::vector<Elemen
 	eVector[2] = scatter1->wavePhi[waveNumber] * scatter1->iPhiAr[waveNumber][2] + scatter1->waveTheta[waveNumber] * scatter1->iThetaAr[waveNumber][2];
 	eVector[3] = scatter1->wavePhi[waveNumber] * scatter1->iPhiAr[waveNumber][3] + scatter1->waveTheta[waveNumber] * scatter1->iThetaAr[waveNumber][3];
 	products::cross(scatter1->nAr[waveNumber], eVector, hVector);
-	asec3[1] = -cj*hVector[1];
-	asec3[2] = -cj*hVector[2];
-	asec3[3] = -cj*hVector[3];
+	asec3[1] = -cj * hVector[1];
+	asec3[2] = -cj * hVector[2];
+	asec3[3] = -cj * hVector[3];
 	iR[1] = -scatter1->nAr[waveNumber][1];
 	iR[2] = -scatter1->nAr[waveNumber][2];
 	iR[3] = -scatter1->nAr[waveNumber][3];
@@ -2664,9 +2540,9 @@ void Domain::spherical_sensitivity(const int& myElementCount, std::vector<Elemen
 		//	//size1 = 9 - 3 * e->materials.sym;
 		//}
 		//else {
-			kuvw = e->materials.Kuvw;
-			//size1 = 1;
-		//}
+		kuvw = e->materials.Kuvw;
+		//size1 = 1;
+	//}
 		Integral_g gInts(&(*e));
 
 		int nu = e->expansion[0];
@@ -2678,7 +2554,7 @@ void Domain::spherical_sensitivity(const int& myElementCount, std::vector<Elemen
 			//std::cout << "Elem: " << e->index << " Face: " << *face << std::endl;
 			int connectedTo; //the index of the other element
 			int connectedToType;
-			Facet this_facet = facets[*face-1];
+			Facet this_facet = facets[*face - 1];
 			int iFace;
 
 			/*this_facet.element_indices.first == e->index ? connectedTo = this_facet.element_indices.second
@@ -2694,7 +2570,7 @@ void Domain::spherical_sensitivity(const int& myElementCount, std::vector<Elemen
 
 			//if not connected directly to another elements
 			if (connectedTo != -1) { //might need to -1, instead of 0
-				connectedToType = elements[connectedTo-1].materials.region;
+				connectedToType = elements[connectedTo - 1].materials.region;
 				if (connectedToType == 0 && e->materials.region == 1) { //might need to change 0 and 1 to be different
 					continue;
 				}
@@ -2773,7 +2649,7 @@ void Domain::spherical_sensitivity(const int& myElementCount, std::vector<Elemen
 					cEpsilon = e->materials.epsr_list[0][0];
 				}
 				else {
-					cEpsilon = 1; 
+					cEpsilon = 1;
 					e->materials.hcode = 1;
 					e->materials.icode = 1;
 				}
@@ -2793,7 +2669,7 @@ void Domain::spherical_sensitivity(const int& myElementCount, std::vector<Elemen
 				cSolGTotal = 0;
 				//gInts.findGInc_EpsOnly(scatter1, vectorD, iuvwh, ih, jh, kh, size1, k0List[freqNo], freqNo, cSolGTotal, asec2, hVector, asec3, val1);
 				gInts.findGInc_EpsOnly(scatter1, vectorD, iuvwh, ih, jh, kh, size1, waveNumber, freqNo, cSolGTotal, asec2, hVector, asec3, val1);
-				cSensitivity += cSolGTotal*std::conj(cAlphaAdjoint[iCon-1]);
+				cSensitivity += cSolGTotal * std::conj(cAlphaAdjoint[iCon - 1]);
 				for (int lMat = kMat; lMat <= e->unknownsEnd; ++lMat) {
 					int jCon = abs(vectorD[lMat]);
 					if (jCon == 0) {
@@ -2808,8 +2684,8 @@ void Domain::spherical_sensitivity(const int& myElementCount, std::vector<Elemen
 					// ------>fix			//findD
 					Integral_d d_integrator(&elements[el - 1]);
 					d_integrator.findD(iuvwh, iuvw, ih, jh, kh, i, j, k, cSolB, size1);
-					cSensitivity += cSolB*cAlphaForward[jCon-1] * std::conj(cAlphaAdjoint[iCon-1])*(cEpsilon - std::complex<double>(1.0, 0.0));
-					
+					cSensitivity += cSolB * cAlphaForward[jCon - 1] * std::conj(cAlphaAdjoint[iCon - 1]) * (cEpsilon - std::complex<double>(1.0, 0.0));
+
 				}
 			}
 
@@ -2890,7 +2766,7 @@ void Domain::element_error_f(int u_order, int v_order, int w_order, Domain& dom2
 		e->fwPowersLagr = matrix2d<double>(nglw + 1, kuvw);
 
 		//if indicator = 1, then kolun, if indicator = 2, then legendre
-		if (indicatorBasisType == 1){
+		if (indicatorBasisType == 1) {
 			e->uPowers = eval.get_u_samples(nglu, nu)[0];
 			e->vPowers = eval.get_v_samples(nglv, nv)[0];
 			e->wPowers = eval.get_w_samples(nglw, nw)[0];
@@ -2901,8 +2777,8 @@ void Domain::element_error_f(int u_order, int v_order, int w_order, Domain& dom2
 			e->fpvPowers = eval.get_v_samples(nglv, nv)[2];
 			e->fpwPowers = eval.get_w_samples(nglw, nw)[2];
 		}
-			//kolund basis functions
-			//findPowers(nu, nv, nw, nglu, nglv, nglw, xglu, xglv, xglw, e->uPowers, e->vPowers, e->wPowers, e->fuPowers, e->fvPowers, e->fwPowers, e->fpuPowers, e->fpvPowers, e->fpwPowers);
+		//kolund basis functions
+		//findPowers(nu, nv, nw, nglu, nglv, nglw, xglu, xglv, xglw, e->uPowers, e->vPowers, e->wPowers, e->fuPowers, e->fvPowers, e->fwPowers, e->fpuPowers, e->fpvPowers, e->fpwPowers);
 
 
 		e->MuRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
@@ -3005,609 +2881,398 @@ void Domain::element_error_f(int u_order, int v_order, int w_order, Domain& dom2
 						cSolA = cSolA / cMu;
 						cSolB = cEps * cSolB;
 					}
-					e->element_error -= cSolA*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-					e->element_error += k0 *k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					e->element_error -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					e->element_error += k0 * k0 * cSolB * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
 
 					e_sum -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-					e_sum += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					e_sum += k0 * k0 * cSolB * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
 
 				}
 			}
 		}
 	}
-		std::cout << "g sum: " << g_sum << std::endl;
-		std::complex<double> sumAdjoint;
-		for (int i = 0; i < cAlphaAdj.size(); ++i) {
-			sumAdjoint += std::conj(cAlphaAdj[i]) * this->scatter1.cGr[1][i];
-		}
-		std::cout << "e sum: " << e_sum << std::endl;
-
-		std::cout << "total error: " << e_sum + g_sum << std::endl;
-		//print out qoi errors per element
-		std::cout << "Saving QoI Error per element..." << std::endl;
-		std::ofstream file_qoi_out;
-		file_qoi_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_error.txt");
-		for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
-			//one element per line: real imag
-			file_qoi_out << e->element_error.real() << " " << e->element_error.imag() << std::endl;
-		}
-		std::cout << "Done saving QoI error." << std::endl;
+	std::cout << "g sum: " << g_sum << std::endl;
+	std::complex<double> sumAdjoint;
+	for (int i = 0; i < cAlphaAdj.size(); ++i) {
+		sumAdjoint += std::conj(cAlphaAdj[i]) * this->scatter1.cGr[1][i];
 	}
-	//fix find powers in element error
+	std::cout << "e sum: " << e_sum << std::endl;
+
+	std::cout << "total error: " << e_sum + g_sum << std::endl;
+	//print out qoi errors per element
+	std::cout << "Saving QoI Error per element..." << std::endl;
+	std::ofstream file_qoi_out;
+	file_qoi_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_error.txt");
+	for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
+		//one element per line: real imag
+		file_qoi_out << e->element_error.real() << " " << e->element_error.imag() << std::endl;
+	}
+	std::cout << "Done saving QoI error." << std::endl;
+}
+//fix find powers in element error
 void Domain::element_error_basis(int u_order, int v_order, int w_order, Domain& dom2) {
-		std::ifstream file;
-		std::string line;
-		std::vector < std::complex<double>> cGr_higher, cAlphaFor, cAlphaAdj, cAlphaFormod;
-		read_previous_solve(mesh_name, cAlphaFor, cAlphaAdj, cGr_higher);
-		double k0 = this->scatter1.K0[1];
-		std::complex<double> g_sum, e_sum;
-		//std::vector<std::unordered_map<std::string, std::complex<double>>> basis_maps(this->elements.size());
-		std::vector<std::complex<double>> basis_error_coeffs(this->matDimDis+1);
-		for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
-			//if (e->index != 648) continue;
-			///////////////////////////////////////////
+	std::ifstream file;
+	std::string line;
+	std::vector < std::complex<double>> cGr_higher, cAlphaFor, cAlphaAdj, cAlphaFormod;
+	read_previous_solve(mesh_name, cAlphaFor, cAlphaAdj, cGr_higher);
+	double k0 = this->scatter1.K0[1];
+	std::complex<double> g_sum, e_sum;
+	//std::vector<std::unordered_map<std::string, std::complex<double>>> basis_maps(this->elements.size());
+	std::vector<std::complex<double>> basis_error_coeffs(this->matDimDis + 1);
+	for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
+		//if (e->index != 648) continue;
+		///////////////////////////////////////////
 #pragma region r1
 
-			std::cout << "For element " << e->index << std::endl;
-			int nu = e->expansion[0];
-			int nv = e->expansion[1];
-			int nw = e->expansion[2];
-			int nglu = e->quadrature[0];
-			int nglv = e->quadrature[1];
-			int nglw = e->quadrature[2];
-			int iHomCode = e->materials.hcode;
-			int aCode = e->materials.icode;
-			e->jacobian = matrix3d<double>(nglu + 1, nglv + 1, nglw + 1);
-			std::complex<double> cEps;
-			std::complex<double> cMu;
-			bool isAdjoint = false;
-			int kuvw;
-			int size1;
-			if (aCode == 0) {
-				kuvw = e->materials.KuvwA;
-				size1 = 9 - 3 * e->materials.sym;
-			}
-			else {
-				kuvw = e->materials.Kuvw;
-				size1 = 1;
-			}
-			std::vector<double> xglu, xglv, xglw; //coords
-
-			functions::gaussk(nglu, xglu, e->wglu);
-			functions::gaussk(nglv, xglv, e->wglv);
-			functions::gaussk(nglw, xglw, e->wglw);
-			e->rMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->auMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->avMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->awMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-
-
-			unitVectorsM::unitaryvectors(nglu, nglv, nglw, xglu, xglv, xglw,
-				e->geom_order, e->rs, e->rMatrix, e->auMatrix, e->avMatrix, e->awMatrix,
-				e->jacobian, e->nRs, 2);
-			int indicatorBasisType = 1; //kolund basis
-
-			e->uPowers = matrix2d<double>(nglu + 1, nu);
-			e->vPowers = matrix2d<double>(nglv + 1, nv);
-			e->wPowers = matrix2d<double>(nglw + 1, nw);
-			e->fuPowers = matrix2d<double>(nglu + 1, nu);
-			e->fvPowers = matrix2d<double>(nglv + 1, nv);
-			e->fwPowers = matrix2d<double>(nglw + 1, nw);
-			e->fpuPowers = matrix2d<double>(nglu + 1, nu);
-			e->fpvPowers = matrix2d<double>(nglv + 1, nv);
-			e->fpwPowers = matrix2d<double>(nglw + 1, nw);
-			e->fuPowersLagr = matrix2d<double>(nglu + 1, kuvw);
-			e->fvPowersLagr = matrix2d<double>(nglv + 1, kuvw);
-			e->fwPowersLagr = matrix2d<double>(nglw + 1, kuvw);
-
-			//if indicator = 1, then kolun, if indicator = 2, then legendre
-			//if (indicatorBasisType == 1)
-				//kolund basis functions
-			//	findPowers(nu, nv, nw, nglu, nglv, nglw, xglu, xglv, xglw, e->uPowers, e->vPowers, e->wPowers, e->fuPowers, e->fvPowers, e->fwPowers, e->fpuPowers, e->fpvPowers, e->fpwPowers);
-//
-//
-//
-			e->MuRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
-			e->EpsRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
-			e->MuRelIntInv = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
-
-
-			if ((iHomCode == 1) && (aCode == 1)) {
-				cEps = e->materials.epsr_list[0][0]; //homogen
-				cMu = e->materials.mur_list[0][0];//homogen
-				e->MuRelInt(1, 1, 1, 1) = cMu;
-				e->EpsRelInt(1, 1, 1, 1) = cEps;
-				if (isAdjoint == true) {
-
-					cMu.imag(-cMu.imag());
-					cEps.imag(-cEps.imag());
-					e->EpsRelInt(1, 1, 1, 1).imag(e->EpsRelInt(1, 1, 1, 1).imag());
-					e->MuRelInt(1, 1, 1, 1).imag(e->MuRelInt(1, 1, 1, 1).imag());
-				}
-			}
-			else {
-				if (kuvw != -1) {
-					findPowersLagrange(kuvw, nglu, nglv, nglw, xglu, xglv, xglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr);
-
-					find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.epsr_list, e->EpsRelInt);
-					find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.mur_list, e->MuRelInt);
-
-					if (aCode == 0) {
-						if (iHomCode == 0) {
-							functions::find_mur_inv(size1, e->MuRelInt, nglu, nglv, nglw, e->MuRelIntInv);
-							if (isAdjoint) {
-								find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->MuRelIntInv);
-								find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->EpsRelInt);
-							}
-						}
-						else {
-							functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
-							if (isAdjoint) {
-								find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
-								find_eps_mu_hermitian(size1, 1, 1, 1, e->EpsRelInt);
-							}
-						}
-					}
-					else {
-						iHomCode = 1; //homogeneous, anisotropic
-						e->EpsRelInt(1, 1, 1, 1) = e->materials.epsr_list[0][0];
-						e->MuRelInt(1, 1, 1, 1) = e->materials.mur_list[0][0];
-						functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
-						if (isAdjoint) {
-							find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
-							e->EpsRelInt(1, 1, 1, 1).imag(-e->EpsRelInt(1, 1, 1, 1).imag());
-							e->MuRelInt(1, 1, 1, 1).imag(-e->MuRelInt(1, 1, 1, 1).imag());
-						}
-					}
-
-
-				}
-			}
-#pragma endregion ini_stuff 
-			//////////////////////////////////////////	
-			Integral_g IntG(&(*e));
-			Integral_c Intc(&(*e));
-			Integral_d Intd(&(*e));
-			//iterate through higher order unknowns
-			for (int kMat = e->unknownsStart; kMat <= e->unknownsEnd; ++kMat) {
-				int eh = this->eiUVWijk[kMat][1];
-				int iuvwh = this->eiUVWijk[kMat][2];
-				int ih = this->eiUVWijk[kMat][3];
-				int jh = this->eiUVWijk[kMat][4];
-				int kh = this->eiUVWijk[kMat][5];
-				int D1 = abs(this->vectorD[kMat]);
-				//if non-pml: compute G integral part
-				if (qoi_error::is_higher(u_order, v_order, w_order, iuvwh, ih, jh, kh)) {
-					////convert ih, jh, kh to hash
-					//std::string hash;
-					//std::ostringstream convert;
-					//convert << ih << "," << jh << "," << kh;
-					//hash = convert.str();
-					//auto map_it = basis_maps[e->index - 1].find(hash);
-					//if (map_it == basis_maps[e->index - 1].end()) basis_maps[e->index - 1].insert({ hash, std::complex<double>(0, 0) });
-					if (e->materials.region == 1) {
-						int face = 1;
-						std::complex<double> cGr_prev = this->scatter1.cGr[1][D1];
-						IntG.findGWave(&scatter1, vectorD, false, iuvwh, ih, jh, kh, size1, kMat, D1, face);
-						e->element_error += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
-						g_sum += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
-						basis_error_coeffs[kMat] += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
-						//basis_maps[e->index-1][hash] += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
-					}
-					//iterate through lower order unknowns
-					for (int lMat = dom2.elements[e->index - 1].unknownsStart; lMat <= dom2.elements[e->index - 1].unknownsEnd; ++lMat) {
-						int el = dom2.eiUVWijk[lMat][1];
-						int iuvwl = dom2.eiUVWijk[lMat][2];
-						int il = dom2.eiUVWijk[lMat][3];
-						int jl = dom2.eiUVWijk[lMat][4];
-						int kl = dom2.eiUVWijk[lMat][5];
-						int D2 = abs(dom2.vectorD[lMat]);
-
-						std::complex<double> cSolA, cSolB;
-						/*Intc.findC(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolA, size1);
-						Intd.findD(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolB, size1);*/
-						if (std::signbit(double(dom2.vectorD[lMat])) != std::signbit(double(vectorD[kMat]))) {
-							cSolA = -cSolA;
-							cSolB = -cSolB;
-						}
-						if (iHomCode == 1 && aCode == 1) {
-							cSolA = cSolA / cMu;
-							cSolB = cEps * cSolB;
-						}
-						e->element_error -= cSolA*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-						e->element_error += k0 *k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-
-						e_sum -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-						e_sum += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-
-						basis_error_coeffs[kMat] -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-						basis_error_coeffs[kMat] += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-
-						//basis_maps[e->index - 1][hash] -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-						//basis_maps[e->index - 1][hash] += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-
-
-
-					}
-				}
-			}
+		std::cout << "For element " << e->index << std::endl;
+		int nu = e->expansion[0];
+		int nv = e->expansion[1];
+		int nw = e->expansion[2];
+		int nglu = e->quadrature[0];
+		int nglv = e->quadrature[1];
+		int nglw = e->quadrature[2];
+		int iHomCode = e->materials.hcode;
+		int aCode = e->materials.icode;
+		e->jacobian = matrix3d<double>(nglu + 1, nglv + 1, nglw + 1);
+		std::complex<double> cEps;
+		std::complex<double> cMu;
+		bool isAdjoint = false;
+		int kuvw;
+		int size1;
+		if (aCode == 0) {
+			kuvw = e->materials.KuvwA;
+			size1 = 9 - 3 * e->materials.sym;
 		}
-		/*std::cout << "g sum: " << g_sum << std::endl;
-		std::complex<double> sumAdjoint;
-		for (int i = 0; i < cAlphaAdj.size(); ++i) {
-			sumAdjoint += std::conj(cAlphaAdj[i]) * this->scatter1.cGr[1][i];
+		else {
+			kuvw = e->materials.Kuvw;
+			size1 = 1;
 		}
-		std::cout << "e sum: " << e_sum << std::endl;
+		std::vector<double> xglu, xglv, xglw; //coords
 
-		std::cout << "total error: " << e_sum + g_sum << std::endl;*/
-		//print out qoi errors per element
-		std::cout << "Saving QoI Error per basis..." << std::endl;
-		std::ofstream file_qoi_out;
-		file_qoi_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_basis_coeff.txt");
-		for (auto coef = basis_error_coeffs.begin(); coef != basis_error_coeffs.end(); ++coef) {
-			//one element per line: real imag
-			file_qoi_out << (*coef).real() << " " << (*coef).imag() << std::endl;
-		}
-		std::cout << "Done saving QoI error per basis." << std::endl;
-	}
+		functions::gaussk(nglu, xglu, e->wglu);
+		functions::gaussk(nglv, xglv, e->wglv);
+		functions::gaussk(nglw, xglw, e->wglw);
+		e->rMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->auMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->avMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->awMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
 
 
-	void Domain::_HOPS_EPS(int u_order, int v_order, int w_order, Domain& dom2) {
-		BasisEval eval;
-		if (eval.basisType == 1) { //legendre basis
-			eval.setup_legendre();
-		}
-		std::ifstream file;
-		std::string line;
-		std::vector < std::complex<double>> cGr_higher, cAlphaFor, cAlphaAdj, cAlphaFormod;
-		read_previous_solve(mesh_name, cAlphaFor, cAlphaAdj, cGr_higher);
-		double k0 = this->scatter1.K0[1];
-		std::complex<double> g_sum, e_sum;
-		for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
-			//if (e->index != 82) continue;
-			///////////////////////////////////////////
+		unitVectorsM::unitaryvectors(nglu, nglv, nglw, xglu, xglv, xglw,
+			e->geom_order, e->rs, e->rMatrix, e->auMatrix, e->avMatrix, e->awMatrix,
+			e->jacobian, e->nRs, 2);
+		int indicatorBasisType = 1; //kolund basis
 
-			std::cout << "For element " << e->index << std::endl;
-			int nu = e->expansion[0];
-			int nv = e->expansion[1];
-			int nw = e->expansion[2];
-			int nglu = e->quadrature[0];
-			int nglv = e->quadrature[1];
-			int nglw = e->quadrature[2];
-			int iHomCode = e->materials.hcode;
-			int aCode = e->materials.icode;
-			e->jacobian = matrix3d<double>(nglu + 1, nglv + 1, nglw + 1);
-			std::complex<double> cEps;
-			std::complex<double> cMu;
-			bool isAdjoint = false;
-			int kuvw;
-			int size1;
-			if (aCode == 0) {
-				kuvw = e->materials.KuvwA;
-				size1 = 9 - 3 * e->materials.sym;
-			}
-			else {
-				kuvw = e->materials.Kuvw;
-				size1 = 1;
-			}
-			std::vector<double> xglu, xglv, xglw; //coords
+		e->uPowers = matrix2d<double>(nglu + 1, nu);
+		e->vPowers = matrix2d<double>(nglv + 1, nv);
+		e->wPowers = matrix2d<double>(nglw + 1, nw);
+		e->fuPowers = matrix2d<double>(nglu + 1, nu);
+		e->fvPowers = matrix2d<double>(nglv + 1, nv);
+		e->fwPowers = matrix2d<double>(nglw + 1, nw);
+		e->fpuPowers = matrix2d<double>(nglu + 1, nu);
+		e->fpvPowers = matrix2d<double>(nglv + 1, nv);
+		e->fpwPowers = matrix2d<double>(nglw + 1, nw);
+		e->fuPowersLagr = matrix2d<double>(nglu + 1, kuvw);
+		e->fvPowersLagr = matrix2d<double>(nglv + 1, kuvw);
+		e->fwPowersLagr = matrix2d<double>(nglw + 1, kuvw);
 
-			functions::gaussk(nglu, xglu, e->wglu);
-			functions::gaussk(nglv, xglv, e->wglv);
-			functions::gaussk(nglw, xglw, e->wglw);
-			e->rMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->auMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->avMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->awMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-
-
-			unitVectorsM::unitaryvectors(nglu, nglv, nglw, xglu, xglv, xglw,
-				e->geom_order, e->rs, e->rMatrix, e->auMatrix, e->avMatrix, e->awMatrix,
-				e->jacobian, e->nRs, 2);
-			int indicatorBasisType = 1; //kolund basis
-
-			e->uPowers = matrix2d<double>(nglu + 1, nu);
-			e->vPowers = matrix2d<double>(nglv + 1, nv);
-			e->wPowers = matrix2d<double>(nglw + 1, nw);
-			e->fuPowers = matrix2d<double>(nglu + 1, nu);
-			e->fvPowers = matrix2d<double>(nglv + 1, nv);
-			e->fwPowers = matrix2d<double>(nglw + 1, nw);
-			e->fpuPowers = matrix2d<double>(nglu + 1, nu);
-			e->fpvPowers = matrix2d<double>(nglv + 1, nv);
-			e->fpwPowers = matrix2d<double>(nglw + 1, nw);
-			e->fuPowersLagr = matrix2d<double>(nglu + 1, kuvw);
-			e->fvPowersLagr = matrix2d<double>(nglv + 1, kuvw);
-			e->fwPowersLagr = matrix2d<double>(nglw + 1, kuvw);
-
-			//if indicator = 1, then kolun, if indicator = 2, then legendre
-			if (indicatorBasisType == 1) {
-				e->uPowers = eval.get_u_samples(nglu, nu)[0];
-				e->vPowers = eval.get_v_samples(nglv, nv)[0];
-				e->wPowers = eval.get_w_samples(nglw, nw)[0];
-				e->fuPowers = eval.get_u_samples(nglu, nu)[1];
-				e->fvPowers = eval.get_v_samples(nglv, nv)[1];
-				e->fwPowers = eval.get_w_samples(nglw, nw)[1];
-				e->fpuPowers = eval.get_u_samples(nglu, nu)[2];
-				e->fpvPowers = eval.get_v_samples(nglv, nv)[2];
-				e->fpwPowers = eval.get_w_samples(nglw, nw)[2];
-			}
+		//if indicator = 1, then kolun, if indicator = 2, then legendre
+		//if (indicatorBasisType == 1)
 			//kolund basis functions
-			//findPowers(nu, nv, nw, nglu, nglv, nglw, xglu, xglv, xglw, e->uPowers, e->vPowers, e->wPowers, e->fuPowers, e->fvPowers, e->fwPowers, e->fpuPowers, e->fpvPowers, e->fpwPowers);
+		//	findPowers(nu, nv, nw, nglu, nglv, nglw, xglu, xglv, xglw, e->uPowers, e->vPowers, e->wPowers, e->fuPowers, e->fvPowers, e->fwPowers, e->fpuPowers, e->fpvPowers, e->fpwPowers);
+//
+//
+//
+		e->MuRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+		e->EpsRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+		e->MuRelIntInv = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
 
 
-			e->MuRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
-			e->EpsRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
-			e->MuRelIntInv = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+		if ((iHomCode == 1) && (aCode == 1)) {
+			cEps = e->materials.epsr_list[0][0]; //homogen
+			cMu = e->materials.mur_list[0][0];//homogen
+			e->MuRelInt(1, 1, 1, 1) = cMu;
+			e->EpsRelInt(1, 1, 1, 1) = cEps;
+			if (isAdjoint == true) {
 
-
-			if ((iHomCode == 1) && (aCode == 1)) {
-				cEps = e->materials.epsr_list[0][0]; //homogen
-				cMu = e->materials.mur_list[0][0];//homogen
-				e->MuRelInt(1, 1, 1, 1) = cMu;
-				e->EpsRelInt(1, 1, 1, 1) = cEps;
-				if (isAdjoint == true) {
-
-					cMu.imag(-cMu.imag());
-					cEps.imag(-cEps.imag());
-					e->EpsRelInt(1, 1, 1, 1).imag(e->EpsRelInt(1, 1, 1, 1).imag());
-					e->MuRelInt(1, 1, 1, 1).imag(e->MuRelInt(1, 1, 1, 1).imag());
-				}
+				cMu.imag(-cMu.imag());
+				cEps.imag(-cEps.imag());
+				e->EpsRelInt(1, 1, 1, 1).imag(e->EpsRelInt(1, 1, 1, 1).imag());
+				e->MuRelInt(1, 1, 1, 1).imag(e->MuRelInt(1, 1, 1, 1).imag());
 			}
-			else {
-				if (kuvw != -1) {
-					findPowersLagrange(kuvw, nglu, nglv, nglw, xglu, xglv, xglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr);
+		}
+		else {
+			if (kuvw != -1) {
+				findPowersLagrange(kuvw, nglu, nglv, nglw, xglu, xglv, xglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr);
 
-					find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.epsr_list, e->EpsRelInt);
-					find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.mur_list, e->MuRelInt);
+				find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.epsr_list, e->EpsRelInt);
+				find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.mur_list, e->MuRelInt);
 
-					if (aCode == 0) {
-						if (iHomCode == 0) {
-							functions::find_mur_inv(size1, e->MuRelInt, nglu, nglv, nglw, e->MuRelIntInv);
-							if (isAdjoint) {
-								find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->MuRelIntInv);
-								find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->EpsRelInt);
-							}
-						}
-						else {
-							functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
-							if (isAdjoint) {
-								find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
-								find_eps_mu_hermitian(size1, 1, 1, 1, e->EpsRelInt);
-							}
+				if (aCode == 0) {
+					if (iHomCode == 0) {
+						functions::find_mur_inv(size1, e->MuRelInt, nglu, nglv, nglw, e->MuRelIntInv);
+						if (isAdjoint) {
+							find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->MuRelIntInv);
+							find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->EpsRelInt);
 						}
 					}
 					else {
-						iHomCode = 1; //homogeneous, anisotropic
-						e->EpsRelInt(1, 1, 1, 1) = e->materials.epsr_list[0][0];
-						e->MuRelInt(1, 1, 1, 1) = e->materials.mur_list[0][0];
 						functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
 						if (isAdjoint) {
 							find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
-							e->EpsRelInt(1, 1, 1, 1).imag(-e->EpsRelInt(1, 1, 1, 1).imag());
-							e->MuRelInt(1, 1, 1, 1).imag(-e->MuRelInt(1, 1, 1, 1).imag());
+							find_eps_mu_hermitian(size1, 1, 1, 1, e->EpsRelInt);
 						}
 					}
-
-
 				}
+				else {
+					iHomCode = 1; //homogeneous, anisotropic
+					e->EpsRelInt(1, 1, 1, 1) = e->materials.epsr_list[0][0];
+					e->MuRelInt(1, 1, 1, 1) = e->materials.mur_list[0][0];
+					functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
+					if (isAdjoint) {
+						find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
+						e->EpsRelInt(1, 1, 1, 1).imag(-e->EpsRelInt(1, 1, 1, 1).imag());
+						e->MuRelInt(1, 1, 1, 1).imag(-e->MuRelInt(1, 1, 1, 1).imag());
+					}
+				}
+
+
 			}
-			//////////////////////////////////////////	
-			Integral_g IntG(&(*e));
-			Integral_c Intc(&(*e));
-			Integral_d Intd(&(*e));
-			//iterate through higher order unknowns
-			for (int kMat = e->unknownsStart; kMat <= e->unknownsEnd; ++kMat) {
+		}
+#pragma endregion ini_stuff 
+		//////////////////////////////////////////	
+		Integral_g IntG(&(*e));
+		Integral_c Intc(&(*e));
+		Integral_d Intd(&(*e));
+		//iterate through higher order unknowns
+		for (int kMat = e->unknownsStart; kMat <= e->unknownsEnd; ++kMat) {
+			int eh = this->eiUVWijk[kMat][1];
+			int iuvwh = this->eiUVWijk[kMat][2];
+			int ih = this->eiUVWijk[kMat][3];
+			int jh = this->eiUVWijk[kMat][4];
+			int kh = this->eiUVWijk[kMat][5];
+			int D1 = abs(this->vectorD[kMat]);
+			//if non-pml: compute G integral part
+			if (qoi_error::is_higher(u_order, v_order, w_order, iuvwh, ih, jh, kh)) {
+				////convert ih, jh, kh to hash
+				//std::string hash;
+				//std::ostringstream convert;
+				//convert << ih << "," << jh << "," << kh;
+				//hash = convert.str();
+				//auto map_it = basis_maps[e->index - 1].find(hash);
+				//if (map_it == basis_maps[e->index - 1].end()) basis_maps[e->index - 1].insert({ hash, std::complex<double>(0, 0) });
 				if (e->materials.region == 1) {
-					int eh = this->eiUVWijk[kMat][1];
-					int iuvwh = this->eiUVWijk[kMat][2];
-					int ih = this->eiUVWijk[kMat][3];
-					int jh = this->eiUVWijk[kMat][4];
-					int kh = this->eiUVWijk[kMat][5];
-					int D1 = abs(this->vectorD[kMat]);
-					//if non-pml: compute G integral part
-					//if (qoi_error::is_higher(u_order, v_order, w_order, iuvwh, ih, jh, kh)) {
-						//if (e->materials.region == 1) {
 					int face = 1;
 					std::complex<double> cGr_prev = this->scatter1.cGr[1][D1];
 					IntG.findGWave(&scatter1, vectorD, false, iuvwh, ih, jh, kh, size1, kMat, D1, face);
 					e->element_error += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
 					g_sum += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
-					//	}
-						//iterate through lower order unknowns
-					for (int lMat = dom2.elements[e->index - 1].unknownsStart; lMat <= dom2.elements[e->index - 1].unknownsEnd; ++lMat) {
-						int el = dom2.eiUVWijk[lMat][1];
-						int iuvwl = dom2.eiUVWijk[lMat][2];
-						int il = dom2.eiUVWijk[lMat][3];
-						int jl = dom2.eiUVWijk[lMat][4];
-						int kl = dom2.eiUVWijk[lMat][5];
-						int D2 = abs(dom2.vectorD[lMat]);
+					basis_error_coeffs[kMat] += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
+					//basis_maps[e->index-1][hash] += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
+				}
+				//iterate through lower order unknowns
+				for (int lMat = dom2.elements[e->index - 1].unknownsStart; lMat <= dom2.elements[e->index - 1].unknownsEnd; ++lMat) {
+					int el = dom2.eiUVWijk[lMat][1];
+					int iuvwl = dom2.eiUVWijk[lMat][2];
+					int il = dom2.eiUVWijk[lMat][3];
+					int jl = dom2.eiUVWijk[lMat][4];
+					int kl = dom2.eiUVWijk[lMat][5];
+					int D2 = abs(dom2.vectorD[lMat]);
 
-						std::complex<double> cSolA, cSolB;
-						//Intc.findC(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolA, size1);
-						//Intd.findD(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolB, size1);
-						Intc.findC(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolA, size1, eval);
-						Intd.findD(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolB, size1);
-						if (std::signbit(double(dom2.vectorD[lMat])) != std::signbit(double(vectorD[kMat]))) {
-							cSolA = -cSolA;
-							cSolB = -cSolB;
-						}
-						/*if (iHomCode == 1 && aCode == 1) {
-							cSolA = cSolA / cMu;
-							cSolB = cEps * cSolB;
-						}*/
-						e->element_error -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-						e->element_error += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-
-						e_sum -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-						e_sum += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-
+					std::complex<double> cSolA, cSolB;
+					/*Intc.findC(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolA, size1);
+					Intd.findD(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolB, size1);*/
+					if (std::signbit(double(dom2.vectorD[lMat])) != std::signbit(double(vectorD[kMat]))) {
+						cSolA = -cSolA;
+						cSolB = -cSolB;
 					}
-					//}
+					if (iHomCode == 1 && aCode == 1) {
+						cSolA = cSolA / cMu;
+						cSolB = cEps * cSolB;
+					}
+					e->element_error -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					e->element_error += k0 * k0 * cSolB * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+
+					e_sum -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					e_sum += k0 * k0 * cSolB * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+
+					basis_error_coeffs[kMat] -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					basis_error_coeffs[kMat] += k0 * k0 * cSolB * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+
+					//basis_maps[e->index - 1][hash] -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					//basis_maps[e->index - 1][hash] += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+
+
+
 				}
 			}
 		}
-		std::cout << "g sum: " << g_sum << std::endl;
-		std::complex<double> sumAdjoint;
-		for (int i = 0; i < cAlphaAdj.size(); ++i) {
-			sumAdjoint += std::conj(cAlphaAdj[i]) * this->scatter1.cGr[1][i];
-		}
-		std::cout << "e sum: " << e_sum << std::endl;
-
-		std::cout << "total error: " << e_sum + g_sum << std::endl;
-		//print out qoi errors per element
-		std::cout << "Saving QoI Error per element..." << std::endl;
-		std::ofstream file_qoi_out;
-		file_qoi_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_error.txt");
-		for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
-			//one element per line: real imag
-			file_qoi_out << e->element_error.real() << " " << e->element_error.imag() << std::endl;
-		}
-		std::cout << "Done saving QoI error." << std::endl;
 	}
+	/*std::cout << "g sum: " << g_sum << std::endl;
+	std::complex<double> sumAdjoint;
+	for (int i = 0; i < cAlphaAdj.size(); ++i) {
+		sumAdjoint += std::conj(cAlphaAdj[i]) * this->scatter1.cGr[1][i];
+	}
+	std::cout << "e sum: " << e_sum << std::endl;
+	std::cout << "total error: " << e_sum + g_sum << std::endl;*/
+	//print out qoi errors per element
+	std::cout << "Saving QoI Error per basis..." << std::endl;
+	std::ofstream file_qoi_out;
+	file_qoi_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_basis_coeff.txt");
+	for (auto coef = basis_error_coeffs.begin(); coef != basis_error_coeffs.end(); ++coef) {
+		//one element per line: real imag
+		file_qoi_out << (*coef).real() << " " << (*coef).imag() << std::endl;
+	}
+	std::cout << "Done saving QoI error per basis." << std::endl;
+}
 
 
+void Domain::_HOPS_EPS(int u_order, int v_order, int w_order, Domain& dom2) {
+	BasisEval eval;
+	if (eval.basisType == 1) { //legendre basis
+		eval.setup_legendre();
+	}
+	std::ifstream file;
+	std::string line;
+	std::vector < std::complex<double>> cGr_higher, cAlphaFor, cAlphaAdj, cAlphaFormod;
+	read_previous_solve(mesh_name, cAlphaFor, cAlphaAdj, cGr_higher);
+	double k0 = this->scatter1.K0[1];
+	std::complex<double> g_sum, e_sum;
+	for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
+		//if (e->index != 82) continue;
+		///////////////////////////////////////////
 
-	void Domain::element_error_improved(Domain& dom2, std::vector<std::complex<double>>& cAlphaFor, std::vector<std::complex<double>>& cAlphaAdj) {
-		BasisEval eval;
-		if (eval.basisType == 1) { //legendre basis
-			eval.setup_legendre();
+		std::cout << "For element " << e->index << std::endl;
+		int nu = e->expansion[0];
+		int nv = e->expansion[1];
+		int nw = e->expansion[2];
+		int nglu = e->quadrature[0];
+		int nglv = e->quadrature[1];
+		int nglw = e->quadrature[2];
+		int iHomCode = e->materials.hcode;
+		int aCode = e->materials.icode;
+		e->jacobian = matrix3d<double>(nglu + 1, nglv + 1, nglw + 1);
+		std::complex<double> cEps;
+		std::complex<double> cMu;
+		bool isAdjoint = false;
+		int kuvw;
+		int size1;
+		if (aCode == 0) {
+			kuvw = e->materials.KuvwA;
+			size1 = 9 - 3 * e->materials.sym;
 		}
-		std::ifstream file;
-		std::string line;
-		//std::vector < std::complex<double>> cGr_higher, cAlphaFor, cAlphaAdj, cAlphaFormod;
-		//read_previous_solve(mesh_name, cAlphaFor, cAlphaAdj, cGr_higher);
-		double k0 = this->scatter1.K0[1];
-		std::complex<double> g_sum, e_sum;
-#pragma omp parallel for num_threads(8)
-		for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
-			e->cGr_eps_el = std::vector<std::complex<double>>(this->scatter1.cGr[1].size(), 0.0);
-			int u_order = dom2.elements[e->index - 1].expansion[0];
-			int v_order = dom2.elements[e->index - 1].expansion[1];
-			int w_order = dom2.elements[e->index - 1].expansion[2];
-			//std::cout << "For element " << e->index << std::endl;
-			int nu = e->expansion[0];
-			int nv = e->expansion[1];
-			int nw = e->expansion[2];
-			int nglu = e->quadrature[0];
-			int nglv = e->quadrature[1];
-			int nglw = e->quadrature[2];
-			int iHomCode = e->materials.hcode;
-			int aCode = e->materials.icode;
-			e->jacobian = matrix3d<double>(nglu + 1, nglv + 1, nglw + 1);
-			std::complex<double> cEps;
-			std::complex<double> cMu;
-			bool isAdjoint = false;
-			int kuvw;
-			int size1;
-			if (aCode == 0) {
-				kuvw = e->materials.KuvwA;
-				size1 = 9 - 3 * e->materials.sym;
+		else {
+			kuvw = e->materials.Kuvw;
+			size1 = 1;
+		}
+		std::vector<double> xglu, xglv, xglw; //coords
+
+		functions::gaussk(nglu, xglu, e->wglu);
+		functions::gaussk(nglv, xglv, e->wglv);
+		functions::gaussk(nglw, xglw, e->wglw);
+		e->rMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->auMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->avMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->awMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+
+
+		unitVectorsM::unitaryvectors(nglu, nglv, nglw, xglu, xglv, xglw,
+			e->geom_order, e->rs, e->rMatrix, e->auMatrix, e->avMatrix, e->awMatrix,
+			e->jacobian, e->nRs, 2);
+		int indicatorBasisType = 1; //kolund basis
+
+		e->uPowers = matrix2d<double>(nglu + 1, nu);
+		e->vPowers = matrix2d<double>(nglv + 1, nv);
+		e->wPowers = matrix2d<double>(nglw + 1, nw);
+		e->fuPowers = matrix2d<double>(nglu + 1, nu);
+		e->fvPowers = matrix2d<double>(nglv + 1, nv);
+		e->fwPowers = matrix2d<double>(nglw + 1, nw);
+		e->fpuPowers = matrix2d<double>(nglu + 1, nu);
+		e->fpvPowers = matrix2d<double>(nglv + 1, nv);
+		e->fpwPowers = matrix2d<double>(nglw + 1, nw);
+		e->fuPowersLagr = matrix2d<double>(nglu + 1, kuvw);
+		e->fvPowersLagr = matrix2d<double>(nglv + 1, kuvw);
+		e->fwPowersLagr = matrix2d<double>(nglw + 1, kuvw);
+
+		//if indicator = 1, then kolun, if indicator = 2, then legendre
+		if (indicatorBasisType == 1) {
+			e->uPowers = eval.get_u_samples(nglu, nu)[0];
+			e->vPowers = eval.get_v_samples(nglv, nv)[0];
+			e->wPowers = eval.get_w_samples(nglw, nw)[0];
+			e->fuPowers = eval.get_u_samples(nglu, nu)[1];
+			e->fvPowers = eval.get_v_samples(nglv, nv)[1];
+			e->fwPowers = eval.get_w_samples(nglw, nw)[1];
+			e->fpuPowers = eval.get_u_samples(nglu, nu)[2];
+			e->fpvPowers = eval.get_v_samples(nglv, nv)[2];
+			e->fpwPowers = eval.get_w_samples(nglw, nw)[2];
+		}
+		//kolund basis functions
+		//findPowers(nu, nv, nw, nglu, nglv, nglw, xglu, xglv, xglw, e->uPowers, e->vPowers, e->wPowers, e->fuPowers, e->fvPowers, e->fwPowers, e->fpuPowers, e->fpvPowers, e->fpwPowers);
+
+
+		e->MuRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+		e->EpsRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+		e->MuRelIntInv = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+
+
+		if ((iHomCode == 1) && (aCode == 1)) {
+			cEps = e->materials.epsr_list[0][0]; //homogen
+			cMu = e->materials.mur_list[0][0];//homogen
+			e->MuRelInt(1, 1, 1, 1) = cMu;
+			e->EpsRelInt(1, 1, 1, 1) = cEps;
+			if (isAdjoint == true) {
+
+				cMu.imag(-cMu.imag());
+				cEps.imag(-cEps.imag());
+				e->EpsRelInt(1, 1, 1, 1).imag(e->EpsRelInt(1, 1, 1, 1).imag());
+				e->MuRelInt(1, 1, 1, 1).imag(e->MuRelInt(1, 1, 1, 1).imag());
 			}
-			else {
-				kuvw = e->materials.Kuvw;
-				size1 = 1;
-			}
-			std::vector<double> xglu, xglv, xglw; //coords
+		}
+		else {
+			if (kuvw != -1) {
+				findPowersLagrange(kuvw, nglu, nglv, nglw, xglu, xglv, xglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr);
 
-			functions::gaussk(nglu, xglu, e->wglu);
-			functions::gaussk(nglv, xglv, e->wglv);
-			functions::gaussk(nglw, xglw, e->wglw);
-			e->rMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->auMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->avMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->awMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			unitVectorsM::unitaryvectors(nglu, nglv, nglw, xglu, xglv, xglw,
-				e->geom_order, e->rs, e->rMatrix, e->auMatrix, e->avMatrix, e->awMatrix,
-				e->jacobian, e->nRs, 2);
-			int indicatorBasisType = 1;
-			e->uPowers = matrix2d<double>(nglu + 1, nu);
-			e->vPowers = matrix2d<double>(nglv + 1, nv);
-			e->wPowers = matrix2d<double>(nglw + 1, nw);
-			e->fuPowers = matrix2d<double>(nglu + 1, nu);
-			e->fvPowers = matrix2d<double>(nglv + 1, nv);
-			e->fwPowers = matrix2d<double>(nglw + 1, nw);
-			e->fpuPowers = matrix2d<double>(nglu + 1, nu);
-			e->fpvPowers = matrix2d<double>(nglv + 1, nv);
-			e->fpwPowers = matrix2d<double>(nglw + 1, nw);
-			e->fuPowersLagr = matrix2d<double>(nglu + 1, kuvw);
-			e->fvPowersLagr = matrix2d<double>(nglv + 1, kuvw);
-			e->fwPowersLagr = matrix2d<double>(nglw + 1, kuvw);
-			
-			if (indicatorBasisType == 1) {
-				e->uPowers = eval.get_u_samples(nglu, nu)[0];
-				e->vPowers = eval.get_v_samples(nglv, nv)[0];
-				e->wPowers = eval.get_w_samples(nglw, nw)[0];
-				e->fuPowers = eval.get_u_samples(nglu, nu)[1];
-				e->fvPowers = eval.get_v_samples(nglv, nv)[1];
-				e->fwPowers = eval.get_w_samples(nglw, nw)[1];
-				e->fpuPowers = eval.get_u_samples(nglu, nu)[2];
-				e->fpvPowers = eval.get_v_samples(nglv, nv)[2];
-				e->fpwPowers = eval.get_w_samples(nglw, nw)[2];
-			}
-			//kolund basis functions
-			//findPowers(nu, nv, nw, nglu, nglv, nglw, xglu, xglv, xglw, e->uPowers, e->vPowers, e->wPowers, e->fuPowers, e->fvPowers, e->fwPowers, e->fpuPowers, e->fpvPowers, e->fpwPowers);
+				find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.epsr_list, e->EpsRelInt);
+				find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.mur_list, e->MuRelInt);
 
-
-			e->MuRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
-			e->EpsRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
-			e->MuRelIntInv = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
-
-
-			if ((iHomCode == 1) && (aCode == 1)) {
-				cEps = e->materials.epsr_list[0][0]; //homogen
-				cMu = e->materials.mur_list[0][0];//homogen
-				e->MuRelInt(1, 1, 1, 1) = cMu;
-				e->EpsRelInt(1, 1, 1, 1) = cEps;
-				if (isAdjoint == true) {
-
-					cMu.imag(-cMu.imag());
-					cEps.imag(-cEps.imag());
-					e->EpsRelInt(1, 1, 1, 1).imag(e->EpsRelInt(1, 1, 1, 1).imag());
-					e->MuRelInt(1, 1, 1, 1).imag(e->MuRelInt(1, 1, 1, 1).imag());
-				}
-			}
-			else {
-				if (kuvw != -1) {
-					findPowersLagrange(kuvw, nglu, nglv, nglw, xglu, xglv, xglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr);
-
-					find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.epsr_list, e->EpsRelInt);
-					find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.mur_list, e->MuRelInt);
-
-					if (aCode == 0) {
-						if (iHomCode == 0) {
-							functions::find_mur_inv(size1, e->MuRelInt, nglu, nglv, nglw, e->MuRelIntInv);
-							if (isAdjoint) {
-								find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->MuRelIntInv);
-								find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->EpsRelInt);
-							}
-						}
-						else {
-							functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
-							if (isAdjoint) {
-								find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
-								find_eps_mu_hermitian(size1, 1, 1, 1, e->EpsRelInt);
-							}
+				if (aCode == 0) {
+					if (iHomCode == 0) {
+						functions::find_mur_inv(size1, e->MuRelInt, nglu, nglv, nglw, e->MuRelIntInv);
+						if (isAdjoint) {
+							find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->MuRelIntInv);
+							find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->EpsRelInt);
 						}
 					}
 					else {
-						iHomCode = 1; //homogeneous, anisotropic
-						e->EpsRelInt(1, 1, 1, 1) = e->materials.epsr_list[0][0];
-						e->MuRelInt(1, 1, 1, 1) = e->materials.mur_list[0][0];
 						functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
 						if (isAdjoint) {
 							find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
-							e->EpsRelInt(1, 1, 1, 1).imag(-e->EpsRelInt(1, 1, 1, 1).imag());
-							e->MuRelInt(1, 1, 1, 1).imag(-e->MuRelInt(1, 1, 1, 1).imag());
+							find_eps_mu_hermitian(size1, 1, 1, 1, e->EpsRelInt);
 						}
 					}
 				}
+				else {
+					iHomCode = 1; //homogeneous, anisotropic
+					e->EpsRelInt(1, 1, 1, 1) = e->materials.epsr_list[0][0];
+					e->MuRelInt(1, 1, 1, 1) = e->materials.mur_list[0][0];
+					functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
+					if (isAdjoint) {
+						find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
+						e->EpsRelInt(1, 1, 1, 1).imag(-e->EpsRelInt(1, 1, 1, 1).imag());
+						e->MuRelInt(1, 1, 1, 1).imag(-e->MuRelInt(1, 1, 1, 1).imag());
+					}
+				}
+
+
 			}
-			//////////////////////////////////////////	
-			Integral_g IntG(&(*e));
-			Integral_c Intc(&(*e));
-			Integral_d Intd(&(*e));
-			//iterate through higher order unknowns
-			for (int kMat = e->unknownsStart; kMat <= e->unknownsEnd; ++kMat) {
+		}
+		//////////////////////////////////////////	
+		Integral_g IntG(&(*e));
+		Integral_c Intc(&(*e));
+		Integral_d Intd(&(*e));
+		//iterate through higher order unknowns
+		for (int kMat = e->unknownsStart; kMat <= e->unknownsEnd; ++kMat) {
+			if (e->materials.region == 1) {
 				int eh = this->eiUVWijk[kMat][1];
 				int iuvwh = this->eiUVWijk[kMat][2];
 				int ih = this->eiUVWijk[kMat][3];
@@ -3615,259 +3280,469 @@ void Domain::element_error_basis(int u_order, int v_order, int w_order, Domain& 
 				int kh = this->eiUVWijk[kMat][5];
 				int D1 = abs(this->vectorD[kMat]);
 				//if non-pml: compute G integral part
-				if (qoi_error::is_higher(u_order, v_order, w_order, iuvwh, ih, jh, kh)) {
-					if (e->materials.region == 1) {
-						int face = 1;
-						std::complex<double> cGr_prev = this->scatter1.cGr[1][D1];
-						IntG.findGWave(&scatter1, vectorD, false, iuvwh, ih, jh, kh, size1, kMat, D1, face);
-						e->element_error += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
-						//g_sum += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
-					}
+				//if (qoi_error::is_higher(u_order, v_order, w_order, iuvwh, ih, jh, kh)) {
+					//if (e->materials.region == 1) {
+				int face = 1;
+				std::complex<double> cGr_prev = this->scatter1.cGr[1][D1];
+				IntG.findGWave(&scatter1, vectorD, false, iuvwh, ih, jh, kh, size1, kMat, D1, face);
+				e->element_error += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
+				g_sum += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
+				//	}
 					//iterate through lower order unknowns
-					for (int lMat = dom2.elements[e->index - 1].unknownsStart; lMat <= dom2.elements[e->index - 1].unknownsEnd; ++lMat) {
-						int el = dom2.eiUVWijk[lMat][1];
-						int iuvwl = dom2.eiUVWijk[lMat][2];
-						int il = dom2.eiUVWijk[lMat][3];
-						int jl = dom2.eiUVWijk[lMat][4];
-						int kl = dom2.eiUVWijk[lMat][5];
-						int D2 = abs(dom2.vectorD[lMat]);
+				for (int lMat = dom2.elements[e->index - 1].unknownsStart; lMat <= dom2.elements[e->index - 1].unknownsEnd; ++lMat) {
+					int el = dom2.eiUVWijk[lMat][1];
+					int iuvwl = dom2.eiUVWijk[lMat][2];
+					int il = dom2.eiUVWijk[lMat][3];
+					int jl = dom2.eiUVWijk[lMat][4];
+					int kl = dom2.eiUVWijk[lMat][5];
+					int D2 = abs(dom2.vectorD[lMat]);
 
-						std::complex<double> cSolA, cSolB;
-						Intc.findC(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolA, size1, eval);
-						Intd.findD(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolB, size1);
-						if (std::signbit(double(dom2.vectorD[lMat])) != std::signbit(double(vectorD[kMat]))) {
-							cSolA = -cSolA;
-							cSolB = -cSolB;
-						}
-						if (iHomCode == 1 && aCode == 1) {
-							cSolA = cSolA / cMu;
-							cSolB = cEps * cSolB;
-						}
-						e->element_error -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-						e->element_error += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-
-						//e_sum -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-						//e_sum += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-
+					std::complex<double> cSolA, cSolB;
+					//Intc.findC(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolA, size1);
+					//Intd.findD(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolB, size1);
+					Intc.findC(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolA, size1, eval);
+					Intd.findD(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolB, size1);
+					if (std::signbit(double(dom2.vectorD[lMat])) != std::signbit(double(vectorD[kMat]))) {
+						cSolA = -cSolA;
+						cSolB = -cSolB;
 					}
+					/*if (iHomCode == 1 && aCode == 1) {
+						cSolA = cSolA / cMu;
+						cSolB = cEps * cSolB;
+					}*/
+					e->element_error -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					e->element_error += k0 * k0 * cSolB * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+
+					e_sum -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					e_sum += k0 * k0 * cSolB * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+
 				}
+				//}
 			}
 		}
-		//std::cout << "g sum: " << g_sum << std::endl;
-		std::complex<double> sumAdjoint;
-		for (int i = 0; i < cAlphaAdj.size(); ++i) {
-			sumAdjoint += std::conj(cAlphaAdj[i]) * this->scatter1.cGr[1][i];
-		}
-		//std::cout << "e sum: " << e_sum << std::endl;
-
-		//std::cout << "total error: " << e_sum + g_sum << std::endl;
-		//print out qoi errors per element
-		std::cout << "Saving QoI Error per element..." << std::endl;
-		std::ofstream file_qoi_out;
-		file_qoi_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_error.txt");
-		for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
-			//one element per line: real imag
-			file_qoi_out << e->element_error.real() << " " << e->element_error.imag() << std::endl;
-		}
-		std::cout << "Done saving QoI error." << std::endl;
 	}
+	std::cout << "g sum: " << g_sum << std::endl;
+	std::complex<double> sumAdjoint;
+	for (int i = 0; i < cAlphaAdj.size(); ++i) {
+		sumAdjoint += std::conj(cAlphaAdj[i]) * this->scatter1.cGr[1][i];
+	}
+	std::cout << "e sum: " << e_sum << std::endl;
 
-	void Domain::basis_error_improved(Domain& dom2, std::vector<std::complex<double>>& cAlphaFor, std::vector<std::complex<double>>& cAlphaAdj) {
-		BasisEval eval;
-		if (eval.basisType == 1) { //legendre basis
-			eval.setup_legendre();
-		}
-		std::ifstream file;
-		std::string line;
-		//std::vector < std::complex<double>> cGr_higher, cAlphaFor, cAlphaAdj, cAlphaFormod;
-		//read_previous_solve(mesh_name, cAlphaFor, cAlphaAdj, cGr_higher);
-		double k0 = this->scatter1.K0[1];
-		std::complex<double> g_sum, e_sum;
-		std::vector<std::complex<double>> basis_error_coeffs(this->matDimDis + 1);
+	std::cout << "total error: " << e_sum + g_sum << std::endl;
+	//print out qoi errors per element
+	std::cout << "Saving QoI Error per element..." << std::endl;
+	std::ofstream file_qoi_out;
+	file_qoi_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_error.txt");
+	for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
+		//one element per line: real imag
+		file_qoi_out << e->element_error.real() << " " << e->element_error.imag() << std::endl;
+	}
+	std::cout << "Done saving QoI error." << std::endl;
+}
+
+
+
+void Domain::element_error_improved(Domain& dom2, std::vector<std::complex<double>>& cAlphaFor, std::vector<std::complex<double>>& cAlphaAdj) {
+	BasisEval eval;
+	if (eval.basisType == 1) { //legendre basis
+		eval.setup_legendre();
+	}
+	std::ifstream file;
+	std::string line;
+	//std::vector < std::complex<double>> cGr_higher, cAlphaFor, cAlphaAdj, cAlphaFormod;
+	//read_previous_solve(mesh_name, cAlphaFor, cAlphaAdj, cGr_higher);
+	double k0 = this->scatter1.K0[1];
+	std::complex<double> g_sum, e_sum;
 #pragma omp parallel for num_threads(8)
-		for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
-			e->cGr_eps_el = std::vector<std::complex<double>>(this->scatter1.cGr[1].size(), 0.0);
-			int u_order = dom2.elements[e->index - 1].expansion[0];
-			int v_order = dom2.elements[e->index - 1].expansion[1];
-			int w_order = dom2.elements[e->index - 1].expansion[2];
-			//std::cout << "For element " << e->index << std::endl;
-			int nu = e->expansion[0];
-			int nv = e->expansion[1];
-			int nw = e->expansion[2];
-			int nglu = e->quadrature[0];
-			int nglv = e->quadrature[1];
-			int nglw = e->quadrature[2];
-			int iHomCode = e->materials.hcode;
-			int aCode = e->materials.icode;
-			e->jacobian = matrix3d<double>(nglu + 1, nglv + 1, nglw + 1);
-			std::complex<double> cEps;
-			std::complex<double> cMu;
-			bool isAdjoint = false;
-			int kuvw;
-			int size1;
-			if (aCode == 0) {
-				kuvw = e->materials.KuvwA;
-				size1 = 9 - 3 * e->materials.sym;
+	for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
+		e->cGr_eps_el = std::vector<std::complex<double>>(this->scatter1.cGr[1].size(), 0.0);
+		int u_order = dom2.elements[e->index - 1].expansion[0];
+		int v_order = dom2.elements[e->index - 1].expansion[1];
+		int w_order = dom2.elements[e->index - 1].expansion[2];
+		//std::cout << "For element " << e->index << std::endl;
+		int nu = e->expansion[0];
+		int nv = e->expansion[1];
+		int nw = e->expansion[2];
+		int nglu = e->quadrature[0];
+		int nglv = e->quadrature[1];
+		int nglw = e->quadrature[2];
+		int iHomCode = e->materials.hcode;
+		int aCode = e->materials.icode;
+		e->jacobian = matrix3d<double>(nglu + 1, nglv + 1, nglw + 1);
+		std::complex<double> cEps;
+		std::complex<double> cMu;
+		bool isAdjoint = false;
+		int kuvw;
+		int size1;
+		if (aCode == 0) {
+			kuvw = e->materials.KuvwA;
+			size1 = 9 - 3 * e->materials.sym;
+		}
+		else {
+			kuvw = e->materials.Kuvw;
+			size1 = 1;
+		}
+		std::vector<double> xglu, xglv, xglw; //coords
+
+		functions::gaussk(nglu, xglu, e->wglu);
+		functions::gaussk(nglv, xglv, e->wglv);
+		functions::gaussk(nglw, xglw, e->wglw);
+		e->rMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->auMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->avMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->awMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		unitVectorsM::unitaryvectors(nglu, nglv, nglw, xglu, xglv, xglw,
+			e->geom_order, e->rs, e->rMatrix, e->auMatrix, e->avMatrix, e->awMatrix,
+			e->jacobian, e->nRs, 2);
+		int indicatorBasisType = 1;
+		e->uPowers = matrix2d<double>(nglu + 1, nu);
+		e->vPowers = matrix2d<double>(nglv + 1, nv);
+		e->wPowers = matrix2d<double>(nglw + 1, nw);
+		e->fuPowers = matrix2d<double>(nglu + 1, nu);
+		e->fvPowers = matrix2d<double>(nglv + 1, nv);
+		e->fwPowers = matrix2d<double>(nglw + 1, nw);
+		e->fpuPowers = matrix2d<double>(nglu + 1, nu);
+		e->fpvPowers = matrix2d<double>(nglv + 1, nv);
+		e->fpwPowers = matrix2d<double>(nglw + 1, nw);
+		e->fuPowersLagr = matrix2d<double>(nglu + 1, kuvw);
+		e->fvPowersLagr = matrix2d<double>(nglv + 1, kuvw);
+		e->fwPowersLagr = matrix2d<double>(nglw + 1, kuvw);
+
+		if (indicatorBasisType == 1) {
+			e->uPowers = eval.get_u_samples(nglu, nu)[0];
+			e->vPowers = eval.get_v_samples(nglv, nv)[0];
+			e->wPowers = eval.get_w_samples(nglw, nw)[0];
+			e->fuPowers = eval.get_u_samples(nglu, nu)[1];
+			e->fvPowers = eval.get_v_samples(nglv, nv)[1];
+			e->fwPowers = eval.get_w_samples(nglw, nw)[1];
+			e->fpuPowers = eval.get_u_samples(nglu, nu)[2];
+			e->fpvPowers = eval.get_v_samples(nglv, nv)[2];
+			e->fpwPowers = eval.get_w_samples(nglw, nw)[2];
+		}
+		//kolund basis functions
+		//findPowers(nu, nv, nw, nglu, nglv, nglw, xglu, xglv, xglw, e->uPowers, e->vPowers, e->wPowers, e->fuPowers, e->fvPowers, e->fwPowers, e->fpuPowers, e->fpvPowers, e->fpwPowers);
+
+
+		e->MuRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+		e->EpsRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+		e->MuRelIntInv = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+
+
+		if ((iHomCode == 1) && (aCode == 1)) {
+			cEps = e->materials.epsr_list[0][0]; //homogen
+			cMu = e->materials.mur_list[0][0];//homogen
+			e->MuRelInt(1, 1, 1, 1) = cMu;
+			e->EpsRelInt(1, 1, 1, 1) = cEps;
+			if (isAdjoint == true) {
+
+				cMu.imag(-cMu.imag());
+				cEps.imag(-cEps.imag());
+				e->EpsRelInt(1, 1, 1, 1).imag(e->EpsRelInt(1, 1, 1, 1).imag());
+				e->MuRelInt(1, 1, 1, 1).imag(e->MuRelInt(1, 1, 1, 1).imag());
 			}
-			else {
-				kuvw = e->materials.Kuvw;
-				size1 = 1;
-			}
-			std::vector<double> xglu, xglv, xglw; //coords
+		}
+		else {
+			if (kuvw != -1) {
+				findPowersLagrange(kuvw, nglu, nglv, nglw, xglu, xglv, xglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr);
 
-			functions::gaussk(nglu, xglu, e->wglu);
-			functions::gaussk(nglv, xglv, e->wglv);
-			functions::gaussk(nglw, xglw, e->wglw);
-			e->rMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->auMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->avMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			e->awMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
-			unitVectorsM::unitaryvectors(nglu, nglv, nglw, xglu, xglv, xglw,
-				e->geom_order, e->rs, e->rMatrix, e->auMatrix, e->avMatrix, e->awMatrix,
-				e->jacobian, e->nRs, 2);
-			int indicatorBasisType = 1;
-			e->uPowers = matrix2d<double>(nglu + 1, nu);
-			e->vPowers = matrix2d<double>(nglv + 1, nv);
-			e->wPowers = matrix2d<double>(nglw + 1, nw);
-			e->fuPowers = matrix2d<double>(nglu + 1, nu);
-			e->fvPowers = matrix2d<double>(nglv + 1, nv);
-			e->fwPowers = matrix2d<double>(nglw + 1, nw);
-			e->fpuPowers = matrix2d<double>(nglu + 1, nu);
-			e->fpvPowers = matrix2d<double>(nglv + 1, nv);
-			e->fpwPowers = matrix2d<double>(nglw + 1, nw);
-			e->fuPowersLagr = matrix2d<double>(nglu + 1, kuvw);
-			e->fvPowersLagr = matrix2d<double>(nglv + 1, kuvw);
-			e->fwPowersLagr = matrix2d<double>(nglw + 1, kuvw);
+				find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.epsr_list, e->EpsRelInt);
+				find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.mur_list, e->MuRelInt);
 
-			if (indicatorBasisType == 1) {
-				e->uPowers = eval.get_u_samples(nglu, nu)[0];
-				e->vPowers = eval.get_v_samples(nglv, nv)[0];
-				e->wPowers = eval.get_w_samples(nglw, nw)[0];
-				e->fuPowers = eval.get_u_samples(nglu, nu)[1];
-				e->fvPowers = eval.get_v_samples(nglv, nv)[1];
-				e->fwPowers = eval.get_w_samples(nglw, nw)[1];
-				e->fpuPowers = eval.get_u_samples(nglu, nu)[2];
-				e->fpvPowers = eval.get_v_samples(nglv, nv)[2];
-				e->fpwPowers = eval.get_w_samples(nglw, nw)[2];
-			}
-			//kolund basis functions
-			//findPowers(nu, nv, nw, nglu, nglv, nglw, xglu, xglv, xglw, e->uPowers, e->vPowers, e->wPowers, e->fuPowers, e->fvPowers, e->fwPowers, e->fpuPowers, e->fpvPowers, e->fpwPowers);
-
-
-			e->MuRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
-			e->EpsRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
-			e->MuRelIntInv = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
-
-
-			if ((iHomCode == 1) && (aCode == 1)) {
-				cEps = e->materials.epsr_list[0][0]; //homogen
-				cMu = e->materials.mur_list[0][0];//homogen
-				e->MuRelInt(1, 1, 1, 1) = cMu;
-				e->EpsRelInt(1, 1, 1, 1) = cEps;
-				if (isAdjoint == true) {
-
-					cMu.imag(-cMu.imag());
-					cEps.imag(-cEps.imag());
-					e->EpsRelInt(1, 1, 1, 1).imag(e->EpsRelInt(1, 1, 1, 1).imag());
-					e->MuRelInt(1, 1, 1, 1).imag(e->MuRelInt(1, 1, 1, 1).imag());
-				}
-			}
-			else {
-				if (kuvw != -1) {
-					findPowersLagrange(kuvw, nglu, nglv, nglw, xglu, xglv, xglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr);
-
-					find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.epsr_list, e->EpsRelInt);
-					find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.mur_list, e->MuRelInt);
-
-					if (aCode == 0) {
-						if (iHomCode == 0) {
-							functions::find_mur_inv(size1, e->MuRelInt, nglu, nglv, nglw, e->MuRelIntInv);
-							if (isAdjoint) {
-								find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->MuRelIntInv);
-								find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->EpsRelInt);
-							}
-						}
-						else {
-							functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
-							if (isAdjoint) {
-								find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
-								find_eps_mu_hermitian(size1, 1, 1, 1, e->EpsRelInt);
-							}
+				if (aCode == 0) {
+					if (iHomCode == 0) {
+						functions::find_mur_inv(size1, e->MuRelInt, nglu, nglv, nglw, e->MuRelIntInv);
+						if (isAdjoint) {
+							find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->MuRelIntInv);
+							find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->EpsRelInt);
 						}
 					}
 					else {
-						iHomCode = 1; //homogeneous, anisotropic
-						e->EpsRelInt(1, 1, 1, 1) = e->materials.epsr_list[0][0];
-						e->MuRelInt(1, 1, 1, 1) = e->materials.mur_list[0][0];
 						functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
 						if (isAdjoint) {
 							find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
-							e->EpsRelInt(1, 1, 1, 1).imag(-e->EpsRelInt(1, 1, 1, 1).imag());
-							e->MuRelInt(1, 1, 1, 1).imag(-e->MuRelInt(1, 1, 1, 1).imag());
+							find_eps_mu_hermitian(size1, 1, 1, 1, e->EpsRelInt);
 						}
 					}
 				}
-			}
-			//////////////////////////////////////////	
-			Integral_g IntG(&(*e));
-			Integral_c Intc(&(*e));
-			Integral_d Intd(&(*e));
-			//iterate through higher order unknowns
-			for (int kMat = e->unknownsStart; kMat <= e->unknownsEnd; ++kMat) {
-				int eh = this->eiUVWijk[kMat][1];
-				int iuvwh = this->eiUVWijk[kMat][2];
-				int ih = this->eiUVWijk[kMat][3];
-				int jh = this->eiUVWijk[kMat][4];
-				int kh = this->eiUVWijk[kMat][5];
-				int D1 = abs(this->vectorD[kMat]);
-				//if non-pml: compute G integral part
-				if (qoi_error::is_higher(u_order, v_order, w_order, iuvwh, ih, jh, kh)) {
-					if (e->materials.region == 1) {
-						int face = 1;
-						std::complex<double> cGr_prev = this->scatter1.cGr[1][D1];
-						IntG.findGWave(&scatter1, vectorD, false, iuvwh, ih, jh, kh, size1, kMat, D1, face);
-						basis_error_coeffs[kMat] += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
-						//e->element_error += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
-						//g_sum += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
+				else {
+					iHomCode = 1; //homogeneous, anisotropic
+					e->EpsRelInt(1, 1, 1, 1) = e->materials.epsr_list[0][0];
+					e->MuRelInt(1, 1, 1, 1) = e->materials.mur_list[0][0];
+					functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
+					if (isAdjoint) {
+						find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
+						e->EpsRelInt(1, 1, 1, 1).imag(-e->EpsRelInt(1, 1, 1, 1).imag());
+						e->MuRelInt(1, 1, 1, 1).imag(-e->MuRelInt(1, 1, 1, 1).imag());
 					}
-					//iterate through lower order unknowns
-					for (int lMat = dom2.elements[e->index - 1].unknownsStart; lMat <= dom2.elements[e->index - 1].unknownsEnd; ++lMat) {
-						int el = dom2.eiUVWijk[lMat][1];
-						int iuvwl = dom2.eiUVWijk[lMat][2];
-						int il = dom2.eiUVWijk[lMat][3];
-						int jl = dom2.eiUVWijk[lMat][4];
-						int kl = dom2.eiUVWijk[lMat][5];
-						int D2 = abs(dom2.vectorD[lMat]);
+				}
+			}
+		}
+		//////////////////////////////////////////	
+		Integral_g IntG(&(*e));
+		Integral_c Intc(&(*e));
+		Integral_d Intd(&(*e));
+		//iterate through higher order unknowns
+		for (int kMat = e->unknownsStart; kMat <= e->unknownsEnd; ++kMat) {
+			int eh = this->eiUVWijk[kMat][1];
+			int iuvwh = this->eiUVWijk[kMat][2];
+			int ih = this->eiUVWijk[kMat][3];
+			int jh = this->eiUVWijk[kMat][4];
+			int kh = this->eiUVWijk[kMat][5];
+			int D1 = abs(this->vectorD[kMat]);
+			//if non-pml: compute G integral part
+			if (qoi_error::is_higher(u_order, v_order, w_order, iuvwh, ih, jh, kh)) {
+				if (e->materials.region == 1) {
+					int face = 1;
+					std::complex<double> cGr_prev = this->scatter1.cGr[1][D1];
+					IntG.findGWave(&scatter1, vectorD, false, iuvwh, ih, jh, kh, size1, kMat, D1, face);
+					e->element_error += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
+					//g_sum += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
+				}
+				//iterate through lower order unknowns
+				for (int lMat = dom2.elements[e->index - 1].unknownsStart; lMat <= dom2.elements[e->index - 1].unknownsEnd; ++lMat) {
+					int el = dom2.eiUVWijk[lMat][1];
+					int iuvwl = dom2.eiUVWijk[lMat][2];
+					int il = dom2.eiUVWijk[lMat][3];
+					int jl = dom2.eiUVWijk[lMat][4];
+					int kl = dom2.eiUVWijk[lMat][5];
+					int D2 = abs(dom2.vectorD[lMat]);
 
-						std::complex<double> cSolA, cSolB;
-						Intc.findC(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolA, size1, eval);
-						Intd.findD(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolB, size1);
-						if (std::signbit(double(dom2.vectorD[lMat])) != std::signbit(double(vectorD[kMat]))) {
-							cSolA = -cSolA;
-							cSolB = -cSolB;
+					std::complex<double> cSolA, cSolB;
+					Intc.findC(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolA, size1, eval);
+					Intd.findD(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolB, size1);
+					if (std::signbit(double(dom2.vectorD[lMat])) != std::signbit(double(vectorD[kMat]))) {
+						cSolA = -cSolA;
+						cSolB = -cSolB;
+					}
+					if (iHomCode == 1 && aCode == 1) {
+						cSolA = cSolA / cMu;
+						cSolB = cEps * cSolB;
+					}
+					e->element_error -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					e->element_error += k0 * k0 * cSolB * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+
+					//e_sum -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					//e_sum += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+
+				}
+			}
+		}
+	}
+	//std::cout << "g sum: " << g_sum << std::endl;
+	std::complex<double> sumAdjoint;
+	for (int i = 0; i < cAlphaAdj.size(); ++i) {
+		sumAdjoint += std::conj(cAlphaAdj[i]) * this->scatter1.cGr[1][i];
+	}
+	//std::cout << "e sum: " << e_sum << std::endl;
+
+	//std::cout << "total error: " << e_sum + g_sum << std::endl;
+	//print out qoi errors per element
+	std::cout << "Saving QoI Error per element..." << std::endl;
+	std::ofstream file_qoi_out;
+	file_qoi_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_error.txt");
+	for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
+		//one element per line: real imag
+		file_qoi_out << e->element_error.real() << " " << e->element_error.imag() << std::endl;
+	}
+	std::cout << "Done saving QoI error." << std::endl;
+}
+
+void Domain::basis_error_improved(Domain& dom2, std::vector<std::complex<double>>& cAlphaFor, std::vector<std::complex<double>>& cAlphaAdj) {
+	BasisEval eval;
+	if (eval.basisType == 1) { //legendre basis
+		eval.setup_legendre();
+	}
+	std::ifstream file;
+	std::string line;
+	//std::vector < std::complex<double>> cGr_higher, cAlphaFor, cAlphaAdj, cAlphaFormod;
+	//read_previous_solve(mesh_name, cAlphaFor, cAlphaAdj, cGr_higher);
+	double k0 = this->scatter1.K0[1];
+	std::complex<double> g_sum, e_sum;
+	std::vector<std::complex<double>> basis_error_coeffs(this->matDimDis + 1);
+#pragma omp parallel for num_threads(8)
+	for (auto e = this->elements.begin(); e != this->elements.end(); ++e) {
+		e->cGr_eps_el = std::vector<std::complex<double>>(this->scatter1.cGr[1].size(), 0.0);
+		int u_order = dom2.elements[e->index - 1].expansion[0];
+		int v_order = dom2.elements[e->index - 1].expansion[1];
+		int w_order = dom2.elements[e->index - 1].expansion[2];
+		//std::cout << "For element " << e->index << std::endl;
+		int nu = e->expansion[0];
+		int nv = e->expansion[1];
+		int nw = e->expansion[2];
+		int nglu = e->quadrature[0];
+		int nglv = e->quadrature[1];
+		int nglw = e->quadrature[2];
+		int iHomCode = e->materials.hcode;
+		int aCode = e->materials.icode;
+		e->jacobian = matrix3d<double>(nglu + 1, nglv + 1, nglw + 1);
+		std::complex<double> cEps;
+		std::complex<double> cMu;
+		bool isAdjoint = false;
+		int kuvw;
+		int size1;
+		if (aCode == 0) {
+			kuvw = e->materials.KuvwA;
+			size1 = 9 - 3 * e->materials.sym;
+		}
+		else {
+			kuvw = e->materials.Kuvw;
+			size1 = 1;
+		}
+		std::vector<double> xglu, xglv, xglw; //coords
+
+		functions::gaussk(nglu, xglu, e->wglu);
+		functions::gaussk(nglv, xglv, e->wglv);
+		functions::gaussk(nglw, xglw, e->wglw);
+		e->rMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->auMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->avMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		e->awMatrix = matrix4d<double>(nglu + 1, nglv + 1, nglw + 1, 3);
+		unitVectorsM::unitaryvectors(nglu, nglv, nglw, xglu, xglv, xglw,
+			e->geom_order, e->rs, e->rMatrix, e->auMatrix, e->avMatrix, e->awMatrix,
+			e->jacobian, e->nRs, 2);
+		int indicatorBasisType = 1;
+		e->uPowers = matrix2d<double>(nglu + 1, nu);
+		e->vPowers = matrix2d<double>(nglv + 1, nv);
+		e->wPowers = matrix2d<double>(nglw + 1, nw);
+		e->fuPowers = matrix2d<double>(nglu + 1, nu);
+		e->fvPowers = matrix2d<double>(nglv + 1, nv);
+		e->fwPowers = matrix2d<double>(nglw + 1, nw);
+		e->fpuPowers = matrix2d<double>(nglu + 1, nu);
+		e->fpvPowers = matrix2d<double>(nglv + 1, nv);
+		e->fpwPowers = matrix2d<double>(nglw + 1, nw);
+		e->fuPowersLagr = matrix2d<double>(nglu + 1, kuvw);
+		e->fvPowersLagr = matrix2d<double>(nglv + 1, kuvw);
+		e->fwPowersLagr = matrix2d<double>(nglw + 1, kuvw);
+
+		if (indicatorBasisType == 1) {
+			e->uPowers = eval.get_u_samples(nglu, nu)[0];
+			e->vPowers = eval.get_v_samples(nglv, nv)[0];
+			e->wPowers = eval.get_w_samples(nglw, nw)[0];
+			e->fuPowers = eval.get_u_samples(nglu, nu)[1];
+			e->fvPowers = eval.get_v_samples(nglv, nv)[1];
+			e->fwPowers = eval.get_w_samples(nglw, nw)[1];
+			e->fpuPowers = eval.get_u_samples(nglu, nu)[2];
+			e->fpvPowers = eval.get_v_samples(nglv, nv)[2];
+			e->fpwPowers = eval.get_w_samples(nglw, nw)[2];
+		}
+		//kolund basis functions
+		//findPowers(nu, nv, nw, nglu, nglv, nglw, xglu, xglv, xglw, e->uPowers, e->vPowers, e->wPowers, e->fuPowers, e->fvPowers, e->fwPowers, e->fpuPowers, e->fpvPowers, e->fpwPowers);
+
+
+		e->MuRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+		e->EpsRelInt = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+		e->MuRelIntInv = matrix4d<std::complex<double>>(size1, nglu + 1, nglv + 1, nglw + 1);
+
+
+		if ((iHomCode == 1) && (aCode == 1)) {
+			cEps = e->materials.epsr_list[0][0]; //homogen
+			cMu = e->materials.mur_list[0][0];//homogen
+			e->MuRelInt(1, 1, 1, 1) = cMu;
+			e->EpsRelInt(1, 1, 1, 1) = cEps;
+			if (isAdjoint == true) {
+
+				cMu.imag(-cMu.imag());
+				cEps.imag(-cEps.imag());
+				e->EpsRelInt(1, 1, 1, 1).imag(e->EpsRelInt(1, 1, 1, 1).imag());
+				e->MuRelInt(1, 1, 1, 1).imag(e->MuRelInt(1, 1, 1, 1).imag());
+			}
+		}
+		else {
+			if (kuvw != -1) {
+				findPowersLagrange(kuvw, nglu, nglv, nglw, xglu, xglv, xglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr);
+
+				find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.epsr_list, e->EpsRelInt);
+				find_eps_mu_matrix(kuvw, nglu, nglv, nglw, e->fuPowersLagr, e->fvPowersLagr, e->fwPowersLagr, size1, e->materials.mur_list, e->MuRelInt);
+
+				if (aCode == 0) {
+					if (iHomCode == 0) {
+						functions::find_mur_inv(size1, e->MuRelInt, nglu, nglv, nglw, e->MuRelIntInv);
+						if (isAdjoint) {
+							find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->MuRelIntInv);
+							find_eps_mu_hermitian(size1, nglu, nglv, nglw, e->EpsRelInt);
 						}
-						if (iHomCode == 1 && aCode == 1) {
-							cSolA = cSolA / cMu;
-							cSolB = cEps * cSolB;
+					}
+					else {
+						functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
+						if (isAdjoint) {
+							find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
+							find_eps_mu_hermitian(size1, 1, 1, 1, e->EpsRelInt);
 						}
+					}
+				}
+				else {
+					iHomCode = 1; //homogeneous, anisotropic
+					e->EpsRelInt(1, 1, 1, 1) = e->materials.epsr_list[0][0];
+					e->MuRelInt(1, 1, 1, 1) = e->materials.mur_list[0][0];
+					functions::find_mur_inv(size1, e->MuRelInt, 1, 1, 1, e->MuRelIntInv);
+					if (isAdjoint) {
+						find_eps_mu_hermitian(size1, 1, 1, 1, e->MuRelIntInv);
+						e->EpsRelInt(1, 1, 1, 1).imag(-e->EpsRelInt(1, 1, 1, 1).imag());
+						e->MuRelInt(1, 1, 1, 1).imag(-e->MuRelInt(1, 1, 1, 1).imag());
+					}
+				}
+			}
+		}
+		//////////////////////////////////////////	
+		Integral_g IntG(&(*e));
+		Integral_c Intc(&(*e));
+		Integral_d Intd(&(*e));
+		//iterate through higher order unknowns
+		for (int kMat = e->unknownsStart; kMat <= e->unknownsEnd; ++kMat) {
+			int eh = this->eiUVWijk[kMat][1];
+			int iuvwh = this->eiUVWijk[kMat][2];
+			int ih = this->eiUVWijk[kMat][3];
+			int jh = this->eiUVWijk[kMat][4];
+			int kh = this->eiUVWijk[kMat][5];
+			int D1 = abs(this->vectorD[kMat]);
+			//if non-pml: compute G integral part
+			if (qoi_error::is_higher(u_order, v_order, w_order, iuvwh, ih, jh, kh)) {
+				if (e->materials.region == 1) {
+					int face = 1;
+					std::complex<double> cGr_prev = this->scatter1.cGr[1][D1];
+					IntG.findGWave(&scatter1, vectorD, false, iuvwh, ih, jh, kh, size1, kMat, D1, face);
+					basis_error_coeffs[kMat] += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
+					//e->element_error += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
+					//g_sum += (this->scatter1.cGr[1][D1] - cGr_prev) * std::conj(cAlphaAdj[D1]);
+				}
+				//iterate through lower order unknowns
+				for (int lMat = dom2.elements[e->index - 1].unknownsStart; lMat <= dom2.elements[e->index - 1].unknownsEnd; ++lMat) {
+					int el = dom2.eiUVWijk[lMat][1];
+					int iuvwl = dom2.eiUVWijk[lMat][2];
+					int il = dom2.eiUVWijk[lMat][3];
+					int jl = dom2.eiUVWijk[lMat][4];
+					int kl = dom2.eiUVWijk[lMat][5];
+					int D2 = abs(dom2.vectorD[lMat]);
+
+					std::complex<double> cSolA, cSolB;
+					Intc.findC(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolA, size1, eval);
+					Intd.findD(iuvwh, iuvwl, ih, jh, kh, il, jl, kl, cSolB, size1);
+					if (std::signbit(double(dom2.vectorD[lMat])) != std::signbit(double(vectorD[kMat]))) {
+						cSolA = -cSolA;
+						cSolB = -cSolB;
+					}
+					if (iHomCode == 1 && aCode == 1) {
+						cSolA = cSolA / cMu;
+						cSolB = cEps * cSolB;
+					}
 					/*	e->element_error -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
 						e->element_error += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);*/
 
 						//e_sum -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
 						//e_sum += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
 
-						basis_error_coeffs[kMat] -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-						basis_error_coeffs[kMat] += k0 * k0* cSolB*cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
-					}
+					basis_error_coeffs[kMat] -= cSolA * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
+					basis_error_coeffs[kMat] += k0 * k0 * cSolB * cAlphaFor[D2] * std::conj(cAlphaAdj[D1]);
 				}
 			}
 		}
-		std::cout << "Saving QoI Error per basis..." << std::endl;
-		std::ofstream file_qoi_out;
-		file_qoi_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_basis_coeff.txt");
-		for (auto coef = basis_error_coeffs.begin(); coef != basis_error_coeffs.end(); ++coef) {
-			//one element per line: real imag
-			file_qoi_out << (*coef).real() << " " << (*coef).imag() << std::endl;
-		}
-		std::cout << "Done saving QoI error per basis." << std::endl;
 	}
+	std::cout << "Saving QoI Error per basis..." << std::endl;
+	std::ofstream file_qoi_out;
+	file_qoi_out.open("../exampleFiles/debug_data/" + mesh_name + "/results/qoi_basis_coeff.txt");
+	for (auto coef = basis_error_coeffs.begin(); coef != basis_error_coeffs.end(); ++coef) {
+		//one element per line: real imag
+		file_qoi_out << (*coef).real() << " " << (*coef).imag() << std::endl;
+	}
+	std::cout << "Done saving QoI error per basis." << std::endl;
+}

@@ -45,7 +45,7 @@ void run::_standard(Domain& dom, std::string mesh_name, bool plot, bool useAdjoi
 	dom.check_results ? std::cout << "Checking results w/ FORTRAN!" << std::endl : std::cout << "Not checking results w/ FORTRAN!" << std::endl;
 	fileIO.file_input(mesh_name);
 	//fileIO2.file_input(mesh_name);
-	
+
 	/////////////////////////////////Frequency Perturbation///////////////////////////////////////////////////
 	//control frequency from input list instead of control file
 	//dom.sc.fstart = freq;
@@ -53,13 +53,8 @@ void run::_standard(Domain& dom, std::string mesh_name, bool plot, bool useAdjoi
 	//--------------------------------------------------------------------------------------------------------
 
 	/////////////////////////////////Material Perturbation///////////////////////////////////////////////////
-	//new frequency
 	dom.sc.fstart = 70e6;
 	dom.sc.fstop = 70e6;
-
-	//old frequency
-	// 	dom.sc.fstart = 200e6;
-	//dom.sc.fstop = 200e6;
 	//--------------------------------------------------------------------------------------------------------
 
 	dom.sc.useAdjoint = useAdjoint;
@@ -86,7 +81,7 @@ void run::_standard(Domain& dom, std::string mesh_name, bool plot, bool useAdjoi
 	if (!useAdjoint && get_RCS) {
 		std::vector<double> rcs_list = postproc::post(dom);
 		std::ofstream outFile("../exampleFiles/debug_data/" + mesh_name + "/results/rcs_list.txt");
-		for (const auto &rcs : rcs_list) outFile << rcs << "\n";
+		for (const auto& rcs : rcs_list) outFile << rcs << "\n";
 		for (const auto& rcs : rcs_list) std::cout << rcs << "\n";
 	}
 	std::cout << "Num unknowns: " << dom.cAlpha.size() << std::endl;
@@ -157,12 +152,12 @@ void run::_standard_set(Domain& dom, std::string mesh_name, bool plot, bool useA
 	if (!useAdjoint && get_RCS) {
 		std::vector<double> rcs_list = postproc::post(dom);
 		std::ofstream outFile("../exampleFiles/debug_data/" + mesh_name + "/results/rcs_list.txt");
-		for (const auto &rcs : rcs_list) outFile << rcs << "\n";
+		for (const auto& rcs : rcs_list) outFile << rcs << "\n";
 	}
 	std::cout << "Num unknowns: " << dom.cAlpha.size() << std::endl;
 
 }
-void run::_RHS_compute(Domain & dom, std::string mesh_name, bool plot, bool useAdjoint, bool higher_order, bool check_results)
+void run::_RHS_compute(Domain& dom, std::string mesh_name, bool plot, bool useAdjoint, bool higher_order, bool check_results)
 {
 	int extra = 0;
 	if (higher_order) extra = 1;
@@ -204,7 +199,7 @@ void run::_RHS_compute(Domain & dom, std::string mesh_name, bool plot, bool useA
 
 }
 
-void run::convert_and_run(Domain & dom, std::string mesh_name, bool plot, bool useAdjoint, bool higher_order, bool check_results, bool get_RCS, int ref_dex)
+void run::convert_and_run(Domain& dom, std::string mesh_name, bool plot, bool useAdjoint, bool higher_order, bool check_results, bool get_RCS, int ref_dex)
 {
 	int extra = 0;
 	if (higher_order) extra = 1;
@@ -257,7 +252,7 @@ void run::convert_and_run(Domain & dom, std::string mesh_name, bool plot, bool u
 	if (!useAdjoint && get_RCS) {
 		std::vector<double> rcs_list = postproc::post(dom);
 		std::ofstream outFile("../exampleFiles/debug_data/" + mesh_name + "/results/rcs_list.txt");
-		for (const auto &rcs : rcs_list) outFile << rcs << "\n";
+		for (const auto& rcs : rcs_list) outFile << rcs << "\n";
 	}
 	std::cout << "Num unknowns: " << dom.cAlpha.size() << std::endl;
 }
@@ -296,7 +291,7 @@ void run::_element_error(std::string mesh_name, bool plot, bool useAdjoint, bool
 			//find higher order adjoint solution
 			Domain dom_adjoint_high(mesh_name);
 			run::_standard_set(dom_adjoint_high, mesh_name, plot, true, true, check_results, false, orders);
-			
+
 			//find higher order RHS for forward problem
 			Domain dom_high(mesh_name);
 			//run::_RHS_compute(dom_forward_high, mesh_name, plot, false, true, check_results);
@@ -365,21 +360,21 @@ void run::_element_error(std::string mesh_name, bool plot, bool useAdjoint, bool
 					orders_file << orders[o] << " ";
 				}
 				orders_file << dom_forward_low.cAlpha.size() << std::endl;
-			/*	orders_file.close();
-				ref_file.close();*/
+				/*	orders_file.close();
+					ref_file.close();*/
 				std::vector < std::complex<double>> errorterm = { 0.0,0.0,toterrorf };
 				auto rcs_list = postproc::postplus(dom_forward_low, errorterm);
-				for (const auto &rcs : rcs_list) outFile << rcs << " ";
+				for (const auto& rcs : rcs_list) outFile << rcs << " ";
 				outFile << std::endl;
 				continue;
 			}
 			//figure out what the errors need to be set to..
 			bool is_same = true;
 			for (int i = 0; i < dom_high.elements.size(); ++i) {
-				
-				
+
+
 				double h = dom_high.elements[i].h;
-				
+
 				double hi_scal = pow(tol / abs(dom_high.elements[i].element_error), 1.0 / orders[i]);
 				std::cout << "Error: " << abs(dom_high.elements[i].element_error) << " h: " << h << " hscal: " << hi_scal << std::endl;
 
@@ -397,8 +392,8 @@ void run::_element_error(std::string mesh_name, bool plot, bool useAdjoint, bool
 				//if (pi > 5) pi = 5;
 				//if (orders[i] != abs(pi)) is_same = false;
 				//double p = log(hi_scal) / log(tol / abs(dom_high.elements[i].element_error));
-				double p = abs(log(tol / abs(dom_high.elements[i].element_error)))*h;
-				
+				double p = abs(log(tol / abs(dom_high.elements[i].element_error))) * h;
+
 				int pi = ceil(p);
 				std::cout << p << std::endl;
 				if (hi_scal < 1.0) {
@@ -414,7 +409,7 @@ void run::_element_error(std::string mesh_name, bool plot, bool useAdjoint, bool
 				}
 				if (hi_scal < 0.5) ++orders[i];*/
 
-				
+
 				//if (hi_scal < 0.1) ++orders[i];
 				//orders[i] = abs(pi);
 				//errors[i] = dom_high.elements[i].element_error;
@@ -459,8 +454,8 @@ void run::_element_error_AF(std::string mesh_name, bool plot, bool useAdjoint, b
 	std::ofstream outFile("refinement_rcs.txt");
 	ref_file << std::setprecision(16);
 	outFile << std::setprecision(16);
-	
-	std::vector<double> tols = { 10.0};
+
+	std::vector<double> tols = { 10.0 };
 	for (auto runs = 0; runs < tols.size(); ++runs) {
 		double tol = tols[runs];
 		ref_file << tol << std::endl;
@@ -475,7 +470,7 @@ void run::_element_error_AF(std::string mesh_name, bool plot, bool useAdjoint, b
 			Domain dom_forward_low(mesh_name);
 			run::_standard_set(dom_forward_low, mesh_name, plot, false, false, check_results, false, orders);
 			auto rcs_list = postproc::post(dom_forward_low);
-			for (const auto &rcs : rcs_list) outFile << rcs << " ";
+			for (const auto& rcs : rcs_list) outFile << rcs << " ";
 			outFile << std::endl;
 			//print out cAlpha
 			/*std::ofstream out_debug("debug_calpha.txt");
@@ -508,7 +503,7 @@ void run::_element_error_AF(std::string mesh_name, bool plot, bool useAdjoint, b
 			dom_high.error = error;
 			int order_boost = 1;
 			refinement::set_refine(dom_high, orders, order_boost);
-		
+
 			dom_high.makeNT();
 			dom_high.connect_elements();
 			dom_high.set_bc_elements();
@@ -536,7 +531,7 @@ void run::_element_error_AF(std::string mesh_name, bool plot, bool useAdjoint, b
 			errortol = abs(error_sum);
 			double max_elem_error = max(errors);
 			if (errortol < tol) {
-			
+
 				std::cout << "Tot error: " << abs(error_sum) << std::endl;
 				std::cout << "error below tol!" << std::endl;
 
@@ -549,7 +544,7 @@ void run::_element_error_AF(std::string mesh_name, bool plot, bool useAdjoint, b
 				ref_file.close();*/
 				std::vector < std::complex<double>> errorterm = { 0.0,0.0,error_sum };
 				auto rcs_list = postproc::postplus(dom_forward_low, errorterm);
-				for (const auto &rcs : rcs_list) outFile << rcs << " ";
+				for (const auto& rcs : rcs_list) outFile << rcs << " ";
 				outFile << std::endl;
 				continue;
 			}
@@ -575,7 +570,7 @@ void run::_element_error_AF(std::string mesh_name, bool plot, bool useAdjoint, b
 				orders_file << orders[o] << " ";
 			}
 			orders_file << dom_forward_low.cAlpha.size() << std::endl;
-			
+
 		} while (errortol > tol);
 	}
 	ref_file.close();
@@ -651,7 +646,7 @@ void run::_element_error_MSG(std::string mesh_name, bool plot, bool useAdjoint, 
 			dom_high.scatter1.calcThetaPhi();
 			dom_high.scatter1.calcFrequencies();
 			dom_high.definers_defrmnls();
-			
+
 			dom_high.element_error_improved(dom_forward_low, dom_forward_low.cAlpha, adj_high_soln); //input the order of each element in forward solve, (WIP)
 			std::vector<std::complex<double>> errors(dom_high.elements.size());
 			std::complex<double> abserror_sum = 0.0, error_sum;
@@ -675,7 +670,7 @@ void run::_element_error_MSG(std::string mesh_name, bool plot, bool useAdjoint, 
 				ref_file.close();*/
 				std::vector < std::complex<double>> errorterm = { 0.0,0.0,error_sum };
 				auto rcs_list = postproc::postplus(dom_forward_low, errorterm);
-				for (const auto &rcs : rcs_list) outFile << rcs << " ";
+				for (const auto& rcs : rcs_list) outFile << rcs << " ";
 				outFile << std::endl;
 				continue;
 			}
@@ -709,7 +704,6 @@ void run::_element_error_MSG(std::string mesh_name, bool plot, bool useAdjoint, 
 	outFile.close();
 
 }
-
 void run::_standard_custom_materials(Domain& dom, std::string mesh_name, bool plot, bool useAdjoint, bool higher_order, bool check_results, bool get_RCS, std::vector<std::complex<double>>& epsr_values)
 {
 	int extra = 0;
@@ -767,7 +761,7 @@ void run::_standard_custom_materials(Domain& dom, std::string mesh_name, bool pl
 	if (!useAdjoint && get_RCS) {
 		std::vector<double> rcs_list = postproc::post(dom);
 		std::ofstream outFile("../exampleFiles/debug_data/" + mesh_name + "/results/rcs_list.txt");
-		for (const auto &rcs : rcs_list) outFile << rcs << "\n";
+		for (const auto& rcs : rcs_list) outFile << rcs << "\n";
 	}
 	std::cout << "Num unknowns: " << dom.cAlpha.size() << std::endl;
 

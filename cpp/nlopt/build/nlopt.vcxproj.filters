@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\direct\DIRect.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\direct\direct_wrap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\direct\DIRserial.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\direct\DIRsubrout.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\cdirect\cdirect.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\cdirect\hybrid.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\praxis\praxis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\luksan\plis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\luksan\plip.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\luksan\pnet.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\luksan\mssubs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\luksan\pssubs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\crs\crs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\mlsl\mlsl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\mma\mma.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\mma\ccsa_quadratic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\cobyla\cobyla.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\newuoa\newuoa.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\neldermead\nldrmd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\neldermead\sbplx.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\auglag\auglag.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\bobyqa\bobyqa.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\isres\isres.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\slsqp\slsqp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\esch\esch.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api\general.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api\options.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api\optimize.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api\deprecated.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api\f77api.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\mt19937ar.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\sobolseq.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\timer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\stop.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\redblack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\qsort_r.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\rescale.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\global.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\linalg.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\local.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\stogo.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\tools.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\ags\evolvent.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\ags\solver.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\ags\local_optimizer.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\ags\ags.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\direct\direct-internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\direct\direct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\cdirect\cdirect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\praxis\praxis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\luksan\luksan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\crs\crs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\mlsl\mlsl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\mma\mma.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\cobyla\cobyla.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\newuoa\newuoa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\neldermead\neldermead.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\auglag\auglag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\bobyqa\bobyqa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\isres\isres.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\slsqp\slsqp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\esch\esch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api\nlopt-internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api\f77funcs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api\f77funcs_.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\build\nlopt.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\soboldata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\redblack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\linalg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\local.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\stogo_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\stogo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\tools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\ags\data_types.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\ags\evolvent.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\ags\solver.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\ags\local_optimizer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\ags\ags.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api\nlopt.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{D3E8BC81-67F6-3E71-86BB-58CE49238CD1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A7AC1203-C734-30E1-8429-9B4C9F0C9A7D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

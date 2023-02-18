@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="F:\Github\3DFEM-UQ-AR\cpp\nlopt\build\CMakeFiles\c1676e2fb813d7172b2c849f9948cd50\PACKAGE_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{55140D99-984F-3F42-870D-EAA12EC9C6A8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,132 @@
+﻿  Generating nlopt.f
+  Building Custom Rule F:/Github/3DFEM-UQ-AR/cpp/nlopt/CMakeLists.txt
+  DIRect.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  direct_wrap.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  DIRserial.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  DIRsubrout.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  cdirect.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  hybrid.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  praxis.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  plis.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  plip.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  pnet.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  mssubs.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  pssubs.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  crs.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\crs\crs.c(55,20): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\crs\crs.c(70,30): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+  mlsl.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  mma.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  ccsa_quadratic.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  cobyla.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  newuoa.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  nldrmd.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\neldermead\nldrmd.c(42,20): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+  sbplx.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  Generating Code...
+  Compiling...
+  auglag.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  bobyqa.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  isres.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  slsqp.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  esch.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  general.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  options.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  optimize.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api\optimize.c(670,98): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+  deprecated.c
+  f77api.c
+  mt19937ar.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  sobolseq.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  timer.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\timer.c(54,22): warning C4244: 'return': conversion from 'time_t' to 'double', possible loss of data
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\timer.c(85,22): warning C4244: 'return': conversion from 'time_t' to 'unsigned long', possible loss of data
+  stop.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  redblack.c
+  qsort_r.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  rescale.c
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\util\nlopt-util.h(43,43): warning C4273: 'copysign': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(496,47): message : see previous definition of 'copysign'
+  Generating Code...
+  global.cc
+  linalg.cc
+  local.cc
+  stogo.cc
+  tools.cc
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\tools.cc(166,23): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\stogo\tools.cc(179,18): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  evolvent.cc
+  solver.cc
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\ags\solver.cc(35,1): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\algs\ags\solver.cc(36,1): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  local_optimizer.cc
+  ags.cc
+  Generating Code...
+     Creating library F:/Github/3DFEM-UQ-AR/cpp/nlopt/build/Release/nlopt.lib and object F:/Github/3DFEM-UQ-AR/cpp/nlopt/build/Release/nlopt.exp
+  nlopt.vcxproj -> F:\Github\3DFEM-UQ-AR\cpp\nlopt\build\Release\nlopt.dll
