@@ -860,7 +860,7 @@ static void taylorKrigingHigherOrder(std::vector<double> variogramFit, std::vect
 	//order of the basis functions is M - 1; differs from literature	
 	//M = 1;
 	int M = xSample.size() * 2.0;
-	M = 2;
+	//M = 1;
 	//if (M > 3)
 		//M = 3;
 
@@ -975,7 +975,7 @@ static void taylorKrigingHigherOrder(std::vector<double> variogramFit, std::vect
 
 		JacobiSVD<MatrixXd> svd(krigMat);
 		double conditionNum = svd.singularValues()(0) / svd.singularValues()(svd.singularValues().size() - 1);
-		std::cout << "condition number: \n" << conditionNum << std::endl;
+		//std::cout << "condition number: \n" << conditionNum << std::endl;
 
 		//if (conditionNum > 1e6) {
 		//	M -= 1;
@@ -1130,14 +1130,14 @@ static void taylorKrigingHigherOrderComplex(std::vector<std::complex<double>> va
 
 	JacobiSVD<MatrixXcd> svd(krigMat);
 	double conditionNum = svd.singularValues()(0) / svd.singularValues()(svd.singularValues().size() - 1);
-	std::cout << "condition number: \n" << conditionNum << std::endl;
+	//std::cout << "condition number: \n" << conditionNum << std::endl;
 	MatrixXd identity = MatrixXd::Identity(size + size + M, size + size + M);
 	if (conditionNum > 7e4) {
 		krigMat = krigMat + identity * conditionNum / 2e7;
 	}
 	JacobiSVD<MatrixXcd> svd2(krigMat);
 	conditionNum = svd2.singularValues()(0) / svd2.singularValues()(svd2.singularValues().size() - 1);
-	std::cout << "New condition number: \n" << conditionNum << std::endl;
+	//std::cout << "New condition number: \n" << conditionNum << std::endl;
 
 
 	MatrixXcd cVec(size, 1);
@@ -1180,8 +1180,8 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 	const int size = xSample.size();
 
 	//order of the basis functions is M - 1; differs from literature
-	int M = xSample.size() * 2.0;
-	M = 1;
+	int M = xSample.size()*2-1;
+	//M = 1;
 		//if (M > 3) { M = 18; }
 	//M = 0;
 	//Matrix <double, Dynamic, Dynamic> krigMat;
@@ -1291,8 +1291,8 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 	MatrixXd cMatUpper(size, size + size);
 	MatrixXd cMatLower(size, size + size);
 	MatrixXd cMat(size + size, size + size);
-	cMatUpper << sMat, sMatFirstDerivative;
-	cMatLower << -sMatFirstDerivative, sMatSecondDerivative;
+	cMatUpper << sMat, -sMatFirstDerivative;
+	cMatLower << sMatFirstDerivative, sMatSecondDerivative;
 	cMat << cMatUpper, cMatLower;
 	//std::cout << "cMat: \n" << cMat << std::endl;
 
@@ -1315,7 +1315,7 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 		int index = it - d.begin();
 		cVec(i, 0) = variogramFit[index];
 
-		cVecDerivative(i, 0) = -2.0 * theta * (xSample[i].real() - xVal) * variogramFit[index];
+		cVecDerivative(i, 0) = 2.0 * theta * (xSample[i].real() - xVal) * variogramFit[index];
 
 		yVec(i, 0) = abs(yVals[i]);
 		yVec(i + size, 0) = abs(yValsGrad[i]);
@@ -1350,7 +1350,7 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 	VectorXd beta(M, 1);
 	beta = (bMat.transpose() * cMat.inverse() * bMat).inverse() * bMat.transpose() * cMat.inverse() * yVec;
 
-	std::cout << "beta: \n" << beta << std::endl;
+	//std::cout << "beta: \n" << beta << std::endl;
 
 	//std::cout << "cMat: \n" << cMat << std::endl;
 	//std::cout << "bMat^T*cMat^-1: \n" << bMat.transpose()*cMat.inverse() << std::endl;
@@ -1363,11 +1363,17 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 	VectorXd onesZeros(size + size);
 	onesZeros << ones, zeros;
 
-	//std::cout << "final inversion:    " << (beta + cVecFull.transpose() * cMat.inverse() * (yVec - betaConstant * bMat)) << std::endl;
+
+
 	//average term
-	//y = beta.transpose() * bVec;// +cVecFull.transpose() * cMat.inverse() * (yVec - bMat * beta);
+	y = beta.transpose() * bVec;
 	//full kriging
-	y = (bVec - cVec.transpose() * cMat.inverse() * bMat) * beta + cVec.transpose() * yVec;
+	y = beta.transpose() * bVec + cVecFull.transpose() * cMat.inverse() * (yVec - bMat * beta);
+	//full kriging
+	// 
+	// 
+	std::cout << "kriging update term:\n" << cVecFull.transpose() * cMat.inverse() * (yVec - bMat * beta) << std::endl;
+	//y = (bVec - cVec.transpose() * cMat.inverse() * bMat) * beta + cVec.transpose() * yVec;
 	//std::cout << "update term: \n" << cVecFull.transpose() * cMat.inverse() * (yVec - s) << std::endl;
 	//y(0,0) = 0.0;
 	
@@ -2158,7 +2164,7 @@ double obj_func(unsigned n, const double* x, double* grad, void* data_ptr)
 
 	JacobiSVD<MatrixXcd> svd(R);
 	double conditionNum = svd.singularValues()(0) / svd.singularValues()(svd.singularValues().size() - 1);
-	std::cout << "condition number for R: \n" << conditionNum << std::endl;
+	//std::cout << "condition number for R: \n" << conditionNum << std::endl;
 
 	//while (conditionNum > 1e3) {
 	//	R += MatrixXd::Identity(m, m) * 1e-5;
