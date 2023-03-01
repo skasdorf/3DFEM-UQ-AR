@@ -14,7 +14,7 @@ using namespace Eigen;
 
 
 
-
+//gaussian model, not used i think
 static double gaussModel(double h, double r, double c0, double b) {
 	double y;
 	double a = r / 2.0;
@@ -22,7 +22,7 @@ static double gaussModel(double h, double r, double c0, double b) {
 	return y;
 }
 
-
+//from adjoint method, calculates qoi (scattered field)
 std::complex<double> Kriging::get_QoI2(Domain& dom_forward, Domain& dom_adjoint) {
 	std::complex<double> qoi = 0.0;
 	for (int i = 0; i < dom_forward.cAlpha.size(); ++i) {
@@ -31,6 +31,7 @@ std::complex<double> Kriging::get_QoI2(Domain& dom_forward, Domain& dom_adjoint)
 	return qoi;
 }
 
+// complex double divided by double
 static inline std::complex<double> operator/(std::complex<double> c1, double d1) {
 	std::complex<double> output = { c1.real() / d1, c1.imag() / d1 };
 	return output;
@@ -38,6 +39,7 @@ static inline std::complex<double> operator/(std::complex<double> c1, double d1)
 
 
 //currently using for real part ie material parameters
+//find_lowest takes an array and a value and returns the lowest index greater than the value
 static int find_lowest(std::vector<std::complex<double>> array, std::complex<double> value) {
 	double min = 1e15;
 	int index;
@@ -52,6 +54,7 @@ static int find_lowest(std::vector<std::complex<double>> array, std::complex<dou
 
 }
 
+//as opposed to find_lowest, find_index returns the closest index value in the array
 static int find_index(std::vector<std::complex<double>> array, std::complex<double> value) {
 	double min = 1e15;
 	int index;
@@ -65,10 +68,13 @@ static int find_index(std::vector<std::complex<double>> array, std::complex<doub
 
 }
 
+//complex comparitor for if (complex double a < complex double b)
+//currently only returns real part since this is the uncertain parameter
 static bool complexComparitor(std::complex<double> a, std::complex<double> b) {
 	return real(a) <= real(b);
 }
 
+//insert a value into a complex array
 static void insert_complex(std::vector<std::complex<double>>& array, int index, std::complex<double> value) {
 	std::vector<std::complex<double>> tempArray(array.size() + 1);
 
@@ -93,6 +99,7 @@ static void insert_complex(std::vector<std::complex<double>>& array, int index, 
 
 }
 
+//L2 norm, used for material_list split (only needed for HOPS, not Kriging)
 static double norm(std::vector < std::complex<double>> v1) {
 	std::complex<double> norm = 0.0;
 	for (int i = 0; i < v1.size(); ++i) {
@@ -103,25 +110,7 @@ static double norm(std::vector < std::complex<double>> v1) {
 
 }
 
-//std::vector<std::complex<double>> vectorInsert(int position, std::complex<double> value, std::vector<std::complex<double>> vector) {
-//	std::vector<std::complex<double>> newVector(vector.size() + 1);
-//
-//	for (int i = 0; i < newVector.size(); ++i) {
-//		while (i < position) {
-//			newVector[i] = vector[i];
-//		}
-//		if (i == position) {
-//			newVector[i] = value;
-//		}
-//		while (i > position) {
-//			newVector[i] = vector[i - 1];
-//		}
-//	}
-//
-//	return newVector;
-//
-//}
-
+//complex subtraction operator
 static inline std::vector<std::complex<double>> operator-(std::vector < std::complex<double>>& v1, std::vector < std::complex<double>>& v2) {
 	std::vector<std::complex<double>> vout;
 	for (int i = 0; i < v1.size(); ++i) {
@@ -130,30 +119,8 @@ static inline std::vector<std::complex<double>> operator-(std::vector < std::com
 	return vout;
 }
 
-static std::vector<std::vector<std::complex<double>>> buildDMatrix(std::vector<std::complex<double>> x, std::vector<std::complex<double>> y) {
-	std::vector<std::vector<std::complex<double>>> dMat(x.size() * x.size());
-	int index = 0;
-	for (int i = 0; i < x.size(); ++i) {
-		double RCSi = sqrt(y[i].real() * y[i].real() + y[i].imag() * y[i].imag()) / 4 / 3.14159;
-		for (int j = 0; j < x.size(); ++j) {
-			double RCSj = sqrt(y[j].real() * y[j].real() + y[j].imag() * y[j].imag()) / 4 / 3.14159;
-			
-			//std::cout << "index: " << index << " x.size(): " << x.size() << std::endl;
-			dMat[index].push_back(double(i));
-			dMat[index].push_back(double(j));
-			dMat[index].push_back(abs(x[i].real() - x[j].real()));
 
-			//will square the term when building the variogram instead of here
-			dMat[index].push_back(abs(RCSi - RCSj));// *(RCSi - RCSj));
-			dMat[index].push_back(RCSi);
-			dMat[index].push_back(RCSj);
-			//dMat[index].push_back(abs(y[i] - y[j]));
-			index++;
-		}
-	}
-	return dMat;
-}
-
+//matrix is filled according to pairs of the reference points.  M(i,j) = {X(i), X(j), distance between X(i) X(j), ect}
 static std::vector<std::vector<std::complex<double>>> buildDMatrix2(std::vector<std::complex<double>> x, std::vector<std::complex<double>> yI, std::vector<std::complex<double>> yJ) {
 	std::vector<std::vector<std::complex<double>>> dMat(x.size() * x.size());
 	int index = 0;
@@ -183,6 +150,7 @@ static std::vector<std::vector<std::complex<double>>> buildDMatrix2(std::vector<
 	return dMat;
 }
 
+//derivative calculation using finite differences
 static std::vector<double> firstDerivative(std::vector<double> function, std::vector<double> distance) {
 	std::vector<double> derivative;
 	for (int i = 0; i < function.size(); ++i) {
@@ -196,32 +164,12 @@ static std::vector<double> firstDerivative(std::vector<double> function, std::ve
 		else {
 			derivative.push_back((function[i + 1] - function[i - 1]) / (distance[i + 1] - distance[i - 1]));
 		}
-
-			//std::cout << function[i] << " " << function[i - 1] << " " << distance[i] << " " << distance[i - 1] << "\n";
-
-		//if (i <= 2) {
-		//	derivative.push_back(2.0*(function[i + 1] - function[i])  / (distance[i + 1] - distance[i]));
-		//}
-		//else if (i == function.size() - 1) {
-		//	derivative.push_back(2.0*(function[i - 1] - function[i]) / (distance[i - 1] - distance[i]));
-		//}
-		//else {
-		//	derivative.push_back(2.0*(function[i + 1] - function[i - 1]) / (distance[i + 1] - distance[i - 1]));
-		//}
-
-
-		//if (i > 2) {
-		//	derivative.push_back(function[i + 1] - function[i] / (distance[i + 1] - distance[i]));
-		//}
-		//else if (i > function.size() - 3) {
-		//	derivative.push_back(function[i] - function[i - 1] / (distance[i] - distance[i - 1]));
-		//}
-		//else
-		//	derivative.push_back((function[i - 2] - 8.0 * function[i - 1] + 8.0 * function[i + 1] - function[i + 2]) / 12 * (distance[i] - distance[i-1]));
 	}
 	return derivative;
 }
 
+
+//builds the empirical variogram
 static std::vector<double> buildVariogram(std::vector<std::vector<std::complex<double>>> dMat, std::vector<std::complex<double>> x, std::vector<double>& edges) {
 
 	std::vector<double> binCounts(edges.size()-1);
@@ -255,6 +203,7 @@ static std::vector<double> buildVariogram(std::vector<std::vector<std::complex<d
 	
 }
 
+//builds a complex empirical variogram
 static std::vector<std::complex<double>> buildVariogramComplex(std::vector<std::vector<std::complex<double>>> dMat, std::vector<std::complex<double>> x, std::vector<double>& edges) {
 
 	std::vector<double> binCounts(edges.size() - 1);
@@ -288,6 +237,7 @@ static std::vector<std::complex<double>> buildVariogramComplex(std::vector<std::
 
 }
 
+//builds empirical covariance function
 static std::vector<double> buildCoVariogram(std::vector<std::vector<std::complex<double>>> dMat, std::vector<std::complex<double>> x, std::vector<double>& edges) {
 
 	std::complex<double> sum = 0.0;
@@ -347,7 +297,7 @@ static std::vector<double> buildCoVariogram(std::vector<std::vector<std::complex
 
 }
 
-
+//builds a complex empirical covariance function
 static std::vector<std::complex<double>> buildCoVariogramComplex(std::vector<std::vector<std::complex<double>>> dMat, std::vector<std::complex<double>> x, std::vector<double>& edges) {
 
 	std::complex<double> sum = 0.0;
@@ -421,6 +371,7 @@ static std::vector<std::complex<double>> buildCoVariogramComplex(std::vector<std
 
 }
 
+//correlation function attempt
 static std::vector<double> buildCorrelation(std::vector<std::vector<std::complex<double>>> dMat, std::vector<std::complex<double>> x, std::vector<double>& edges, std::vector<std::complex<double>> referenceVals, std::vector<double> d) {
 
 	std::complex<double> sum = 0.0;
@@ -479,6 +430,7 @@ static std::vector<double> buildCorrelation(std::vector<std::vector<std::complex
 
 }
 
+//old variance calculation
 static double calcVariance2(std::vector<double> variogramFit, std::vector<double> variogramGradFit, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal) {
 	double variance = 0.0;
 	const int size = xSample.size();
@@ -524,39 +476,10 @@ static double calcVariance2(std::vector<double> variogramFit, std::vector<double
 	//std::cout << "old variance: " << varianceVec;
 	variance = abs(varianceVec(0, 0));
 
-	//scale relative
-	//variance = variance / xVal;
-	//std::cout << "variance:\n" << varianceVec << std::endl;
-
-
-	//variance = 0.0;
-	////from textbook source:
-	//for (int i = 0; i < size; ++i) {
-	//	for (int j = 0; j < size; ++j) {
-
-	//		double dist = abs(xSample[i].real() - xSample[j].real());
-	//		auto it = std::lower_bound(d.begin(), d.end(), dist);
-	//		int index = it - d.begin();
-	//		
-	//		variance -= weights[i] * weights[j] * variogramFit[index];
-	//	}
-	//}
-
-	//for (int i = 0; i < size; ++i) {
-
-	//	double dist = abs(xSample[i].real() - xVal);
-	//	auto it = std::lower_bound(d.begin(), d.end(), dist);
-	//	int index = it - d.begin();
-
-	//	variance += 2.0 * weights[i] * variogramFit[index];
-	//}
-
-	////std::cout << "\tnew variance: " << variance << std::endl;
-
-
 	return variance;
 }
 
+//old variance calculation
 static double calcVariance(std::vector<double> variogramFit, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal) {
 	double variance = 0.0;
 	const int size = xSample.size();
@@ -587,39 +510,10 @@ static double calcVariance(std::vector<double> variogramFit, std::vector<double>
 	//std::cout << "old variance: " << varianceVec;
 	variance = abs(varianceVec(0, 0));
 
-	//scale relative
-	//variance = variance / xVal;
-	//std::cout << "variance:\n" << varianceVec << std::endl;
-
-
-	//variance = 0.0;
-	////from textbook source:
-	//for (int i = 0; i < size; ++i) {
-	//	for (int j = 0; j < size; ++j) {
-
-	//		double dist = abs(xSample[i].real() - xSample[j].real());
-	//		auto it = std::lower_bound(d.begin(), d.end(), dist);
-	//		int index = it - d.begin();
-	//		
-	//		variance -= weights[i] * weights[j] * variogramFit[index];
-	//	}
-	//}
-
-	//for (int i = 0; i < size; ++i) {
-
-	//	double dist = abs(xSample[i].real() - xVal);
-	//	auto it = std::lower_bound(d.begin(), d.end(), dist);
-	//	int index = it - d.begin();
-
-	//	variance += 2.0 * weights[i] * variogramFit[index];
-	//}
-
-	////std::cout << "\tnew variance: " << variance << std::endl;
-
-
 	return variance;
 }
 
+//Kriging Matrix Solution
 static void kriging(std::vector<double> variogramFit, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal) {
 	const int size = xSample.size();
 	//Matrix <double, Dynamic, Dynamic> krigMat;
@@ -682,6 +576,7 @@ double fact(int n) {
 	return factorial;
 }
 
+//attempt at Kriging matrix solution but with Bezier basis functions
 static void bezierKriging(std::vector<double> variogramFit, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal) {
 	const int size = xSample.size();
 
@@ -769,6 +664,7 @@ static void bezierKriging(std::vector<double> variogramFit, std::vector<double> 
 
 }
 
+//Kriging Matrix solution using Fourier Basis functions
 static void fourierKriging(std::vector<double> variogramFit, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal) {
 	const int size = xSample.size();
 
@@ -808,36 +704,8 @@ static void fourierKriging(std::vector<double> variogramFit, std::vector<double>
 		for (int j = 0; j < M; ++j) {
 
 
-			//fMat(i, j) = std::pow((xSample[i].real() - average), j);
-
-			//if (j == 0)
-			//	fMat(i, j) = 1.0;
-			//else if (j % 2 == 0) {
-			//	fMat(i, j) = std::cos(2 * 3.14159 * j * xSample[i].real() / 12.0);
-			//	//std::cout << "cos function: " << std::cos(2 * 3.14159 * j * xSample[i].real()/12.0) << "  j: " << j << "  xSample[i].real(): " << xSample[i].real() << std::endl;
-			//}
-			//else {
-			//	fMat(i, j) = std::sin(2 * 3.14159 * j * xSample[i].real() / 12.0);
-			//	//std::cout << "sin function: " << std::sin(2 * 3.14159 * j * xSample[i].real()/12.0) << "  j: " << j << "  xSample[i].real(): " << xSample[i].real() << std::endl;
-			//}
-
-
 			std::complex<double> num(cos(2 * 3.14159 * j * (xSample[i].real() - average) / average), sin(2 * 3.14159 * j * (xSample[i].real() - average) / average));
 			fMat(i, j) = num;
-
-			//fMat(i, j) = std::exp(-std::pow((xSample[i].real() - average), 2)*j);
-
-
-
-			//if (j == 0) {
-			//	fMat(i, j) = 1.0;
-			//}
-			//else if (j == 1) {
-			//	fMat(i, j) = xSample[i].real() - average;
-			//}
-			//else if (j == 2) {
-			//	fMat(i, j) = (xSample[i].real() - average) * (xSample[i].real() - average);
-			//}
 		}
 	}
 
@@ -874,14 +742,6 @@ static void fourierKriging(std::vector<double> variogramFit, std::vector<double>
 
 		std::complex<double> num(cos(2 * 3.14159 * i * (xVal - average) / average), sin(2 * 3.14159 * i * (xVal - average) / average));
 		fVec(i, 0) = num;
-		//fVec(i, 0) = std::exp(-std::pow(xVal - average, 2)*i);
-		//if (i == 0)
-		//	fVec(i, 0) = 1.0;
-		//else if (i % 2 == 0)
-		//	fVec(i, 0) = std::cos(2 * 3.14159 * i * xVal / 12.0);
-		//else
-		//	fVec(i, 0) = std::sin(2 * 3.14159 * i * xVal / 12.0);
-
 
 	}
 
@@ -904,6 +764,7 @@ static void fourierKriging(std::vector<double> variogramFit, std::vector<double>
 
 }
 
+//Taylor Kriging Matrix Solution
 static void taylorKriging(std::vector<double> variogramFit, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal) {
 	const int size = xSample.size();
 
@@ -944,15 +805,6 @@ static void taylorKriging(std::vector<double> variogramFit, std::vector<double> 
 
 			fMat(i, j) = std::pow((xSample[i].real() - average), j);
 
-			//if (j == 0) {
-			//	fMat(i, j) = 1.0;
-			//}
-			//else if (j == 1) {
-			//	fMat(i, j) = xSample[i].real() - average;
-			//}
-			//else if (j == 2) {
-			//	fMat(i, j) = (xSample[i].real() - average) * (xSample[i].real() - average);
-			//}
 		}
 	}
 
@@ -970,12 +822,6 @@ static void taylorKriging(std::vector<double> variogramFit, std::vector<double> 
 	lower << fMat.transpose(), zeroMat;
 
 	krigMat << upper, lower;
-
-	//std::cout << "condition number for Taylor Kriging: \n" << krigMat.norm() * krigMat.inverse().norm() << std::endl;
-	//JacobiSVD<MatrixXd> svd(krigMat);
-	//std::cout << "other method for condition number Taylor Kriging: \n" << svd.singularValues()(0) / svd.singularValues()(svd.singularValues().size() - 1) << std::endl;
-
-	//std::cout << "krigMat: " << krigMat << std::endl;
 
 	MatrixXd cVec(size, 1);
 	MatrixXd fVec(M, 1);
@@ -1007,6 +853,7 @@ static void taylorKriging(std::vector<double> variogramFit, std::vector<double> 
 
 }
 
+//Gradient Enhanced Taylor Kriging Matrix Solution
 static void taylorKrigingHigherOrder(std::vector<double> variogramFit, std::vector<double> variogramFitFirstD, std::vector<double> variogramFitSecondD, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal, double theta) {
 	//double conditionNum = 1.0e8;
 
@@ -1187,6 +1034,7 @@ static void taylorKrigingHigherOrder(std::vector<double> variogramFit, std::vect
 
 }
 
+//Gradient Enhanced Taylor Kriging Matrix solution with Complex weights/covariance function
 static void taylorKrigingHigherOrderComplex(std::vector<std::complex<double>> variogramFit, std::vector<std::complex<double>> variogramFitFirstD, std::vector<std::complex<double>> variogramFitSecondD, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<std::complex<double>>& weights, double xVal, std::vector<double> variogramFitGrad) {
 
 	//size is N in calculations
@@ -1248,15 +1096,6 @@ static void taylorKrigingHigherOrderComplex(std::vector<std::complex<double>> va
 			else
 				fMatDerivative(i, j) = j * std::pow((xSample[i].real() - average), j - 1);
 
-			//if (j == 0) {
-			//	fMat(i, j) = 1.0;
-			//}
-			//else if (j == 1) {
-			//	fMat(i, j) = xSample[i].real() - average;
-			//}
-			//else if (j == 2) {
-			//	fMat(i, j) = (xSample[i].real() - average) * (xSample[i].real() - average);
-			//}
 		}
 	}
 
@@ -1301,13 +1140,6 @@ static void taylorKrigingHigherOrderComplex(std::vector<std::complex<double>> va
 	std::cout << "New condition number: \n" << conditionNum << std::endl;
 
 
-	//std::cout << "sMat: \n" << sMat << std::endl;
-	//std::cout << "sMatderivative: \n" << sMatFirstDerivative << std::endl;
-	//std::cout << "krigMat: \n" << krigMat << std::endl;
-	//std::cout << "krigMat inverse: \n" << krigMat.inverse() << std::endl
-
-
-
 	MatrixXcd cVec(size, 1);
 	MatrixXcd cVecDerivative(size, 1);
 	MatrixXcd fVec(M, 1);
@@ -1338,165 +1170,9 @@ static void taylorKrigingHigherOrderComplex(std::vector<std::complex<double>> va
 		weights.push_back(weightMat(i, 0));
 	}
 
-	//for (int i = 0; i < size * 2; ++i) {
-	//	//std::cout << weightMat(i, 0) << " ";
-	//	std::cout << " heres the real values" << weights[i] << std::endl;
-	//}
-	//std::cout << xVal << std::endl;
-
-	//std::cout << "weightMat: \n" << weightMat << std::endl;
-	//std::cout << std::endl;
-
-}
-static double taylorKrigingHigherOrder2(std::vector<double> variogramFit, std::vector<double> variogramFitValGrad, std::vector<double> variogramFitGradVal, std::vector<double> variogramFitGrad, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal) {
-
-	//size is N in calculations
-	const int size = xSample.size();
-
-	//order of the basis functions is M - 1; differs from literature
-	int M = xSample.size();
-	//trying for "ordinary kriging"
-	//M = 1;
-
-	//if (M > 3) { M = 18; }
-
-	//Matrix <double, Dynamic, Dynamic> krigMat;
-	MatrixXd sMat(size, size);
-	MatrixXd sMatFirstDerivative(size, size);
-	MatrixXd sMatSecondDerivative(size, size);
-	MatrixXd fMatDerivative(size, M);
-	MatrixXd fMat(size, M);
-	MatrixXd zeroMatM(M, M);
-	MatrixXd zeroMatN(size, size);
-
-	//std::cout << "size: " << size << " rows: " << krigMat.rows() << " cols: " << krigMat.cols() << std::endl;
-
-	//calculate sample average
-	double sum = 0.0;
-	for (int i = 0; i < xSample.size(); ++i) {
-		sum += xSample[i].real();
-	}
-	double average = sum / xSample.size();
-
-	// S matrix
-	for (int i = 0; i < size; ++i) {
-		for (int j = 0; j < size; ++j) {
-			double dist = abs(xSample[i].real() - xSample[j].real());
-			auto it = std::lower_bound(d.begin(), d.end(), dist);
-			int index = it - d.begin();
-			sMat(i, j) = variogramFit[index];
-
-			//sMatFirstDerivative(i, j) = variogramFitValGrad[index];
-			sMatFirstDerivative(i, j) = 0.0;
-			sMatSecondDerivative(i, j) = variogramFitGrad[index];
-		}
-	}
-
-	// F Matrix
-	for (int i = 0; i < size; ++i) {
-		for (int j = 0; j < M; ++j) {
-
-
-			fMat(i, j) = std::pow((xSample[i].real() - average), j);
-			//fMat(i, j) = 1.0;
-
-			fMatDerivative(i, j) = j*std::pow((xSample[i].real() - average), j-1);
-			if (j == 0)
-				fMatDerivative(i, j) = 0.0;
-			//fMatDerivative(i, j) = 0.0;
-
-			//std::cout << "i: " << i << "  j: " << j << "  xSample[i].real(): " << xSample[i].real() << "  average: " << average << std::endl;
-
-			//if (j == 0) {
-			//	fMat(i, j) = 1.0;
-			//}
-			//else if (j == 1) {
-			//	fMat(i, j) = xSample[i].real() - average;
-			//}
-			//else if (j == 2) {
-			//	fMat(i, j) = (xSample[i].real() - average) * (xSample[i].real() - average);
-			//}
-		}
-	}
-
-	//MxM zero mat
-	for (int i = 0; i < M; ++i) {
-		for (int j = 0; j < M; ++j) {
-			zeroMatM(i, j) = 0.0;
-		}
-	}
-
-	//NxN zero Mat
-	for (int i = 0; i < size; ++i) {
-		for (int j = 0; j < size; ++j) {
-			zeroMatN(i, j) = 0.0;
-		}
-	}
-
-	//need to fix starting here
-	MatrixXd upper(size, size + size + M);
-	MatrixXd mid(size, size + size + M);
-	MatrixXd lower(M, size + size + M);
-
-	MatrixXd krigMat(size + size + M, size + size + M);
-
-	upper << sMat, sMatFirstDerivative, fMat;
-
-	mid << sMatFirstDerivative, sMatSecondDerivative, fMatDerivative;
-
-	lower << fMat.transpose(), fMatDerivative.transpose(), zeroMatM;
-
-	krigMat << upper, mid, lower;
-
-	//std::cout << "krigMat: " << fMatDerivative << std::endl << std::endl;
-
-	MatrixXd cVec(size, 1);
-	MatrixXd cVecDerivative(size, 1);
-	MatrixXd fVec(M, 1);
-	MatrixXd krigVec(size + size + M, 1);
-
-	//C vector
-	for (int i = 0; i < size; ++i) {
-		//std::cout << "i: " << i;
-		double xDist = abs(xVal - xSample[i].real());
-		auto it = std::lower_bound(d.begin(), d.end(), xDist);
-		int index = it - d.begin();
-		cVec(i, 0) = variogramFit[index];
-		//cVecDerivative(i, 0) = variogramFitGradVal[index];
-		cVecDerivative(i, 0) = 0.0;
-	}
-
-	for (int i = 0; i < M; ++i) {
-		fVec(i, 0) = std::pow((xVal - average), i);
-		//fVec(i, 0) = 1.0;
-	}
-
-	krigVec << cVec, cVecDerivative, fVec;
-
-	MatrixXd weightMat = krigMat.inverse() * krigVec;
-	//std::cout << "weightMat: " << weightMat << std::endl;
-
-	for (int i = 0; i < size * 2; ++i) {
-		//std::cout << weightMat(i, 0) << " ";
-		weights.push_back(weightMat(i, 0));
-	}
-
-
-	//for (int i = 0; i < size * 2; ++i) {
-	//	//std::cout << weightMat(i, 0) << " ";
-	//	std::cout << " heres the real values" << weights[i] << std::endl;
-	//}
-	//std::cout << "matrix: \n";
-	//std::cout << krigMat << std::endl;
-	//std::cout << "vector: \n";
-	//std::cout << krigVec << std::endl;
-	//std::cout << "weights: \n";
-	//std::cout << weightMat << std::endl;
-	////std::cout << std::endl;
-	return average;
 }
 
-
+//GETK solution using alternate Kriging solution (seperable mean interpolation and stochastic kriging update terms)
 std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit, std::vector<double> variogramFitFirstD, std::vector<double> variogramFitSecondD, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal, std::vector<double> variogramFitGrad, std::vector<std::complex<double>> yVals, std::vector<std::complex<double>> yValsGrad, double theta) {
 
 
@@ -1720,7 +1396,7 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 
 }
 
-
+//sum of weights*reference points for final output of kriging
 static std::complex<double> krigSum(std::vector<double> weights, std::vector<std::complex<double>> referenceVals) {
 	std::complex<double> sum = 0.0;
 	for (int i = 0; i < weights.size(); ++i) {
@@ -1729,6 +1405,7 @@ static std::complex<double> krigSum(std::vector<double> weights, std::vector<std
 	return sum;
 }
 
+//sum of weights*ref + gradWeights*gradRef
 static std::complex<double> krigSumHigherOrder(std::vector<double> weights, std::vector<std::complex<double>> referenceVals, std::vector<std::complex<double>> gradient, double xVal, double xAvg) {
 	std::complex<double> sum = 0.0;
 	std::complex<double> sum2 = 0.0;
@@ -1753,6 +1430,7 @@ static std::complex<double> krigSumHigherOrder(std::vector<double> weights, std:
 	return sum;
 }
 
+//GETK Kriging weights sum for complex weights
 static std::complex<double> krigSumHigherOrderComplex(std::vector<std::complex<double>> weights, std::vector<std::complex<double>> referenceVals, std::vector<std::complex<double>> gradient, double xVal, double xAvg) {
 	std::complex<double> sum = 0.0;
 	std::complex<double> sum2 = 0.0;
@@ -1777,6 +1455,7 @@ static std::complex<double> krigSumHigherOrderComplex(std::vector<std::complex<d
 	return sum;
 }
 
+//trim nan values from empirical variogram/covariance function
 static void trimVariogram(std::vector<double>& variogram, std::vector<double>& edges) {
 	int idx = 0;
 	std::vector<double> variogramNew;
@@ -1805,6 +1484,7 @@ static void trimVariogram(std::vector<double>& variogram, std::vector<double>& e
 
 }
 
+//trim nan values from complex empirical covariance/variogram
 static void trimVariogramComplex(std::vector<std::complex<double>>& variogram, std::vector<double>& edges) {
 	int idx = 0;
 	std::vector<std::complex<double>> variogramNew;
@@ -1833,38 +1513,42 @@ static void trimVariogramComplex(std::vector<std::complex<double>>& variogram, s
 
 }
 
+//gaussian fit for empirical variogram
 void function_fit_gaussian(const alglib::real_1d_array& c, const alglib::real_1d_array& x, double& func, void* ptr) {
 	func = c[2] + c[0] * (1.0 - std::exp(-x[0] * x[0] / (c[1] * c[1])));
 }
 
-void function_fit_sqrExp(const alglib::real_1d_array& c, const alglib::real_1d_array& x, double& func, void* ptr) {
-	func = std::exp(-(x[0]/c[0])*(x[0]/c[0]));
-}
-
+//gaussian fit for empirical covariance
 void function_fit_gaussianCo(const alglib::real_1d_array& c, const alglib::real_1d_array& x, double& func, void* ptr) {
 	func = c[2] + c[0] * (std::exp(-x[0] * x[0] / (c[1] * c[1])));
 }
 
+//exponential fit for empirical variogram
 void function_fit_exp(const alglib::real_1d_array& c, const alglib::real_1d_array& x, double& func, void* ptr) {
 	func = c[2] + c[0] * (1.0 - std::exp(-x[0] / (c[1])));
 }
 
+//exponential fit for empirical covariance
 void function_fit_expCo(const alglib::real_1d_array& c, const alglib::real_1d_array& x, double& func, void* ptr) {
 	func = c[2] + c[0] * (std::exp(-x[0] / (c[1])));
 }
 
+//stable fit for empirical variogram
 void function_fit_stable(const alglib::real_1d_array& c, const alglib::real_1d_array& x, double& func, void* ptr) {
 	func = c[2] + c[0] * (1.0 - std::exp(std::pow(-x[0] / c[1], int(c[3]))));
 }
 
+//linear fit for empirical variogram
 void function_fit_linear(const alglib::real_1d_array& c, const alglib::real_1d_array& x, double& func, void* ptr) {
 	func = c[0] * x[0] + c[1];
 }
 
+//cubic fit for empirical variogram
 void function_fit_cubicNew(const alglib::real_1d_array& c, const alglib::real_1d_array& x, double& func, void* ptr) {
 	func = 1.0 / 3.0 * std::pow((1.0 - x[0] * c[0]), 6) * (35.0 * x[0] * x[0] * c[0] * c[0] + 180.0 * x[0] * c[0] + 3);
 }
 
+//spherical fit for empirical variogram
 void function_fit_spherical(const alglib::real_1d_array& c, const alglib::real_1d_array& x, double& func, void* ptr) {
 	if (x[0] < c[1])
 		func = c[2] + c[0] * (1.5 * x[0] / c[1] - 0.5 * x[0] * x[0] * x[0] / c[1] / c[1] / c[1]);
@@ -1872,30 +1556,8 @@ void function_fit_spherical(const alglib::real_1d_array& c, const alglib::real_1
 		func = c[2] + c[0];
 }
 
-std::vector<double> fitVariogram(std::vector<double> variogram, std::vector<double> edges, std::vector<double> d) {
-	double xSum = 0.0;
-	double ySum = 0.0;
-	double x2Sum = 0.0;
-	double xySum = 0.0;
-	for (int i = 0; i < variogram.size(); ++i) {
-		xSum += edges[i];
-		ySum += variogram[i];
-		x2Sum += x2Sum + (edges[i] * edges[i]);
-		xySum += xySum + (edges[i] * variogram[i]);
-	}
-	double slope = (edges.size() * xySum - xSum * ySum) / (edges.size() * x2Sum - xSum * xSum);
-	double intercept = (x2Sum * ySum - xSum * xySum) / (x2Sum * edges.size() - xSum * xSum);
-	std::vector<double> fitVariogram(d.size());
-	
-	//std::cout << "m: " << slope << std::endl;
 
-	for (int i = 0; i < d.size(); ++i) {
-		fitVariogram[i] = slope * d[i] + intercept;
-	}
-	return fitVariogram;
-}
-
-
+//fit one of the models for variogram
 std::vector<double> fitVariogramModel(std::vector<double> variogram, std::vector<double> edges, std::vector<double> d, double size) {
 	alglib::real_2d_array x;
 	alglib::real_1d_array y;
@@ -2142,6 +1804,7 @@ std::vector<double> fitVariogramModel(std::vector<double> variogram, std::vector
 
 }
 
+//fit one of the models for covariance function
 std::vector<double> fitCoVariogramModel(std::vector<double> variogram, std::vector<double> edges, std::vector<double> d, double size) {
 	alglib::real_2d_array x;
 	alglib::real_1d_array y;
@@ -2361,6 +2024,7 @@ std::vector<double> fitCoVariogramModel(std::vector<double> variogram, std::vect
 
 }
 
+//data struct for MLE
 struct data
 {
 	const MatrixXd* X;
@@ -2369,6 +2033,7 @@ struct data
 	const VectorXd* yGrad;
 };
 
+//MLE covariance function
 double covariance(double d, double theta, double sigma2) {
 	//make sure to change all 3
 	//gaussian fit
@@ -2377,6 +2042,9 @@ double covariance(double d, double theta, double sigma2) {
 	//return sigma2 * exp(-d * theta);
 }
 
+//calculate a vector
+//a vector contains the coefficients of the regression for each corresponding basis function
+//when a vector is multiplied by basis function vector this will give the regression (but no Kriging update)
 void aCalc(MatrixXd X, VectorXd y, MatrixXd B, double theta, VectorXd &a) {
 
 	//calculate correlation matrix R
@@ -2399,7 +2067,7 @@ void aCalc(MatrixXd X, VectorXd y, MatrixXd B, double theta, VectorXd &a) {
 
 }
 
-
+//basis function matrix B
 void basisCalc(MatrixXd X, VectorXd y, MatrixXd& B, VectorXd yGrad) {
 	int n = y.rows();
 	int m = n;
@@ -2420,6 +2088,7 @@ void basisCalc(MatrixXd X, VectorXd y, MatrixXd& B, VectorXd yGrad) {
 
 }
 
+//best variance calculation (using MLE hyperparameters)
 void var_calc(MatrixXd X, VectorXd y, double& sigma2, double theta, MatrixXd B, VectorXd yGrad) {
 
 	//calculate correlation matrix R
@@ -2463,6 +2132,7 @@ void var_calc(MatrixXd X, VectorXd y, double& sigma2, double theta, MatrixXd B, 
 	//sigma2 = (y - B * a).transpose() * R.inverse() * (y - B * a);
 }
 
+//objective function to be minimized.  Comes from loglikelihood min terms
 double obj_func(unsigned n, const double* x, double* grad, void* data_ptr)
 {
 	data* d = reinterpret_cast<data*>(data_ptr);
@@ -2536,6 +2206,7 @@ double obj_func(unsigned n, const double* x, double* grad, void* data_ptr)
 	return log_likelihood;
 }
 
+//MLE minimization for hyperparameter terms, using NLOpt c++ package
 void MLE_estimation(const MatrixXd& X, const VectorXd& y, double& theta, MatrixXd& B, VectorXd yGrad)
 {
 	int n = X.cols();
@@ -2568,7 +2239,7 @@ void MLE_estimation(const MatrixXd& X, const VectorXd& y, double& theta, MatrixX
 	}
 }
 
-
+//calculates qoi and qoi gradients
 std::complex<double> Kriging::sensitivity_to_epsr(std::string & file_name, std::vector<std::complex<double>>& epsr_list, std::vector<std::complex<double>>& updated_qoi, std::complex<double> referenceFreq, std::complex<double>& gradient)
 {
 	//get orig QoI
@@ -2680,6 +2351,8 @@ std::complex<double> Kriging::get_QoI(Domain & dom_forward, Domain & dom_adjoint
 	}
 	return qoi;
 }
+
+//monte carlo method for use in generating comparison plot
 void Kriging::monte_carlo_instance(std::string & file_name)
 {
 	//compute the forward solution
@@ -2741,7 +2414,9 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 	//for (int i = 0; i < referencesReal.size(); i++) {
 	//	referencesFull.push_back(std::complex<double>(referencesReal[i], -2.0));
 	//}
+	//--------------------------------------------------------------------------------------
 
+	//sort the material input list
 	sort(material_list.begin(), material_list.end(), complexComparitor);
 
 	//acceptable error
@@ -2766,35 +2441,19 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 
 
 	///////////////////////Material Perturbation/////////////////////////////////////////////////////////////////////
-	//std::vector<std::complex<double>> references = { {4.0, -2.0} };
-	//std::vector<std::complex<double>> referencesFull = { {1.000000, -2.000000},{1.666667, -2.000000},{2.333333, -2.000000},{3.000000, -2.000000},{3.666667, -2.000000},{4.333333, -2.000000},{5.000000, -2.000000},{5.666667, -2.000000},{6.333333, -2.000000},{7.000000, -2.000000} };
-	//std::vector<std::complex<double>> referencesFull = { {1.000000, -2.000000},{1.300000, -2.000000},{1.600000, -2.000000},{1.900000, -2.000000},{2.200000, -2.000000},{2.500000, -2.000000},{2.800000, -2.000000},{3.100000, -2.000000},{3.400000, -2.000000},{3.700000, -2.000000},{4.000000, -2.000000},{4.300000, -2.000000},{4.600000, -2.000000},{4.900000, -2.000000},{5.200000, -2.000000},{5.500000, -2.000000},{5.800000, -2.000000},{6.100000, -2.000000},{6.400000, -2.000000},{6.700000, -2.000000},{7.000000, -2.000000} };
-	//std::vector<std::complex<double>> referencesFull = { {2.000000, -2.000000},{2.250000, -2.000000},{2.500000, -2.000000},{2.750000, -2.000000},{3.000000, -2.000000},{3.250000, -2.000000},{3.500000, -2.000000},{3.750000, -2.000000},{4.000000, -2.000000},{4.250000, -2.000000},{4.500000, -2.000000},{4.750000, -2.000000},{5.000000, -2.000000},{5.250000, -2.000000},{5.500000, -2.000000},{5.750000, -2.000000},{6.000000, -2.000000},{6.250000, -2.000000},{6.500000, -2.000000},{6.750000, -2.000000},{7.000000, -2.000000} };
-	
-	
-	//old frequency and material range
-	//std::vector<std::complex<double>> referencesFull = { {1.500000, -2.000000}, { 1.600000, -2.000000 }, { 1.700000, -2.000000 }, { 1.800000, -2.000000 }, { 1.900000, -2.000000 }, { 2.000000, -2.000000 }, { 2.100000, -2.000000 }, { 2.200000, -2.000000 }, { 2.300000, -2.000000 }, { 2.400000, -2.000000 }, { 2.500000, -2.000000 }, { 2.600000, -2.000000 }, { 2.700000, -2.000000 }, { 2.800000, -2.000000 }, { 2.900000, -2.000000 }, { 3.000000, -2.000000 }, { 3.100000, -2.000000 }, { 3.200000, -2.000000 }, { 3.300000, -2.000000 }, { 3.400000, -2.000000 }, { 3.500000, -2.000000 }, { 3.600000, -2.000000 }, { 3.700000, -2.000000 }, { 3.800000, -2.000000 }, { 3.900000, -2.000000 }, { 4.000000, -2.000000 }, { 4.100000, -2.000000 }, { 4.200000, -2.000000 }, { 4.300000, -2.000000 }, { 4.400000, -2.000000 }, { 4.500000, -2.000000 }, { 4.600000, -2.000000 }, { 4.700000, -2.000000 }, { 4.800000, -2.000000 }, { 4.900000, -2.000000 }, { 5.000000, -2.000000 }, { 5.100000, -2.000000 }, { 5.200000, -2.000000 }, { 5.300000, -2.000000 }, { 5.400000, -2.000000 }, { 5.500000, -2.000000 }, { 5.600000, -2.000000 }, { 5.700000, -2.000000 }, { 5.800000, -2.000000 }, { 5.900000, -2.000000 }, { 6.000000, -2.000000 }, { 6.100000, -2.000000 }, { 6.200000, -2.000000 }, { 6.300000, -2.000000 }, { 6.400000, -2.000000 }, { 6.500000, -2.000000 }, { 6.600000, -2.000000 }, { 6.700000, -2.000000 }, { 6.800000, -2.000000 }, { 6.900000, -2.000000 }, { 7.000000, -2.000000 }, { 7.100000, -2.000000 }, { 7.200000, -2.000000 }, { 7.300000, -2.000000 }, { 7.400000, -2.000000 }, { 7.500000, -2.000000 }, { 7.600000, -2.000000 }, { 7.700000, -2.000000 }, { 7.800000, -2.000000 }, { 7.900000, -2.000000 }, { 8.000000, -2.000000 } };
 
-	//new material range
+	//new material range (materials_list3 I think)
 	//std::vector<std::complex<double>> referencesFull = { {3.000000, -2.000000},{3.100000, -2.000000},{3.200000, -2.000000},{3.300000, -2.000000},{3.400000, -2.000000},{3.500000, -2.000000},{3.600000, -2.000000},{3.700000, -2.000000},{3.800000, -2.000000},{3.900000, -2.000000},{4.000000, -2.000000},{4.100000, -2.000000},{4.200000, -2.000000},{4.300000, -2.000000},{4.400000, -2.000000},{4.500000, -2.000000},{4.600000, -2.000000},{4.700000, -2.000000},{4.800000, -2.000000},{4.900000, -2.000000},{5.000000, -2.000000},{5.100000, -2.000000},{5.200000, -2.000000},{5.300000, -2.000000},{5.400000, -2.000000},{5.500000, -2.000000},{5.600000, -2.000000},{5.700000, -2.000000},{5.800000, -2.000000},{5.900000, -2.000000},{6.000000, -2.000000},{6.100000, -2.000000},{6.200000, -2.000000},{6.300000, -2.000000},{6.400000, -2.000000},{6.500000, -2.000000},{6.600000, -2.000000},{6.700000, -2.000000},{6.800000, -2.000000},{6.900000, -2.000000},{7.000000, -2.000000},{7.100000, -2.000000},{7.200000, -2.000000},{7.300000, -2.000000},{7.400000, -2.000000},{7.500000, -2.000000},{7.600000, -2.000000},{7.700000, -2.000000},{7.800000, -2.000000},{7.900000, -2.000000},{8.000000, -2.000000},{8.100000, -2.000000},{8.200000, -2.000000},{8.300000, -2.000000},{8.400000, -2.000000},{8.500000, -2.000000},{8.600000, -2.000000},{8.700000, -2.000000},{8.800000, -2.000000},{8.900000, -2.000000},{9.000000, -2.000000},{9.100000, -2.000000},{9.200000, -2.000000},{9.300000, -2.000000},{9.400000, -2.000000},{9.500000, -2.000000},{9.600000, -2.000000},{9.700000, -2.000000},{9.800000, -2.000000},{9.900000, -2.000000},{10.000000, -2.000000} };
 	//----------------------------------------------------------------------------------------------------------------
 
-	//material range 4
-
+	//material range 4/5
 	std::vector<std::complex<double>> referencesFull = { {1.500000, -2.000000}, { 1.600000, -2.000000 }, { 1.700000, -2.000000 }, { 1.800000, -2.000000 }, { 1.900000, -2.000000 }, { 2.000000, -2.000000 }, { 2.100000, -2.000000 }, { 2.200000, -2.000000 }, { 2.300000, -2.000000 }, { 2.400000, -2.000000 }, { 2.500000, -2.000000 }, { 2.600000, -2.000000 }, { 2.700000, -2.000000 }, { 2.800000, -2.000000 }, { 2.900000, -2.000000 }, { 3.000000, -2.000000 }, { 3.100000, -2.000000 }, { 3.200000, -2.000000 }, { 3.300000, -2.000000 }, { 3.400000, -2.000000 }, { 3.500000, -2.000000 }, { 3.600000, -2.000000 }, { 3.700000, -2.000000 }, { 3.800000, -2.000000 }, { 3.900000, -2.000000 }, { 4.000000, -2.000000 }, { 4.100000, -2.000000 }, { 4.200000, -2.000000 }, { 4.300000, -2.000000 }, { 4.400000, -2.000000 }, { 4.500000, -2.000000 }, { 4.600000, -2.000000 }, { 4.700000, -2.000000 }, { 4.800000, -2.000000 }, { 4.900000, -2.000000 }, { 5.000000, -2.000000 }, { 5.100000, -2.000000 }, { 5.200000, -2.000000 }, { 5.300000, -2.000000 }, { 5.400000, -2.000000 }, { 5.500000, -2.000000 }, { 5.600000, -2.000000 }, { 5.700000, -2.000000 }, { 5.800000, -2.000000 }, { 5.900000, -2.000000 }, { 6.000000, -2.000000 }, { 6.100000, -2.000000 }, { 6.200000, -2.000000 }, { 6.300000, -2.000000 }, { 6.400000, -2.000000 }, { 6.500000, -2.000000 }, { 6.600000, -2.000000 }, { 6.700000, -2.000000 }, { 6.800000, -2.000000 }, { 6.900000, -2.000000 }, { 7.000000, -2.000000 }, { 7.100000, -2.000000 }, { 7.200000, -2.000000 }, { 7.300000, -2.000000 }, { 7.400000, -2.000000 }, { 7.500000, -2.000000 }, { 7.600000, -2.000000 }, { 7.700000, -2.000000 }, { 7.800000, -2.000000 }, { 7.900000, -2.000000 }, { 8.000000, -2.000000 }, { 8.100000, -2.000000 }, { 8.200000, -2.000000 }, { 8.300000, -2.000000 }, { 8.400000, -2.000000 }, { 8.500000, -2.000000 }, { 8.600000, -2.000000 }, { 8.700000, -2.000000 }, { 8.800000, -2.000000 }, { 8.900000, -2.000000 }, { 9.000000, -2.000000 }, { 9.100000, -2.000000 }, { 9.200000, -2.000000 }, { 9.300000, -2.000000 }, { 9.400000, -2.000000 }, { 9.500000, -2.000000 }, { 9.600000, -2.000000 }, { 9.700000, -2.000000 }, { 9.800000, -2.000000 }, { 9.900000, -2.000000 }, { 10.000000, -2.000000 }, { 10.100000, -2.000000 }, { 10.200000, -2.000000 }, { 10.300000, -2.000000 }, { 10.400000, -2.000000 }, { 10.500000, -2.000000 }, { 10.600000, -2.000000 }, { 10.700000, -2.000000 }, { 10.800000, -2.000000 }, { 10.900000, -2.000000 }, { 11.000000, -2.000000 } };
+	//------------------------------------------------------------------------------------------------
 
-
-	////////////////Frequency Perturbation//////////////////////////////////////////////////////////////////
-	//std::vector<std::complex<double>> references = { 10000000.000000, 12142857.142857, 14285714.285714, 16428571.428571, 18571428.571429, 20714285.714286, 22857142.857143, 25000000.000000, 27142857.142857, 29285714.285714, 31428571.428571, 33571428.571429, 35714285.714286, 37857142.857143, 40000000.000000};
-	//std::vector<std::complex<double>> references = { 10000000.000000, 17500000.000000, 25000000.000000, 32500000.000000, 40000000.000000 };
-
-	//std::vector<std::complex<double>> references = { 10000000.000000, 12727272.727273, 15454545.454545, 18181818.181818, 20909090.909091, 23636363.636364, 26363636.363636, 29090909.090909, 31818181.818182, 34545454.545455, 37272727.272727, 40000000.000000 };
-	//std::vector<std::complex<double>> references = { 10000000.000000, 11500000.000000, 13000000.000000, 14500000.000000, 16000000.000000, 17500000.000000, 19000000.000000, 20500000.000000, 22000000.000000, 23500000.000000, 25000000.000000, 26500000.000000, 28000000.000000, 29500000.000000, 31000000.000000, 32500000.000000, 34000000.000000, 35500000.000000, 37000000.000000, 38500000.000000, 40000000.000000};
-	//std::vector<std::complex<double>> references = { 15000000,15416666.6666667,15833333.3333333,16250000,16666666.6666667,17083333.3333333,17500000,17916666.6666667,18333333.3333333,18750000,19166666.6666667,19583333.3333333,20000000,20416666.6666667,20833333.3333333,21250000,21666666.6666667,22083333.3333333,22500000,22916666.6666667,23333333.3333333,23750000,24166666.6666667,24583333.3333333,25000000,25416666.6666667,25833333.3333333,26250000,26666666.6666667,27083333.3333333,27500000,27916666.6666667,28333333.3333333,28750000,29166666.6666667,29583333.3333333,30000000,30416666.6666667,30833333.3333333,31250000,31666666.6666667,32083333.3333333,32500000,32916666.6666667,33333333.3333333,33750000,34166666.6666667,34583333.3333333,35000000,35416666.6666667,35833333.3333333,36250000,36666666.6666667,37083333.3333333,37500000,37916666.6666667,38333333.3333333,38750000,39166666.6666667,39583333.3333333,40000000 };
-	////-----------------------------------------------------------------------------------------------------
-
+	//size of referencesFull
 	double size = referencesFull.size();
 
+	//index of first/middle/last referencesFull to add
 	int loRefIndex = find_index(referencesFull, material_list[0]);
 	if (loRefIndex < 0) { loRefIndex = 0; }
 
@@ -2811,6 +2470,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 	//references = { referencesFull[5], referencesFull[9], referencesFull[13], referencesFull[17], referencesFull[21], referencesFull[25], referencesFull[29], referencesFull[33], referencesFull[37], referencesFull[41], referencesFull[45], referencesFull[49], referencesFull[53], referencesFull[57], referencesFull[61], referencesFull[65], referencesFull[70] };
 	//references = referencesFull;
 
+	//the current references being used for Kriging
 	std::vector<std::complex<double>> references;
 	std::vector<int> refIndex;
 	//references = { referencesFull[loRefIndex], referencesFull[midRefIndex], referencesFull[hiRefIndex] };
@@ -2835,34 +2495,14 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 	//refIndex.push_back(70);
 
 
+	//qoi_list and HOPS_splitting were from HOPS UQ
 	std::vector<std::vector<std::complex<double>>> qoi_list(references.size());
 	std::vector<std::vector<std::complex<double>>> HOPS_splitting(references.size());
 
 	//refIndex is the index of the ref_i file so that it can be called correctly from the reference_files folder
-
 	//std::vector<int> refIndex = { 0, int(size - 1) / 2, int(size - 1) };
 	//refIndex = { 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70 };
 	//refIndex = { 5, 9, 13, 17, 21, 25, 29, 33, 37, 41, 45, 49, 53, 57, 61, 65, 70 };
-
-
-
-
-	//for (int i = 0; i < 71; i++) {
-	//	refIndex.push_back(i);
-	//}
-
-	////easy sweep condition
-	//refIndex.clear();
-	//references.clear();
-	//for (int i = 0; i < 71; i += 2) {
-	//	refIndex.push_back(i);
-	//	references.push_back(referencesFull[i]);
-	//}
-	//if (refIndex[refIndex.size() - 1] != 70) {
-	//	refIndex.push_back(70);
-	//	references.push_back(70);
-	//}
-	////-------
 
 
 	//toggle to end the while loop
@@ -2872,6 +2512,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 	std::string in_file_name;
 
 	int iterations = 0;
+
 
 	std::vector<std::vector<double>> RCS(references.size());
 	std::complex<double> sum = 0.0;
@@ -2884,6 +2525,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 	double stdDevRCS = 0.0;
 	//std::vector<double> pdfScaleFactor(references.size());
 
+	//initiate vectors
 	std::vector<std::vector<double>> weights(material_list.size());
 	std::vector<std::vector<double>> weightsGrad(material_list.size());
 	std::vector<std::vector<double>> weightsHigher(material_list.size());
@@ -2923,14 +2565,16 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 	double varAvg;
 
 
-
+	//while loop continues to adaptively refine until given convergence condition is met
 	while (whileCond) {
 		std::cout << "_____________________________________________________________Pass in the for loop_______________________________________________\n";
 		if (toggle == false) {
 			whileCond = false;
 		}
+
 		//need to get rid of qoi_list (not neccessary for kriging), but I need to first get rid of its use in sensitivity_to_epsr method.
 		
+		//reset vectors for adaptive refinement
 		qoi_list.clear();
 		qoi_list.resize(references.size());
 		weights.clear();
@@ -2944,31 +2588,23 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		//referenceVals.clear();
 		//referenceVals.resize(references.size());
 
+		//new set of references (should include same plus one new)
 		for (int i = 0; i < references.size(); ++i) {
 			std::cout << "references[i]: " << references[i] << " ref Index[i]: " << refIndex[i] << std::endl;
-
 		}
 
 		std::cout << "ref size: " << references.size() << std::endl;
 
-		//iterating through references now and get the qois
+		//iterating through references now and get the qoi and gradients
 		for (int i = 0; i < references.size(); ++i) {
 			//if (HOPS_splitting[i].size() == 0) continue;
 			in_file_name = file_name;
 
-			//////////////////////////////Frequency Perturbation///////////////////////////////////////////////////////////////////////////////////////////////
-			//std::string command = "..\\file_input_converter ..\\reference_files_freq_low_HOPS\\ref_" + std::to_string(i) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
-			//std::string command = "..\\file_input_converter ..\\reference_files_freq\\ref_3.in ..\\exampleFiles\\" + in_file_name + "\\";
-			//---------------------------------------------------------------------------------------------------------------------------------------------------
-
-			/////////////////////////////Material Perturbation///////////////////////////////////////////////////////////////////////////////
-			//std::string command = "..\\file_input_converter ..\\reference_files_mat\\ref_0.in ..\\exampleFiles\\" + in_file_name + "\\";
-			
-			//--------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-			//setting so that new passes in the while loop only run solve for new points
+			//setting so that new passes in the while loop only run solve for new points---------------------------------------------
 			//only works if starting with 3 points
+			// adaptive refinement method
 			//if (references.size() == 3) {			
 			//	std::string command = "..\\file_input_converter ..\\reference_files_mat_newRange4\\ref_" + std::to_string(refIndex[i]) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
 			//	std::system(command.c_str());
@@ -2996,23 +2632,22 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 			//	
 			//	break;
 			//}
-		
-			//this is for even split
+			//--------------------------------------------------------------------------------------------------------------
+			
+
+			//this is for even split--------------------------------------------------------------------------
+			//will solve all references again, not just new point
 			std::string command = "..\\file_input_converter ..\\reference_files_mat_newRange4\\ref_" + std::to_string(refIndex[i]) + ".in ..\\exampleFiles\\" + in_file_name + "\\";
 			std::system(command.c_str());
 			std::cout << "Testing for reference number: " << refIndex[i] << std::endl;
 
 			referenceVals[i] = Kriging::sensitivity_to_epsr(in_file_name, HOPS_splitting[i], qoi_list[i], references[i], gradient[i]);
+			//-----------------------------------------------------------------------
 
 
 		}
 
-		for (int i = 0; i < references.size(); ++i) {
-			std::cout << "references: " << references[i].real() << "  referenceVals[i]: " << referenceVals[i].real() << "  gradient[i]: " << gradient[i] << std::endl;
-		}
-		
-		//adding references point based on error
-
+		//adding references point based on error (old method)
 		double loError = 0.0;
 		double hiError = 0.0;
 
@@ -3029,7 +2664,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		std::vector<std::complex<double>> referencesNew = references;
 		std::vector<int> refIndexNew = refIndex;
 		
-		//calculate variogram_______________________________________________________________
+		//calculate variogram (empirical method)-----------------------------------------
 
 		//main params for variogram (this and fit method)
 		double nBins = 10;
@@ -3044,7 +2679,6 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		std::vector<double> edgesValGrad;
 		std::vector<double> edgesGradVal;
 
-
 		for (int i = 0; i <= nBins; i++) {
 			edges.push_back(i * maxDist / nBins);
 			edgesComplex.push_back(i * maxDist / nBins);
@@ -3054,7 +2688,6 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 			edgesGradVal.push_back(i * maxDist / nBins);
 
 		}
-
 
 		//linspace for the x values in the variogramFit
 		int fitSize = 15000;
@@ -3069,24 +2702,14 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		std::vector<std::vector<std::complex<double>>> dMatGradVal = buildDMatrix2(references, gradient, referenceVals); // these are approx 0
 		std::vector<std::vector<std::complex<double>>> dMatValGrad = buildDMatrix2(references, referenceVals, gradient); //
 
-
-		std::cout << "buildDMatrix2 works\n";
-
-
-		//maybe make variogram for real and imag gradient parts
-
 		//build variogram matrix and solve for empirical variogram
 		std::vector<double> variogram = buildCoVariogram(dMat, references, edges);
 		std::vector<double> variogramGrad = buildCoVariogram(dMatGrad, references, edges);
 		std::vector<double> variogramGradVal = buildCoVariogram(dMatGradVal, references, edges);
 		std::vector<double> variogramValGrad = buildCoVariogram(dMatValGrad, references, edges);
 
-		//std::vector<double> correlation = buildCorrelation(dMat, references, edges, referenceVals, d);
-
 		std::vector<std::complex<double>> variogramComplex = buildCoVariogramComplex(dMat, references, edges);
 		//std::vector<std::complex<double>> variogramGradComplex = buildVariogramComplex(dMatGrad, references, edges);
-
-		std::cout << "buildVariogram works\n";
 
 		//trim any nan values
 		trimVariogram(variogram, edges);
@@ -3097,17 +2720,11 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		trimVariogramComplex(variogramComplex, edgesComplex);
 		//trimVariogramComplex(variogramGradComplex, edgesGradComplex);
 
-		std::cout << "trim variogram works\n";
-
-
 		//fit model to empirical variogram
 		std::vector<double> variogramFit = fitCoVariogramModel(variogram, edges, d, references.size());
 		std::vector<double> variogramFitGrad = fitCoVariogramModel(variogramGrad, edgesGrad, d, references.size());
 		std::vector<double> variogramFitGradVal = fitCoVariogramModel(variogramGradVal, edgesGradVal, d, references.size());
 		std::vector<double> variogramFitValGrad = fitCoVariogramModel(variogramValGrad, edgesValGrad, d, references.size());
-
-
-		std::cout << "fitvariogram works\n";
 
 		std::vector<double> variogramComplexReal(variogramComplex.size());
 		std::vector<double> variogramComplexImag(variogramComplex.size());
@@ -3124,19 +2741,11 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		std::vector<double> variogramFitImag = fitCoVariogramModel(variogramComplexImag, edgesComplex, d, references.size());
 		//std::vector<double> variogramFitGradReal = fitVariogramModel(variogramGradComplexReal, edges, d, references.size());
 		//std::vector<double> variogramFitGradImag = fitVariogramModel(variogramGradComplexImag, edges, d, references.size());
+		// end of empirical variogram methods ----------------------------------------------------------------------------------
 
 
-		std::cout << "variogramfit complex works\n";
 
-		//std::vector<double> variogramFit = fitVariogram(variogram, edges, d, references.size());
-		//std::vector<double> variogramFitGrad = fitVariogram(variogramGrad, edgesGrad, d, references.size());
-		//std::vector<double> variogramFitGradVal = fitVariogram(variogramGradVal, edgesGradVal, d, references.size());
-		//std::vector<double> variogramFitValGrad = fitVariogram(variogramValGrad, edgesValGrad, d, references.size());
-
-		//std::vector<double> variogramFitGradVal = variogramFitValGrad;
-
-
-		  ///////  ATTEMPT AT MLE //////////////////////////////////  POWERED BY GPT 3.0
+		// working MLE ----------------------------------------------------------------------------------------------------------------
 
 		//theta is the hyperparameter
 		double theta;
@@ -3182,7 +2791,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		////size(a) = m
 		//VectorXd a(referenceVals.size());
 		//aCalc(X, y, B, theta, a);
-		////////////////////////////////////////////////////
+		///////////////////////////////////
 
 
 		//theta = theta / 4.0;
@@ -3192,31 +2801,11 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 			variogramFit[k] = covariance(d[k], theta, sigma2);
 		}
 
+		// end of MLE -----------------------------------------------------------------------------
+
 		//calculate variogram derivatives
 		std::vector<double> variogramFitFirstD = firstDerivative(variogramFit, d);
 		std::vector<double> variogramFitSecondD = firstDerivative(variogramFitFirstD, d);
-
-		//complex covariogram attempt
-		//std::vector<double> variogramFitFirstDReal = firstDerivative(variogramFitReal, d);
-		//std::vector<double> variogramFitFirstDImag = firstDerivative(variogramFitImag, d);
-		//std::vector<double> variogramFitSecondDReal = firstDerivative(variogramFitFirstDReal, d);
-		//std::vector<double> variogramFitSecondDImag = firstDerivative(variogramFitFirstDImag, d);
-
-		//std::vector<std::complex<double>> variogramFitFirstDComplex;
-		//std::vector<std::complex<double>> variogramFitSecondDComplex;
-		//std::vector<std::complex<double>> variogramFitComplex;
-
-
-		//for (int k = 0; k < variogramFitReal.size(); k++) {
-
-		//	//std::cout << variogramFitReal[k] << "   " << variogramFitImag[k] << "\n";
-
-		//	variogramFitComplex.push_back({ variogramFitReal[k], variogramFitImag[k] });
-		//	variogramFitFirstDComplex.push_back({ variogramFitFirstDReal[k], variogramFitFirstDImag[k] });
-		//	variogramFitSecondDComplex.push_back({ variogramFitSecondDReal[k], variogramFitSecondDImag[k] });
-
-		//}
-
 
 
 
@@ -3256,20 +2845,20 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 
 		varAvg = 0.0;
 		//---------------------  Kriging System Solution --------------------------------------------
-
 		double xAvg;
 		double xAvgReal;
 		double xAvgImag;
 
-		
+		std::cout << "made it to reconstruction\n";
+
 
 		for (int i = 0; i < material_list.size(); ++i) {
 
+			//currently being used to fit gradient values////////////
 			taylorKriging(variogramFitGrad, d, references, weightsGrad[i], material_list[i].real());
-
-			//std::cout << "made it here\n";
-			//taylorKrigingHigherOrder(std::vector<double> variogramFit, std::vector<double> variogramFitFirstD, std::vector<double> variogramFitSecondD, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal, std::vector<double> variogramFitGrad)
-
+			reconstructionGrad[i] = krigSum(weightsGrad[i], gradient);
+			////////////////////////////////////////////////
+			
 			/////////////GETK///////////////
 			//taylorKrigingHigherOrder(variogramFit, variogramFitFirstD, variogramFitSecondD, d, references, weightsHigher[i], material_list[i].real(), theta);
 			//reconstruction[i] = krigSumHigherOrder(weightsHigher[i], referenceVals, gradient, material_list[i].real(), xAvg);
@@ -3279,109 +2868,18 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 			///////////TK//////////////////////
 			//taylorKriging(variogramFit, d, references, weights[i], material_list[i].real());
 			//reconstruction[i] = krigSum(weights[i], referenceVals);
-			////////////////////////////////
-			
-			//taylorKrigingHigherOrderComplex(variogramFitComplex, variogramFitFirstDComplex, variogramFitSecondDComplex, d, references, weightsHigherComplex[i], material_list[i].real(), variogramFitGrad);
-
-			//xAvg = taylorKrigingHigherOrder2(variogramFit, variogramFitValGrad, variogramFitGradVal, variogramFitGrad, d, references, weightsHigher[i], material_list[i].real());
-
-			//xAvgReal = taylorKrigingHigherOrder2(variogramFitReal, variogramFitValGrad, variogramFitGradVal, variogramFitGradReal, d, references, weightsHigherReal[i], material_list[i].real());
-			//xAvgImag = taylorKrigingHigherOrder2(variogramFitImag, variogramFitValGrad, variogramFitGradVal, variogramFitGradImag, d, references, weightsHigherImag[i], material_list[i].real());
-
-			//std::cout << "taylorKrigingHigher works\n";
-
-			////if (material_list[i].real() < 6.35 && material_list[i].real() > 6.25) {
-			//	std::cout << "material: " << material_list[i].real() << std::endl;
-			//	for (int j = 0; j < referenceVals.size(); j++) {
-			//		std::cout << "weights[i]: " << weightsHigher[i][j] << " referenceVal[i]: " << referenceVals[j] << "  gradWeights[i]: " << weightsHigher[i][j + referenceVals.size()] << " gradient[i]: " << gradient[j] << std::endl;
-			//	}
-			////}
-
-			//std::cout << "made it to krigsum complex\n";
-			
-			//reconstruction[i] = krigSumHigherOrderComplex(weightsHigherComplex[i], referenceVals, gradient, material_list[i].real(), xAvg);
-
-
-
-			//reconstructionReal[i] = krigSumHigherOrder(weightsHigherReal[i], referenceValsReal, gradient, material_list[i].real(), xAvgReal);
-			//reconstructionImag[i] = krigSumHigherOrder(weightsHigherImag[i], referenceValsImag, gradient, material_list[i].real(), xAvgImag);
-			//std::cout << "reconstructionReal[i]: " << reconstructionReal[i] << std::endl;
-			//std::cout << "krig sum works\n";
-
-			//reconstruction[i] = { reconstructionReal[i].real(), reconstructionImag[i].imag() };
-
-			
-			reconstructionGrad[i] = krigSum(weightsGrad[i], gradient);
+			////////////////////////////////			
 		}
 
-		std::cout << "out of kriging system loop\n";
-
-		std::cout << "referencesFull.size(): " << referencesFull.size() << std::endl;
-
 		bestVar = 0;
+
+		std::cout << "made it out of reconstruction\n";
+
 
 		double matMean = 4.5;
 		double matStd = 1.0;
 		//------------------------------------------------------------------------------------------------------------------
-
-		//doesnt work
-		////------------------------Iterative update to Cov function------------------------------------------------------
-		//bool covUpdate = true;
-
-		//while (covUpdate) {
-		//	//build matrix of distance values
-		//	std::vector<std::vector<std::complex<double>>> dMatUpdate = buildDMatrix2(material_list, reconstruction, reconstruction);
-		//	std::vector<std::vector<std::complex<double>>> dMatGradUpdate = buildDMatrix2(material_list, reconstructionGrad, reconstructionGrad);
-
-
-		//	//build variogram matrix and solve for empirical variogram
-		//	std::vector<double> variogramUpdate = buildVariogram(dMatUpdate, material_list, edges);
-		//	std::vector<double> variogramGradUpdate = buildVariogram(dMatGradUpdate, material_list, edges);
-
-		//	//trim any nan values
-		//	trimVariogram(variogramUpdate, edges);
-		//	trimVariogram(variogramGradUpdate, edgesGrad);
-
-
-		//	//fit model to empirical variogram
-		//	std::vector<double> variogramFitUpdate = fitVariogramModel(variogramUpdate, edges, d, material_list.size());
-		//	std::vector<double> variogramFitGradUpdate = fitVariogramModel(variogramGradUpdate, edgesGrad, d, material_list.size());
-
-
-		//	for (int i = 0; i < material_list.size(); ++i) {
-		//		//taylorKrigingHigherOrder(std::vector<double> variogramFit, std::vector<double> variogramFitFirstD, std::vector<double> variogramFitSecondD, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal, std::vector<double> variogramFitGrad)
-		//		//taylorKriging(variogramFit, d, references, weights[i], material_list[i].real());
-		//		//taylorKrigingHigherOrder(variogramFit, variogramFitFirstD, variogramFitSecondD, d, references, weightsHigher[i], material_list[i].real(), variogramFitGrad);
-		//		xAvg = taylorKrigingHigherOrder2(variogramFitUpdate, variogramFitValGrad, variogramFitGradVal, variogramFitGradUpdate, d, references, weightsHigher[i], material_list[i].real());
-
-
-		//		//reconstruction[i] = krigSum(weights[i], referenceVals);
-		//		reconstructionUpdate[i] = krigSumHigherOrder(weightsHigher[i], referenceVals, gradient, material_list[i].real(), xAvg);
-
-		//	}
-
-		//	std::string outF = "../ioFiles/output/taylorKriging/sweepHigherUpdate3/qoi_kriging" + std::to_string(iterations + 2) + ".txt";
-		//	std::ofstream qoi_dist_out(outF);
-		//	for (int i = 0; i < material_list.size(); ++i) {
-		//		//if (material_list[i].real() < 2.0 || material_list[i].real() > 7.0) {
-		//		//	continue;
-		//		//}
-		//		if (i == 0)
-		//			std::cout << std::setprecision(12) << "precision check" << reconstruction[i].real() << std::endl;
-		//		qoi_dist_out << std::setprecision(12) << material_list[i].real() << " " << material_list[i].imag() << " " << reconstructionUpdate[i].real() << " " << reconstructionUpdate[i].imag() << " " << reconstructionGrad[i].real() << " " << reconstructionGrad[i].imag() << std::endl;
-		//	}
-		//	qoi_dist_out.close();
-		//	//qoi_dist_out.close();
-		//	break;
-
-
-		//}
-		////--------------------------------------------END Iterative Update-----------------------------------------------
-
-
-
-
-
+		
 		//find max variance for next iteration--------------------------------------------------------------------------------------------------
 		for (int i = 0; i < referencesFull.size(); ++i) {
 			double variance = 0.0;
@@ -3394,9 +2892,10 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 				continue;
 			}
 
-			//skip values of referencesFull outside the range
-			if (i < loRefIndex || i >  hiRefIndex)
-				continue;
+			////skip values of referencesFull outside the range
+			// not currently using RefIndex
+			//if (i < loRefIndex || i >  hiRefIndex)
+			//	continue;
 
 			//resize temporary vectors
 			weightsTemp.clear();
@@ -3415,122 +2914,58 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 			//get index of the added value
 			int weightIndex = find_index(referencesTemp, referencesFull[i]);
 
-			//for (int j = 0; j < referencesTemp.size(); ++j) {
-			//	std::cout << "referencesTemp[i]: " << referencesTemp[j] << std::endl;
-			//}
-
-			//std::cout << "weight index: " << weightIndex << std::endl;
-
-			//std::cout << "referencesFull[i](added ref): " << referencesFull[i] << "referencesTemp[weightIndex](should be same): " << referencesTemp[weightIndex] << std::endl;
-			//double variance = 0;
-			//find new references variance:
-			//for (int i = 0; i < referencesTemp.size(); ++i) {
-				//variance += (referencesTemp[i].real() - 4.5) * (referencesTemp[i].real() - 4.5);
-			//}
-			//variance /= referencesTemp.size();
-
-
-			//---------variogram---------------
-
-			//std::vector<double> edges;
-			//for (int j = 0; j <= nBins; j++) {
-			//	edges.push_back(j * maxDist / nBins);
-			//}
-
-			////linspace for the x values in the variogramFit
-			//int fitSize = 15000;
-			//std::vector<double> d;
-			//for (int j = 0; j <= fitSize; ++j) {
-			//	d.push_back(j * maxDist / fitSize);
-			//}
-
-			//build referenceVals from previous reconstruction
-			//not sure if this works.  Should find the closest material parameter in material list to referencesTemp.
-			//it should then fill referenceValsTemp with the cooresponding index from the kriging reconstruction
-
-			//build matrix of distance values
-			//std::vector<std::vector<std::complex<double>>> dMat = buildDMatrix2(references, referenceVals, referenceVals);
-			//std::vector<std::vector<std::complex<double>>> dMatGrad = buildDMatrix2(references, referenceValsGrad, referenceValsGrad);
-
-			//build variogram matrix and solve for empirical variogram
-			//std::vector<double> variogram = buildVariogram(dMat, references, edges);
-
-			//trim any nan values
-			//trimVariogram(variogram, edges);
-
-			//fit model to empirical variogram
-			//std::vector<double> variogramFit = fitVariogramModel(variogram, edges, d, references.size());
-
 
 			std::vector<std::complex<double>> referenceValsTemp(referencesTemp.size());
-			//for (int j = 0; j < referenceValsTemp.size(); j++) {
-			//	//maybe just set the added reference value to reconstruction (others already calculated explicitly)
-			//	int index = find_index(material_list, referencesTemp[j].real());
-			//	referenceValsTemp[j] = reconstruction[index];
-			//	//std::cout << "referencesTemp[j](value looking to match): " << referencesTemp[j] << " material_list[index](index should match): " << material_list[index] << std::endl;
-			//}
 
-			//find the weights with referencesFull[i] as the new test point x0
-			taylorKriging(variogramFit, d, references, weightsTemp[i], referencesFull[i].real());
-			//xAvg = taylorKrigingHigherOrder2(variogramFit, variogramFitValGrad, variogramFitGradVal, variogramFitGrad, d, references, weightsTemp[i], referencesFull[i].real());
+			//REDO MLE WITH NEW VECTOR
 
-			//error here
-			//calculate the variance of the added referencesFull point
+			//theta is the hyperparameter
+			double theta;
 
 
-			//for (int j = 0; j < weightsTemp[i].size(); j++) {
-			//	std::cout << "weightsTemp[i]: " << weightsTemp[i][j] << std::endl;
-			//}
+			//input data, 1 since dimensionality is currently 1
+			MatrixXd X(referenceVals.size(), 1);
+
+			//yData (QoI)
+			VectorXd y(referenceVals.size());
+
+			//gradient data
+			VectorXd yGrad(referenceVals.size());
+
+			//correlation matrix
+			MatrixXd R(referenceVals.size(), referenceVals.size());
+
+			//absolute values of reference data
+			VectorXd absRefVals(referenceVals.size());
+
+			for (int k = 0; k < referenceVals.size(); k++) {
+				X(k, 0) = references[k].real();
+				y(k) = abs(referenceVals[k]);
+				//y(k + referenceVals.size()) = abs(gradient[k]);
+				yGrad(k) = abs(gradient[k]);
+				absRefVals(k) = abs(referenceVals[k]);
+			}
+
+			int n = referenceVals.size();
+			int m = n;
+
+			//calculate basis function matrix
+			MatrixXd B = MatrixXd::Zero(n, m);
+			basisCalc(X, y, B, yGrad);
+
+			std::cout << "basis calc works\n";
+
+			MLE_estimation(X, y, theta, B, yGrad);
+
+			std::cout << "MLE successful theta:" << theta << "\n";
 
 
-			variance = calcVariance(variogramFit, d, references, weightsTemp[i], referencesFull[i].real());
-			//variance = calcVariance2(variogramFit, variogramFitGrad, d, references, weightsTemp[i], referencesFull[i].real());
-			varAvg += variance *variance;
+			std::cout << "aCalc successful\n";
 
-			//std::cout << "variance: " << variance << std::endl;
+			//calculate variance estimate
+			double sigma2;
+			var_calc(X, y, sigma2, theta, B, yGrad);
 
-			double integral = Kriging::trap_integral(referencesFull[i].real(), matMean, matStd, material_list[1].real() - material_list[0].real());
-
-			//std::cout << "   integral: " << integral << std::endl;
-
-			//weighting function
-			//variance *= integral;
-
-
-			////_____________________________OLD METHOD for calculating variance____________________________________________________
-			//std::vector<std::vector<double>> dMat = buildDMatrix(referencesTemp, referenceValsTemp);
-
-			//std::vector<double> variogram = buildVariogram(dMat, referencesTemp, edges);
-			//trimVariogram(variogram, edges);
-			//std::vector<double> variogramFit = fitVariogram(variogram, edges, d);
-			//
-
-			//for (int j = 0; j < material_list.size(); ++j) {
-			//	kriging(variogramFit, d, referencesTemp, weightsTemp[j], material_list[j].real());
-			//	
-			//	//relative distance between material_list[j] entry and referencesFull[i].
-			//	//the greater the distance, the less each weight. ie weight corresponds to 1/d.  multiplying by (relative) distance should fix?
-			//	//to compensate, 
-			//	//dist = abs(abs(material_list[j].real() - referencesFull[i].real()) / abs(referencesFull[i].real() + material_list[j].real()));
-			//	variance += calcVariance(variogramFit, d, referencesTemp, weightsTemp[j], material_list[j].real());
-
-			//	//avg += abs(weightsTemp[j][weightIndex] * dist);
-			//	//std::cout << avg << std::endl;
-			// 
-			//	//std::cout << "weightsTemp[j][weightIndex]: " << weightsTemp[j][weightIndex] << std::endl;
-			//}
-		
-
-			//std::cout << "var: " << variance << " material_list.size(): " << material_list.size() << std::endl;
-			//variance /= material_list.size();
-			//avg = avg / material_list.size();
-			////____________________________________________________________________________________
-
-			//std::cout << "referencesFull[i]: " << referencesFull[i] << "  variance: " << variance << std::endl;
-
-			//std::cout << "avg: " << avg << std::endl;
-
-			//if (avg >= bestAvg) {
 			if (variance > bestVar){
 
 				bestIndex = i;
