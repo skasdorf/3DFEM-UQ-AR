@@ -1,0 +1,46 @@
+﻿  In file included from ..\run_modes.cpp:1:
+  In file included from F:\Github\3DFEM-UQ-AR\cpp/run_modes.h:3:
+  In file included from F:\Github\3DFEM-UQ-AR\cpp/structure/Domain.h:34:
+  In file included from F:\Github\3DFEM-UQ-AR\cpp/structure/../integrals/Integral_c.h:12:
+C:\PROGRA~2\Intel\oneAPI\compiler\20220~1.2\windows\bin-llvm\..\compiler\include\complex.h(37,14): : warning : "The /Qstd=c99 compilation option is required to enable C99 support for C programs" [-W#warnings]
+              #warning "The /Qstd=c99 compilation option is required to enable C99 support for C programs"
+               ^
+  In file included from ..\run_modes.cpp:1:
+  In file included from F:\Github\3DFEM-UQ-AR\cpp/run_modes.h:3:
+F:\Github\3DFEM-UQ-AR\cpp/structure/Domain.h(118,15): : warning : extra qualification on member 'SPARSE_PACKING' [-Wmicrosoft-extra-qualification]
+          void Domain::SPARSE_PACKING(std::vector<int>& iRow,
+               ~~~~~~~~^
+F:\Github\3DFEM-UQ-AR\cpp/structure/Domain.h(123,15): : warning : extra qualification on member 'spherical_sensitivity' [-Wmicrosoft-extra-qualification]
+          void Domain::spherical_sensitivity(const int& myElementCount, std::vector<Element>& elements, const int& matDimDis,
+               ~~~~~~~~^
+F:\Github\3DFEM-UQ-AR\cpp/structure/Domain.h(129,15): : warning : extra qualification on member 'element_error_f' [-Wmicrosoft-extra-qualification]
+          void Domain::element_error_f(int u_order, int v_order, int w_order, Domain& dom2);
+               ~~~~~~~~^
+F:\Github\3DFEM-UQ-AR\cpp/structure/Domain.h(130,15): : warning : extra qualification on member 'element_error_basis' [-Wmicrosoft-extra-qualification]
+          void Domain::element_error_basis(int u_order, int v_order, int w_order, Domain& dom2);
+               ~~~~~~~~^
+F:\Github\3DFEM-UQ-AR\cpp/structure/Domain.h(134,15): : warning : extra qualification on member '_HOPS_EPS' [-Wmicrosoft-extra-qualification]
+          void Domain::_HOPS_EPS(int u_order, int v_order, int w_order, Domain& dom2);
+               ~~~~~~~~^
+F:\Github\3DFEM-UQ-AR\cpp/structure/Domain.h(135,15): : warning : extra qualification on member 'element_error_improved' [-Wmicrosoft-extra-qualification]
+          void Domain::element_error_improved(Domain& dom2, std::vector<std::complex<double>>& cAlphaFor, std::vector<std::complex<double>>& cAlphaAdj);
+               ~~~~~~~~^
+F:\Github\3DFEM-UQ-AR\cpp/structure/Domain.h(136,15): : warning : extra qualification on member 'basis_error_improved' [-Wmicrosoft-extra-qualification]
+          void Domain::basis_error_improved(Domain& dom2, std::vector<std::complex<double>>& cAlphaFor, std::vector<std::complex<double>>& cAlphaAdj);
+               ~~~~~~~~^
+  In file included from ..\run_modes.cpp:1:
+  In file included from F:\Github\3DFEM-UQ-AR\cpp/run_modes.h:5:
+F:\Github\3DFEM-UQ-AR\cpp/utility/fileIOCon.h(189,8): : warning : unused variable 'first_scan' [-Wunused-variable]
+                  bool first_scan = true;
+                       ^
+..\run_modes.cpp(308,25): : warning : unused variable 'cSensitivity' [-Wunused-variable]
+                          std::complex<double> cSensitivity;
+                                               ^
+..\run_modes.cpp(497,25): : warning : unused variable 'cSensitivity' [-Wunused-variable]
+                          std::complex<double> cSensitivity;
+                                               ^
+..\run_modes.cpp(629,25): : warning : unused variable 'cSensitivity' [-Wunused-variable]
+                          std::complex<double> cSensitivity;
+                                               ^
+  12 warnings generated.
+  FEM++.vcxproj -> F:\Github\3DFEM-UQ-AR\cpp\executable\x64\Release\FEM++.exe

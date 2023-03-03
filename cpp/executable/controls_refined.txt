@@ -1,0 +1,9 @@
+Controls file
+Adjoint: false
+Readprevious: false
+facets file name: facets_refined.txt
+geometry file name: geometry.txt
+materials file name: materials_refined.txt
+conditions file name: boundary_refined.txt
+monostatic scattering file name: scattering.txtinput_unknowns_global file name: unknonwsAdjoint.dat
+basic_structure5 5661 648 432 0 1 0 300000000 300000000 1

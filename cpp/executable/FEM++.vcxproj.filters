@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\utility\constants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\functions\Coordinates.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\structure\Domain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\structure\Facet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utility\functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\integrals\Integral_c.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\integrals\Integral_d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\integrals\Integral_g.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\functions\matrixFilling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\control\StructureControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\functions\unitVectorsM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\functions\integralFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utility\sparseSolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utility\qoi_helper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utility\Plotter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\integrals\BasisEval.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\structure\element_error.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utility\refinement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utility\h_refine_assist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fileIO\fileIO2.cpp" />
+    <ClCompile Include="..\utility\refinement_tests.cpp" />
+    <ClCompile Include="..\postprocessing\postprocessing.cpp" />
+    <ClCompile Include="..\HOPS\hops.cpp">
+      <Filter>Source Files\HOPS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\run_modes.cpp" />
+    <ClCompile Include="..\utility\adp_methods.cpp" />
+    <ClCompile Include="..\Kriging\kriging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\alglib-cpp\src\alglibinternal.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\alglibmisc.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\ap.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\dataanalysis.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\diffequations.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\fasttransforms.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\integration.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\interpolation.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\kernels_avx2.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\kernels_fma.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\kernels_sse2.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\linalg.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\optimization.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\solvers.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\specialfunctions.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\statistics.cpp" />
+    <ClCompile Include="..\Bayes\bayes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\fileIO\fileIO2.h" />
+    <ClInclude Include="..\structure\Domain.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structure\Element.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\functions\Coordinates.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\functions\basis.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\integrals\BasisEval.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\constants.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structure\Facet.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structure\Material.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structure\Point.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structure\Scatter.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\control\StructureControl.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structure\Tables.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\functions\unitVectorsM.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\matricies\matrix4d.h">
+      <Filter>Header Files\matrices</Filter>
+    </ClInclude>
+    <ClInclude Include="..\matricies\matrix3d.h">
+      <Filter>Header Files\matrices</Filter>
+    </ClInclude>
+    <ClInclude Include="..\matricies\matrix2d.h">
+      <Filter>Header Files\matrices</Filter>
+    </ClInclude>
+    <ClInclude Include="..\integrals\Integral_g.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\integrals\Integral_d.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\integrals\Integral_c.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\sparseSolver.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\functions\matrixFilling.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\functions\integralFunctions.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\functions.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\fileIO_functions.h">
+      <Filter>Header Files\FILEIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\fileIOCon.h">
+      <Filter>Header Files\FILEIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structure\FrequencySweep.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\functions\elunknowns.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\qoi_helper.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\functions\qoi_error.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structure\element_error.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structure\error_struct.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structure\adjacent.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\additional_basis.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\functions\sensitivity.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\Plotter.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\functions\products.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\functions\find_at_quad.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\memory_functions.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\h_refine_assist.h">
+      <Filter>Header Files\Refinement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\refinement.h">
+      <Filter>Header Files\Refinement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\refinement_tests.h">
+      <Filter>Header Files\Refinement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\postprocessing\postprocessing.h">
+      <Filter>Header Files\Postprocessing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HOPS\hops.h">
+      <Filter>Header Files\HOPS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\run_modes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utility\adp_methods.h">
+      <Filter>Header Files\Refinement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Kriging\kriging.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Bayes\bayes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NLopt.v2.6.1.x86_64.tar\include\nlopt.h" />
+    <ClInclude Include="..\NLopt.v2.6.1.x86_64.tar\include\nlopt.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{540c25ff-a11d-42b5-8f15-5f5f3401a79d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{66c195b0-a630-43f3-8469-79c3d81c1445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Structure">
+      <UniqueIdentifier>{159d7f35-b95b-44f8-a19f-9cb53f0446c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\matrices">
+      <UniqueIdentifier>{428a27e3-d4c1-482f-bc47-9a01747666bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\integration">
+      <UniqueIdentifier>{a2285ea9-7177-4a25-862c-05afbbfdd70a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FILEIO">
+      <UniqueIdentifier>{9bb524ca-a6ab-4a74-8f77-698b1458ed0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\QOI">
+      <UniqueIdentifier>{6ca80b46-9265-489e-90f5-8562ef9c73d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Refinement">
+      <UniqueIdentifier>{3b11ab5c-ccbb-4c07-b562-8236822a7c2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Postprocessing">
+      <UniqueIdentifier>{5129a6ed-0b03-4529-abea-7741397732c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HOPS">
+      <UniqueIdentifier>{5aa4f04e-c246-4c77-9ec7-002cc9df6732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HOPS">
+      <UniqueIdentifier>{664b2ba1-7b03-4e18-892a-c98dfdc80804}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
