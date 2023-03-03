@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5EACD65F-0948-490F-A143-9497B333D084}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>Intel C++ Compiler 19.2</PlatformToolset>
+    <UseIntelMKL>Parallel</UseIntelMKL>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>Intel C++ Compiler 19.2</PlatformToolset>
+    <UseIntelMKL>Parallel</UseIntelMKL>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>Intel C++ Compiler 2022</PlatformToolset>
+    <UseIntelMKL>Parallel</UseIntelMKL>
+    <UseInteloneMKL>Parallel</UseInteloneMKL>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>Intel C++ Compiler 2022</PlatformToolset>
+    <UseIntelMKL>Parallel</UseIntelMKL>
+    <UseInteloneMKL>Parallel</UseInteloneMKL>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>U:\EMAG\UQ\FEM\cpp\eigen-eigen-5a0156e40feb</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>U:\EMAG\UQ\FEM\cpp\eigen-eigen-5a0156e40feb</AdditionalIncludeDirectories>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <InterproceduralOptimization>MultiFile</InterproceduralOptimization>
+      <OptimizeForWindowsApplication>true</OptimizeForWindowsApplication>
+      <Parallelization>true</Parallelization>
+      <UseIntelOptimizedHeaders>true</UseIntelOptimizedHeaders>
+      <DisableSpecificWarnings>1224</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <BrowseInformation>false</BrowseInformation>
+      <AdditionalIncludeDirectories>F:\Github\3DFEM-UQ-AR\cpp\eigen-eigen-5a0156e40feb;C:\Users\srkas\Desktop\3DFEM-UQ-master\cpp\eigen-eigen-5a0156e40feb;C:\Users\jjh_3\git\FEM\cpp\eigen-eigen-5a0156e40feb;U:\EMAG\UQ\FEM\cpp\eigen-eigen-5a0156e40feb</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>nlopt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\Github\3DFEM-UQ-AR\cpp\nlopt\build\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api;F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp;F:\Github\3DFEM-UQ-AR\cpp\dlib;F:\Github\3DFEM-UQ-AR\cpp\eigen-eigen-5a0156e40feb;C:\Users\jjh_3\git\FEM\cpp\eigen-eigen-5a0156e40feb;U:\EMAG\UQ\FEM\cpp\eigen-eigen-5a0156e40feb;C:\Users\srkas\Desktop\3DFEM-UQ-master\cpp\eigen-eigen-5a0156e40feb</AdditionalIncludeDirectories>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <InterproceduralOptimization>MultiFile</InterproceduralOptimization>
+      <OptimizeForWindowsApplication>true</OptimizeForWindowsApplication>
+      <Parallelization>true</Parallelization>
+      <UseIntelOptimizedHeaders>false</UseIntelOptimizedHeaders>
+      <DisableSpecificWarnings>1224</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <UseProcessorExtensions>HOST</UseProcessorExtensions>
+      <OffloadOpenMP>Default</OffloadOpenMP>
+      <Mtune>Ivybridge</Mtune>
+      <OpenMP>GenerateParallelCode</OpenMP>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\alglib-cpp\src\alglibinternal.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\alglibmisc.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\ap.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\dataanalysis.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\diffequations.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\fasttransforms.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\integration.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\interpolation.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\kernels_avx2.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\kernels_fma.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\kernels_sse2.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\linalg.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\optimization.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\solvers.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\specialfunctions.cpp" />
+    <ClCompile Include="..\alglib-cpp\src\statistics.cpp" />
+    <ClCompile Include="..\Bayes\bayes.cpp" />
+    <ClCompile Include="..\control\StructureControl.cpp" />
+    <ClCompile Include="..\fileIO\fileIO2.cpp" />
+    <ClCompile Include="..\functions\Coordinates.cpp" />
+    <ClCompile Include="..\functions\integralFunctions.cpp" />
+    <ClCompile Include="..\functions\matrixFilling.cpp" />
+    <ClCompile Include="..\functions\unitVectorsM.cpp" />
+    <ClCompile Include="..\HOPS\hops.cpp" />
+    <ClCompile Include="..\integrals\BasisEval.cpp" />
+    <ClCompile Include="..\integrals\Integral_c.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\jjh_3\git\FEM\cpp\eigen-eigen-5a0156e40feb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\integrals\Integral_d.cpp" />
+    <ClCompile Include="..\integrals\Integral_g.cpp" />
+    <ClCompile Include="..\Kriging\kriging.cpp" />
+    <ClCompile Include="..\Main.cpp" />
+    <ClCompile Include="..\postprocessing\postprocessing.cpp" />
+    <ClCompile Include="..\run_modes.cpp" />
+    <ClCompile Include="..\structure\Domain.cpp" />
+    <ClCompile Include="..\structure\element_error.cpp" />
+    <ClCompile Include="..\structure\Facet.cpp" />
+    <ClCompile Include="..\utility\adp_methods.cpp" />
+    <ClCompile Include="..\utility\constants.cpp" />
+    <ClCompile Include="..\utility\functions.cpp" />
+    <ClCompile Include="..\utility\h_refine_assist.cpp" />
+    <ClCompile Include="..\utility\Plotter.cpp" />
+    <ClCompile Include="..\utility\qoi_helper.cpp" />
+    <ClCompile Include="..\utility\refinement.cpp" />
+    <ClCompile Include="..\utility\refinement_tests.cpp" />
+    <ClCompile Include="..\utility\sparseSolver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Bayes\bayes.h" />
+    <ClInclude Include="..\control\StructureControl.h" />
+    <ClInclude Include="..\fileIO\fileIO2.h" />
+    <ClInclude Include="..\functions\basis.h" />
+    <ClInclude Include="..\functions\Coordinates.h" />
+    <ClInclude Include="..\functions\elunknowns.h" />
+    <ClInclude Include="..\functions\find_at_quad.h" />
+    <ClInclude Include="..\functions\integralFunctions.h" />
+    <ClInclude Include="..\functions\matrixFilling.h" />
+    <ClInclude Include="..\functions\products.h" />
+    <ClInclude Include="..\functions\qoi_error.h" />
+    <ClInclude Include="..\functions\sensitivity.h" />
+    <ClInclude Include="..\functions\unitVectorsM.h" />
+    <ClInclude Include="..\HOPS\hops.h" />
+    <ClInclude Include="..\integrals\BasisEval.h" />
+    <ClInclude Include="..\integrals\Integral_d.h" />
+    <ClInclude Include="..\integrals\Integral_c.h" />
+    <ClInclude Include="..\integrals\Integral_g.h" />
+    <ClInclude Include="..\Kriging\kriging.h" />
+    <ClInclude Include="..\matricies\matrix2d.h" />
+    <ClInclude Include="..\matricies\matrix3d.h" />
+    <ClInclude Include="..\matricies\matrix4d.h" />
+    <ClInclude Include="..\NLopt.v2.6.1.x86_64.tar\include\nlopt.h" />
+    <ClInclude Include="..\NLopt.v2.6.1.x86_64.tar\include\nlopt.hpp" />
+    <ClInclude Include="..\postprocessing\postprocessing.h" />
+    <ClInclude Include="..\run_modes.h" />
+    <ClInclude Include="..\structure\adjacent.h" />
+    <ClInclude Include="..\structure\Domain.h" />
+    <ClInclude Include="..\structure\Element.h" />
+    <ClInclude Include="..\structure\element_error.h" />
+    <ClInclude Include="..\structure\error_struct.h" />
+    <ClInclude Include="..\structure\Facet.h" />
+    <ClInclude Include="..\structure\FrequencySweep.h" />
+    <ClInclude Include="..\structure\Material.h" />
+    <ClInclude Include="..\structure\Point.h" />
+    <ClInclude Include="..\structure\Scatter.h" />
+    <ClInclude Include="..\structure\Tables.h" />
+    <ClInclude Include="..\utility\additional_basis.h" />
+    <ClInclude Include="..\utility\adp_methods.h" />
+    <ClInclude Include="..\utility\constants.h" />
+    <ClInclude Include="..\utility\fileIOCon.h" />
+    <ClInclude Include="..\utility\fileIO_functions.h" />
+    <ClInclude Include="..\utility\functions.h" />
+    <ClInclude Include="..\utility\h_refine_assist.h" />
+    <ClInclude Include="..\utility\memory_functions.h" />
+    <ClInclude Include="..\utility\Plotter.h" />
+    <ClInclude Include="..\utility\qoi_helper.h" />
+    <ClInclude Include="..\utility\refinement.h" />
+    <ClInclude Include="..\utility\refinement_tests.h" />
+    <ClInclude Include="..\utility\sparseSolver.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,800 @@
+﻿  In file included from ..\Kriging\kriging.cpp:1:
+..\Kriging/kriging.h(1,33): : warning : extra tokens at end of #include directive [-Wextra-tokens]
+  #include "../structure/Domain.h";
+                                  ^
+                                  //
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:471:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/products/Parallelizer.h(20,27): : warning : variable 'm_maxThreads' set but not used [-Wunused-but-set-variable]
+    static EIGEN_UNUSED int m_maxThreads = -1;
+                            ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../structure/Domain.h:34:
+  In file included from ..\Kriging/../structure/../integrals/Integral_c.h:12:
+C:\PROGRA~2\Intel\oneAPI\compiler\20220~1.2\windows\bin-llvm\..\compiler\include\complex.h(37,14): : warning : "The /Qstd=c99 compilation option is required to enable C99 support for C programs" [-W#warnings]
+              #warning "The /Qstd=c99 compilation option is required to enable C99 support for C programs"
+               ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+..\Kriging/../structure/Domain.h(118,15): : warning : extra qualification on member 'SPARSE_PACKING' [-Wmicrosoft-extra-qualification]
+          void Domain::SPARSE_PACKING(std::vector<int>& iRow,
+               ~~~~~~~~^
+..\Kriging/../structure/Domain.h(123,15): : warning : extra qualification on member 'spherical_sensitivity' [-Wmicrosoft-extra-qualification]
+          void Domain::spherical_sensitivity(const int& myElementCount, std::vector<Element>& elements, const int& matDimDis,
+               ~~~~~~~~^
+..\Kriging/../structure/Domain.h(129,15): : warning : extra qualification on member 'element_error_f' [-Wmicrosoft-extra-qualification]
+          void Domain::element_error_f(int u_order, int v_order, int w_order, Domain& dom2);
+               ~~~~~~~~^
+..\Kriging/../structure/Domain.h(130,15): : warning : extra qualification on member 'element_error_basis' [-Wmicrosoft-extra-qualification]
+          void Domain::element_error_basis(int u_order, int v_order, int w_order, Domain& dom2);
+               ~~~~~~~~^
+..\Kriging/../structure/Domain.h(134,15): : warning : extra qualification on member '_HOPS_EPS' [-Wmicrosoft-extra-qualification]
+          void Domain::_HOPS_EPS(int u_order, int v_order, int w_order, Domain& dom2);
+               ~~~~~~~~^
+..\Kriging/../structure/Domain.h(135,15): : warning : extra qualification on member 'element_error_improved' [-Wmicrosoft-extra-qualification]
+          void Domain::element_error_improved(Domain& dom2, std::vector<std::complex<double>>& cAlphaFor, std::vector<std::complex<double>>& cAlphaAdj);
+               ~~~~~~~~^
+..\Kriging/../structure/Domain.h(136,15): : warning : extra qualification on member 'basis_error_improved' [-Wmicrosoft-extra-qualification]
+          void Domain::basis_error_improved(Domain& dom2, std::vector<std::complex<double>>& cAlphaFor, std::vector<std::complex<double>>& cAlphaAdj);
+               ~~~~~~~~^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:2:
+  In file included from ..\Kriging/../run_modes.h:5:
+..\Kriging/../utility/fileIOCon.h(189,8): : warning : unused variable 'first_scan' [-Wunused-variable]
+                  bool first_scan = true;
+                       ^
+..\Kriging\kriging.cpp(31,9): : warning : unused variable 'min' [-Wunused-variable]
+          double min = 1e15;
+                 ^
+..\Kriging\kriging.cpp(33,18): : warning : variable 'index' is used uninitialized whenever 'for' loop exits because its condition is false [-Wsometimes-uninitialized]
+          for (int i = 0; i < array.size(); i++) {
+                          ^~~~~~~~~~~~~~~~
+  ..\Kriging\kriging.cpp(40,9): note: uninitialized use occurs here
+          return index;
+                 ^~~~~
+  ..\Kriging\kriging.cpp(33,18): note: remove the condition if it is always true
+          for (int i = 0; i < array.size(); i++) {
+                          ^~~~~~~~~~~~~~~~
+  ..\Kriging\kriging.cpp(32,11): note: initialize the variable 'index' to silence this warning
+          int index;
+                   ^
+                    = 0
+..\Kriging\kriging.cpp(262,6): : warning : unused variable 'idx' [-Wunused-variable]
+          int idx = 0;
+              ^
+..\Kriging\kriging.cpp(374,37): : warning : expression result unused [-Wunused-value]
+          std::complex<double> referenceK = (kReal, 0.0);
+                                             ^~~~~
+..\Kriging\kriging.cpp(310,7): : warning : unused variable 'useAdjoint' [-Wunused-variable]
+          bool useAdjoint = false;
+               ^
+..\Kriging\kriging.cpp(344,67): : warning : unused variable 'dQoI2_ver2' [-Wunused-variable]
+          std::complex<double> dQoI2 = 0.0, dQoI1 = 0.0, dQoI2_ver1 = 0.0, dQoI2_ver2 = 0.0;
+                                                                           ^
+..\Kriging\kriging.cpp(309,7): : warning : unused variable 'basis_error' [-Wunused-variable]
+          bool basis_error = false;
+               ^
+..\Kriging\kriging.cpp(344,49): : warning : unused variable 'dQoI2_ver1' [-Wunused-variable]
+          std::complex<double> dQoI2 = 0.0, dQoI1 = 0.0, dQoI2_ver1 = 0.0, dQoI2_ver2 = 0.0;
+                                                         ^
+..\Kriging\kriging.cpp(307,7): : warning : unused variable 'error' [-Wunused-variable]
+          bool error = false;
+               ^
+..\Kriging\kriging.cpp(308,7): : warning : unused variable 'refine' [-Wunused-variable]
+          bool refine = false;
+               ^
+..\Kriging\kriging.cpp(344,36): : warning : unused variable 'dQoI1' [-Wunused-variable]
+          std::complex<double> dQoI2 = 0.0, dQoI1 = 0.0, dQoI2_ver1 = 0.0, dQoI2_ver2 = 0.0;
+                                            ^
+..\Kriging\kriging.cpp(306,7): : warning : unused variable 'sens' [-Wunused-variable]
+          bool sens = false;
+               ^
+..\Kriging\kriging.cpp(304,7): : warning : unused variable 'check_q' [-Wunused-variable]
+          bool check_q = false;
+               ^
+..\Kriging\kriging.cpp(344,23): : warning : unused variable 'dQoI2' [-Wunused-variable]
+          std::complex<double> dQoI2 = 0.0, dQoI1 = 0.0, dQoI2_ver1 = 0.0, dQoI2_ver2 = 0.0;
+                               ^
+..\Kriging\kriging.cpp(325,9): : warning : unused variable 'k0' [-Wunused-variable]
+          double k0 = dom_forward.scatter1.K0[1];
+                 ^
+..\Kriging\kriging.cpp(332,9): : warning : unused variable 'reference_k0' [-Wunused-variable]
+          double reference_k0;
+                 ^
+..\Kriging\kriging.cpp(333,23): : warning : unused variable 'new_qoi' [-Wunused-variable]
+          std::complex<double> new_qoi;
+                               ^
+..\Kriging\kriging.cpp(374,23): : warning : unused variable 'referenceK' [-Wunused-variable]
+          std::complex<double> referenceK = (kReal, 0.0);
+                               ^
+..\Kriging\kriging.cpp(413,7): : warning : unused variable 'error' [-Wunused-variable]
+          bool error = false;
+               ^
+..\Kriging\kriging.cpp(410,7): : warning : unused variable 'check_q' [-Wunused-variable]
+          bool check_q = false;
+               ^
+..\Kriging\kriging.cpp(414,7): : warning : unused variable 'refine' [-Wunused-variable]
+          bool refine = false;
+               ^
+..\Kriging\kriging.cpp(415,7): : warning : unused variable 'basis_error' [-Wunused-variable]
+          bool basis_error = false;
+               ^
+..\Kriging\kriging.cpp(427,23): : warning : unused variable 'qoi' [-Wunused-variable]
+          std::complex<double> qoi = Kriging::get_QoI2(dom_forward, dom_adjoint_rhs);
+                               ^
+..\Kriging\kriging.cpp(412,7): : warning : unused variable 'sens' [-Wunused-variable]
+          bool sens = false;
+               ^
+..\Kriging\kriging.cpp(652,11): : warning : unused variable 'avg' [-Wunused-variable]
+                          double avg = 0;
+                                 ^
+..\Kriging\kriging.cpp(653,11): : warning : unused variable 'dist' [-Wunused-variable]
+                          double dist = 0;
+                                 ^
+..\Kriging\kriging.cpp(605,7): : warning : unused variable 'hiErrorIndex' [-Wunused-variable]
+                  int hiErrorIndex = 0;
+                      ^
+..\Kriging\kriging.cpp(606,10): : warning : unused variable 'hiErrorCheck' [-Wunused-variable]
+                  double hiErrorCheck = 0.0;
+                         ^
+..\Kriging\kriging.cpp(599,10): : warning : unused variable 'hiError' [-Wunused-variable]
+                  double hiError = 0.0;
+                         ^
+..\Kriging\kriging.cpp(598,10): : warning : unused variable 'loError' [-Wunused-variable]
+                  double loError = 0.0;
+                         ^
+..\Kriging\kriging.cpp(611,7): : warning : unused variable 'val' [-Wunused-variable]
+                  int val = HOPS_splitting.size() - 1;
+                      ^
+..\Kriging\kriging.cpp(464,9): : warning : unused variable 'delta' [-Wunused-variable]
+          double delta = 0.0008;
+                 ^
+..\Kriging\kriging.cpp(467,9): : warning : unused variable 'stdLim' [-Wunused-variable]
+          double stdLim = 0.0001;
+                 ^
+..\Kriging\kriging.cpp(533,23): : warning : unused variable 'mean' [-Wunused-variable]
+          std::complex<double> mean;
+                               ^
+..\Kriging\kriging.cpp(545,9): : warning : unused variable 'bestAvg' [-Wunused-variable]
+          double bestAvg = 0.0;
+                 ^
+..\Kriging\kriging.cpp(531,9): : warning : unused variable 'sumRCS' [-Wunused-variable]
+          double sumRCS = 0.0;
+                 ^
+..\Kriging\kriging.cpp(530,23): : warning : unused variable 'sum' [-Wunused-variable]
+          std::complex<double> sum = 0.0;
+                               ^
+..\Kriging\kriging.cpp(537,9): : warning : unused variable 'stdDevRCS' [-Wunused-variable]
+          double stdDevRCS = 0.0;
+                 ^
+..\Kriging\kriging.cpp(477,9): : warning : unused variable 'matStd' [-Wunused-variable]
+          double matStd = 1.0;
+                 ^
+..\Kriging\kriging.cpp(534,9): : warning : unused variable 'meanRCS' [-Wunused-variable]
+          double meanRCS;
+                 ^
+..\Kriging\kriging.cpp(536,23): : warning : unused variable 'stdDev' [-Wunused-variable]
+          std::complex<double> stdDev = 0.0;
+                               ^
+..\Kriging\kriging.cpp(478,9): : warning : unused variable 'matMean' [-Wunused-variable]
+          double matMean = 4.5;
+                 ^
+..\Kriging\kriging.cpp(1018,9): : warning : unused variable 'k0' [-Wunused-variable]
+          double k0 = dom_forward.scatter1.K0[1];
+                 ^
+..\Kriging\kriging.cpp(999,7): : warning : unused variable 'refine' [-Wunused-variable]
+          bool refine = false;
+               ^
+..\Kriging\kriging.cpp(1000,7): : warning : unused variable 'basis_error' [-Wunused-variable]
+          bool basis_error = false;
+               ^
+..\Kriging\kriging.cpp(997,7): : warning : unused variable 'sens' [-Wunused-variable]
+          bool sens = false;
+               ^
+..\Kriging\kriging.cpp(1001,7): : warning : unused variable 'useAdjoint' [-Wunused-variable]
+          bool useAdjoint = false;
+               ^
+..\Kriging\kriging.cpp(998,7): : warning : unused variable 'error' [-Wunused-variable]
+          bool error = false;
+               ^
+..\Kriging\kriging.cpp(995,7): : warning : unused variable 'check_q' [-Wunused-variable]
+          bool check_q = false;
+               ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 1>>, Eigen::internal::assign_op<double, double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 1>>, Eigen::internal::assign_op<double, double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::assign_op<double, double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/ProductEvaluators.h(397,5): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::assign_op<double, double>>' requested here
+      call_assignment_no_alias(dst, lhs.lazyProduct(rhs), internal::assign_op<typename Dst::Scalar,Scalar>());
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/products/GeneralMatrixMatrix.h(431,20): note: (skipping 6 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+        lazyproduct::evalTo(dst, lhs, rhs);
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of function template specialization 'Eigen::internal::assignment_from_xpr_op_product<Eigen::Matrix<double, -1, -1, 0>, Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::sub_assign_op<double, double>>::run<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::internal::assign_op<double, double>>' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(193,25): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+          MatrixXd varianceVec = weightVec.transpose() * varMat * weightVec - covVec.transpose() * weightVec - weightVec.transpose() * covVec;
+                                 ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>>, Eigen::internal::assign_op<double, double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>>, Eigen::internal::assign_op<double, double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::assign_op<double, double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/ProductEvaluators.h(397,5): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::assign_op<double, double>>' requested here
+      call_assignment_no_alias(dst, lhs.lazyProduct(rhs), internal::assign_op<typename Dst::Scalar,Scalar>());
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/products/GeneralMatrixMatrix.h(431,20): note: (skipping 18 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+        lazyproduct::evalTo(dst, lhs, rhs);
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of function template specialization 'Eigen::internal::assignment_from_xpr_op_product<Eigen::Matrix<double, -1, -1, 0>, Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::sub_assign_op<double, double>>::run<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::internal::assign_op<double, double>>' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(193,25): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+          MatrixXd varianceVec = weightVec.transpose() * varMat * weightVec - covVec.transpose() * weightVec - weightVec.transpose() * covVec;
+                                 ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, Eigen::Matrix<double, -1, -1, 0>>>, Eigen::internal::assign_op<double, double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, Eigen::Matrix<double, -1, -1, 0>>>, Eigen::internal::assign_op<double, double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Matrix<double, -1, -1, 0>, Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::assign_op<double, double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(804,3): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::assign_op<double, double>>' requested here
+    call_assignment_no_alias(dst, src, func);
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(782,3): note: (skipping 11 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+    call_assignment(dst, src, internal::assign_op<typename Dst::Scalar,typename Src::Scalar>());
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of function template specialization 'Eigen::internal::assignment_from_xpr_op_product<Eigen::Matrix<double, -1, -1, 0>, Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::sub_assign_op<double, double>>::run<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::internal::assign_op<double, double>>' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(193,25): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+          MatrixXd varianceVec = weightVec.transpose() * varMat * weightVec - covVec.transpose() * weightVec - weightVec.transpose() * covVec;
+                                 ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>>, Eigen::internal::sub_assign_op<double, double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>>, Eigen::internal::sub_assign_op<double, double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::sub_assign_op<double, double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::sub_assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/ProductEvaluators.h(411,5): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::sub_assign_op<double, double>>' requested here
+      call_assignment_no_alias(dst, lhs.lazyProduct(rhs), internal::sub_assign_op<typename Dst::Scalar,Scalar>());
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/products/GeneralMatrixMatrix.h(452,20): note: (skipping 4 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+        lazyproduct::subTo(dst, lhs, rhs);
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of function template specialization 'Eigen::internal::assignment_from_xpr_op_product<Eigen::Matrix<double, -1, -1, 0>, Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::sub_assign_op<double, double>>::run<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::internal::assign_op<double, double>>' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(193,25): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_difference_op<double>, const Eigen::Product<Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::Matrix<double, -1, -1, 0>, 0>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>, const Eigen::Product<Eigen::Transpose<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>>' requested here
+          MatrixXd varianceVec = weightVec.transpose() * varMat * weightVec - covVec.transpose() * weightVec - weightVec.transpose() * covVec;
+                                 ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::assign_op<double, double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::assign_op<double, double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Matrix<double, -1, -1, 0>, Eigen::Matrix<double, -1, -1, 0>, Eigen::internal::assign_op<double, double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Matrix<double, -1, -1, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Matrix<double, -1, -1, 0>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(278,15): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::Matrix<double, -1, -1, 0>>' requested here
+          Base::_set_noalias(other);
+                ^
+  ..\Kriging\kriging.cpp(193,11): note: in instantiation of member function 'Eigen::Matrix<double, -1, -1, 0>::Matrix' requested here
+          MatrixXd varianceVec = weightVec.transpose() * varMat * weightVec - covVec.transpose() * weightVec - weightVec.transpose() * covVec;
+                   ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>>, Eigen::internal::assign_op<double, double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Matrix<double, -1, -1, 0>>, Eigen::internal::evaluator<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>>, Eigen::internal::assign_op<double, double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::assign_op<double, double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/ProductEvaluators.h(397,5): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 1>, Eigen::internal::assign_op<double, double>>' requested here
+      call_assignment_no_alias(dst, lhs.lazyProduct(rhs), internal::assign_op<typename Dst::Scalar,Scalar>());
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/products/GeneralMatrixMatrix.h(431,20): note: (skipping 2 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+        lazyproduct::evalTo(dst, lhs, rhs);
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(241,23): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+          MatrixXd weightMat = krigMat.inverse() * krigVec;
+                               ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, 1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, 1, -1, false>>, Eigen::internal::swap_assign_op<double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Swap.h(20,11): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, 1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, 1, -1, false>>, Eigen::internal::swap_assign_op<double>, 1>' requested here
+   : public generic_dense_assignment_kernel<DstEvaluatorTypeT, SrcEvaluatorTypeT, swap_assign_op<typename DstEvaluatorTypeT::Scalar>, BuiltIn>
+            ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, 1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, 1, -1, false>>, Eigen::internal::swap_assign_op<double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, 1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, 1, -1, false>, Eigen::internal::swap_assign_op<double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, 1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, 1, -1, false>, Eigen::internal::swap_assign_op<double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(804,3): note: (skipping 23 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+    call_assignment_no_alias(dst, src, func);
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(241,23): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+          MatrixXd weightMat = krigMat.inverse() * krigVec;
+                               ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, 1, true>, -1, 1, false>>, Eigen::internal::evaluator<Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, Eigen::Matrix<double, -1, 1, 0>>>, Eigen::internal::div_assign_op<double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, 1, true>, -1, 1, false>>, Eigen::internal::evaluator<Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, Eigen::Matrix<double, -1, 1, 0>>>, Eigen::internal::div_assign_op<double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, 1, true>, -1, 1, false>, Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, Eigen::Matrix<double, -1, 1, 0>>, Eigen::internal::div_assign_op<double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, 1, true>, -1, 1, false>, Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, Eigen::Matrix<double, -1, 1, 0>>, Eigen::internal::div_assign_op<double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(804,3): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, 1, true>, -1, 1, false>, Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, Eigen::Matrix<double, -1, 1, 0>>, Eigen::internal::div_assign_op<double>>' requested here
+    call_assignment_no_alias(dst, src, func);
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/SelfCwiseBinaryOp.h(45,13): note: (skipping 22 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+    internal::call_assignment(this->derived(), PlainObject::Constant(rows(),cols(),other), internal::div_assign_op<Scalar,Scalar>());
+              ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(241,23): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+          MatrixXd weightMat = krigMat.inverse() * krigVec;
+                               ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, -1, 1, true>>, Eigen::internal::evaluator<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, -1, 1, 0>>, const Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, 1, true>, -1, 1, false>>>, Eigen::internal::sub_assign_op<double, double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, -1, 1, true>>, Eigen::internal::evaluator<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, -1, 1, 0>>, const Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, 1, true>, -1, 1, false>>>, Eigen::internal::sub_assign_op<double, double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, -1, 1, true>, Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, -1, 1, 0>>, const Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, 1, true>, -1, 1, false>>, Eigen::internal::sub_assign_op<double, double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, -1, 1, true>, Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, -1, 1, 0>>, const Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, 1, true>, -1, 1, false>>, Eigen::internal::sub_assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(804,3): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, -1, 1, true>, Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, -1, 1, 0>>, const Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, 1, true>, -1, 1, false>>, Eigen::internal::sub_assign_op<double, double>>' requested here
+    call_assignment_no_alias(dst, src, func);
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/CwiseBinaryOp.h(164,3): note: (skipping 28 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+    call_assignment(derived(), other.derived(), internal::sub_assign_op<Scalar,typename OtherDerived::Scalar>());
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(241,23): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+          MatrixXd weightMat = krigMat.inverse() * krigVec;
+                               ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1, -1, false>>, Eigen::internal::swap_assign_op<double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Swap.h(20,11): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1, -1, false>>, Eigen::internal::swap_assign_op<double>, 1>' requested here
+   : public generic_dense_assignment_kernel<DstEvaluatorTypeT, SrcEvaluatorTypeT, swap_assign_op<typename DstEvaluatorTypeT::Scalar>, BuiltIn>
+            ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1, -1, false>>, Eigen::internal::swap_assign_op<double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1, -1, false>, Eigen::internal::swap_assign_op<double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1, -1, false>, Eigen::internal::swap_assign_op<double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(804,3): note: (skipping 22 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+    call_assignment_no_alias(dst, src, func);
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(241,23): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+          MatrixXd weightMat = krigMat.inverse() * krigVec;
+                               ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>>, Eigen::internal::assign_op<double, double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>>, Eigen::internal::assign_op<double, double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::internal::assign_op<double, double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(804,3): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::internal::assign_op<double, double>>' requested here
+    call_assignment_no_alias(dst, src, func);
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(782,3): note: (skipping 28 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+    call_assignment(dst, src, internal::assign_op<typename Dst::Scalar,typename Src::Scalar>());
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(241,23): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+          MatrixXd weightMat = krigMat.inverse() * krigVec;
+                               ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>>, Eigen::internal::evaluator<Eigen::Product<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1>>, Eigen::internal::sub_assign_op<double, double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>>, Eigen::internal::evaluator<Eigen::Product<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1>>, Eigen::internal::sub_assign_op<double, double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::Product<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1>, Eigen::internal::sub_assign_op<double, double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::Product<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1>, Eigen::internal::sub_assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/ProductEvaluators.h(411,5): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::Product<Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, Eigen::Block<Eigen::Block<Eigen::Map<Eigen::Matrix<double, -1, -1, 0>, 0>, -1, -1, false>, -1, -1, false>, 1>, Eigen::internal::sub_assign_op<double, double>>' requested here
+      call_assignment_no_alias(dst, lhs.lazyProduct(rhs), internal::sub_assign_op<typename Dst::Scalar,Scalar>());
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/products/GeneralMatrixMatrix.h(452,20): note: (skipping 24 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+        lazyproduct::subTo(dst, lhs, rhs);
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(241,23): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+          MatrixXd weightMat = krigMat.inverse() * krigVec;
+                               ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Matrix<bool, -1, 1, 0>>, Eigen::internal::evaluator<Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<bool>, Eigen::Matrix<bool, -1, 1, 0>>>, Eigen::internal::assign_op<bool, bool>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Matrix<bool, -1, 1, 0>>, Eigen::internal::evaluator<Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<bool>, Eigen::Matrix<bool, -1, 1, 0>>>, Eigen::internal::assign_op<bool, bool>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Matrix<bool, -1, 1, 0>, Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<bool>, Eigen::Matrix<bool, -1, 1, 0>>, Eigen::internal::assign_op<bool, bool>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<bool, -1, 1, 0>, Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<bool>, Eigen::Matrix<bool, -1, 1, 0>>, Eigen::internal::assign_op<bool, bool>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(804,3): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<bool, -1, 1, 0>, Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<bool>, Eigen::Matrix<bool, -1, 1, 0>>, Eigen::internal::assign_op<bool, bool>>' requested here
+    call_assignment_no_alias(dst, src, func);
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(782,3): note: (skipping 40 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+    call_assignment(dst, src, internal::assign_op<typename Dst::Scalar,typename Src::Scalar>());
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(241,23): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+          MatrixXd weightMat = krigMat.inverse() * krigVec;
+                               ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>>, Eigen::internal::swap_assign_op<double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Swap.h(20,11): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>>, Eigen::internal::swap_assign_op<double>, 1>' requested here
+   : public generic_dense_assignment_kernel<DstEvaluatorTypeT, SrcEvaluatorTypeT, swap_assign_op<typename DstEvaluatorTypeT::Scalar>, BuiltIn>
+            ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>>, Eigen::internal::swap_assign_op<double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>, Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>, Eigen::internal::swap_assign_op<double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>, Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>, Eigen::internal::swap_assign_op<double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(804,3): note: (skipping 37 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+    call_assignment_no_alias(dst, src, func);
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(241,23): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+          MatrixXd weightMat = krigMat.inverse() * krigVec;
+                               ^
+  In file included from ..\Kriging\kriging.cpp:1:
+  In file included from ..\Kriging/kriging.h:1:
+  In file included from ..\Kriging/../postprocessing/../structure/Domain.h:18:
+  In file included from ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/Core.h:420:
+..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(86,63): : warning : converting the enum constant to a boolean [-Wint-in-bool-context]
+      MayLinearVectorize = bool(MightVectorize) && MayLinearize && DstHasDirectAccess
+                                                                ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(607,20): note: in instantiation of template class 'Eigen::internal::copy_using_evaluator_traits<Eigen::internal::evaluator<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<const Eigen::CwiseNullaryOp<Eigen::internal::scalar_identity_op<double>, Eigen::Matrix<double, -1, -1, 0>>, 1, -1, false>>, Eigen::internal::assign_op<double, double>>' requested here
+    typedef typename AssignmentTraits::PacketType PacketType;
+                     ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(739,10): note: in instantiation of template class 'Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::evaluator<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>>, Eigen::internal::evaluator<Eigen::Block<const Eigen::CwiseNullaryOp<Eigen::internal::scalar_identity_op<double>, Eigen::Matrix<double, -1, -1, 0>>, 1, -1, false>>, Eigen::internal::assign_op<double, double>, 0>' requested here
+    Kernel kernel(dstEvaluator, srcEvaluator, func, dst.const_cast_derived());
+           ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(879,5): note: in instantiation of function template specialization 'Eigen::internal::call_dense_assignment_loop<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>, Eigen::Block<const Eigen::CwiseNullaryOp<Eigen::internal::scalar_identity_op<double>, Eigen::Matrix<double, -1, -1, 0>>, 1, -1, false>, Eigen::internal::assign_op<double, double>>' requested here
+      call_dense_assignment_loop(dst, src, func);
+      ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>, Eigen::Block<const Eigen::CwiseNullaryOp<Eigen::internal::scalar_identity_op<double>, Eigen::Matrix<double, -1, -1, 0>>, 1, -1, false>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(804,3): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Block<Eigen::Matrix<double, -1, -1, 0>, 1, -1, false>, Eigen::Block<const Eigen::CwiseNullaryOp<Eigen::internal::scalar_identity_op<double>, Eigen::Matrix<double, -1, -1, 0>>, 1, -1, false>, Eigen::internal::assign_op<double, double>>' requested here
+    call_assignment_no_alias(dst, src, func);
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(782,3): note: (skipping 40 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+    call_assignment(dst, src, internal::assign_op<typename Dst::Scalar,typename Src::Scalar>());
+    ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/AssignEvaluator.h(836,46): note: in instantiation of member function 'Eigen::internal::Assignment<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>, Eigen::internal::Dense2Dense>::run' requested here
+    Assignment<ActualDstTypeCleaned,Src,Func>::run(actualDst, src, func);
+                                               ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(728,17): note: in instantiation of function template specialization 'Eigen::internal::call_assignment_no_alias<Eigen::Matrix<double, -1, -1, 0>, Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>, Eigen::internal::assign_op<double, double>>' requested here
+        internal::call_assignment_no_alias(this->derived(), other.derived(), internal::assign_op<Scalar,typename OtherDerived::Scalar>());
+                  ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/PlainObjectBase.h(537,7): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::_set_noalias<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        _set_noalias(other);
+        ^
+  ..\Kriging/../structure/../eigen-eigen-5a0156e40feb/Eigen/src/Core/Matrix.h(379,9): note: in instantiation of function template specialization 'Eigen::PlainObjectBase<Eigen::Matrix<double, -1, -1, 0>>::PlainObjectBase<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+        : Base(other.derived())
+          ^
+  ..\Kriging\kriging.cpp(241,23): note: in instantiation of function template specialization 'Eigen::Matrix<double, -1, -1, 0>::Matrix<Eigen::Product<Eigen::Inverse<Eigen::Matrix<double, -1, -1, 0>>, Eigen::Matrix<double, -1, -1, 0>, 0>>' requested here
+          MatrixXd weightMat = krigMat.inverse() * krigVec;
+                               ^
+..\Kriging\kriging.cpp(7,15): : warning : unused function 'gaussModel' [-Wunused-function]
+  static double gaussModel(double h, double r, double c0, double b) {
+                ^
+..\Kriging\kriging.cpp(23,36): : warning : unused function 'operator/' [-Wunused-function]
+  static inline std::complex<double> operator/(std::complex<double> c1, double d1) {
+                                     ^
+  77 warnings generated.
