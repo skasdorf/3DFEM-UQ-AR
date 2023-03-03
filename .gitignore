@@ -1,2 +1,21 @@
+<<<<<<< Updated upstream
 cpp/executable/x64/Release/FEM++.exe
 cpp/executable/.vs/*
+=======
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/29355633892e021a/MAIN.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/30430e44899f02a9/RUN_MODES.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/38d3f09e5e408789/HOPS.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/3c67d5382cd04183/HOPS.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/4007742840156868/MAIN.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/459c963eb961c072/REFINEMENT.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/4b75b05cc149f631/POSTPROCESSING.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/5992cf595260f472/STRUCTURECONTROL.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/66cfaee7a3533fd/HOPS.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/7757d225c24f47dc/DOMAIN.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/81dc7ae0e93bdac9/RUN_MODES.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/98fbf0b4601dbc92/STRUCTURECONTROL.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/b5ad607e4ab4c323/HOPS.ipch
+cpp/executable/.vs/FEM++/v16/ipch/AutoPCH/c7865d02704b827a/MAIN.ipch
+cpp/executable/x64/Release/FEM++.exe
+cpp/executable/.vs/FEM++/v16/Browse.VC.opendb
+>>>>>>> Stashed changes
