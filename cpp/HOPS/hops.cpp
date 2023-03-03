@@ -321,7 +321,9 @@ void HOPS::monte_carlo_instance(std::string & file_name)
 }
 
 
-
+//dual here just means QoI solution and QoI gradient
+//probably should come up with a better name
+//dual typically means some sort of adjoint transformation problem
 void HOPS::monte_carlo_dual(std::string& file_name)
 {
 	//compute the forward solution
@@ -356,7 +358,7 @@ void HOPS::monte_carlo_dual(std::string& file_name)
 
 	//materials list
 	std::vector<std::complex<long double>> material_list;
-	std::ifstream materials_in("../ioFiles/input/materials_list4.txt");
+	std::ifstream materials_in("../ioFiles/input/materials_list5.txt");
 	std::string line;
 	//std::cout << "Current rounding material values to match the shitty output from MATLAB!" << std::endl;
 	while (std::getline(materials_in, line)) {
@@ -413,7 +415,7 @@ void HOPS::monte_carlo_dual(std::string& file_name)
 
 		//output one time
 		//output results to file
-		std::ofstream qoi_dist_out("../ioFiles/output/MonteCarlo/MC4.txt", std::ios::out | std::ios::app);
+		std::ofstream qoi_dist_out("../ioFiles/output/MonteCarlo/MC5.txt", std::ios::out | std::ios::app);
 		qoi_dist_out << std::setprecision(12) << material_list[i].real() << " " << material_list[i].imag() << " " << referenceVals[i].real() << " " << referenceVals[i].imag() << " " << gradient[i].real() << " " << gradient[i].imag() << std::endl;
 
 

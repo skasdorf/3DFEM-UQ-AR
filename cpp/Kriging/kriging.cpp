@@ -2362,7 +2362,7 @@ std::complex<double> Kriging::get_QoI(Domain & dom_forward, Domain & dom_adjoint
 void Kriging::monte_carlo_instance(std::string & file_name)
 {
 	//compute the forward solution
-	//then compute just the RHS for the adjoint solution (to get the QoI term to compare w/ HOPS)
+	//then compute just the RHS for the adjoint solution (to get the QoI term to compute the monte carlo)
 	bool check_q = false;
 	bool plot = false;
 	bool sens = false;
