@@ -54,11 +54,11 @@ void run::_standard(Domain& dom, std::string mesh_name, bool plot, bool useAdjoi
 
 	/////////////////////////////////Material Perturbation///////////////////////////////////////////////////
 	// //mat4
-	//dom.sc.fstart = 70e6;
-	//dom.sc.fstop = 70e6;
+	dom.sc.fstart = 70e6;
+	dom.sc.fstop = 70e6;
 	// //mat5
-	dom.sc.fstart = 115e6;
-	dom.sc.fstop = 115e6;
+	//dom.sc.fstart = 115e6;
+	//dom.sc.fstop = 115e6;
 	//--------------------------------------------------------------------------------------------------------
 
 	dom.sc.useAdjoint = useAdjoint;

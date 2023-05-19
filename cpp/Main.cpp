@@ -547,8 +547,8 @@ int main() {
 		//HOPS::multi_HOPS_multi_epsr(mesh_name);
 		
 		//HOPS::multi_HOPS_epsr(mesh_name);
-		//Kriging::multi_HOPS_epsr(mesh_name);
-		HOPS::monte_carlo_dual(mesh_name);
+		Kriging::multi_HOPS_epsr(mesh_name);
+		//HOPS::monte_carlo_dual(mesh_name);
 		//Bayes::posterior(mesh_name);
 
 

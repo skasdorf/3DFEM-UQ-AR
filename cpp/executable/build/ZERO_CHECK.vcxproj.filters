@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="F:\Github\3DFEM-UQ-AR\cpp\executable\build\CMakeFiles\1be6a508c3bea4c6419bfe7d71c6fa6e\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{6CE2AE2E-1176-3EEE-95F2-F4714D640449}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

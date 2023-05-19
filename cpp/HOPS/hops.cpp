@@ -264,9 +264,15 @@ std::complex<long double> HOPS::sensitivity_to_epsr(std::string & file_name, std
 		std::complex<long double> eps_diff_scaled = (real(eps_diff) * real(eps_diff) + imag(eps_diff) * imag(eps_diff));
 		std::complex<long double> reference_qoi_scaled = (real(reference_qoi) * real(reference_qoi) + imag(reference_qoi) * imag(reference_qoi));
 
-		updated_qoi.push_back(reference_qoi + eps_diff * dQoI / eps_diffMag);// +eps_diff * eps_diff * dQoI2 / 2.0);
+		updated_qoi.push_back(reference_qoi + eps_diff * dQoI);// +eps_diff * eps_diff * dQoI2 / 2.0);
 
-		std::cout << "gradient magnitude: " << dQoIMag << std::endl;
+		std::complex<long double> field = reference_qoi + eps_diff * dQoI;
+		double RCS = (field.real() * field.real() + field.imag() * field.imag()) / (4 * 3.14159);
+		double refRCS = (reference_qoi.real() * reference_qoi.real() + reference_qoi.imag() * reference_qoi.imag()) / (4 * 3.14159);
+
+		std::cout << "ref RCS: " << refRCS << "  epsDiff: " << eps_diff << "  dQoI: " << dQoI  << "  RCS: " << RCS << std::endl;
+
+		//std::cout << "gradient magnitude: " << dQoIMag << std::endl;
 		//std::cout << reference_qoi + eps_diff * dQoI << std::endl;
 		//std::cout << "qoi: " << reference_qoi + eps_diff * dQoI << std::endl;
 		
@@ -358,7 +364,7 @@ void HOPS::monte_carlo_dual(std::string& file_name)
 
 	//materials list
 	std::vector<std::complex<long double>> material_list;
-	std::ifstream materials_in("../ioFiles/input/materials_list5.txt");
+	std::ifstream materials_in("../ioFiles/input/materials_list4.txt");
 	std::string line;
 	//std::cout << "Current rounding material values to match the shitty output from MATLAB!" << std::endl;
 	while (std::getline(materials_in, line)) {
@@ -465,7 +471,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	}
 	materials_in.close();
 
-	sort(material_list.begin(), material_list.end(), complexComparitor);
+	//sort(material_list.begin(), material_list.end(), complexComparitor);
 
 	//for sweeping ref inputs, otherwise use next segment for mat or freq perturbation with set references---------------------------------
 	//std::vector<long double> referencesReal;
@@ -518,6 +524,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	//std::vector<std::complex<long double>> referencesFull = { {1.000000, -2.000000},{1.100000, -2.000000},{1.200000, -2.000000},{1.300000, -2.000000},{1.400000, -2.000000},{1.500000, -2.000000},{1.600000, -2.000000},{1.700000, -2.000000},{1.800000, -2.000000},{1.900000, -2.000000},{2.000000, -2.000000},{2.100000, -2.000000},{2.200000, -2.000000},{2.300000, -2.000000},{2.400000, -2.000000},{2.500000, -2.000000},{2.600000, -2.000000},{2.700000, -2.000000},{2.800000, -2.000000},{2.900000, -2.000000},{3.000000, -2.000000},{3.100000, -2.000000},{3.200000, -2.000000},{3.300000, -2.000000},{3.400000, -2.000000},{3.500000, -2.000000},{3.600000, -2.000000},{3.700000, -2.000000},{3.800000, -2.000000},{3.900000, -2.000000},{4.000000, -2.000000},{4.100000, -2.000000},{4.200000, -2.000000},{4.300000, -2.000000},{4.400000, -2.000000},{4.500000, -2.000000},{4.600000, -2.000000},{4.700000, -2.000000},{4.800000, -2.000000},{4.900000, -2.000000},{5.000000, -2.000000},{5.100000, -2.000000},{5.200000, -2.000000},{5.300000, -2.000000},{5.400000, -2.000000},{5.500000, -2.000000},{5.600000, -2.000000},{5.700000, -2.000000},{5.800000, -2.000000},{5.900000, -2.000000},{6.000000, -2.000000},{6.100000, -2.000000},{6.200000, -2.000000},{6.300000, -2.000000},{6.400000, -2.000000},{6.500000, -2.000000},{6.600000, -2.000000},{6.700000, -2.000000},{6.800000, -2.000000},{6.900000, -2.000000},{7.000000, -2.000000},{7.100000, -2.000000},{7.200000, -2.000000},{7.300000, -2.000000},{7.400000, -2.000000},{7.500000, -2.000000},{7.600000, -2.000000},{7.700000, -2.000000},{7.800000, -2.000000},{7.900000, -2.000000},{8.000000, -2.000000} };
 	//std::vector<std::complex<long double>> referencesFull = { {3.000000, -2.000000},{3.100000, -2.000000},{3.200000, -2.000000},{3.300000, -2.000000},{3.400000, -2.000000},{3.500000, -2.000000},{3.600000, -2.000000},{3.700000, -2.000000},{3.800000, -2.000000},{3.900000, -2.000000},{4.000000, -2.000000},{4.100000, -2.000000},{4.200000, -2.000000},{4.300000, -2.000000},{4.400000, -2.000000},{4.500000, -2.000000},{4.600000, -2.000000},{4.700000, -2.000000},{4.800000, -2.000000},{4.900000, -2.000000},{5.000000, -2.000000},{5.100000, -2.000000},{5.200000, -2.000000},{5.300000, -2.000000},{5.400000, -2.000000},{5.500000, -2.000000},{5.600000, -2.000000},{5.700000, -2.000000},{5.800000, -2.000000},{5.900000, -2.000000},{6.000000, -2.000000},{6.100000, -2.000000},{6.200000, -2.000000},{6.300000, -2.000000},{6.400000, -2.000000},{6.500000, -2.000000},{6.600000, -2.000000},{6.700000, -2.000000},{6.800000, -2.000000},{6.900000, -2.000000},{7.000000, -2.000000},{7.100000, -2.000000},{7.200000, -2.000000},{7.300000, -2.000000},{7.400000, -2.000000},{7.500000, -2.000000},{7.600000, -2.000000},{7.700000, -2.000000},{7.800000, -2.000000},{7.900000, -2.000000},{8.000000, -2.000000},{8.100000, -2.000000},{8.200000, -2.000000},{8.300000, -2.000000},{8.400000, -2.000000},{8.500000, -2.000000},{8.600000, -2.000000},{8.700000, -2.000000},{8.800000, -2.000000},{8.900000, -2.000000},{9.000000, -2.000000},{9.100000, -2.000000},{9.200000, -2.000000},{9.300000, -2.000000},{9.400000, -2.000000},{9.500000, -2.000000},{9.600000, -2.000000},{9.700000, -2.000000},{9.800000, -2.000000},{9.900000, -2.000000},{10.000000, -2.000000} };
 	std::vector<std::complex<long double>> referencesFull = { {1.500000, -2.000000}, { 1.600000, -2.000000 }, { 1.700000, -2.000000 }, { 1.800000, -2.000000 }, { 1.900000, -2.000000 }, { 2.000000, -2.000000 }, { 2.100000, -2.000000 }, { 2.200000, -2.000000 }, { 2.300000, -2.000000 }, { 2.400000, -2.000000 }, { 2.500000, -2.000000 }, { 2.600000, -2.000000 }, { 2.700000, -2.000000 }, { 2.800000, -2.000000 }, { 2.900000, -2.000000 }, { 3.000000, -2.000000 }, { 3.100000, -2.000000 }, { 3.200000, -2.000000 }, { 3.300000, -2.000000 }, { 3.400000, -2.000000 }, { 3.500000, -2.000000 }, { 3.600000, -2.000000 }, { 3.700000, -2.000000 }, { 3.800000, -2.000000 }, { 3.900000, -2.000000 }, { 4.000000, -2.000000 }, { 4.100000, -2.000000 }, { 4.200000, -2.000000 }, { 4.300000, -2.000000 }, { 4.400000, -2.000000 }, { 4.500000, -2.000000 }, { 4.600000, -2.000000 }, { 4.700000, -2.000000 }, { 4.800000, -2.000000 }, { 4.900000, -2.000000 }, { 5.000000, -2.000000 }, { 5.100000, -2.000000 }, { 5.200000, -2.000000 }, { 5.300000, -2.000000 }, { 5.400000, -2.000000 }, { 5.500000, -2.000000 }, { 5.600000, -2.000000 }, { 5.700000, -2.000000 }, { 5.800000, -2.000000 }, { 5.900000, -2.000000 }, { 6.000000, -2.000000 }, { 6.100000, -2.000000 }, { 6.200000, -2.000000 }, { 6.300000, -2.000000 }, { 6.400000, -2.000000 }, { 6.500000, -2.000000 }, { 6.600000, -2.000000 }, { 6.700000, -2.000000 }, { 6.800000, -2.000000 }, { 6.900000, -2.000000 }, { 7.000000, -2.000000 }, { 7.100000, -2.000000 }, { 7.200000, -2.000000 }, { 7.300000, -2.000000 }, { 7.400000, -2.000000 }, { 7.500000, -2.000000 }, { 7.600000, -2.000000 }, { 7.700000, -2.000000 }, { 7.800000, -2.000000 }, { 7.900000, -2.000000 }, { 8.000000, -2.000000 }, { 8.100000, -2.000000 }, { 8.200000, -2.000000 }, { 8.300000, -2.000000 }, { 8.400000, -2.000000 }, { 8.500000, -2.000000 }, { 8.600000, -2.000000 }, { 8.700000, -2.000000 }, { 8.800000, -2.000000 }, { 8.900000, -2.000000 }, { 9.000000, -2.000000 }, { 9.100000, -2.000000 }, { 9.200000, -2.000000 }, { 9.300000, -2.000000 }, { 9.400000, -2.000000 }, { 9.500000, -2.000000 }, { 9.600000, -2.000000 }, { 9.700000, -2.000000 }, { 9.800000, -2.000000 }, { 9.900000, -2.000000 }, { 10.000000, -2.000000 }, { 10.100000, -2.000000 }, { 10.200000, -2.000000 }, { 10.300000, -2.000000 }, { 10.400000, -2.000000 }, { 10.500000, -2.000000 }, { 10.600000, -2.000000 }, { 10.700000, -2.000000 }, { 10.800000, -2.000000 }, { 10.900000, -2.000000 }, { 11.000000, -2.000000 } };
+	//std::vector<std::complex<long double>> referencesFull = { {1.500000, -1.000000}, { 1.600000, -1.000000 }, { 1.700000, -1.000000 }, { 1.800000, -1.000000 }, { 1.900000, -1.000000 }, { 2.000000, -1.000000 }, { 2.100000, -1.000000 }, { 2.200000, -1.000000 }, { 2.300000, -1.000000 }, { 2.400000, -1.000000 }, { 2.500000, -1.000000 }, { 2.600000, -1.000000 }, { 2.700000, -1.000000 }, { 2.800000, -1.000000 }, { 2.900000, -1.000000 }, { 3.000000, -1.000000 }, { 3.100000, -1.000000 }, { 3.200000, -1.000000 }, { 3.300000, -1.000000 }, { 3.400000, -1.000000 }, { 3.500000, -1.000000 }, { 3.600000, -1.000000 }, { 3.700000, -1.000000 }, { 3.800000, -1.000000 }, { 3.900000, -1.000000 }, { 4.000000, -1.000000 }, { 4.100000, -1.000000 }, { 4.200000, -1.000000 }, { 4.300000, -1.000000 }, { 4.400000, -1.000000 }, { 4.500000, -1.000000 }, { 4.600000, -1.000000 }, { 4.700000, -1.000000 }, { 4.800000, -1.000000 }, { 4.900000, -1.000000 }, { 5.000000, -1.000000 }, { 5.100000, -1.000000 }, { 5.200000, -1.000000 }, { 5.300000, -1.000000 }, { 5.400000, -1.000000 }, { 5.500000, -1.000000 }, { 5.600000, -1.000000 }, { 5.700000, -1.000000 }, { 5.800000, -1.000000 }, { 5.900000, -1.000000 }, { 6.000000, -1.000000 }, { 6.100000, -1.000000 }, { 6.200000, -1.000000 }, { 6.300000, -1.000000 }, { 6.400000, -1.000000 }, { 6.500000, -1.000000 }, { 6.600000, -1.000000 }, { 6.700000, -1.000000 }, { 6.800000, -1.000000 }, { 6.900000, -1.000000 }, { 7.000000, -1.000000 }, { 7.100000, -1.000000 }, { 7.200000, -1.000000 }, { 7.300000, -1.000000 }, { 7.400000, -1.000000 }, { 7.500000, -1.000000 }, { 7.600000, -1.000000 }, { 7.700000, -1.000000 }, { 7.800000, -1.000000 }, { 7.900000, -1.000000 }, { 8.000000, -1.000000 }, { 8.100000, -1.000000 }, { 8.200000, -1.000000 }, { 8.300000, -1.000000 }, { 8.400000, -1.000000 }, { 8.500000, -1.000000 }, { 8.600000, -1.000000 }, { 8.700000, -1.000000 }, { 8.800000, -1.000000 }, { 8.900000, -1.000000 }, { 9.000000, -1.000000 }, { 9.100000, -1.000000 }, { 9.200000, -1.000000 }, { 9.300000, -1.000000 }, { 9.400000, -1.000000 }, { 9.500000, -1.000000 }, { 9.600000, -1.000000 }, { 9.700000, -1.000000 }, { 9.800000, -1.000000 }, { 9.900000, -1.000000 }, { 10.000000, -1.000000 }, { 10.100000, -1.000000 }, { 10.200000, -1.000000 }, { 10.300000, -1.000000 }, { 10.400000, -1.000000 }, { 10.500000, -1.000000 }, { 10.600000, -1.000000 }, { 10.700000, -1.000000 }, { 10.800000, -1.000000 }, { 10.900000, -1.000000 }, { 11.000000, -1.000000 } };
 
 	
 	//----------------------------------------------------------------------------------------------------------------
@@ -544,7 +551,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 	////easy sweep condition
 	refIndex.clear();
 	references.clear();
-	for (int i = 0; i < 95; i += 25) {
+	for (int i = 0; i < 95; i += 14) {
 		refIndex.push_back(i);
 		references.push_back(referencesFull[i]);
 	}
@@ -553,6 +560,7 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 		references.push_back(referencesFull[95]);
 	}
 	////-------
+
 
 
 	//references = { referencesFull[5], referencesFull[10], referencesFull[15], referencesFull[20], referencesFull[25], referencesFull[30],referencesFull[35], referencesFull[40], referencesFull[45], referencesFull[50], referencesFull[55], referencesFull[60], referencesFull[65], referencesFull[70] };
@@ -806,6 +814,17 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 			std::cout << "Testing for reference number: " << refIndex[i] << std::endl;
 			referenceVals[i] = HOPS::sensitivity_to_epsr(in_file_name, HOPS_splitting[i], qoi_list[i], references[i], gradient[i]);
 
+			std::cout << "referenceVals[i]: " << referenceVals[i] << std::endl;
+
+			//for (int j = 0; j < qoi_list[i].size(); ++j) {
+			//	std::cout << "referenceMat:  " << HOPS_splitting[i][j] << "  qoi_list: " << qoi_list[i][j] << "  RCS[i]: " << (qoi_list[i][j].real() * qoi_list[i][j].real() + qoi_list[i][j].imag() * qoi_list[i][j].imag()) / (4 * 3.14159) << std::endl;
+			//}
+
+		}
+
+
+		for (int j = 0; j < qoi_list[1].size(); ++j) {
+			std::cout << "referenceMat:  " << HOPS_splitting[1][j] << "  qoi_list: " << qoi_list[1][j] << "  RCS[i]: " << (qoi_list[1][j].real() * qoi_list[1][j].real() + qoi_list[1][j].imag() * qoi_list[1][j].imag()) / (4 * 3.14159) << std::endl;
 		}
 
 		//end condition based on convergence
@@ -917,52 +936,59 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 		/////////////// Cubic Spline//////////////////////////////////////////
 
-		alglib::real_1d_array x;
-		alglib::real_1d_array yReal;
-		alglib::real_1d_array yImag;
-		x.setlength(references.size());
-		yReal.setlength(references.size());
-		yImag.setlength(references.size());
+		//alglib::real_1d_array x;
+		//alglib::real_1d_array yReal;
+		//alglib::real_1d_array yImag;
+		//x.setlength(references.size());
+		//yReal.setlength(references.size());
+		//yImag.setlength(references.size());
+		//
+		//
+		//for (int i = 0; i < references.size(); ++i) {
+		//	x[i] = references[i].real();
+		//	yReal[i] = referenceVals[i].real();
+		//	yImag[i] = referenceVals[i].imag();
+		//
+		//}
+		//
+		//alglib::spline1dinterpolant sReal;
+		//alglib::spline1dinterpolant sImag;
+		//
+		//
+		//alglib::ae_int_t bound = 1;
+		//
+		//for (int i = 0; i < references.size(); ++i) {
+		//	std::cout << references[i].real() << " " << yReal[i] << " \n";
+		//}
+		//
+		//long double re;
+		//long double ima;
+		//for (int i = 0; i < qoi_list.size(); i++) {
+		//	std::cout << "made it here2\n";
+		//	// 4th order accurate cubic spline (using gradients)
+		//	//alglib::spline1dbuildcubic(x, yReal, references.size(), bound, gradient[i].real(), bound, gradient[i+1].real(), sReal);
+		//	//alglib::spline1dbuildcubic(x, yImag, references.size(), bound, gradient[i].imag(), bound, gradient[i+1].imag(), sImag);
+		//	//2nd order accurate cubic spline (no gradients)
+		//	alglib::spline1dbuildcubic(x, yReal, sReal);
+		//	alglib::spline1dbuildcubic(x, yImag, sImag);
 
+		//	std::cout << "spline reconstruction points: " << referenceVals[i] << std::endl;
 
-		for (int i = 0; i < references.size(); ++i) {
-			x[i] = references[i].real();
-			yReal[i] = referenceVals[i].real();
-			yImag[i] = referenceVals[i].imag();
+		//	//need to remove the max/min test values for each of the batches
+		//	for (int j = 0; j < qoi_list[i].size() - 2; ++j) {
+		//		
+		//		re = alglib::spline1dcalc(sReal, HOPS_splitting[i][j].real());
+		//		//std::cout << "made it here3\n";
+		//		ima = alglib::spline1dcalc(sImag, HOPS_splitting[i][j].real());
+		//		//std::cout << "made it here4\n";
 
-		}
+		//		//// actual spline reconstruction
+		//		qoi_list[i][j] = { re, ima };
+		//		//std::cout << "made it here5\n";
 
-		alglib::spline1dinterpolant sReal;
-		alglib::spline1dinterpolant sImag;
-
-
-		alglib::ae_int_t bound = 1;
-
-		for (int i = 0; i < references.size(); ++i) {
-			std::cout << references[i].real() << " " << yReal[i] << " \n";
-		}
-
-		long double re;
-		long double ima;
-		for (int i = 0; i < qoi_list.size() - 1; i++) {
-			std::cout << "made it here2\n";
-			alglib::spline1dbuildcubic(x, yReal, references.size(), bound, gradient[i].real(), bound, gradient[i+1].real(), sReal);
-			alglib::spline1dbuildcubic(x, yImag, references.size(), bound, gradient[i].imag(), bound, gradient[i+1].imag(), sImag);
-
-			//need to remove the max/min test values for each of the batches
-			for (int j = 0; j < qoi_list[i].size() - 2; ++j) {
-				
-				re = alglib::spline1dcalc(sReal, HOPS_splitting[i][j].real());
-				//std::cout << "made it here3\n";
-				ima = alglib::spline1dcalc(sImag, HOPS_splitting[i][j].real());
-				//std::cout << "made it here4\n";
-
-				//qoi_list[i][j] = { re, ima };
-				//std::cout << "made it here5\n";
-
-				//std::cout << "i: " << i << " j: " << j << std::endl;
-			}
-		}
+		//		//std::cout << "i: " << i << " j: " << j << std::endl;
+		//	}
+		//}
 
 		//for (int i = 0; i < references.size(); i++) {
 		//	if (i == references.size() - 1) {
@@ -976,11 +1002,12 @@ void HOPS::multi_HOPS_epsr(std::string & file_name)
 
 
 
+
 		//////---------------------------------------------------------------
 
 
 		//AR sweep output
-		std::string outF = "../ioFiles/output/sweep/firstOrder4/qoi_HOPS_materialAR" + std::to_string(iterations + 2) + ".txt";
+		std::string outF = "../ioFiles/output/paper/mat4/HOPS/qoi_HOPS_materialAR" + std::to_string(iterations) + ".txt";
 		//std::string outF = "../ioFiles/output/sweep/splineGrad/qoi_HOPS_materialAR15.txt";
 		std::ofstream qoi_dist_out(outF);
 		int index = 0;

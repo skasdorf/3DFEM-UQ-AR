@@ -135,7 +135,7 @@
       <AdditionalLibraryDirectories>F:\Github\3DFEM-UQ-AR\cpp\nlopt\build\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api;F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp;F:\Github\3DFEM-UQ-AR\cpp\dlib;F:\Github\3DFEM-UQ-AR\cpp\eigen-eigen-5a0156e40feb;C:\Users\jjh_3\git\FEM\cpp\eigen-eigen-5a0156e40feb;U:\EMAG\UQ\FEM\cpp\eigen-eigen-5a0156e40feb;C:\Users\srkas\Desktop\3DFEM-UQ-master\cpp\eigen-eigen-5a0156e40feb</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Github\3DFEM-UQ-AR\cpp\nlopt\src\api;F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp;F:\Github\3DFEM-UQ-AR\cpp\dlib;F:\Github\3DFEM-UQ-AR\cpp\eigen-eigen-5a0156e40feb</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>

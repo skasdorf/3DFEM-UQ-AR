@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\alglibinternal.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\alglibmisc.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\ap.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\dataanalysis.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\diffequations.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\fasttransforms.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\integration.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\interpolation.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\kernels_avx2.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\kernels_fma.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\kernels_sse2.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\linalg.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\optimization.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\solvers.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\specialfunctions.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\alglib-cpp\src\statistics.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\fileIO\fileIO2.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\postprocessing\postprocessing.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\run_modes.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\utility\adp_methods.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\utility\refinement_tests.cpp" />
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\Bayes\bayes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\control\StructureControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\functions\Coordinates.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\functions\integralFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\functions\matrixFilling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\functions\unitVectorsM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\integrals\BasisEval.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\integrals\Integral_c.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\integrals\Integral_d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\integrals\Integral_g.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\Kriging\kriging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\structure\Domain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\structure\element_error.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\structure\Facet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\utility\constants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\utility\functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\utility\h_refine_assist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\utility\Plotter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\utility\qoi_helper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\utility\refinement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\utility\sparseSolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Github\3DFEM-UQ-AR\cpp\HOPS\hops.cpp">
+      <Filter>Source Files\HOPS</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\fileIO\fileIO2.h" />
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\NLopt.v2.6.1.x86_64.tar\include\nlopt.h" />
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\NLopt.v2.6.1.x86_64.tar\include\nlopt.hpp" />
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\Bayes\bayes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\Kriging\kriging.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\run_modes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\fileIO_functions.h">
+      <Filter>Header Files\FILEIO</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\fileIOCon.h">
+      <Filter>Header Files\FILEIO</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\HOPS\hops.h">
+      <Filter>Header Files\HOPS</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\postprocessing\postprocessing.h">
+      <Filter>Header Files\Postprocessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\functions\qoi_error.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\functions\sensitivity.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\structure\adjacent.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\structure\element_error.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\structure\error_struct.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\additional_basis.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\qoi_helper.h">
+      <Filter>Header Files\QOI</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\adp_methods.h">
+      <Filter>Header Files\Refinement</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\h_refine_assist.h">
+      <Filter>Header Files\Refinement</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\refinement.h">
+      <Filter>Header Files\Refinement</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\refinement_tests.h">
+      <Filter>Header Files\Refinement</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\control\StructureControl.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\functions\basis.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\functions\Coordinates.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\functions\find_at_quad.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\functions\products.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\functions\unitVectorsM.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\integrals\BasisEval.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\structure\Domain.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\structure\Element.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\structure\Facet.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\structure\Material.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\structure\Point.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\structure\Scatter.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\structure\Tables.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\constants.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\functions.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\memory_functions.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\Plotter.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\functions\elunknowns.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\functions\integralFunctions.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\functions\matrixFilling.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\integrals\Integral_c.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\integrals\Integral_d.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\integrals\Integral_g.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\structure\FrequencySweep.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\utility\sparseSolver.h">
+      <Filter>Header Files\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\matricies\matrix2d.h">
+      <Filter>Header Files\matrices</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\matricies\matrix3d.h">
+      <Filter>Header Files\matrices</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Github\3DFEM-UQ-AR\cpp\matricies\matrix4d.h">
+      <Filter>Header Files\matrices</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Github\3DFEM-UQ-AR\cpp\executable\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{BF64EA7F-6E8D-3141-BA1F-A6CBED318222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FILEIO">
+      <UniqueIdentifier>{ACFB8BEF-04DB-36E2-877E-863C8354CB53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HOPS">
+      <UniqueIdentifier>{FE7AC0CF-2011-3ECE-91BF-E374A9D8F72B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Postprocessing">
+      <UniqueIdentifier>{2A29315B-1A89-3209-92E3-226B6E1DF177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\QOI">
+      <UniqueIdentifier>{B7BB91C3-6F3B-3658-9AB0-F4103F88A95D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Refinement">
+      <UniqueIdentifier>{E2492236-5524-3AA9-B40E-8065F06BFBAB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Structure">
+      <UniqueIdentifier>{B201811D-E801-3BC8-9F6A-EC91E018C6F3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\integration">
+      <UniqueIdentifier>{1C478480-BB78-3BAA-9039-AC159CB9BF08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\matrices">
+      <UniqueIdentifier>{1676B058-AB9E-3B16-BBB5-4F57D6BB2CA4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8976008D-6F9A-317D-886C-905FCEB4FE21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HOPS">
+      <UniqueIdentifier>{72F49F55-3560-3F15-99BC-A3DA6106D529}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

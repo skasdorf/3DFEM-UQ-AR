@@ -1,0 +1,10 @@
+^F:\GITHUB\3DFEM-UQ-AR\CPP\EXECUTABLE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SF:/Github/3DFEM-UQ-AR/cpp/executable -BF:/Github/3DFEM-UQ-AR/cpp/executable/build --check-stamp-file F:/Github/3DFEM-UQ-AR/cpp/executable/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

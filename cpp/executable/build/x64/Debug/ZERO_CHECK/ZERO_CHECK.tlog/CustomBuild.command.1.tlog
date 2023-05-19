@@ -1,0 +1,10 @@
+^F:\GITHUB\3DFEM-UQ-AR\CPP\EXECUTABLE\BUILD\CMAKEFILES\1BE6A508C3BEA4C6419BFE7D71C6FA6E\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SF:/Github/3DFEM-UQ-AR/cpp/executable -BF:/Github/3DFEM-UQ-AR/cpp/executable/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file F:/Github/3DFEM-UQ-AR/cpp/executable/build/FEM++.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
