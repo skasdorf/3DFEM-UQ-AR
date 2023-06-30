@@ -15,7 +15,7 @@ using namespace Eigen;
 
 
 
-MatrixXd removeRow(Eigen::MatrixXd matrix, unsigned int rowToRemove)
+MatrixXcd removeRow(Eigen::MatrixXcd matrix, unsigned int rowToRemove)
 {
 	unsigned int numRows = matrix.rows() - 1;
 	unsigned int numCols = matrix.cols();
@@ -27,7 +27,7 @@ MatrixXd removeRow(Eigen::MatrixXd matrix, unsigned int rowToRemove)
 	return matrix;
 }
 
-MatrixXd removeColumn(Eigen::MatrixXd matrix, unsigned int colToRemove)
+MatrixXcd removeColumn(Eigen::MatrixXcd matrix, unsigned int colToRemove)
 {
 	unsigned int numRows = matrix.rows();
 	unsigned int numCols = matrix.cols() - 1;
@@ -789,6 +789,81 @@ static void fourierKriging(std::vector<double> variogramFit, std::vector<double>
 
 }
 
+double sgn(double x) {
+	if (x > 0)
+		return 1;
+	else if (x < 0)
+		return -1;
+	else if (x == 0)
+		return 0;
+}
+
+//////////////MLE covariance functions///////////////////
+double covariance(double d, double theta0, double sigma2) {
+	d = abs(d);
+	//cubic spline---------------------
+	//if (d < 1 / (2 * theta0))
+	//	return 1 - 6 * (d * theta0) * (d * theta0) + 6.0 * (d * theta0) * (d * theta0) * (d * theta0);
+	//else if (d < 1 / theta0)
+	//	return 2.0 * std::pow((1 - d * theta0), 3);
+	//else
+	//	return 0.0;
+	//exp-----------------------
+	//return sigma2 * exp(-d * theta0);
+	//squared exp---------------------
+	//return sigma2 * exp(-d * d / (theta0 * theta0));
+	//gaussian----------------------
+	return sigma2 * exp(-d * d * theta0);
+	//matern 3/2----------------------
+	//return sigma2 * (1 + sqrt(3) * abs(d / theta0)) * exp(-sqrt(3) * abs(d / theta0));
+}
+
+double dCovariance(double x, double y, double theta0, double sigma2) {
+	double dist = abs(x - y);
+
+	//cubic spline-------------------------
+	//if (dist < 1 / (2 * theta0))
+	//	return 6 * theta0 * theta0 * (x - y) * (-3 * theta0 * x + 3 * theta0 * y + 2);
+	//else if (dist < 1 / theta0)
+	//	return 6 * theta0 * (theta0 * (-x) + theta0 * y + 1) * (theta0 * (-x) + theta0 * y + 1);
+	//else
+	//	return 0.0;
+	//exp------------------------------
+	//return sgn(x-y) * covariance(dist, theta0, sigma2) * theta0;
+	//squared exp----------------------------
+	//return covariance(dist, theta0, sigma2) * 2.0 * (x - y) / (theta0 * theta0);
+	//gaussian------------
+	return 2.0 * theta0 * (x - y) * covariance(dist, theta0, sigma2);
+	//matern 3/2-------------------------------
+	//if (dist == 0)
+	//	return 0;
+	//else
+	//return sigma2 * (x - y) * exp(-sqrt(3) * abs(dist / theta0)) / (theta0 * theta0);
+}
+
+double d2Covariance(double x, double y, double theta0, double sigma2) {
+	double dist = abs(x - y);
+
+	//cubic spline--------------------------
+	//if (dist < 1 / (2 * theta0))
+	//	return 12 * theta0 * theta0 * (-3 * theta0 * x + 3 * theta0 * y + 1);
+	//else if (dist < 1 / theta0)
+	//	return -12 * theta0 * theta0 * ((theta0 * (-x) + theta0 * y + 1));
+	//else
+	//	return 0.0;
+	//exp--------------------------------
+	//return -covariance(dist, theta0, sigma2) * (theta0 * theta0);
+	//squared exp--------------------------
+	//return covariance(dist, theta0, sigma2) * 2.0 * ((1 - 2 * (x - y) / theta0) / (theta0 * theta0));
+	//gaussian-----------------------------
+	return -2.0 * theta0 * covariance(dist, theta0, sigma2) * (2 * theta0 * x * x - 4 * theta0 * x * y + 2 * theta0 * y * y - 1);
+	//matern 3/2-----------------------
+	//if (dist == 0)
+	//	return 0;
+	//else
+	//return exp(-sqrt(3) * abs(dist / theta0)) * (3 * theta0 * theta0 * abs(dist / theta0) - 3 * sqrt(3) * dist * dist) / (std::pow(theta0, 4) * abs(dist / theta0));
+}
+
 //Taylor Kriging Matrix Solution
 static void taylorKriging(std::vector<double> variogramFit, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal) {
 	const int size = xSample.size();
@@ -878,6 +953,7 @@ static void taylorKriging(std::vector<double> variogramFit, std::vector<double> 
 
 }
 
+
 //Gradient Enhanced Taylor Kriging Matrix Solution
 static void taylorKrigingHigherOrder(std::vector<double> variogramFit, std::vector<double> variogramFitFirstD, std::vector<double> variogramFitSecondD, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal, double theta, double sigmaP) {
 	//double conditionNum = 1.0e8;
@@ -885,7 +961,7 @@ static void taylorKrigingHigherOrder(std::vector<double> variogramFit, std::vect
 	//order of the basis functions is M - 1; differs from literature	
 	//M = 1;
 	int M = xSample.size() * 2.0 - 1;
-	//M = 1;
+	M = 1;
 	//if (M > 3)
 		//M = 3;
 
@@ -957,17 +1033,17 @@ static void taylorKrigingHigherOrder(std::vector<double> variogramFit, std::vect
 				//}
 				//sMatFirstDerivativeNeg(i, j) = -2.0 * theta * (xSample[i].real() - xSample[j].real()) * variogramFit[index];
 
-				//empirical usage
-				//if (xSample[i].real() - xSample[j].real() > 0) {
-				//	sMatFirstDerivative(i, j) = variogramFitFirstD[index];
-				//	//sMatFirstDerivative2(j, i) = variogramFitFirstD[index];
-				//}
-				//else {
-				//	sMatFirstDerivative(i, j) = -variogramFitFirstD[index];
-				//	//sMatFirstDerivative2(j, i) = variogramFitFirstD[index];
-				//}
-				////sMatFirstDerivative(i, j) = 0.0;
-				//sMatSecondDerivative(i, j) = variogramFitSecondD[index];
+				////empirical usage
+				if (xSample[i].real() - xSample[j].real() > 0) {
+					sMatFirstDerivative(i, j) = variogramFitFirstD[index];
+					//sMatFirstDerivative2(j, i) = variogramFitFirstD[index];
+				}
+				else {
+					sMatFirstDerivative(i, j) = -variogramFitFirstD[index];
+					//sMatFirstDerivative2(j, i) = variogramFitFirstD[index];
+				}
+				//sMatFirstDerivative(i, j) = 0.0;
+				sMatSecondDerivative(i, j) = variogramFitSecondD[index];
 			}
 		}
 
@@ -1036,14 +1112,13 @@ static void taylorKrigingHigherOrder(std::vector<double> variogramFit, std::vect
 			//}
 
 			//empirical usage
-			//if (xSample[i].real() > xVal) {
-			//	cVecDerivative(i, 0) = -variogramFitFirstD[index];
-			//}
-			//else {
-			//	cVecDerivative(i, 0) = variogramFitFirstD[index];
-			//}
-			
-			//cVecDerivative(i, 0) = 0.0;
+			if (xSample[i].real() > xVal) {
+				cVecDerivative(i, 0) = -variogramFitFirstD[index];
+			}
+			else {
+				cVecDerivative(i, 0) = variogramFitFirstD[index];
+			}
+
 		}
 
 		for (int i = 0; i < M; ++i) {
@@ -1457,7 +1532,7 @@ std::complex<double> taylorKrigingHigherOrder2(std::vector<double> variogramFit,
 std::complex<double> RBFKriging(std::vector<double> variogramFit, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal, std::vector<std::complex<double>> yVals, VectorXd theta, double alpha) {
 
 
-	double theta1 = theta[1];
+	//double theta1 = theta[1];
 	double theta0 = theta[0];
 
 
@@ -1466,19 +1541,18 @@ std::complex<double> RBFKriging(std::vector<double> variogramFit, std::vector<do
 
 	//order of the basis functions is M - 1; differs from literature
 	int M = xSample.size() - 1;
-	//M = 3;
-		//if (M > 3) { M = 18; }
-	//M = 0;
+	if (M > 10) { M = 10; }
+	//M = 1;
 	//Matrix <double, Dynamic, Dynamic> krigMat;
-	MatrixXd sMat(size, size);
-	MatrixXd sMatFirstDerivative(size, size);
-	MatrixXd sMatFirstDerivativeNeg(size, size);
-	MatrixXd sMatSecondDerivative(size, size);
-	MatrixXd fMatDerivative(size, M);
+	MatrixXcd sMat(size, size);
+	MatrixXcd sMatFirstDerivative(size, size);
+	MatrixXcd sMatFirstDerivativeNeg(size, size);
+	MatrixXcd sMatSecondDerivative(size, size);
+	MatrixXcd fMatDerivative(size, M);
 
-	MatrixXd fMat(size, M);
-	MatrixXd zeroMatM(M, M);
-	MatrixXd zeroMatN(size, size);
+	MatrixXcd fMat(size, M);
+	MatrixXcd zeroMatM(M, M);
+	MatrixXcd zeroMatN(size, size);
 
 	//calculate sample average
 	double sum = 0.0;
@@ -1496,11 +1570,11 @@ std::complex<double> RBFKriging(std::vector<double> variogramFit, std::vector<do
 			sMat(i, j) = variogramFit[index];
 
 
-			sMatFirstDerivative(i, j) = 2 * theta1 * (xSample[i].real() - xSample[j].real()) * variogramFit[index];
+			sMatFirstDerivative(i, j) = 2 * theta0 * (xSample[i].real() - xSample[j].real()) * variogramFit[index];
 			//1param
 			//sMatSecondDerivative(i, j) = 2.0 * theta * variogramFit[index] * (2.0 * theta * xSample[i].real() * xSample[i].real() - 4 * theta * xSample[i].real() * xSample[j].real() + 2 * theta * xSample[j].real() * xSample[j].real() - 1);
 			//2param
-			sMatSecondDerivative(i, j) = 2.0 * theta1 * variogramFit[index] * (2.0 * theta1 * std::pow((xSample[i].real() - xSample[j].real()), 2) - 1.0);
+			sMatSecondDerivative(i, j) = 2.0 * theta0 * variogramFit[index] * (2.0 * theta0 * std::pow((xSample[i].real() - xSample[j].real()), 2) - 1.0);
 
 			//if (xSample[i].real() - xSample[j].real() > 0) {
 			//	sMatFirstDerivative(i, j) = variogramFitFirstD[index];
@@ -1519,12 +1593,12 @@ std::complex<double> RBFKriging(std::vector<double> variogramFit, std::vector<do
 		for (int j = 0; j < M; ++j) {
 
 			//TK basis functions
-			fMat(i, j) = std::pow((xSample[i].real() - average), j);
-			fMatDerivative(i, j) = j * std::pow((xSample[i].real() - average), j - 1);
+			//fMat(i, j) = std::pow((xSample[i].real() - average), j);
+			//fMatDerivative(i, j) = j * std::pow((xSample[i].real() - average), j - 1);
 
 			//UK basis functions
-			//fMat(i, j) = std::pow((xSample[i].real()), j);
-			//fMatDerivative(i, j) = j * std::pow((xSample[i].real()), j - 1);
+			fMat(i, j) = std::pow((xSample[i].real()), j);
+			fMatDerivative(i, j) = j * std::pow((xSample[i].real()), j - 1);
 
 			//if (j == 0)
 				//fMatDerivative(i, j) = 0.0;
@@ -1558,11 +1632,11 @@ std::complex<double> RBFKriging(std::vector<double> variogramFit, std::vector<do
 	}
 
 	//need to fix starting here
-	MatrixXd upper(size, size + size + M);
-	MatrixXd mid(size, size + size + M);
-	MatrixXd lower(M, size + size + M);
+	MatrixXcd upper(size, size + size + M);
+	MatrixXcd mid(size, size + size + M);
+	MatrixXcd lower(M, size + size + M);
 
-	MatrixXd krigMat(size + size + M, size + size + M);
+	MatrixXcd krigMat(size + size + M, size + size + M);
 
 
 	upper << sMat, sMatFirstDerivative, fMat;
@@ -1576,22 +1650,22 @@ std::complex<double> RBFKriging(std::vector<double> variogramFit, std::vector<do
 
 
 	//new method//////////////////////////////////////
-	MatrixXd cMat(size, size);
+	MatrixXcd cMat(size, size);
 	cMat << sMat;
 
-	MatrixXd bMat(size, M);
+	MatrixXcd bMat(size, M);
 	bMat << fMat;
 
-	JacobiSVD<MatrixXd> svd(cMat);
+	JacobiSVD<MatrixXcd> svd(cMat);
 	double conditionNum = svd.singularValues()(0) / svd.singularValues()(svd.singularValues().size() - 1);
 	//std::cout << "condition num: " << conditionNum << std::endl;
 	//////////////////////////////////////////////////
 
 
-	MatrixXd cVec(size, 1);
-	MatrixXd cVecDerivative(size, 1);
-	MatrixXd fVec(M, 1);
-	MatrixXd yVec(size, 1);
+	MatrixXcd cVec(size, 1);
+	MatrixXcd cVecDerivative(size, 1);
+	MatrixXcd fVec(M, 1);
+	MatrixXcd yVec(size, 1);
 
 	//C vector
 	for (int i = 0; i < size; ++i) {
@@ -1601,10 +1675,10 @@ std::complex<double> RBFKriging(std::vector<double> variogramFit, std::vector<do
 		int index = it - d.begin();
 		cVec(i, 0) = variogramFit[index];
 
-		cVecDerivative(i, 0) = -2.0 * theta1 * (xSample[i].real() - xVal) * variogramFit[index];
+		cVecDerivative(i, 0) = -2.0 * theta0 * (xSample[i].real() - xVal) * variogramFit[index];
 
-		yVec(i, 0) = abs(yVals[i]);
-
+		yVec(i, 0) = yVals[i];
+		//yVec(i, 0) = abs(yVals[i]);
 		//if (xVal > xSample[i].real()) {
 		//	cVecDerivative(i, 0) = -variogramFitFirstD[index];
 		//}
@@ -1617,9 +1691,9 @@ std::complex<double> RBFKriging(std::vector<double> variogramFit, std::vector<do
 
 	for (int i = 0; i < M; ++i) {
 		//UK basis function
-		//fVec(i, 0) = std::pow((xVal), i);
+		fVec(i, 0) = std::pow((xVal), i);
 		//TK basis function
-		fVec(i, 0) = std::pow((xVal - average), i);
+		//fVec(i, 0) = std::pow((xVal - average), i);
 
 	}
 
@@ -1627,29 +1701,32 @@ std::complex<double> RBFKriging(std::vector<double> variogramFit, std::vector<do
 
 	//More new method//////////////////////////
 
-	MatrixXd cVecFull(size, 1);
-	MatrixXd bVec(M, 1);
+	MatrixXcd cVecFull(size, 1);
+	MatrixXcd bVec(M, 1);
 
 	cVecFull << cVec;
 	bVec << fVec;
 
-	VectorXd beta(M, 1);
+	VectorXcd beta(M, 1);
 	beta = (bMat.transpose() * cMat.inverse() * bMat).inverse() * bMat.transpose() * cMat.inverse() * yVec;
 
-	VectorXd betaRidge(M, 1);
-	betaRidge = (bMat.transpose() * cMat.inverse() * bMat).inverse() * (bMat.transpose() * cMat.inverse() * yVec + VectorXd::Ones(M, 1) * alpha);
+	VectorXcd betaRidge(M, 1);
+	//betaRidge = (bMat.transpose() * cMat.inverse() * bMat).inverse() * (bMat.transpose() * cMat.inverse() * yVec + VectorXd::Ones(M, 1) * alpha);
+	//should be this version
+	betaRidge = (bMat.transpose() * cMat.inverse() * bMat + MatrixXd::Ones(M, M) * alpha).inverse() * (bMat.transpose() * cMat.inverse() * yVec);
 
 	//std::cout << "beta: \n" << beta << std::endl;
-
+	//std::cout << "//////////////////////////////////////////////////\n";
+	//std::cout << "B_train:\n" << bMat << "\nC_train:\n" << cMat << "\ny_train:\n" << yVec << "\nB_test: \n" << bVec << std::endl;
 	//std::cout << "cMat: \n" << cMat << std::endl;
 	//std::cout << "bMat^T*cMat^-1: \n" << bMat.transpose()*cMat.inverse() << std::endl;
 
-	MatrixXd y(1, 1);
+	MatrixXcd y(1, 1);
 	//double betaConstant = beta(0, 0);
 
-	VectorXd ones = VectorXd::Ones(size);
-	VectorXd zeros = VectorXd::Zero(size);
-	VectorXd onesZeros(size + size);
+	VectorXcd ones = VectorXcd::Ones(size);
+	VectorXcd zeros = VectorXcd::Zero(size);
+	VectorXcd onesZeros(size + size);
 	onesZeros << ones, zeros;
 
 	////average term
@@ -1681,29 +1758,18 @@ std::complex<double> RBFKriging(std::vector<double> variogramFit, std::vector<do
 
 
 //GETK solution using alternate Kriging solution (seperable mean interpolation and stochastic kriging update terms)
-std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit, std::vector<double> variogramFitFirstD, std::vector<double> variogramFitSecondD, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal, std::vector<double> variogramFitGrad, std::vector<std::complex<double>> yVals, std::vector<std::complex<double>> yValsGrad, VectorXd theta, double lambda) {
-
-
+std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit, std::vector<double> variogramFitFirstD, std::vector<double> variogramFitSecondD, std::vector<double> d, std::vector<std::complex<double>> xSample, std::vector<double>& weights, double xVal, std::vector<double> variogramFitGrad, std::vector<std::complex<double>> yVals, std::vector<std::complex<double>> yValsGrad, VectorXd theta, double lambda, double sigma2) {
 
 	//size is N in calculations
 	const int size = xSample.size();
+	//int M = 1;
+	int M = xSample.size() * 2 - 1;
+	if (M > 10)
+		M = 10;
+		//M = 10;
 
-	int M = 1;
-	//order of the basis functions is M - 1; differs from literature
-	//int M = xSample.size() * 2 - 1;
-	//M = xSample.size() - 2;
-	//M = 7;
-
-	//2 params
-	double theta1 = theta[1];
 	double theta0 = theta[0];
-	//1 param
-	//double theta = theta[0];
 
-	//M = 2;
-		//if (M > 3) { M = 18; }
-	//M = 0;
-	//Matrix <double, Dynamic, Dynamic> krigMat;
 	MatrixXcd sMat(size, size);
 	MatrixXcd sMatFirstDerivative(size, size);
 	MatrixXcd sMatFirstDerivativeNeg(size, size);
@@ -1729,18 +1795,14 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 			double dist = abs(xSample[i].real() - xSample[j].real());
 			auto it = std::lower_bound(d.begin(), d.end(), dist);
 			int index = it - d.begin();
-			sMat(i, j) = variogramFit[index];
 
-			//1param
-			//sMatFirstDerivative(i, j) = 2.0 * theta * (xSample[i].real() - xSample[j].real()) * variogramFit[index];
-			// 2param
-			sMatFirstDerivative(i, j) = 2 * theta1 * (xSample[i].real() - xSample[j].real()) * variogramFit[index];
-			//1param
-			//sMatSecondDerivative(i, j) = 2.0 * theta * variogramFit[index] * (2.0 * theta * xSample[i].real() * xSample[i].real() - 4 * theta * xSample[i].real() * xSample[j].real() + 2 * theta * xSample[j].real() * xSample[j].real() - 1);
-			//2param
-			sMatSecondDerivative(i, j) = 2.0 * theta1 * variogramFit[index] * (2.0 * theta1 * std::pow((xSample[i].real() - xSample[j].real()), 2) - 1.0);
-			
-			//empirical version
+			//MLE version
+			//sMat(i, j) = covariance(dist, theta0, sigma2);
+			//sMatFirstDerivative(i, j) = dCovariance(xSample[i].real(), xSample[j].real(), theta0, sigma2);
+			//sMatSecondDerivative(i, j) = d2Covariance(xSample[i].real(), xSample[j].real(), theta0, sigma2);
+
+			////empirical version
+			// sMat(i, j) = variogramFit[index];
 			//if (xSample[i].real() - xSample[j].real() > 0) {
 			//	sMatFirstDerivative(i, j) = variogramFitFirstD[index];
 			//	//sMatFirstDerivative2(j, i) = variogramFitFirstD[index];
@@ -1749,8 +1811,13 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 			//	sMatFirstDerivative(i, j) = -variogramFitFirstD[index];
 			//	//sMatFirstDerivative2(j, i) = variogramFitFirstD[index];
 			//}
-			////sMatFirstDerivative(i, j) = 0.0;
-			//sMatSecondDerivative(i, j) = variogramFitSecondD[index];
+			//sMatSecondDerivative(i, j) = -variogramFitSecondD[index];
+
+			//old mle version
+			sMat(i, j) = variogramFit[index];
+			sMatFirstDerivative(i, j) = 2.0 * theta0 * (xSample[i].real() - xSample[j].real()) * variogramFit[index];
+			sMatSecondDerivative(i, j) = -2.0 * theta0 * variogramFit[index] * (2.0 * theta0 * std::pow((xSample[i].real() - xSample[j].real()), 2) - 1.0);
+
 
 		}
 	}
@@ -1795,7 +1862,7 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 
 	upper << sMat, sMatFirstDerivative, fMat;
 
-	mid << -sMatFirstDerivative, -sMatSecondDerivative, fMatDerivative;
+	mid << -sMatFirstDerivative, sMatSecondDerivative, fMatDerivative;
 
 	lower << fMat.transpose(), fMatDerivative.transpose(), zeroMatM;
 
@@ -1806,9 +1873,9 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 	MatrixXcd cMatLower(size, size + size);
 	MatrixXcd cMat(size + size, size + size);
 	cMatUpper << sMat, sMatFirstDerivative;
-	cMatLower << -sMatFirstDerivative, -sMatSecondDerivative;
+	cMatLower << -sMatFirstDerivative, sMatSecondDerivative;
 	cMat << cMatUpper, cMatLower;
-	//std::cout << "cMat: \n" << cMat << std::endl;
+	//std::cout << "cMat final: \n" << cMat << std::endl;
 
 	MatrixXcd bMat(size+size, M);
 	MatrixXcd bMatReg(size, M);
@@ -1817,6 +1884,8 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 	//bMat << fMat;
 	bMat << fMat, fMatDerivative;
 	bMatReg << fMat;
+
+	//std::cout << "bMat final: \n" << bMat << std::endl;
 
 	JacobiSVD<MatrixXcd> svd(cMat);
 	double conditionNum = svd.singularValues()(0) / svd.singularValues()(svd.singularValues().size() - 1);
@@ -1838,21 +1907,23 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 		auto it = std::lower_bound(d.begin(), d.end(), xDist);
 		int index = it - d.begin();
 
-		cVec(i, 0) = variogramFit[index];
-
-		//// theta usage
-		// 1param
-		//cVecDerivative(i, 0) = -2.0 * theta * (xSample[i].real() - xVal) * variogramFit[index];
-		//2param
-		cVecDerivative(i, 0) = -2.0 * theta1 * (xSample[i].real() - xVal) * variogramFit[index];
+		////MLE version
+		//cVec(i, 0) = covariance(xDist, theta0, sigma2);
+		//cVecDerivative(i, 0) = -dCovariance(xSample[i].real(), xVal, theta0, sigma2);
 
 		////empirical usage
+		//cVec(i, 0) = variogramFit[index];
 		//if (xSample[i].real() > xVal) {
 		//	cVecDerivative(i, 0) = -variogramFitFirstD[index];
 		//}
 		//else {
 		//	cVecDerivative(i, 0) = variogramFitFirstD[index];
 		//}
+
+		////old MLE version
+		cVec(i, 0) = variogramFit[index];
+		cVecDerivative(i, 0) = -2.0 * theta0 * (xSample[i].real() - xVal) * variogramFit[index];
+
 		
 		//should need to be complex valued instead
 		//yVec(i, 0) = abs(yVals[i]);
@@ -1867,7 +1938,12 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 	}
 
 	for (int i = 0; i < M; ++i) {
-		fVec(i, 0) = std::pow((xVal - average), i);
+
+		//TK
+		//fVec(i, 0) = std::pow((xVal - average), i);
+		//UK
+		fVec(i, 0) = std::pow((xVal), i);
+		
 		//fVecDerivative(i, 0) = i * std::pow((xVal - average), i - 1);
 	}
 
@@ -1889,16 +1965,12 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 
 	//coefficient for GLS
 	beta = (bMat.transpose() * cMat.inverse() * bMat).inverse() * bMat.transpose() * cMat.inverse() * yVec;
-
-
+	//std::cout << "bMat final version: \n" << bMat << std::endl;
 	//coefficient for OLS (check to see if cMat is the issue)
 	//beta = (bMat.transpose() * bMat).inverse() * bMat.transpose() * yVec;
 
 	//coefficient for GLS ridge regression
 	//beta = (bMat.transpose() * cMat.inverse() * bMat + MatrixXd::Ones(M, M) * lambda).inverse() * bMat.transpose() * cMat.inverse() * yVec;
-
-	//std::cout << "cMat: \n" << cMat << std::endl;
-	//std::cout << "bMat^T*cMat^-1: \n" << bMat.transpose()*cMat.inverse() << std::endl;
 
 	MatrixXcd y(1, 1);
 	std::complex<double> betaConstant = beta(0, 0);
@@ -1908,18 +1980,14 @@ std::complex<double> taylorKrigingHigherOrder3(std::vector<double> variogramFit,
 	VectorXcd onesZeros(size + size);
 	onesZeros << ones, zeros;
 
-
-	//std::cout << "beta:\n" << beta << "\nbVec:\n" << bVec << "\ncVecFull:\n" << cVecFull << "\ncMat:\n" << cMat << "\nyVec:\n" << yVec << "\nbMat:\n" << bMat << std::endl;
-
-	////average term
+	////mean term
 	y = beta.transpose() * bVecReg;
-	////M=1 term
-	//y = beta;
 
-	//full kriging
+	//kriging update
 	y += cVecFull.transpose() * cMat.inverse() * (yVec - bMat * beta);
 	//full kriging
-
+	//std::cout << "bMat (eq to oneZero vector in 1D): \n" << bMat << std::endl;
+	//std::cout << "beta: (eq to mu in 1D): \n" << beta << std::endl;
 	// 
 	//std::cout << "kriging update term: " << cVecFull.transpose() * cMat.inverse() * (yVec - bMat * beta) << "  condition num (cMat): " << conditionNum << std::endl;
 	//std::cout << "residual:\n" << (yVec - bMat * beta) << std::endl;
@@ -2570,24 +2638,10 @@ struct data
 	const VectorXd* y;
 	const MatrixXd* B;
 	const VectorXd* yGrad;
+	const int* flag;
 };
 
-//MLE covariance function
-double covariance(double d, VectorXd theta, double sigma2) {
-	//make sure to change all 3
-	//gaussian fit
-	////2 paramaters 
-	double theta1 = theta[1];
-	double theta0 = theta[0];
-	//// 1 parameter
-	//double theta0 = 1.0;
-	//double theta1 = theta[0];
 
-
-	return theta0 * exp(-d * d * theta1);
-	//exp fit
-	//return sigma2 * exp(-d * theta);
-}
 
 //calculate a vector
 //a vector contains the coefficients of the regression for each corresponding basis function
@@ -2615,57 +2669,115 @@ void aCalc(MatrixXd X, VectorXd y, MatrixXd B, VectorXd theta, VectorXd &a) {
 			//exp function
 			//R(i, j) = theta0 * exp(-theta1 * dist);
 			//gauss function
-			R(i, j) = theta0 * exp(-theta1 * dist * dist);
+			R(i, j) = theta1 * exp(-theta0 * dist * dist);
 		}
 	}
 	//this is actually mu(x)
 	//lower order version
-	a = (ones.transpose() * R.inverse() * ones).inverse()* ones.transpose()* R.inverse()* y;
+	//a = (ones.transpose() * R.inverse() * ones).inverse()* ones.transpose()* R.inverse()* y;
 	//higher order version
-	//a = (B.transpose() * R.inverse() * B.transpose()).inverse() * B.transpose() * R.inverse() * y;
+	a = (B.transpose() * R.inverse() * B.transpose()).inverse() * B.transpose() * R.inverse() * y;
 
 }
 
 //basis function matrix B
-void basisMatCalc(MatrixXd X, VectorXd y, MatrixXd& B, VectorXd yGrad) {
-	int n = y.rows();
-	int m = n - 1;
-	MatrixXd R = MatrixXd::Zero(n, m);
-	//calculate sample average
+void basisMatCalc(MatrixXd X, VectorXd y, MatrixXd& B, VectorXd yGrad, int flag) {
+
+	// n is number of input points
+	int n = X.rows();
+	int m;
+	if (flag == 1) {
+		m = 1;
+		B = MatrixXd::Zero(n, m);
+	}
+	else if (flag == 2) {
+		m = n - 1;
+		B = MatrixXd::Zero(n, m);
+	}
+	else if (flag == 3) {
+		m = 1;
+		B = MatrixXd::Zero(2 * n, m);
+	}
+	else if (flag == 4) {
+		m = 2 * n - 1;
+		B = MatrixXd::Zero(2 * n, m);
+	}
+
+
 	double sum = 0.0;
 	for (int i = 0; i < n; ++i) {
 		sum += X(i,0);
 	}
+	std::cout << "/////////////////////////////////////////////////////////////////////\n";
+	std::cout << "average: " << sum / n;
+
 	double average = sum / n;
 
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < m; ++j) {
 
-			B(i, j) = std::pow((X(i, 0) - average), j);
+			//TK
+			//B(i, j) = std::pow((X(i, 0) - average), j);
+			//UK
+			B(i, j) = std::pow((X(i, 0)), j);
+
+			if (flag == 3 || flag == 4) {
+				//TK
+				//B(i + n, j) = j * std::pow((X(i, 0) - average), j - 1);
+				//UK
+				B(i + n, j) = j * std::pow((X(i, 0)), j - 1);
+
+			}
 		}
 	}
 
+	std::cout << "\nbMatfunc:\n" << B << "\n";
+
 }
 
-MatrixXd covMatCalc(MatrixXd X, VectorXd theta, std::vector<double> variogramFit, std::vector<double> d, std::vector<std::complex<double>> xSample) {
+MatrixXd covMatCalc(MatrixXd X, VectorXd theta, std::vector<double> variogramFit, std::vector<double> d, std::vector<std::complex<double>> xSample, int flag, double sigma2) {
 
 	int N = X.rows();
 	int D = X.cols();
 	MatrixXd cMat(N, N);
+	MatrixXd cMatd(N, N);
+	MatrixXd cMatd2(N, N);
+	MatrixXd bigCMat(2 * N, 2 * N);
+	double theta0 = theta[0];
+	MatrixXd distMat(N, N);
+	MatrixXd bigCUpper(N, 2 * N);
+	MatrixXd bigCLower(N, 2 * N);
 
 	for (int i = 0; i < N; ++i) {
 		for (int j = 0; j < N; ++j) {
 
-			//double dist = (X.real().row(i) - X.real().row(j)).norm();
-			double dist = abs(xSample[i].real() - xSample[j].real());
+			double dist = (X.real().row(i) - X.real().row(j)).norm();
+			double xI = X(i, 0);
+			double xJ = X(j, 0);
+			double dist2 = abs(xSample[i].real() - xSample[j].real());
 
 			auto it = std::lower_bound(d.begin(), d.end(), dist);
 			int index = it - d.begin();
-			cMat(i, j) = variogramFit[index];
+			distMat(i, j) = dist;
+			cMat(i, j) = covariance(dist, theta0, sigma2);
+			cMatd(i, j) = dCovariance(xI, xJ, theta0, sigma2);
+			cMatd2(i, j) = d2Covariance(xI, xJ, theta0, sigma2);
 
 		}
 	}
-	return cMat;
+	std::cout << "distMat:\n" << distMat << std::endl;
+	//bigCUpper << cMat, cMatd;
+	//bigCLower << -cMatd, cMatd2;
+	//bigCMat << bigCUpper, bigCLower;
+	bigCMat << cMat, cMatd, cMatd.transpose(), cMatd2;
+	if (flag == 1 || flag == 2) {
+		return cMat;
+	}
+	else if (flag == 3 || flag == 4) {
+		return bigCMat;
+	}
+	
+
 }
 
 double RBF_basis(VectorXcd X1, VectorXcd X2, double sigma2) {
@@ -2787,13 +2899,18 @@ std::complex<double> RBF_sum(const VectorXcd beta, const MatrixXcd X_0, const Ma
 }
 
 //best variance calculation (using MLE hyperparameters)
-void var_calc(MatrixXd X, VectorXd y, double& sigma2, VectorXd theta, MatrixXd B, VectorXd yGrad) {
+void var_calc(MatrixXd X, VectorXd y, double& sigma2, VectorXd theta, MatrixXd B, VectorXd yGrad, int flag) {
 
 	//calculate correlation matrix R
 	int n = X.rows();
+	int m = B.cols();
 	MatrixXd R = MatrixXd::Zero(n, n);
+	MatrixXd dR = MatrixXd::Zero(n, n);
+	MatrixXd d2R = MatrixXd::Zero(n, n);
+
+
 	//// 2 parameters
-	double theta1 = theta[1];
+	//double theta1 = theta[1];
 	double theta0 = theta[0];
 	// 1 parameter
 	//double theta1 = theta[0];
@@ -2803,38 +2920,72 @@ void var_calc(MatrixXd X, VectorXd y, double& sigma2, VectorXd theta, MatrixXd B
 	{
 		for (int j = 0; j < n; j++)
 		{
+			double xI = X(i, 0);
+			double xJ = X(j, 0);
 			double dist = (X.row(i) - X.row(j)).norm();
-			//gaussian fit
-			R(i, j) = theta0 * exp(-theta1 * dist * dist);
-			//exp fit
-			//R(i, j) = exp(-theta * dist);
+			R(i, j) = covariance(dist, theta0, 1.0);
+			dR(i, j) = dCovariance(xI, xJ, theta0, 1.0);
+			d2R(i, j) = d2Covariance(xI, xJ, theta0, 1.0);
+
 		}
 	}
 
-	JacobiSVD<MatrixXcd> svd(R);
-	double conditionNum = svd.singularValues()(0) / svd.singularValues()(svd.singularValues().size() - 1);
+	MatrixXd bigR(2 * n, 2 * n);
+	MatrixXd bigRUpper(n, 2 * n);
+	MatrixXd bigRLower(n, 2 * n);
 
-	//while (conditionNum > 1e3) {
-	//	R += MatrixXd::Identity(n, n) * 1e-5;
-	//	JacobiSVD<MatrixXcd> svd(R);
-	//	conditionNum = svd.singularValues()(0) / svd.singularValues()(svd.singularValues().size() - 1);
-	//}
-	
-	///////////no basis functions///////////
-	//VectorXd ones = VectorXd::Ones(n);
-	//double mu = (ones.transpose() * R.inverse() * ones).inverse() * ones.transpose() * R.inverse() * y;
-	//double y_Rinv_y = (y - ones*mu).transpose() * R.inverse() * (y - ones*mu);
+	bigRUpper << R, dR;
+	bigRLower << dR.transpose(), d2R;
+	bigR << bigRUpper, bigRLower;
 
-	//////////basis function version://////////////////////
-	VectorXd a = (B.transpose() * R.inverse() * B).inverse() * B.transpose() * R.inverse() * y;
-	double y_Rinv_y = (y - a).transpose() * R.inverse() * (y - a);
-	////////////////////////////////////////////////////////
+	///////////no basis functions no gradient///////////
+	if (flag == 1) {
+		VectorXd ones = VectorXd::Ones(n);
+		double mu = (ones.transpose() * R.inverse() * ones).inverse() * ones.transpose() * R.inverse() * y;
+		double y_Rinv_y = (y - ones*mu).transpose() * R.inverse() * (y - ones*mu);
+
+		sigma2 = y_Rinv_y / n;
+	}
+	/////////with basis functions no gradient
+	else if (flag == 2) {
+		VectorXd a = (B.transpose() * R.inverse() * B).inverse() * B.transpose() * R.inverse() * y;
+		double y_Rinv_y = (y - B * a).transpose() * R.inverse() * (y - B * a);
+
+		sigma2 = y_Rinv_y / n;
+	}
+	/////// no basis functions with gradient/////////
+	else if (flag == 3) {
+		//VectorXd ones = VectorXd::Ones(n);
+		//VectorXd zeros = VectorXd::Zero(n);
+		//VectorXd oneZero(2 * n);
+		//oneZero << ones, zeros;
+		//VectorXd bigY(2 * n);
+		//bigY << y, yGrad;
+		//double mu = (oneZero.transpose() * bigR.inverse() * oneZero).inverse() * oneZero.transpose() * bigR.inverse() * bigY;
+		//double y_Rinv_y = (bigY - oneZero * mu).transpose() * bigR.inverse() * (bigY - oneZero * mu);
+		//sigma2 = y_Rinv_y / (n + n);
+		////sigma2 = y_Rinv_y / 2;
 
 
+		VectorXd bigY(2 * n);
+		bigY << y, yGrad;
+		VectorXd a = (B.transpose() * bigR.inverse() * B).inverse() * B.transpose() * bigR.inverse() * bigY;
+		double y_Rinv_y = (bigY - B * a).transpose() * bigR.inverse() * (bigY - B * a);
 
-	sigma2 = y_Rinv_y / n;
-	//sigma2 = (y - B * a.transpose()).transpose();
-	//sigma2 = (y - B * a).transpose() * R.inverse() * (y - B * a);
+		sigma2 = y_Rinv_y / (n + n);
+
+	}
+	//////////with basis functions and gradient//////////////////////
+	else if (flag == 4) {
+		VectorXd bigY(2 * n);
+		bigY << y, yGrad;
+		VectorXd a = (B.transpose() * bigR.inverse() * B).inverse() * B.transpose() * bigR.inverse() * bigY;
+		double y_Rinv_y = (bigY - B * a).transpose() * bigR.inverse() * (bigY - B * a);
+
+		//sigma2 = abs(y_Rinv_y) / (n + n);
+		sigma2 = y_Rinv_y / (n + n);
+	}
+
 }
 
 
@@ -2845,116 +2996,200 @@ double obj_func(unsigned n, const double* x, double* grad, void* data_ptr)
 	const MatrixXd& X = *(d->X);
 	const VectorXd& y = *(d->y);
 	const MatrixXd& B = *(d->B);
+	const VectorXd& yGrad = *(d->yGrad);
+	const int& flag = *(d->flag);
 
 	////2 parameters
-	double theta1 = x[1];
+	//double theta1 = x[1];
 	double theta0 = x[0];
 
 	// 1 parameter
 	//double theta1 = x[0];
 	//double theta0 = 1.0;
 
-	int m = X.rows();
-	MatrixXd R = MatrixXd::Zero(m, m);
-
+	int N = X.rows();
+	int m = B.cols();
+	MatrixXd R = MatrixXd::Zero(N, N);
+	MatrixXd dR = MatrixXd::Zero(N, N);
+	MatrixXd d2R = MatrixXd::Zero(N, N);
+	MatrixXd bigR(2*N, 2*N);
 	// Calculate the correlation matrix using a Gaussian correlation function
-	for (int i = 0; i < m; i++)
+	for (int i = 0; i < N; i++)
 	{
-		for (int j = 0; j < m; j++)
+		for (int j = 0; j < N; j++)
 		{
+
 			double dist = (X.row(i) - X.row(j)).norm();
-			//gauss fit
-			R(i, j) = theta0 * exp(-theta1 * dist * dist);
-			//exp fit
-			//R(i, j) = exp(-theta * dist);
+
+			double xI = X(i, 0);
+			double xJ = X(j, 0);
+
+			R(i, j) = covariance(dist, theta0, 1.0);
+			dR(i, j) = dCovariance(xI, xJ, theta0, 1.0);
+			d2R(i, j) = d2Covariance(xI, xJ, theta0, 1.0);
+
 		}
 	}
 
+	MatrixXd bigRUpper(N, 2 * N);
+	MatrixXd bigRLower(N, 2 * N);
+
+	bigRUpper << R, dR;
+	bigRLower << dR.transpose(), d2R;
+	bigR << bigRUpper, bigRLower;
+
 	JacobiSVD<MatrixXcd> svd(R);
 	double conditionNum = svd.singularValues()(0) / svd.singularValues()(svd.singularValues().size() - 1);
-	//std::cout << "condition number for R: \n" << conditionNum << std::endl;
 
-	//while (conditionNum > 1e3) {
-	//	R += MatrixXd::Identity(m, m) * 1e-5;
-	//	JacobiSVD<MatrixXcd> svd(R);
-	//	conditionNum = svd.singularValues()(0) / svd.singularValues()(svd.singularValues().size() - 1);
-	//	std::cout << "NEW condition number for R: \n" << conditionNum << std::endl;
+	double log_likelihood;
 
-	//}
-	//// Add a small diagonal term for numerical stability
-	////R += 1e-8 * MatrixXd::Identity(m, m);
+	///////////no basis functions no gradient///////////
+	if (flag == 1) {
+		// no gradient no basis function
+		 VectorXd ones = VectorXd::Ones(N);
+		double mu = (ones.transpose() * R.inverse() * ones).inverse() * ones.transpose() * R.inverse() * y;
+		double y_Rinv_y = (y - ones*mu).transpose() * R.inverse() * (y - ones*mu);
+		double log_det = log(R.determinant());
+		double sigma2 = y_Rinv_y / N;
 
-	////conditional matrix conditioning
-	////if (conditionNum > 7e4) {
-	////	R += conditionNum / 1e5 * MatrixXd::Identity(m,m);
-	////}
+		log_likelihood = log_det / 2 + y_Rinv_y / (2);
+		//log_likelihood = 0.5 * (log_det + sigma2 * (N));
+	}
+	////////basis functions no gradient////////
+	else if (flag == 2) {
+		VectorXd a = (B.transpose() * R.inverse() * B).inverse() * B.transpose() * R.inverse() * y;
+		double y_Rinv_y = (y - B * a).transpose() * R.inverse() * (y - B * a);
+		double log_det = log(R.determinant());
+		double sigma2 = y_Rinv_y / (N);
 
-	////different form of conditional matrix conditioning
-	//R += conditionNum / 1e8 * MatrixXd::Identity(m, m);
-	//JacobiSVD<MatrixXcd> svd2(R);
-	//conditionNum = svd2.singularValues()(0) / svd2.singularValues()(svd2.singularValues().size() - 1);
-	//std::cout << "New condition number for R: \n" << conditionNum << std::endl;
+		//log_likelihood = 0.5 * (log_det + sigma2 * (N));
+		log_likelihood = log_det / 2 + y_Rinv_y / (2);
 
-	// Calculate the negative log likelihood
+		std::cout << "theta0: " << theta0 << std::endl;
+		std::cout << "cMat MLE: \n" << R;
+		std::cout << "\nlog_likelihood: " << log_likelihood << std::endl;
+		std::cout << "det: " << R.determinant() << "  y_Rinv_y: " << y_Rinv_y << std::endl;
+
+	}
+	///// gradient no basis functions///////
+	else if (flag == 3) {
+		//VectorXd ones = VectorXd::Ones(N);
+		//VectorXd zeros = VectorXd::Zero(N);
+		//VectorXd oneZero(2 * N);
+		//VectorXd oneOne(2 * N);
+		//oneZero << ones, zeros;
+		//oneOne << ones, ones;
+		//VectorXd bigY(2 * N);
+		//bigY << y, yGrad;
+		//MatrixXd invR(2 * N, 2 * N);
+
+		//double mu = (oneZero.transpose() * bigR.inverse() * oneZero).inverse() * oneZero.transpose() * bigR.inverse() * bigY;
+		//double y_Rinv_y = (bigY - oneZero * mu).transpose() * bigR.inverse() * (bigY - oneZero * mu);
+
+		//double log_det = log(bigR.determinant());
+		//double sigma2 = y_Rinv_y / (N + N);
+
+		////log_likelihood = (N + N) / 2 * log(sigma2) + log_det / 2 + y_Rinv_y / (2 * sigma2);
+		////log_likelihood = 0.5 * (log_det + log(sigma2) * (2 * N));
+		////log_likelihood = 0.5 * (log_det + sigma2);
+		//log_likelihood = 0.5 * (log_det + sigma2 * (N + N));
+
+		//std::cout << "theta0: " << theta0 << std::endl;
+		//std::cout << "cMat MLE: \n" << bigR;
+		//std::cout << "\n bMat MLE:\n" << B << std::endl;
+
+		VectorXd bigY(2 * N);
+		bigY << y, yGrad;
+		VectorXd a = (B.transpose() * bigR.inverse() * B).inverse() * B.transpose() * bigR.inverse() * bigY;
+		double y_Rinv_y = (bigY - B * a).transpose() * bigR.inverse() * (bigY - B * a);
+		double log_det = log(bigR.determinant());
+		double sigma2 = y_Rinv_y / (N + N);
+
+		log_likelihood = 0.5 * (log_det + sigma2 * (N + N));
+		//log_likelihood = log_det / 2 + y_Rinv_y / (2);
+
+		//std::cout << "theta0: " << theta0 << std::endl;
+		//std::cout << "cMat MLE: \n" << bigR;
+		//std::cout << "\nlog_likelihood: " << log_likelihood << std::endl;
+		//std::cout << "det: " << bigR.determinant() << "  y_Rinv_y: " << y_Rinv_y << std::endl;
+		//std::cout << "R eigenvalues:\n" << R.eigenvalues() << std::endl;
+		//std::cout << "bigR eigenvalues:\n" << bigR.eigenvalues() << std::endl;
 
 
-	//double log_det = 2.0 * (R.diagonal().array().log().sum());
+	}
+	//////////basis function and gradient://////////////////////
+	else if (flag == 4) {
 
-	double log_det = log(R.determinant());
 
-	///////////no basis functions///////////
-	//VectorXd ones = VectorXd::Ones(m);
-	//double mu = (ones.transpose() * R.inverse() * ones).inverse() * ones.transpose() * R.inverse() * y;
-	//double y_Rinv_y = (y - ones*mu).transpose() * R.inverse() * (y - ones*mu);
-	
-	//////////basis function version://////////////////////
-	VectorXd a = (B.transpose() * R.inverse() * B).inverse() * B.transpose() * R.inverse() * y;
-	double y_Rinv_y = (y - a).transpose() * R.inverse() * (y - a);
+		//std::cout << "\n bMat MLE:\n" << B << std::endl;
+
+		VectorXd bigY(2 * N);
+		bigY << y, yGrad;
+		VectorXd a = (B.transpose() * bigR.inverse() * B).inverse() * B.transpose() * bigR.inverse() * bigY;
+		double y_Rinv_y = (bigY - B * a).transpose() * bigR.inverse() * (bigY - B * a);
+		//double log_det = log(abs(bigR.determinant()));
+		double log_det = log(bigR.determinant());
+		double sigma2 = y_Rinv_y / (N + N);
+
+		//log_likelihood = 0.5 * (log_det + sigma2 * (N + N));
+		//log_likelihood = log_det / 2 + abs(y_Rinv_y) / (2);
+		log_likelihood = log_det / 2 + y_Rinv_y / 2 + N/2 * log(2*3.14159);
+
+
+		//std::cout << "theta0: " << theta0 << std::endl;
+		//std::cout << "cMat MLE: \n" << bigR;
+		//std::cout << "\nlog_likelihood: " << log_likelihood << std::endl;
+		//std::cout << "det: " << bigR.determinant() << "  y_Rinv_y: " << y_Rinv_y << std::endl;
+		//std::cout << "R eigenvalues:\n" << R.eigenvalues() << std::endl;
+		//std::cout << "bigR eigenvalues:\n" << bigR.eigenvalues() << std::endl;
+	}
 	////////////////////////////////////////////////////////
+	
 
-	//variance
-	double sigma2 = y_Rinv_y / m;
-
-	//maximization function
-	double log_likelihood = 0.5 * (log_det + log(sigma2)*m);// +m * log(2 * 3.14159));
 	return log_likelihood;
 }
 
 
 //MLE minimization for hyperparameter terms, using NLOpt c++ package
-void MLE_estimation(const MatrixXd& X, const VectorXd& y, VectorXd& theta, MatrixXd& B, VectorXd yGrad)
+void MLE_estimation(const MatrixXd& X, const VectorXd& y, VectorXd& theta, MatrixXd& B, VectorXd yGrad, int& flag)
 {
 	int n = X.cols();
-	data d = { &X, &y, &B, &yGrad };
+	data d = { &X, &y, &B, &yGrad, &flag };
 
 	// Create the optimization problem
 	nlopt_opt opt;
 
+	//NELDERMEAD seems to work well
 	////1 param
-	// opt = nlopt_create(NLOPT_LN_SBPLX, 1);
+	 opt = nlopt_create(NLOPT_LN_NELDERMEAD, 1);
 	////2 params
-	opt = nlopt_create(NLOPT_LN_SBPLX, 2);
-	//opt.set_min_objective(obj_func, &d);
+	// works for TK
+	//opt = nlopt_create(NLOPT_LN_PRAXIS, 2);
+	//opt = nlopt_create(NLOPT_LN_PRAXIS, 2);
 
 	// Set the bounds and initial guess for the parameters
 	//1 parameter
-	//double lb[1] = { 1e-5 };
-	//double ub[1] = { 1e5 };
+	double lb[1] = { 0.0 };
+	double ub[1] = { 10.0 };
 	//2 params
-	double lb[2] = { 1e-5, 1e-5 };
-	double ub[2] = { 1e5, 1e5 };
+	//double lb[2] = { 1e-5, 1e-5 };
+	//double ub[2] = { 1e5, 1e5 };
+	//std::cout << "here 2\n";
 
-
+	//initial guess
 	//1 parameter
-	//double x0[1] = { 1.0 };
+	double x0[1] = { 0.4 };
 	////2 parameters
 	//VectorXd x0 = VectorXd::Ones(2);
-	double x0[2] = { 1.0, 0.5 };
+	//double x0[2] = { 1.0, 0.5 };
 
 	nlopt_set_lower_bounds(opt, lb);
-	nlopt_set_upper_bounds(opt, ub);
+	//nlopt_set_upper_bounds(opt, ub);
+
 	nlopt_set_min_objective(opt, obj_func, &d);
-	nlopt_set_xtol_rel(opt, 1e-9);
+
+	nlopt_set_xtol_rel(opt, 1e-8);
+
 
 	// Optimize the parameters
 	double min_f;
@@ -2965,15 +3200,15 @@ void MLE_estimation(const MatrixXd& X, const VectorXd& y, VectorXd& theta, Matri
 	else
 	{
 		////2 parameters
-		theta[0] = x0[0];
-		theta[1] = x0[1];
-		////1 parameter
 		//theta[0] = x0[0];
+		//theta[1] = x0[1];
+		////1 parameter
+		theta[0] = x0[0];
 	}
 }
 
 
-std::vector<double> cross_validate(MatrixXd B, MatrixXd X, MatrixXd C, VectorXd y, int k, std::vector<double> alphas) {
+std::vector<double> cross_validate(MatrixXcd B, MatrixXcd X, MatrixXcd C, VectorXcd y, int k, std::vector<double> alphas) {
 
 	//here n should be number of input points (N)
 	//p is input dimension (currently 1)
@@ -2981,10 +3216,11 @@ std::vector<double> cross_validate(MatrixXd B, MatrixXd X, MatrixXd C, VectorXd 
 	int m = B.cols();
 	int p = X.cols();
 
-	std::cout << "n: " << n << "  m: " << m << "  p: " << p << std::endl;
-	std::cout << "X:\n" << X << "\ny:\n" << y << "\nB:\n" << B << std::endl;
+	//std::cout << "n: " << n << "  m: " << m << "  p: " << p << std::endl;
+	//std::cout << "X:\n" << X << "\ny:\n" << y << "\nB:\n" << B << std::endl;
 
 	std::vector<double> mse(alphas.size(), 0.0);
+
 
 	///////////////k fold cross validation/////////////////////////
 	//for (int i = 0; i < k; i++) {
@@ -3013,8 +3249,8 @@ std::vector<double> cross_validate(MatrixXd B, MatrixXd X, MatrixXd C, VectorXd 
 	//	C_test << C.middleRows(start, end - start);
 	///////////////////////////////////////////////////
 
-
-	///////////////// new k fold cross validation ///////////////////////////////////
+	std::cout << "made it to k fold\n";
+	/////////////// new k fold cross validation ///////////////////////////////////
 	int num_folds = k;
 	for (int i = 0; i < num_folds; i++) {
 		int start_idx = i * n / num_folds;
@@ -3022,14 +3258,14 @@ std::vector<double> cross_validate(MatrixXd B, MatrixXd X, MatrixXd C, VectorXd 
 		int num_test = end_idx - start_idx;
 		int num_train = n - num_test;
 
-		MatrixXd X_train(num_train, p);
-		VectorXd y_train(num_train);
-		MatrixXd X_test(num_test, p);
-		VectorXd y_test(num_test);
-		MatrixXd C_train(num_train, num_train);
-		MatrixXd C_test(num_test, num_test);
-		MatrixXd B_train(num_train, m);
-		MatrixXd B_test(num_test, m);
+		MatrixXcd X_train(num_train, p);
+		VectorXcd y_train(num_train);
+		MatrixXcd X_test(num_test, p);
+		VectorXcd y_test(num_test);
+		MatrixXcd C_train(num_train, num_train);
+		MatrixXcd C_test(num_test, num_test);
+		MatrixXcd B_train(num_train, m);
+		MatrixXcd B_test(num_test, m);
 
 		int train_idx = 0;
 		int test_idx = 0;
@@ -3060,65 +3296,81 @@ std::vector<double> cross_validate(MatrixXd B, MatrixXd X, MatrixXd C, VectorXd 
 		}
 
 
-	/////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////
+
+		std::cout << "made it out of k-fold\n";
 
 
+	/////////////leave one out cross-validation scheme//////////////////////////
+	//// 
+	// 	MatrixXcd B_train;
+	//	MatrixXcd y_train;
+	//	MatrixXcd C_train;
 
-
-	////leave one out cross-validation scheme//////////////////////////
-	// 
-	// 	MatrixXd B_train;
-	//	MatrixXd y_train;
-	//	MatrixXd C_train;
-
-	//	MatrixXd B_test;
-	//	MatrixXd y_test;
-	//	MatrixXd C_test;
+	//	MatrixXcd B_test;
+	//	MatrixXcd y_test;
+	//	MatrixXcd C_test;
 	// 
 	//B = removeColumn(B, B.size() - 1);
-	//C = removeColumn(C, C.size() - 1);
+	//B = removeColumn(B, B.size() - 1);
+	////C = removeColumn(C, C.size() - 1);
 	//for (int i = 0; i < n; ++i){
 
 	//	//remove final column of B matrix
 	//	B_train = removeRow(B, i);
 	//	y_train = removeRow(y, i);
-	//	C_train = removeRow(C, i);
+	//	C_train = removeColumn(C, i);
+	//	C_train = removeRow(C_train, i);
 
 	//	B_test = B.row(i);
 	//	y_test = y.row(i);
 	//	C_test = C.row(i);
-	////////////////////////////////////////////////////////////////////
-		std::cout << "B_train:\n" << B_train << "\nC_train:\n" << C_train << "\ny_train:\n" << y_train << std::endl;
-		std::cout << "B_test:\n" << B_test << "\nC_test:\n" << C_test << "\ny_test:\n" << y_test << std::endl;
-		std::cout << "B^tB:\n" << B_train.transpose() * C_train.inverse() * B_train;
+	//	//X_test = X.row(i);
+
+	//	MatrixXcd yEnd(m, n - 1);
+
+	//	//for (int j = 0; j < m; ++j) {
+	//	//	for (int k = 0;  k < n; ++k){
+	//	//	//UK basis function
+	//	//	//yEnd(i) = y_test.pow(i);
+	//	//	//TK basis function
+	//	//	//fVec(i, 0) = std::pow((xVal - average), i);
+
+	//	//}
+
+	//////////////////////////////////////////////////////////////////////
+		//std::cout << "B_train:\n" << B_train << "\nC_train:\n" << C_train << "\ny_train:\n" << y_train << std::endl;
+		//std::cout << "B_test:\n" << B_test << "\nC_test:\n" << C_test << "\ny_test:\n" << y_test << std::endl;
+		//std::cout << "B^tB:\n" << B_train.transpose() * C_train.inverse() * B_train;
 
 		////OLS
-		int iSize = (B_train.transpose() * B_train).rows();
+		//int iSize = (B_train.transpose() * B_train).rows();
 		//GLS
-		//int iSize = (B_train.transpose() * C_train.inverse() * B_train).rows();
-
+		int iSize = (B_train.transpose() * C_train.inverse() * B_train).rows();
+		std::cout << "made it to alpha sweep\n";
 		for (int j = 0; j < alphas.size(); j++) {
 
 			MatrixXd I = MatrixXd::Identity(iSize, iSize);
 			////OLS
 			//VectorXd w = (B_train.transpose() * B_train + alphas[j] * I).inverse() * (B_train.transpose() * y_train);
 			//GLS
-			VectorXd w = (B_train.transpose() * C_train.inverse() * B_train + alphas[j] * I).inverse() * (B_train.transpose() * C_train.inverse() * y_train);
+			VectorXcd w = (B_train.transpose() * C_train.inverse() * B_train + alphas[j] * I).inverse() * (B_train.transpose() * C_train.inverse() * y_train);
+			//VectorXcd w = (B_train.transpose() * C_train.inverse() * B_train).inverse() * (B_train.transpose() * C_train.inverse() * y_train + alphas[j] * VectorXcd::Ones(iSize,1));
 
 
+			//std::cout << "w:\n" << w << std::endl;
 
-			std::cout << "w:\n" << w << std::endl;
-
-			VectorXd y_pred = B_test * w;
-
-
-			std::cout << "y_pred: \n" << y_pred << "\ny_train:\n" << y_train << std::endl;
-
+			VectorXcd y_pred = w.transpose() * B_test.transpose();
 
 			mse[j] += (y_test - y_pred).squaredNorm();
+
+			//std::cout << "------------------------------------------------------------------------------\n";
+			//std::cout << "B_train:\n" << B_train << "\nC_train:\n" << C_train << "\ny_train:\n" << y_train << "\nB_test: \n" << B_test << std::endl;
+
+			//std::cout << "alpha: " << alphas[j] << "\ny_pred: \n" << y_pred << "\ny_train:\n" << y_train << "\ny_test: " << y_test << "\nmse[i]:" << (y_test - y_pred).squaredNorm() << "\nX:\n" << X << "\ny:\n"<<  y << std::endl;
 		}
 	}
-
+	std::cout << "made it out of alpha sweep\n";
 
 	for (int j = 0; j < alphas.size(); j++) {
 		mse[j] /= k;
@@ -3368,8 +3620,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 	////easy sweep condition
 	refIndex.clear();
 	references.clear();
-	//list [48, 32, 24, 19, 16, 14, 12, 11, 9, 8, 7]
-
+	//list [48, 32, 24, 19, 16, 14, 12, [11], 10, 9, 8, 7], 6, 5]
 
 	for (int i = 0; i < 95; i += 32) {
 		refIndex.push_back(i);
@@ -3380,8 +3631,8 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		references.push_back(referencesFull[95]);
 	}
 
-	//refIndex = { 0, 5, 20, 35, 50, 65, 80, 95 };
-	//references = { referencesFull[0], referencesFull[5], referencesFull[20], referencesFull[35], referencesFull[50], referencesFull[65], referencesFull[80], referencesFull[95] };
+	//refIndex = { 0, 24, 48, 72 };
+	//references = { referencesFull[0], referencesFull[24], referencesFull[48], referencesFull[72] };
 
 
 	////-------
@@ -3587,7 +3838,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		}
 
 		//linspace for the x values in the variogramFit
-		int fitSize = 15000;
+		int fitSize = 20000;
 		std::vector<double> d;
 		for (int i = 0; i <= fitSize; ++i) {
 			d.push_back(i * maxDist / fitSize);
@@ -3640,15 +3891,13 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		//std::vector<double> variogramFitGradImag = fitVariogramModel(variogramGradComplexImag, edges, d, references.size());
 		// end of empirical variogram methods ----------------------------------------------------------------------------------
 
-		std::cout << "just before MLE\n";
-
 // working MLE ----------------------------------------------------------------------------------------------------------------
 
-		//theta is the hyperparameter
-		// 1 parameter
-		//VectorXd theta (1, 1);
-		// 2 parameters
-		VectorXd theta(2, 1);
+		//flag for MLE  1: OK (no basis function, no gradient) 2: UK/TK (basis functions, no gradient) 3: GEK (no basis functions, with gradient), 4: GETK (with basis functions and gradient)
+		int flag = 4;
+
+		//MLE hyperparameter
+		VectorXd theta (1, 1);
 
 
 		//input data, 1 since dimensionality is currently 1
@@ -3656,46 +3905,38 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		VectorXd y(referenceVals.size());
 		VectorXd yGrad(referenceVals.size());
 		MatrixXd R(referenceVals.size(), referenceVals.size());
-		VectorXd absRefVals(referenceVals.size());
+		VectorXcd yComplex(referenceVals.size());
 
+		std::cout << "referenceVals:\n" << std::endl;
 		for (int k = 0; k < referenceVals.size(); k++) {
 			X(k, 0) = references[k].real();
 			y(k) = abs(referenceVals[k]);
+			std::cout << abs(referenceVals[k]) << "  " << abs(gradient[k]) << std::endl;
 			//y(k + referenceVals.size()) = abs(gradient[k]);
 			yGrad(k) = abs(gradient[k]);
-			absRefVals(k) = abs(referenceVals[k]);
+			yComplex(k) = referenceVals[k];
 		}
 
-		int n = referenceVals.size();
-		int m = n;
-
 		//calculate basis function matrix
-		MatrixXd B = MatrixXd::Zero(n, m);
-		basisMatCalc(X, y, B, yGrad);
+		MatrixXd B;
+		basisMatCalc(X, y, B, yGrad, flag);
 
-		MLE_estimation(X, y, theta, B, yGrad);
+		MLE_estimation(X, y, theta, B, yGrad, flag);
 
-		MatrixXd cMat = covMatCalc(X, theta, variogramFit, d, references);
-
+		std::cout << "MLE success\n";
 		//calculate variance estimate
 		double sigma2;
-		var_calc(X, y, sigma2, theta, B, yGrad);
+		var_calc(X, y, sigma2, theta, B, yGrad, flag);
 
-		//currently not needed when done this way
-		////calculate basis function coefficient a
-		////size(a) = m
-		//VectorXd a(referenceVals.size());
-		//aCalc(X, y, B, theta, a);
-		///////////////////////////////////
+		std::cout << "................................................................\n";
+		std::cout << "value for variance: " << sigma2 << "  value for theta: " << theta << std::endl;
 
-		std::cout << "value(s) for theta................................................................:\n" << theta << std::endl;
+		//theta[0] = 0.6456;
+		//sigma2 = 2.0716;
 
-		//theta = theta / 4.0;
-		std::cout << "values for variance: " << sigma2 << "  value for theta: " << theta << std::endl;
-
+		//only needed for viewing covariance function
 		for (int k = 0; k < d.size(); k++) {
-			variogramFit[k] = covariance(d[k], theta, sigma2);
-			//std::cout << "variogramFit[k]: " << variogramFit[k] << std::endl;
+			variogramFit[k] = covariance(d[k], theta[0], sigma2);
 		}
 
 		// end of MLE -----------------------------------------------------------------------------
@@ -3704,11 +3945,14 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		std::vector<double> variogramFitFirstD = firstDerivative(variogramFit, d);
 		std::vector<double> variogramFitSecondD = firstDerivative(variogramFitFirstD, d);
 
+		MatrixXd cMat = covMatCalc(X, theta, variogramFit, d, references, flag, sigma2);
+
+		std::cout << "cMat:\n" << cMat << std::endl;
 
 
 		//------------------------------- output empirical variogram and fitted variogram for checking----------------------------
 		
-		std::string outvar = "../iofiles/output/paper/variogram/fit" + std::to_string(iterations + 3) + ".txt";
+		std::string outvar = "../iofiles/output/paper/variogram/fit" + std::to_string(iterations) + ".txt";
 		std::ofstream var_out(outvar);
 		for (int i = 0; i < d.size(); ++i) {
 			//if (material_list[i].real() < 2.0 || material_list[i].real() > 7.0) {
@@ -3718,7 +3962,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		}
 		var_out.close();
 
-		std::string outvarfit = "../iofiles/output/paper/variogram/fitFirstD" + std::to_string(iterations + 3) + ".txt";
+		std::string outvarfit = "../iofiles/output/paper/variogram/fitFirstD" + std::to_string(iterations) + ".txt";
 		std::ofstream var_fit_out(outvarfit);
 		for (int i = 0; i < d.size(); ++i) {
 			//if (material_list[i].real() < 2.0 || material_list[i].real() > 7.0) {
@@ -3728,7 +3972,7 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		}
 		var_fit_out.close();
 
-		std::string outvarfit2 = "../iofiles/output/paper/variogram/fitSecondD" + std::to_string(iterations + 3) + ".txt";
+		std::string outvarfit2 = "../iofiles/output/paper/variogram/fitSecondD" + std::to_string(iterations) + ".txt";
 		std::ofstream var_fit2_out(outvarfit2);
 		for (int i = 0; i < d.size(); ++i) {
 			//if (material_list[i].real() < 2.0 || material_list[i].real() > 7.0) {
@@ -3753,15 +3997,17 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		VectorXcd weightsRBF(referenceVals.size());
 
 
-		std::vector<double> alphas = { 1e-6, 5e-6, 1e-5, 5e-5, 1e-4, 5e-4, 1e-3, 5e-3, 1e-2, 5e-2, 1e-1, 5e-1, 1.0, 5, 1e1, 5e1, 1e2};// , 5e2, 1e3, 5e3, 1e4, 5e4 };
-		//std::vector<double> alphas = { 0.1, 0.2, 0.25, 0.275, 0.29, 0.3, 0.31, 0.325, 0.35, 4e-1, 0.45, 5e-1, 7e-1, 1, 1.1 };
+		std::vector<double> alphas = { -1e-3, -1e-2, -1e-1, -1, 0.0, 1e-6, 5e-6, 1e-5, 5e-5, 1e-4, 5e-4, 1e-3, 5e-3, 1e-2, 5e-2, 1e-1, 5e-1, 1.0, 5, 1e1, 5e1, 1e2 , 5e2, 1e3, 5e3, 1e4, 5e4, 1e5, 5e5, 1e6, 5e6, 1e7 };
+		//std::vector<double> alphas = { 1.7, 1.71, 1.72, 1.73, 1.74, 1.75, 1.76, 1.77, 1.78, 1.79, 1.80, 1.81, 1.82, 1.83, 1.84, 1.85, 1.86, 1.87, 1.89, 1.9 };
 		std::vector<double> mse(alphas.size());
+		
 
-
-		mse = cross_validate(B, X, cMat, y, y.size(), alphas);
-		auto it = min_element(mse.begin(), mse.end());
-		int alphaIndex = it - mse.begin();
-		double alpha = alphas[alphaIndex];
+		//mse = cross_validate(B, X, cMat, yComplex, y.size(), alphas);
+		//std::cout << "made it out of cross_validate\n";
+		//auto it = min_element(mse.begin(), mse.end());
+		//int alphaIndex = it - mse.begin();
+		//double alpha = alphas[alphaIndex];
+		double alpha = 0.0;
 
 		////std::cout << "mse.size(): " << mse.size() << std::endl;
 
@@ -3779,25 +4025,29 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 			taylorKriging(variogramFitGrad, d, references, weightsGrad[i], material_list[i].real());
 			reconstructionGrad[i] = krigSum(weightsGrad[i], gradient);
 			////////////////////////////////////////////////
-			
-			/////////////GETK///////////////
-			//taylorKrigingHigherOrder(variogramFit, variogramFitFirstD, variogramFitSecondD, d, references, weightsHigher[i], material_list[i].real(), theta, sigmaP[i]);
-			//reconstruction[i] = krigSumHigherOrder(weightsHigher[i], referenceVals, gradient, material_list[i].real(), xAvg);
-			//reconstruction[i] = taylorKrigingHigherOrder3(variogramFit, variogramFitFirstD, variogramFitSecondD, d, references, weightsHigher[i], material_list[i].real(), variogramFitGrad, referenceVals, gradient, theta, alpha);
-			/////////////////////////////////////////////
 
 
-			////////// RBF //////////////////
-			//X_0 = MatrixXcd::Ones(referenceVals.size(), 1) * material_list[i].real();
-			//weightsRBF = RBF_weights(X, y, sigma2);
-			//reconstruction[i] = RBF_sum(weightsRBF, X_0, X, sigma2);
-			reconstruction[i] = RBFKriging(variogramFit, d, references, weights[i], material_list[i].real(), referenceVals, theta, alpha);
 
-			///////////TK//////////////////////
-			//taylorKriging(variogramFit, d, references, weights[i], material_list[i].real());
-			//reconstruction[i] = krigSum(weights[i], referenceVals);
-			////////////////////////////////
+			//if (flag == 4 || flag == 3) {
+				////////////GETK///////////////
+				//taylorKrigingHigherOrder(variogramFit, variogramFitFirstD, variogramFitSecondD, d, references, weightsHigher[i], material_list[i].real(), theta[0], sigmaP[i]);
+				//reconstruction[i] = krigSumHigherOrder(weightsHigher[i], referenceVals, gradient, material_list[i].real(), xAvg);
+				//reconstruction[i] = taylorKrigingHigherOrder3(variogramFit, variogramFitFirstD, variogramFitSecondD, d, references, weightsHigher[i], material_list[i].real(), variogramFitGrad, referenceVals, gradient, theta, alpha, sigma2);
+				/////////////////////////////////////////////
+			//}
 
+			//if (flag == 1 || flag == 2) {
+				////////// RBF //////////////////
+				//X_0 = MatrixXcd::Ones(referenceVals.size(), 1) * material_list[i].real();
+				//weightsRBF = RBF_weights(X, y, sigma2);
+				//reconstruction[i] = RBF_sum(weightsRBF, X_0, X, sigma2);
+
+				reconstruction[i] = RBFKriging(variogramFit, d, references, weights[i], material_list[i].real(), referenceVals, theta, alpha);
+				///////////TK//////////////////////
+				//taylorKriging(variogramFit, d, references, weights[i], material_list[i].real());
+				//reconstruction[i] = krigSum(weights[i], referenceVals);
+				////////////////////////////////
+			//}
 			///////// GLS ////////////////
 			//reconstruction[i] = taylorKrigingHigherOrder2(variogramFit, variogramFitFirstD, variogramFitSecondD, d, references, weightsHigher[i], material_list[i].real(), variogramFitGrad, referenceVals, gradient, theta);
 			/////////////////////////////
@@ -3995,8 +4245,10 @@ void Kriging::multi_HOPS_epsr(std::string& file_name)
 		///-------------------------------------------------------------
 
 
+
+
 		//AR sweep output
-		std::string outF = "../ioFiles/output/paper/mat4_new/TK/qoi_kriging" + std::to_string(iterations-1) + ".txt";
+		std::string outF = "../ioFiles/output/paper/mat4_new/UK_emp/qoi_kriging" + std::to_string(iterations-1) + ".txt";
 		std::ofstream qoi_dist_out(outF);
 		for (int i = 0; i < material_list.size(); ++i) {
 			//if (material_list[i].real() < 2.0 || material_list[i].real() > 7.0) {
